@@ -1,0 +1,18 @@
+.splash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: red;
+    height: 12vh;
+}
+
+.header-links {
+    display: flex;
+    column-gap: 0.5rem;
+    width: 20vw;
+}
+
+.header-logo {
+    display: flex;
+    width: 25vw;
+}

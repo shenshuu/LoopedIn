@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import SplashHeader from './splash_header';
 
 class Splash extends React.Component {
     constructor(props) {
         super(props);
         this.userProfile = this.userProfile.bind(this);
-        this.sessionLinks = this.sessionLinks.bind(this);
     }
 
     userProfile() {
@@ -17,17 +16,12 @@ class Splash extends React.Component {
         )
     }
 
-    sessionLinks() {
+    render() {
         return (
-            <div className="session-links">
-                <Link to='/login'>Log In</Link>
-                <Link to='/signup'>Sign Up</Link>
+            <div>
+                <SplashHeader />
             </div>
         )
-    }
-
-    render() {
-        return this.props.user ? this.userProfile() : this.sessionLinks();
     }
 }
 
