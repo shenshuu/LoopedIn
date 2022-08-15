@@ -7,7 +7,6 @@ import LoginFormContainer from './session_form/login_form_container';
 
 const App = () => (
     <div>
-        LoopedIn
         <SplashContainer />
         <Switch>
             <AuthRoute exact path='/login' component={LoginFormContainer} />

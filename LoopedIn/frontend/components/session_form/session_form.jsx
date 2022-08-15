@@ -19,8 +19,8 @@ class SessionForm extends React.Component {
             password: '',
             first_name: '',
             last_name: '',
-            location_country: '',
-            location_city: '',
+            location_country: 'United States',
+            location_city: 'New York',
         });
     } 
 
@@ -32,21 +32,18 @@ class SessionForm extends React.Component {
     signupFields() {
         return (
             <div>
-                <label>First Name:
-                    <input type="text" value={this.state.firstName} onChange={this.update('firstName')}/>
-                </label>
+                <input type="text" required 
+                value={this.state.firstName} 
+                onChange={this.update('firstName')}
+                placeholder="First Name"
+                />
                 <br />
-                <label>Last Name:
-                    <input type="text" value={this.state.lastName} onChange={this.update('lastName')}/>
-                </label>
+                <input type="text" required 
+                value={this.state.lastName} 
+                onChange={this.update('lastName')}
+                placeholder="Last Name"
+                />
                 <br />
-                <label>Country:
-                    <input type="text" value={this.state.locationCountry} onChange={this.update('locationCountry')}/>
-                </label>
-                <br />
-                <label>City:
-                    <input type="text" value={this.state.locationCity} onChange={this.update('locationCity')}/>
-                </label>
             </div>
         )
     }
@@ -57,12 +54,19 @@ class SessionForm extends React.Component {
             <div className="session-form-container">
                 <form onSubmit={this.handleSubmit}>
                     <h3>{this.props.formType}</h3>
-                    <label>Email:
-                        <input type="text" value={this.state.email} onChange={this.update('email')}/>
-                    </label>
-                    <label>Password:
-                        <input type="password" value={this.state.password} onChange={this.update('password')}/>
-                    </label>
+                   
+                    <input type="text" required 
+                    value={this.state.email} 
+                    onChange={this.update('email')}
+                    placeholder="Email"
+                    />
+
+                    <input type="password" required 
+                    value={this.state.password} 
+                    onChange={this.update('password')}
+                    placeholder="Password"
+                    />
+
                     {this.props.formType === 'Sign Up' ? this.signupFields() : <span></span>}
                     <input type="submit" value={this.props.formType}/>
                 </form>

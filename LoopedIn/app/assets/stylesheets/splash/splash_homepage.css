@@ -1,3 +1,8 @@
+.homepage {
+    display: flex;
+    flex-direction: column;
+}
+
 .homepage-body {
     display: flex;
 }
@@ -11,4 +16,13 @@
     margin-top: 5rem;
     font-size: 56px;
     margin-left: 1rem;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+    font-weight: 200;
+    color: #8F5849;
+}
+
+.homepage-left-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
