@@ -5,6 +5,7 @@ class Splash extends React.Component {
     constructor(props) {
         super(props);
         this.userProfile = this.userProfile.bind(this);
+        this.homepage = this.homepage.bind(this);
     }
 
     userProfile() {
@@ -16,10 +17,20 @@ class Splash extends React.Component {
         )
     }
 
+    homepage() {
+        return (
+            <div className="homepage-body">
+                <h1 className="homepage-slogan">Welcome to your professional community</h1>
+                <img className="homepage-img" src="https://static-exp1.licdn.com/aero-v1/sc/h/dxf91zhqd2z6b0bwg85ktm5s4" alt="homepage-img" />
+            </div>
+        )
+    }
+
     render() {
         return (
             <div>
                 <SplashHeader />
+                {this.homepage()}
             </div>
         )
     }

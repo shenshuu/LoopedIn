@@ -1,0 +1,14 @@
+.homepage-body {
+    display: flex;
+}
+
+.homepage-img {
+    width: 35rem;
+    height: 35rem;
+}
+
+.homepage-slogan {
+    margin-top: 5rem;
+    font-size: 56px;
+    margin-left: 1rem;
+}

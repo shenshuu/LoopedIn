@@ -4,6 +4,7 @@
     align-items: center;
     background-color: red;
     height: 12vh;
+    width: 100vw;
 }
 
 .header-links {
