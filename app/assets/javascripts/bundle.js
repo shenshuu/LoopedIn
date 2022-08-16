@@ -383,6 +383,8 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "form-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "session-form-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
         onSubmit: this.handleSubmit
@@ -401,7 +403,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       }), this.props.formType === 'Sign up' ? this.signupFields() : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
         type: "submit",
         className: "submit"
-      }, this.props.formType), this.props.formType === 'Sign in' ? this.demoLogin() : ""));
+      }, this.props.formType), this.props.formType === 'Sign in' ? this.demoLogin() : "")));
     }
   }]);
 
