@@ -1,11 +1,10 @@
 .session-form-container {
     display: flex;
-    height: 70vh;
-    /* margin-top: -22rem; */
+    height: 50vh;
     justify-content: center;
     align-items: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    width: 30rem;
+    width: 20rem;
     margin: 0 auto;
 }
 
@@ -19,10 +18,11 @@
 }
 
 .session-form-container input {
-    width: 20vw;
+    width: 80%;
     height: 2.5rem;
     margin: 12px;
 }
+
 
 .homepage-slogan {
     flex-wrap: nowrap;
@@ -40,7 +40,12 @@
     border: 0;
 }
 
+
 .homepage-left-container .session-form-container {
     box-shadow: none;
+    margin: 0;
 }
 
+.homepage-left-container .session-form-container input {
+    width: 100%;
+}

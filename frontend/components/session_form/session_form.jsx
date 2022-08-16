@@ -8,6 +8,8 @@ class SessionForm extends React.Component {
         this.update = this.update.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.signupFields = this.signupFields.bind(this);
+        this.handleDemo = this.handleDemo.bind(this);
+        this.demoLogin = this.demoLogin.bind(this);
     }
 
     handleSubmit(e) {
@@ -30,7 +32,7 @@ class SessionForm extends React.Component {
 
     signupFields() {
         return (
-            <div>
+            <div className="signup-form-fields">
                 <input type="text" required 
                 value={this.state.firstName} 
                 onChange={this.update('first_name')}
@@ -47,13 +49,31 @@ class SessionForm extends React.Component {
         )
     }
 
+    handleDemo() {
+        const demoUser = {
+            email: 'michaelshen85@gmail.com',
+            password: 'fooood',
+        }
+        this.props.history.push('/feed');
+        this.props.processForm(demoUser);
+    }
+
+    demoLogin() {
+        return (
+            <div>
+                <div><span id="or-separator">or</span></div>
+                <button className="demo-btn" onClick={this.handleDemo}>Demo User</button>
+            </div>
+        )
+    }
+
     render() {
 
         return (
             <div className="session-form-container">
                 <form onSubmit={this.handleSubmit}>
                    
-                    <input type="text" required 
+                    <input type="text" required
                     value={this.state.email} 
                     onChange={this.update('email')}
                     placeholder="Email"
@@ -67,6 +87,7 @@ class SessionForm extends React.Component {
 
                     {this.props.formType === 'Sign up' ? this.signupFields() : ""}
                     <button type="submit" className="submit">{this.props.formType}</button>
+                    {this.props.formType === 'Sign in' ? this.demoLogin() : ""}
                 </form>
             </div>
         )

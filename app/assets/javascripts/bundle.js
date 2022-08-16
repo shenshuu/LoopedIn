@@ -228,6 +228,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _session_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./session_form */ "./frontend/components/session_form/session_form.jsx");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+
 
 
 
@@ -238,7 +240,7 @@ var mapStateToProps = function mapStateToProps(state) {
       email: '',
       password: ''
     },
-    formType: 'Log in',
+    formType: 'Sign in',
     errors: state.errors
   };
 };
@@ -251,7 +253,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_session_form__WEBPACK_IMPORTED_MODULE_1__["default"]));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_session_form__WEBPACK_IMPORTED_MODULE_1__["default"])));
 
 /***/ }),
 
@@ -309,6 +311,8 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     _this.update = _this.update.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.signupFields = _this.signupFields.bind(_assertThisInitialized(_this));
+    _this.handleDemo = _this.handleDemo.bind(_assertThisInitialized(_this));
+    _this.demoLogin = _this.demoLogin.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -339,7 +343,9 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "signupFields",
     value: function signupFields() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "signup-form-fields"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
         type: "text",
         required: true,
         value: this.state.firstName,
@@ -352,6 +358,26 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.update('last_name'),
         placeholder: "Last Name"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null));
+    }
+  }, {
+    key: "handleDemo",
+    value: function handleDemo() {
+      var demoUser = {
+        email: 'michaelshen85@gmail.com',
+        password: 'fooood'
+      };
+      this.props.history.push('/feed');
+      this.props.processForm(demoUser);
+    }
+  }, {
+    key: "demoLogin",
+    value: function demoLogin() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+        id: "or-separator"
+      }, "or")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+        className: "demo-btn",
+        onClick: this.handleDemo
+      }, "Demo User"));
     }
   }, {
     key: "render",
@@ -375,7 +401,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       }), this.props.formType === 'Sign up' ? this.signupFields() : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
         type: "submit",
         className: "submit"
-      }, this.props.formType)));
+      }, this.props.formType), this.props.formType === 'Sign in' ? this.demoLogin() : ""));
     }
   }]);
 
