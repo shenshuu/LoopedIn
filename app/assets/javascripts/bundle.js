@@ -372,9 +372,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "demoLogin",
     value: function demoLogin() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
-        id: "or-separator"
-      }, "or")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
         className: "demo-btn",
         onClick: this.handleDemo
       }, "Demo User"));
@@ -402,6 +400,9 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         placeholder: "Password"
       }), this.props.formType === 'Sign up' ? this.signupFields() : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
         type: "submit",
+        onClick: function onClick() {
+          document.getElementsByClassName('form-body').style.background_color = "#f3f2ef";
+        },
         className: "submit"
       }, this.props.formType), this.props.formType === 'Sign in' ? this.demoLogin() : "")));
     }
