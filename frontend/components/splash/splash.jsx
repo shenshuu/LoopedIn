@@ -31,7 +31,6 @@ class Splash extends React.Component {
     render() {
         return (
             <div className="homepage">
-                <SplashHeader />
                 {this.homepage()}
             </div>
         )

@@ -2,6 +2,11 @@
     display: flex;
     height: 70vh;
     /* margin-top: -22rem; */
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    width: 30rem;
+    margin: 0 auto;
 }
 
 .session-form-container form {
@@ -10,12 +15,13 @@
     align-items: center;
     flex-direction: column;
     max-width: 60vw;
+    padding: 20px;
 }
 
 .session-form-container input {
-    width: 25rem;
+    width: 20vw;
     height: 2.5rem;
-    margin: 8px;
+    margin: 12px;
 }
 
 .homepage-slogan {
@@ -26,7 +32,10 @@
     background-color: #0b66c2;
     color: white;
     border-radius: 28px;
-    position: relative;
-    text-align: center;
+    cursor: pointer;
+    padding: 12px 24px 12px 24px;
+    width: 20vw;
+    font-size: 1rem;
+    margin-top: 12px;
     border: 0;
 }

@@ -30,10 +30,13 @@
     padding: 16px;
     text-align: center;
     border: 0;
+    font-weight: 600;
 }
 
 .signup-btn {
+    color: rgba(0, 0, 0, 0.75);
     position: relative;
     padding: 16px;
     text-align: center;
+    font-weight: 600;
 }
