@@ -65,7 +65,7 @@ class SessionForm extends React.Component {
                     placeholder="Password"
                     />
 
-                    {this.props.formType === 'Sign up' ? this.signupFields() : <span></span>}
+                    {this.props.formType === 'Sign up' ? this.signupFields() : ""}
                     <button type="submit" className="submit">{this.props.formType}</button>
                 </form>
             </div>
