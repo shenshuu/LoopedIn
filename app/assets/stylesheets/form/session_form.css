@@ -1,6 +1,7 @@
 .session-form-container {
     display: flex;
     height: 70vh;
+    /* margin-top: -22rem; */
 }
 
 .session-form-container form {
@@ -8,10 +9,24 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 60vw;
+    max-width: 60vw;
 }
 
 .session-form-container input {
-    width: 15rem;
+    width: 25rem;
     height: 2.5rem;
+    margin: 8px;
+}
+
+.homepage-slogan {
+    flex-wrap: nowrap;
+}
+
+.submit {
+    background-color: #0b66c2;
+    color: white;
+    border-radius: 28px;
+    position: relative;
+    text-align: center;
+    border: 0;
 }

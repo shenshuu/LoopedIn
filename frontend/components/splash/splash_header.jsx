@@ -10,8 +10,8 @@ class SplashHeader extends React.Component {
     sessionLinks() {
         return (
             <div className="header-links">
-                <Link to='/login'>Log In</Link>
-                <Link to='/signup'>Sign Up</Link>
+                <Link to='/signup' className="signup-btn">Join now</Link>
+                <Link to='/login' className="login-btn">Sign in</Link>
             </div>
         )
     }

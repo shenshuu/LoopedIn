@@ -12,8 +12,9 @@ class SessionForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        console.log(this.state);
         this.props.processForm(this.state);
-        this.props.history.push('/');
+        this.props.history.push('/feed');
         this.setState({
             email: '',
             password: '',
@@ -34,13 +35,13 @@ class SessionForm extends React.Component {
             <div>
                 <input type="text" required 
                 value={this.state.firstName} 
-                onChange={this.update('firstName')}
+                onChange={this.update('first_name')}
                 placeholder="First Name"
                 />
                 <br />
                 <input type="text" required 
                 value={this.state.lastName} 
-                onChange={this.update('lastName')}
+                onChange={this.update('last_name')}
                 placeholder="Last Name"
                 />
                 <br />
@@ -53,7 +54,6 @@ class SessionForm extends React.Component {
         return (
             <div className="session-form-container">
                 <form onSubmit={this.handleSubmit}>
-                    <h3>{this.props.formType}</h3>
                    
                     <input type="text" required 
                     value={this.state.email} 
@@ -68,7 +68,7 @@ class SessionForm extends React.Component {
                     />
 
                     {this.props.formType === 'Sign Up' ? this.signupFields() : <span></span>}
-                    <input type="submit" value={this.props.formType}/>
+                    <input type="submit" value={this.props.formType} className="submit"/>
                 </form>
             </div>
         )

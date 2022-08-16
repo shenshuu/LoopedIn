@@ -2,18 +2,38 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #0b66c2 ;
+    /* background-color: #0b66c2 ; */
     height: 12vh;
     width: 100vw;
 }
 
 .header-links {
     display: flex;
+    justify-content: flex-end;
+    margin-right: 3rem;
     column-gap: 0.5rem;
     width: 20vw;
+}
+
+.header-links a {
+    text-decoration: none;
 }
 
 .header-logo {
     display: flex;
     width: 25vw;
+}
+
+.login-btn {
+    color: #0b66c2;
+    position: relative;
+    padding: 16px;
+    text-align: center;
+    border: 0;
+}
+
+.signup-btn {
+    position: relative;
+    padding: 16px;
+    text-align: center;
 }

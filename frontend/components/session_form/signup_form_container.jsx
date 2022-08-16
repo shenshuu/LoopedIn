@@ -8,8 +8,8 @@ const mapStateToProps = state => ({
         password: '',
         first_name: '',
         last_name: '',
-        location_country: '',
-        location_city: '',
+        location_country: 'United States',
+        location_city: 'New York',
     },
     formType: 'Sign Up',
 })
