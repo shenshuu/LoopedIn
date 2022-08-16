@@ -4,12 +4,12 @@ import { Route, Switch } from 'react-router-dom';
 import AuthRoute from '../util/route_util';
 import SignupFormContainer from './session_form/signup_form_container';
 import LoginFormContainer from './session_form/login_form_container';
-import SplashHeader from './splash/splash_header';
+import HeaderContainer from './splash/header_container';
 import Feed from './feed/feed';
 
 const App = () => (
     <div>
-        <SplashHeader />
+        <HeaderContainer/>
         <Switch>
             <AuthRoute exact path='/' component={SplashContainer} />
             <AuthRoute exact path='/login' component={LoginFormContainer} />
