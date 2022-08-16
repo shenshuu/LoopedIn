@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
 import React from 'react';
 
 class SplashHeader extends React.Component {
@@ -27,7 +26,7 @@ class SplashHeader extends React.Component {
     signinLinks() {
         return (
             <div className="header-links">
-                <button onClick={this.handleSignout}>Sign out</button>
+                <button className="signout-btn" onClick={this.handleSignout}>Sign out</button>
             </div>
         )
     }
@@ -35,7 +34,11 @@ class SplashHeader extends React.Component {
     render() {
         return (
             <div className="splash-header">
-                <div className="header-logo"><img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.pngall.com%2Fwp-content%2Fuploads%2F2016%2F07%2FLinkedin-Free-PNG-Image.png&f=1&nofb=1" alt="" width="140px" height="100px"/></div>
+                
+                <Link to={this.props.loggedIn ? "/feed" : "/"} 
+                className="header-logo">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.pngall.com%2Fwp-content%2Fuploads%2F2016%2F07%2FLinkedin-Free-PNG-Image.png&f=1&nofb=1" alt="" width="140px" height="100px"/>
+                </Link>
 
                 {this.props.loggedIn ? this.signinLinks() : this.signoutLinks()}
             </div>

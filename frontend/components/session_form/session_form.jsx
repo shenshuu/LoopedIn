@@ -12,7 +12,6 @@ class SessionForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log(this.state);
         this.props.processForm(this.state);
         this.props.history.push('/feed');
         this.setState({
@@ -26,7 +25,6 @@ class SessionForm extends React.Component {
     } 
 
     update(field) {
-        console.log(this.state)
         return e => this.setState({[field]: e.target.value});
     }
 

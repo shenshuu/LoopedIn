@@ -12,6 +12,7 @@ const mapStateToProps = state => ({
         location_city: 'New York',
     },
     formType: 'Sign up',
+    errors: state.errors,
 })
 
 const mapDispatchToProps = dispatch => ({
