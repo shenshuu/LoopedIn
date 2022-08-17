@@ -14409,3 +14409,15 @@ Processing by StaticPagesController#root as HTML
 Completed 200 OK in 7431ms (Views: 7343.8ms | ActiveRecord: 79.1ms)
 
 
+Started GET "/" for ::1 at 2022-08-17 09:30:42 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "wOY9OorG_9dSJ9OgkFEiyg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9
+  [1m[36mCACHE User Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "wOY9OorG_9dSJ9OgkFEiyg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9
+  Rendered api/users/_user.json.jbuilder (43.8ms)
+  Rendered static_pages/root.html.erb within layouts/application (383.9ms)
+Completed 200 OK in 2839ms (Views: 2748.2ms | ActiveRecord: 85.1ms)
+
+
