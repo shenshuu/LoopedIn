@@ -1,4 +1,5 @@
 import React from 'react';
+import Sidebar from './sidebar';
 
 class Feed extends React.Component {
     constructor(props) {
@@ -7,8 +8,8 @@ class Feed extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>HELLO</h1>
+            <div className="feed">
+                <Sidebar />
             </div>
         )
     }
