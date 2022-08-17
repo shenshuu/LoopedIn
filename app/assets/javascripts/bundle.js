@@ -7626,10 +7626,10 @@ var receivePost = function receivePost(post) {
     post: post
   };
 };
-var removePost = function removePost(postId) {
+var removePost = function removePost(post) {
   return {
     type: REMOVE_POST,
-    postId: postId
+    post: post
   };
 };
 var fetchPosts = function fetchPosts() {
@@ -7646,16 +7646,15 @@ var createPost = function createPost(post) {
     });
   };
 };
-var deletePost = function deletePost(postId) {
+var deletePost = function deletePost(post) {
   return function (dispatch) {
-    return _util_post_api_util__WEBPACK_IMPORTED_MODULE_0__.deletePost(postId).then(function () {
-      return dispatch(removePost(postId));
+    return _util_post_api_util__WEBPACK_IMPORTED_MODULE_0__.deletePost(post).then(function () {
+      return dispatch(removePost(post));
     });
   };
 };
 var updatePost = function updatePost(post) {
   return function (dispatch) {
-    console.log(post);
     return _util_post_api_util__WEBPACK_IMPORTED_MODULE_0__.updatePost(post).then(function (post) {
       return dispatch(receivePost(post));
     });
@@ -8891,7 +8890,7 @@ var postsReducer = function postsReducer() {
       return _defineProperty({}, action.post.id, action.post);
 
     case _actions_post_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_POST:
-      delete nextState[action.postId];
+      delete nextState[action.post.id];
       return nextState;
 
     default:
@@ -9099,10 +9098,13 @@ var createPost = function createPost(post) {
     }
   });
 };
-var deletePost = function deletePost(postId) {
+var deletePost = function deletePost(post) {
   return $.ajax({
-    url: "/api/posts/".concat(postId),
-    method: 'DELETE'
+    url: "/api/posts/".concat(post.id),
+    method: 'DELETE',
+    data: {
+      post: post
+    }
   });
 };
 var updatePost = function updatePost(post) {
