@@ -9,7 +9,16 @@ import React from 'react';
 class PostIndexItem extends React.Component {
     constructor(props) {
         super(props);
-        this.state = this.props.user;
+        this.state = {
+            user: this.props.user,
+            modal_hidden: true,
+        }
+        this.actionModal = this.actionModal.bind(this);
+        this.openModal = this.openModal.bind(this);
+    }
+
+    openModal() {
+        this.setState({modal_hidden: !this.state.modal_hidden});
     }
 
     actionModal() {
@@ -34,12 +43,12 @@ class PostIndexItem extends React.Component {
                     <div className="post-header">
                         <AccountCircle />
                         <div className="post-header-info">
-                            <h3>{`${this.state.first_name} ${this.state.last_name}`}</h3>
+                            <h3>{`${this.state.user.first_name} ${this.state.user.last_name}`}</h3>
                             <p>Professional Tester</p>
                         </div>
                     </div>
                     <div className="post-actions">
-                        <MoreHorizRoundedIcon />
+                        <MoreHorizRoundedIcon onClick={this.openModal}/>
                     </div>
                 </div>
                 <div className="post-body">
@@ -56,6 +65,7 @@ class PostIndexItem extends React.Component {
                         <p>Comment</p>
                     </div>
                 </div>
+                {this.state.modal_hidden ? "" : this.actionModal()}
             </div>
         )
     }
