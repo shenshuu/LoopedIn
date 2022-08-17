@@ -1,3 +1,4 @@
+require 'byebug'
 class Api::PostsController < ApplicationController 
     def index 
         @posts = Post.all 
@@ -15,10 +16,11 @@ class Api::PostsController < ApplicationController
 
     def destroy 
         @post = Post.find_by(id: params[:id])
-        if @post.destroy 
+        debugger
+        if @post && @post.destroy 
             render json: ['post successfully destroyed']
         else    
-            render json: @post.errors.full_messages, status: 422
+            render json: ['unable to delete post'], status: 422
         end
     end
 

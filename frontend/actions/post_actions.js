@@ -8,9 +8,9 @@ export const receivePost = post => ({
     post 
 });
 
-export const removePost = postId => ({
+export const removePost = post => ({
     type: REMOVE_POST,
-    postId
+    post
 });
 
 export const createPost = post => dispatch => (
@@ -18,12 +18,12 @@ export const createPost = post => dispatch => (
     .then(post => dispatch(receivePost(post)))
 );
 
-export const deletePost = postId => dispatch => (
-    ApiUtil.deletePost(postId)
-    .then(postId => dispatch(removePost(postId)))
+export const deletePost = post => dispatch => (
+    ApiUtil.deletePost(post)
+    .then(post => dispatch(removePost(post)))
 );
 
-export const updatePost = (post, postId) => dispatch => (
-    ApiUtil.updatePost(post, postId)
-    .then(payload => dispatch(receivePost(payload.post)))
+export const updatePost = post => dispatch => (
+    ApiUtil.updatePost(post)
+    .then(post => dispatch(receivePost(post)))
 );
