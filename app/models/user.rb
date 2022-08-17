@@ -22,7 +22,12 @@ class User < ApplicationRecord
 
     after_initialize :ensure_session_token
     attr_reader :password
-    # has many experiences, educations, connections, posts, comments
+    # has many experiences, educations, connections, comments
+
+    has_many :posts,
+        class_name: :Post,
+        foreign_key: :user_id,
+        dependent: :destroy 
 
     def self.find_by_credentials(email, password) 
         user = User.find_by(email: email)
