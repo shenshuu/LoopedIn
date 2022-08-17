@@ -4,6 +4,7 @@ import { AccountCircle } from '@mui/icons-material';
 class Sidebar extends React.Component {
     constructor(props) {
         super(props);
+        this.state = this.props.user;
         this.hashtags.bind(this);
     }
 
@@ -26,9 +27,9 @@ class Sidebar extends React.Component {
                 <div className="sidebar-top">
                     <img src="https://wallpapercave.com/wp/wp4518438.jpg" alt="profile-img" />
                     <AccountCircle />
-                    <h2 className="demo-name">Cappy Bara</h2>
-                    <p className="demo-profession">Professional tester</p>
-                    <p className="demo-location">New York, NY, United States</p>
+                    <h2 className="demo-name">{`${this.state.first_name} ${this.state.last_name}`}</h2>
+                    <p className="demo-profession">{`${this.state.headline}`}</p>
+                    <p className="demo-location">{`${this.state.location_city}, ${this.state.location_country}`}</p>
                 </div>
 
                 <div className="sidebar-stats">

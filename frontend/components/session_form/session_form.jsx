@@ -52,8 +52,11 @@ class SessionForm extends React.Component {
 
     handleDemo() {
         const demoUser = {
-            email: 'michaelshen85@gmail.com',
+            email: 'cappy@gmail.com',
             password: 'fooood',
+            first_name: 'Cappy',
+            last_name: 'Bara',
+            headline: 'Professional Tester',
         }
         this.props.history.push('/feed');
         this.props.processForm(demoUser);

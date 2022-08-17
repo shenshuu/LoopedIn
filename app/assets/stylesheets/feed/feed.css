@@ -1,4 +1,6 @@
 .feed {
     display: grid;
-    grid-template-columns: 250px 600px 250px;
+    grid-template-columns: 200px 500px 200px;
+    margin-left: 30px;
+    column-gap: 40px;
 }

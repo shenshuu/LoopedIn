@@ -1,0 +1,63 @@
+.post-option {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
+}
+
+.photo-icon {
+    color: #70B5F9;
+}
+
+.video-icon {
+    color: #E7A33E;
+}
+
+.event-icon {
+    color: #C0CBCD;
+}
+
+.article-icon {
+    color: #7FC15E;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+.option > p {
+    font-size: 13px;
+    color: gray;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.post-form-content {
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.post-form-container {
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 30px;
+    display: flex;
+    color: gray;
+    padding: 10px;
+}
+
+.post-form {
+    display: flex;
+    width: 100%;
+}
+
+.post-form > input {
+    border: none;
+    flex: 1;
+    margin-left: 10px;
+    font-weight: 600;
+    outline-width: 0;
+}

@@ -1,5 +1,6 @@
-require 'byebug'
 class Api::PostsController < ApplicationController 
+    before_action :require_logged_in
+
     def index 
         @posts = Post.all 
         render json: @posts 
@@ -7,6 +8,7 @@ class Api::PostsController < ApplicationController
 
     def create 
         @post = Post.new(post_params)
+        @post.user_id = current_user.id
         if @post.save 
             render json: @post
         else
@@ -16,7 +18,7 @@ class Api::PostsController < ApplicationController
 
     def destroy 
         @post = Post.find_by(id: params[:id])
-        debugger
+        # @post.user_id = current_user.id 
         if @post && @post.destroy 
             render json: ['post successfully destroyed']
         else    
@@ -27,7 +29,7 @@ class Api::PostsController < ApplicationController
     def update  
         @post = Post.find_by(id: params[:id])
         if @post.update(post_params)
-            render json: ['post successfully updated']
+            render '/api/posts/show'
         else
             render json: @post.errors.full_messages, status: 422
         end

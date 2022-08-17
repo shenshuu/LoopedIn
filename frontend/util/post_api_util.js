@@ -1,3 +1,10 @@
+export const fetchPosts = () => (
+    $.ajax({
+        url: '/api/posts',
+        method: 'GET'
+    })
+);
+
 export const createPost = post => (
     $.ajax({
         url: '/api/posts',
@@ -6,9 +13,9 @@ export const createPost = post => (
     })
 );
 
-export const deletePost = post => (
+export const deletePost = postId => (
     $.ajax({
-        url: `/api/posts/${post.id}`,
+        url: `/api/posts/${postId}`,
         method: 'DELETE'
     })
 );
