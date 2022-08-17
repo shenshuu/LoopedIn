@@ -4,7 +4,7 @@ import { createPost } from "../../actions/post_actions";
 
 const mapStateToProps = state => ({
     post: {
-        user_id: 1, // set this equal to current user id
+        user_id: state.entities.users[state.session.id],
         body: ''
     },
 });
