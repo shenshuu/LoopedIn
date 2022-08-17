@@ -1,6 +1,6 @@
 import React from 'react';
 import SidebarContainer from './sidebar_container';
-import PostIndex from '../posts/post_index';
+import PostIndexContainer from '../posts/post_index_container';
 
 class Feed extends React.Component {
     constructor(props) {
@@ -11,7 +11,7 @@ class Feed extends React.Component {
         return (
             <div className="feed">
                 <SidebarContainer />
-                <PostIndex />
+                <PostIndexContainer />
             </div>
         )
     }

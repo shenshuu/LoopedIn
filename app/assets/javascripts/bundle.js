@@ -7936,7 +7936,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _sidebar_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sidebar_container */ "./frontend/components/feed/sidebar_container.jsx");
-/* harmony import */ var _posts_post_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../posts/post_index */ "./frontend/components/posts/post_index.jsx");
+/* harmony import */ var _posts_post_index_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../posts/post_index_container */ "./frontend/components/posts/post_index_container.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -7979,7 +7979,7 @@ var Feed = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "feed"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_sidebar_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_posts_post_index__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_sidebar_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_posts_post_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null));
     }
   }]);
 
@@ -8331,7 +8331,7 @@ var PostIndex = /*#__PURE__*/function (_React$Component) {
   _createClass(PostIndex, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_post_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_post_index_item_container__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_post_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
     }
   }]);
 
@@ -8339,6 +8339,36 @@ var PostIndex = /*#__PURE__*/function (_React$Component) {
 }((react__WEBPACK_IMPORTED_MODULE_0___default().Component));
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PostIndex);
+
+/***/ }),
+
+/***/ "./frontend/components/posts/post_index_container.jsx":
+/*!************************************************************!*\
+  !*** ./frontend/components/posts/post_index_container.jsx ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _post_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./post_index */ "./frontend/components/posts/post_index.jsx");
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    posts: Object.values(state.entities.posts)
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {};
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_post_index__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
@@ -8404,14 +8434,27 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       user: _this.props.user,
+      post: _this.props.post,
       modal_hidden: true
     };
+    _this.handleUpdate = _this.handleUpdate.bind(_assertThisInitialized(_this));
+    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
     _this.actionModal = _this.actionModal.bind(_assertThisInitialized(_this));
     _this.openModal = _this.openModal.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(PostIndexItem, [{
+    key: "handleUpdate",
+    value: function handleUpdate() {
+      this.props.updatePost(this.state.post);
+    }
+  }, {
+    key: "handleDelete",
+    value: function handleDelete() {
+      this.props.deletePost(this.state.post);
+    }
+  }, {
     key: "openModal",
     value: function openModal() {
       this.setState({
@@ -8424,9 +8467,11 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "post-actions-modal"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-        className: "edit-post-action"
+        className: "edit-post-action",
+        onClick: this.handleUpdate
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_Create__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Edit Post")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-        className: "delete-post-action"
+        className: "delete-post-action",
+        onClick: this.handleDelete
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_DeleteRounded__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Delete Post")));
     }
   }, {

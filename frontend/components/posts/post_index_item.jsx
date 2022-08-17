@@ -11,10 +11,21 @@ class PostIndexItem extends React.Component {
         super(props);
         this.state = {
             user: this.props.user,
+            post: this.props.post,
             modal_hidden: true,
         }
+        this.handleUpdate = this.handleUpdate.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
         this.actionModal = this.actionModal.bind(this);
         this.openModal = this.openModal.bind(this);
+    }
+
+    handleUpdate() {
+        this.props.updatePost(this.state.post);
+    }
+
+    handleDelete() {
+        this.props.deletePost(this.state.post);
     }
 
     openModal() {
@@ -24,11 +35,11 @@ class PostIndexItem extends React.Component {
     actionModal() {
         return (
             <div className="post-actions-modal">
-                <div className="edit-post-action">
+                <div className="edit-post-action" onClick={this.handleUpdate}>
                     <CreateIcon />
                     <p>Edit Post</p>
                 </div>
-                <div className="delete-post-action">
+                <div className="delete-post-action" onClick={this.handleDelete}>
                     <DeleteRoundedIcon />
                     <p>Delete Post</p>
                 </div>
