@@ -29,3 +29,8 @@
     align-items: flex-start;
     margin-left: 50px;
 }
+
+.homepage-left-container form {
+    background-color: none;
+    margin-left: -90px;
+}
