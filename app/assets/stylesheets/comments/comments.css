@@ -1,0 +1,22 @@
+.comment-form-container {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+}
+
+.comment-form {
+    display: flex;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.comment-form > input {
+    border: 1px solid lightgray;
+    margin-right: 10px;
+    border-radius: 30px;
+    padding-right: 10px;
+    padding-left: 10px;
+    width: 350px;
+    height: 25px;
+}

@@ -8927,9 +8927,11 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
         className: "post-btn"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_icons_material_ThumbUpOffAlt__WEBPACK_IMPORTED_MODULE_8__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, "Like")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
         className: "post-btn"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_icons_material_MessageRounded__WEBPACK_IMPORTED_MODULE_9__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, "Comment"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_comments_comment_form_container__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_icons_material_MessageRounded__WEBPACK_IMPORTED_MODULE_9__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, "Comment"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+        className: "comment-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_comments_comment_form_container__WEBPACK_IMPORTED_MODULE_0__["default"], {
         post: this.state.post
-      }), this.state.action_modal_hidden ? "" : this.actionModal());
+      })), this.state.action_modal_hidden ? "" : this.actionModal());
     }
   }]);
 
