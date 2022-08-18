@@ -5,7 +5,7 @@ import AuthRoute from '../util/route_util';
 import SignupFormContainer from './session_form/signup_form_container';
 import LoginFormContainer from './session_form/login_form_container';
 import HeaderContainer from './splash/header_container';
-import Feed from './feed/feed';
+import FeedContainer from './feed/feed_container';
 
 const App = () => (
     <div>
@@ -14,7 +14,7 @@ const App = () => (
             <AuthRoute exact path='/' component={SplashContainer} />
             <AuthRoute exact path='/login' component={LoginFormContainer} />
             <AuthRoute exact path='/signup' component={SignupFormContainer} />
-            <Route exact path='/feed' component={Feed} />
+            <Route exact path='/feed' component={FeedContainer} />
         </Switch>
     </div>
 )

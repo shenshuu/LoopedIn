@@ -18,7 +18,7 @@ class Api::PostsController < ApplicationController
 
     def destroy 
         @post = Post.find_by(id: params[:id])
-        if @post && @post.destroy 
+        if @post.destroy 
             render json: ['post successfully destroyed']
         else    
             render json: ['unable to delete post'], status: 422
@@ -36,6 +36,6 @@ class Api::PostsController < ApplicationController
 
     private 
     def post_params 
-        params.require(:post).permit(:user_id, :body)
+        params.require(:post).permit(:body)
     end
 end

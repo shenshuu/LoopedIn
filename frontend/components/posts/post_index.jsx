@@ -13,6 +13,8 @@ class PostIndex extends React.Component {
                 <PostFormContainer />
                 <ul>
                     {this.props.posts.map((post, i) => {
+                        console.log(post);
+                        // ask steve how to only get id and body from post?
                         return <PostIndexItemContainer post={post} key={post+i}/>
                     })}
                 </ul>

@@ -7,6 +7,10 @@ class Feed extends React.Component {
         super(props);
     }
 
+    componentDidMount() {
+        console.log(Boolean(this.props.user));
+    }
+
     render() {
         return (
             <div className="feed">

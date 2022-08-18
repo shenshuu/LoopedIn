@@ -22,7 +22,8 @@ class PostForm extends React.Component {
         this.updateBody = this.updateBody.bind(this);
     }
 
-    handleCreate() {
+    handleCreate(e) {
+        e.preventDefault();
         this.setState({modal_hidden: true});
         this.props.createPost(this.state.post);
     }
