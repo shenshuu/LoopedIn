@@ -8220,17 +8220,40 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       user: _this.props.user,
       post: _this.props.post,
-      modal_hidden: false
+      modal_hidden: true
     };
     _this.handleCreate = _this.handleCreate.bind(_assertThisInitialized(_this));
+    _this.toggleModal = _this.toggleModal.bind(_assertThisInitialized(_this));
     _this.createModal = _this.createModal.bind(_assertThisInitialized(_this));
     _this.postOption = _this.postOption.bind(_assertThisInitialized(_this));
+    _this.updateBody = _this.updateBody.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(PostForm, [{
     key: "handleCreate",
-    value: function handleCreate() {}
+    value: function handleCreate() {
+      this.setState({
+        modal_hidden: true
+      });
+      this.props.createPost(this.state.post);
+    }
+  }, {
+    key: "updateBody",
+    value: function updateBody(e) {
+      this.setState({
+        post: {
+          body: e.target.value
+        }
+      });
+    }
+  }, {
+    key: "toggleModal",
+    value: function toggleModal() {
+      this.setState({
+        modal_hidden: !this.state.modal_hidden
+      });
+    }
   }, {
     key: "createModal",
     value: function createModal() {
@@ -8238,7 +8261,10 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
         className: "create-post-modal"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "create-post-modal-header"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Create a post"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_CloseRounded__WEBPACK_IMPORTED_MODULE_1__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Create a post"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "close-create-post-modal",
+        onClick: this.toggleModal
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_CloseRounded__WEBPACK_IMPORTED_MODULE_1__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "create-post-modal-header-divider"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
         className: "create-post-form"
@@ -8248,11 +8274,14 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
         className: "create-post-user-header"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "".concat(this.state.user.first_name, " ").concat(this.state.user.last_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Professional Tester"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
         type: "text",
-        placeholder: "What do you want to talk about?"
+        required: true,
+        placeholder: "What do you want to talk about?",
+        onChange: this.updateBody
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "create-post-modal-footer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_InsertPhoto__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-        className: "create-post-btn"
+        className: "create-post-btn",
+        onClick: this.handleCreate
       }, "Post")));
     }
   }, {
@@ -8289,11 +8318,9 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
         className: "post-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
         type: "text",
-        onClick: this.handleCreate,
+        onClick: this.toggleModal,
         placeholder: "Have a topic that excites you? Post about it"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-        type: "submit"
-      }, "Send"))), this.postOption());
+      }))), this.postOption());
     }
   }]);
 
