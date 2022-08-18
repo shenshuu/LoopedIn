@@ -43,7 +43,7 @@ class PostForm extends React.Component {
                     <div className="close-create-post-modal" onClick={this.toggleModal}><CloseRoundedIcon /></div>
                 </div>
                 <div className="create-post-modal-header-divider"></div>
-                <form className="create-post-form">
+                <form className="create-post-form" onSubmit={this.handleCreate}>
                     <div className="create-post-user-info">
                         <AccountCircle />
                         <div className="create-post-user-header">
@@ -52,11 +52,11 @@ class PostForm extends React.Component {
                         </div>
                     </div>
                     <input type="text" required placeholder="What do you want to talk about?" onChange={this.updateBody}/>
+                    <div className="create-post-modal-footer">
+                        <InsertPhotoIcon />
+                        <button type="submit" className="create-post-btn">Post</button>
+                    </div>
                 </form>
-                <div className="create-post-modal-footer">
-                    <InsertPhotoIcon />
-                    <button className="create-post-btn" onClick={this.handleCreate}>Post</button>
-                </div>
             </div>
         )
     }
