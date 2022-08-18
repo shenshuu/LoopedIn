@@ -12,7 +12,7 @@ class CommentIndexItem extends React.Component {
 
     render() {
         return (
-            <div className="comment">
+            <div className="comments">
                 <div className="comment-contents">
                     <div className="profile-pic"><AccountCircle /></div>
                     <div className="comment-message-contents">
