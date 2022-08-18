@@ -11,7 +11,11 @@ class PostIndex extends React.Component {
         return (
             <div>
                 <PostFormContainer />
-                <PostIndexItemContainer />
+                <ul>
+                    {this.props.posts.map((post, i) => {
+                        return <PostIndexItemContainer post={post} key={post+i}/>
+                    })}
+                </ul>
             </div>
         )
     }

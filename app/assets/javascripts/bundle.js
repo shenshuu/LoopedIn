@@ -2187,6 +2187,34 @@ exports["default"] = _default;
 
 /***/ }),
 
+/***/ "./node_modules/@mui/icons-material/CloseRounded.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@mui/icons-material/CloseRounded.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/createSvgIcon */ "./node_modules/@mui/icons-material/utils/createSvgIcon.js"));
+
+var _jsxRuntime = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
+  d: "M18.3 5.71a.9959.9959 0 0 0-1.41 0L12 10.59 7.11 5.7a.9959.9959 0 0 0-1.41 0c-.39.39-.39 1.02 0 1.41L10.59 12 5.7 16.89c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 13.41l4.89 4.89c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4z"
+}), 'CloseRounded');
+
+exports["default"] = _default;
+
+/***/ }),
+
 /***/ "./node_modules/@mui/icons-material/Create.js":
 /*!****************************************************!*\
   !*** ./node_modules/@mui/icons-material/Create.js ***!
@@ -8138,11 +8166,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _mui_icons_material_Create__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/icons-material/Create */ "./node_modules/@mui/icons-material/Create.js");
-/* harmony import */ var _mui_icons_material_InsertPhoto__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/icons-material/InsertPhoto */ "./node_modules/@mui/icons-material/InsertPhoto.js");
-/* harmony import */ var _mui_icons_material_Subscriptions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/icons-material/Subscriptions */ "./node_modules/@mui/icons-material/Subscriptions.js");
-/* harmony import */ var _mui_icons_material_EventNote__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/icons-material/EventNote */ "./node_modules/@mui/icons-material/EventNote.js");
-/* harmony import */ var _mui_icons_material_CalendarViewDay__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/icons-material/CalendarViewDay */ "./node_modules/@mui/icons-material/CalendarViewDay.js");
+/* harmony import */ var _mui_icons_material_Create__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/icons-material/Create */ "./node_modules/@mui/icons-material/Create.js");
+/* harmony import */ var _mui_icons_material_InsertPhoto__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/icons-material/InsertPhoto */ "./node_modules/@mui/icons-material/InsertPhoto.js");
+/* harmony import */ var _mui_icons_material_Subscriptions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/icons-material/Subscriptions */ "./node_modules/@mui/icons-material/Subscriptions.js");
+/* harmony import */ var _mui_icons_material_EventNote__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/icons-material/EventNote */ "./node_modules/@mui/icons-material/EventNote.js");
+/* harmony import */ var _mui_icons_material_CalendarViewDay__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/icons-material/CalendarViewDay */ "./node_modules/@mui/icons-material/CalendarViewDay.js");
+/* harmony import */ var _mui_icons_material_CloseRounded__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/icons-material/CloseRounded */ "./node_modules/@mui/icons-material/CloseRounded.js");
+/* harmony import */ var _mui_icons_material_AccountCircle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/icons-material/AccountCircle */ "./node_modules/@mui/icons-material/AccountCircle.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -8174,6 +8204,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
 var PostForm = /*#__PURE__*/function (_React$Component) {
   _inherits(PostForm, _React$Component);
 
@@ -8185,30 +8217,64 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, PostForm);
 
     _this = _super.call(this, props);
+    _this.state = {
+      user: _this.props.user,
+      post: _this.props.post,
+      modal_hidden: false
+    };
+    _this.handleCreate = _this.handleCreate.bind(_assertThisInitialized(_this));
+    _this.createModal = _this.createModal.bind(_assertThisInitialized(_this));
     _this.postOption = _this.postOption.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(PostForm, [{
+    key: "handleCreate",
+    value: function handleCreate() {}
+  }, {
+    key: "createModal",
+    value: function createModal() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "create-post-modal"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "create-post-modal-header"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Create a post"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_CloseRounded__WEBPACK_IMPORTED_MODULE_1__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "create-post-modal-header-divider"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+        className: "create-post-form"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "create-post-user-info"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_AccountCircle__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "create-post-user-header"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "".concat(this.state.user.first_name, " ").concat(this.state.user.last_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Professional Tester"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "text",
+        placeholder: "What do you want to talk about?"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "create-post-modal-footer"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_InsertPhoto__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+        className: "create-post-btn"
+      }, "Post")));
+    }
+  }, {
     key: "postOption",
     value: function postOption() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "post-option"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "option"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_InsertPhoto__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_InsertPhoto__WEBPACK_IMPORTED_MODULE_3__["default"], {
         className: "photo-icon"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Photo")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "option"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_Subscriptions__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_Subscriptions__WEBPACK_IMPORTED_MODULE_4__["default"], {
         className: "video-icon"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Video")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "option"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_EventNote__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_EventNote__WEBPACK_IMPORTED_MODULE_5__["default"], {
         className: "event-icon"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Event")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "option"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_CalendarViewDay__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_CalendarViewDay__WEBPACK_IMPORTED_MODULE_6__["default"], {
         className: "article-icon"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Write article")));
     }
@@ -8217,12 +8283,13 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "post-form-content"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      }, this.state.modal_hidden ? "" : this.createModal(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "post-form-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_Create__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_Create__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
         className: "post-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
         type: "text",
+        onClick: this.handleCreate,
         placeholder: "Have a topic that excites you? Post about it"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
         type: "submit"
@@ -8257,6 +8324,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
+    user: state.entities.users[state.session.id],
     post: {
       user_id: state.entities.users[state.session.id],
       body: ''
@@ -8331,7 +8399,12 @@ var PostIndex = /*#__PURE__*/function (_React$Component) {
   _createClass(PostIndex, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_post_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_post_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, this.props.posts.map(function (post, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_post_index_item_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          post: post,
+          key: post + i
+        });
+      })));
     }
   }]);
 
@@ -9233,7 +9306,8 @@ var postsReducer = function postsReducer() {
       return _objectSpread(_objectSpread({}, state), action.posts);
 
     case _actions_post_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_POST:
-      return _defineProperty({}, action.post.id, action.post);
+      nextState[action.post.id] = action.post;
+      return nextState;
 
     case _actions_post_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_POST:
       delete nextState[action.post.id];

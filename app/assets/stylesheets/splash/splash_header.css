@@ -36,7 +36,7 @@
     border-style: solid;
     border-width: 1px;
     border-radius: 28px;
-    padding: 1rem 2rem 1rem 2rem;
+    padding: 12px 24px 12px 24px;
 }
 
 .signup-btn {
@@ -46,10 +46,8 @@
     padding: 16px;
     text-align: center;
     font-weight: 600;
-    border-style: solid;
-    border-width: 1px;
     border-radius: 28px;
-    padding: 1rem 2rem 1rem 2rem;
+    padding: 12px 24px 12px 24px;
 }
 
 .signup-btn {
@@ -58,4 +56,12 @@
     padding: 16px;
     text-align: center;
     font-weight: 600;
+}
+
+.signup-btn:hover {
+    background-color: whitesmoke;
+}
+
+.login-btn:hover {
+    background-color: rgba(10, 102, 194, 0.3);
 }
