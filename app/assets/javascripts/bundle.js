@@ -8217,13 +8217,15 @@ var CommentIndex = /*#__PURE__*/function (_React$Component) {
   _createClass(CommentIndex, [{
     key: "render",
     value: function render() {
+      var _this = this;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
         className: "comment-index"
       }, this.props.comments.map(function (comment, i) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_comment_index_item_container__WEBPACK_IMPORTED_MODULE_0__["default"], {
+        return comment.post_id === _this.props.post.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_comment_index_item_container__WEBPACK_IMPORTED_MODULE_0__["default"], {
           comment: comment,
           key: comment + i
-        });
+        }) : "";
       }));
     }
   }]);
@@ -9175,7 +9177,9 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
         className: "comment-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_comments_comment_form_container__WEBPACK_IMPORTED_MODULE_0__["default"], {
         post: this.state.post
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_comments_comment_index_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), this.state.action_modal_hidden ? "" : this.actionModal());
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_comments_comment_index_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        post: this.state.post
+      })), this.state.action_modal_hidden ? "" : this.actionModal());
     }
   }]);
 

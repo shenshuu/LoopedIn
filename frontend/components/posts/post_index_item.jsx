@@ -132,7 +132,7 @@ class PostIndexItem extends React.Component {
                 </div>
                 <div className="comment-container">
                     <CommentFormContainer post={this.state.post}/>
-                    <CommentIndexContainer />
+                    <CommentIndexContainer post={this.state.post}/>
                 </div>
                 {this.state.action_modal_hidden ? "" : this.actionModal()}
             </div>
