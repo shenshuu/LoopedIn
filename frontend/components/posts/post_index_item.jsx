@@ -7,6 +7,7 @@ import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import CreateIcon from '@mui/icons-material/Create';
 import CommentFormContainer from '../comments/comment_form_container';
+import CommentIndexContainer from '../comments/comment_index_container';
 import React from 'react';
 
 class PostIndexItem extends React.Component {
@@ -131,6 +132,7 @@ class PostIndexItem extends React.Component {
                 </div>
                 <div className="comment-container">
                     <CommentFormContainer post={this.state.post}/>
+                    <CommentIndexContainer />
                 </div>
                 {this.state.action_modal_hidden ? "" : this.actionModal()}
             </div>
