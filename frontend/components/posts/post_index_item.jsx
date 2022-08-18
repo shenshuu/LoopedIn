@@ -6,6 +6,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import CreateIcon from '@mui/icons-material/Create';
+import CommentFormContainer from '../comments/comment_form_container';
 import React from 'react';
 
 class PostIndexItem extends React.Component {
@@ -91,7 +92,7 @@ class PostIndexItem extends React.Component {
                     <p>Edit Post</p>
                 </div>
                 <div className="delete-post-action" onClick={this.handleDelete}>
-                    <DeleteRoundedIcon />
+                    <DeleteRoundedIcon/>
                     <p>Delete Post</p>
                 </div>
             </div>
@@ -128,6 +129,7 @@ class PostIndexItem extends React.Component {
                         <p>Comment</p>
                     </div>
                 </div>
+                <CommentFormContainer post={this.state.post}/>
                 {this.state.action_modal_hidden ? "" : this.actionModal()}
             </div>
         )
