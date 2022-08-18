@@ -21,8 +21,8 @@ export const removePost = post => ({
     post
 });
 
-export const fetchPosts = () => dispatch => (
-    ApiUtil.fetchPosts()
+export const fetchPosts = posts => dispatch => (
+    ApiUtil.fetchPosts(posts)
     .then(posts => dispatch(receivePosts(posts)))
 );
 

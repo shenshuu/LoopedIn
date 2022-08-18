@@ -8,7 +8,7 @@ class Feed extends React.Component {
     }
 
     componentDidMount() {
-        console.log(Boolean(this.props.user));
+        this.props.fetchPosts();
     }
 
     render() {

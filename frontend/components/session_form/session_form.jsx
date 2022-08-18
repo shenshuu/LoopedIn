@@ -54,8 +54,11 @@ class SessionForm extends React.Component {
         const demoUser = {
             email: 'cappy@gmail.com',
             password: 'fooood',
+            location_country: 'United States',
+            location_city: 'New York',
             first_name: 'Cappy',
             last_name: 'Bara',
+            pronouns: 'He/him',
             headline: 'Professional Tester',
         }
         this.props.history.push('/feed');

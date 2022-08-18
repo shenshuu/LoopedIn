@@ -19,7 +19,6 @@ class Api::PostsController < ApplicationController
 
     def destroy 
         @post = Post.find_by(id: params[:id])
-        debugger
         if @post.destroy 
             render json: ['post successfully destroyed']
         else    
@@ -29,7 +28,7 @@ class Api::PostsController < ApplicationController
 
     def update  
         @post = Post.find_by(id: params[:id])
-        debugger
+        # debugger
         if @post.update(post_params)
             render '/api/posts/show'
         else
@@ -39,6 +38,6 @@ class Api::PostsController < ApplicationController
 
     private 
     def post_params 
-        params.require(:post).permit(:id, :body)
+        params.require(:post).permit(:id, :user_id, :body)
     end
 end

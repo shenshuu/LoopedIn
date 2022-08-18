@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import {login, logout, signup} from './actions/session_actions';
 import {createPost, updatePost, deletePost, fetchPosts} from './actions/post_actions';
+import {createComment, updateComment, deleteComment, fetchComments} from './actions/comment_actions';
 
 import Root from './components/root';
 
@@ -13,6 +14,10 @@ window.createPost = createPost;
 window.updatePost = updatePost;
 window.deletePost = deletePost;
 window.fetchPosts = fetchPosts;
+window.createComment = createComment;
+window.updateComment = updateComment;
+window.deleteComment = deleteComment;
+window.fetchComments = fetchComments;
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;
