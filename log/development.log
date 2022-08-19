@@ -40629,3 +40629,222 @@ Processing by Api::CommentsController#index as JSON
 Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.5ms)
 
 
+Started GET "/" for ::1 at 2022-08-19 02:16:52 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "8W9794WrzMCtF9VevwG_QA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "8W9794WrzMCtF9VevwG_QA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9
+  Rendered api/users/_user.json.jbuilder (3.1ms)
+  Rendered static_pages/root.html.erb within layouts/application (32.0ms)
+Completed 200 OK in 4288ms (Views: 4284.2ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/api/posts" for ::1 at 2022-08-19 02:17:00 -0400
+Processing by Api::PostsController#index as JSON
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "8W9794WrzMCtF9VevwG_QA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (3.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/_post.json.jbuilder (9.0ms)
+  Rendered api/posts/index.json.jbuilder (28.2ms)
+Completed 200 OK in 48ms (Views: 40.9ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/api/posts" for ::1 at 2022-08-19 02:17:00 -0400
+Started GET "/api/comments" for ::1 at 2022-08-19 02:17:00 -0400
+Processing by Api::PostsController#index as JSON
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "8W9794WrzMCtF9VevwG_QA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/_post.json.jbuilder (0.6ms)
+  Rendered api/posts/index.json.jbuilder (12.4ms)
+Completed 200 OK in 44ms (Views: 38.6ms | ActiveRecord: 1.9ms)
+
+
+Processing by Api::CommentsController#index as JSON
+  [1m[36mComment Load (3.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/api/comments_controller.rb:5
+Completed 200 OK in 5ms (Views: 1.2ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/" for ::1 at 2022-08-19 02:17:29 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "8W9794WrzMCtF9VevwG_QA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "8W9794WrzMCtF9VevwG_QA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9
+  Rendered api/users/_user.json.jbuilder (2.6ms)
+  Rendered static_pages/root.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 4605ms (Views: 4603.0ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/posts" for ::1 at 2022-08-19 02:17:37 -0400
+Processing by Api::PostsController#index as JSON
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "8W9794WrzMCtF9VevwG_QA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/_post.json.jbuilder (0.5ms)
+  Rendered api/posts/index.json.jbuilder (10.5ms)
+Completed 200 OK in 24ms (Views: 20.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/posts" for ::1 at 2022-08-19 02:17:37 -0400
+Processing by Api::PostsController#index as JSON
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "8W9794WrzMCtF9VevwG_QA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/_post.json.jbuilder (1.7ms)
+  Rendered api/posts/index.json.jbuilder (8.4ms)
+Completed 200 OK in 26ms (Views: 18.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/comments" for ::1 at 2022-08-19 02:17:37 -0400
+Processing by Api::CommentsController#index as JSON
+  [1m[36mComment Load (1.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/api/comments_controller.rb:5
+Completed 200 OK in 4ms (Views: 1.5ms | ActiveRecord: 1.3ms)
+
+
+Started DELETE "/api/posts/116" for ::1 at 2022-08-19 02:17:41 -0400
+Processing by Api::PostsController#destroy as JSON
+  Parameters: {"post"=>{"id"=>"116", "body"=>"wow just wow "}, "id"=>"116"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "8W9794WrzMCtF9VevwG_QA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9
+  [1m[36mPost Load (4.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 116], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:21
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:22
+  [1m[36mComment Load (1.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 116]]
+  ↳ app/controllers/api/posts_controller.rb:22
+  [1m[36mPost Destroy (1.0ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 116]]
+  ↳ app/controllers/api/posts_controller.rb:22
+  [1m[35m (4.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:22
+Completed 200 OK in 39ms (Views: 0.2ms | ActiveRecord: 14.3ms)
+
+
+Started POST "/api/posts" for ::1 at 2022-08-19 02:17:45 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"body"=>"whoa"}}
+  [1m[36mUser Load (4.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "8W9794WrzMCtF9VevwG_QA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "8W9794WrzMCtF9VevwG_QA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9
+  [1m[35m (2.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:13
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:13
+  [1m[36mPost Create (3.2ms)[0m  [1m[32mINSERT INTO "posts" ("user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["body", "whoa"], ["created_at", "2022-08-19 06:17:46.022312"], ["updated_at", "2022-08-19 06:17:46.022312"]]
+  ↳ app/controllers/api/posts_controller.rb:13
+  [1m[35m (10.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:13
+Completed 200 OK in 50ms (Views: 1.1ms | ActiveRecord: 23.1ms)
+
+
+Started GET "/" for ::1 at 2022-08-19 02:17:47 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "8W9794WrzMCtF9VevwG_QA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "8W9794WrzMCtF9VevwG_QA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+  Rendered static_pages/root.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 1302ms (Views: 1298.7ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/api/posts" for ::1 at 2022-08-19 02:17:51 -0400
+Processing by Api::PostsController#index as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "8W9794WrzMCtF9VevwG_QA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (1.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/_post.json.jbuilder (0.5ms)
+  Rendered api/posts/index.json.jbuilder (7.0ms)
+Completed 200 OK in 19ms (Views: 15.2ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/comments" for ::1 at 2022-08-19 02:17:51 -0400
+Started GET "/api/posts" for ::1 at 2022-08-19 02:17:51 -0400
+Processing by Api::CommentsController#index as JSON
+Processing by Api::PostsController#index as JSON
+  [1m[36mComment Load (2.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/api/comments_controller.rb:5
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 2.4ms)
+
+
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "8W9794WrzMCtF9VevwG_QA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (1.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/_post.json.jbuilder (0.7ms)
+  Rendered api/posts/index.json.jbuilder (42.0ms)
+Completed 200 OK in 56ms (Views: 50.6ms | ActiveRecord: 3.7ms)
+
+
+Started POST "/api/posts" for ::1 at 2022-08-19 02:17:57 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"body"=>"finally"}}
+  [1m[36mUser Load (5.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "8W9794WrzMCtF9VevwG_QA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "8W9794WrzMCtF9VevwG_QA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9
+  [1m[35m (2.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:13
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:13
+  [1m[36mPost Create (1.5ms)[0m  [1m[32mINSERT INTO "posts" ("user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["body", "finally"], ["created_at", "2022-08-19 06:17:57.465229"], ["updated_at", "2022-08-19 06:17:57.465229"]]
+  ↳ app/controllers/api/posts_controller.rb:13
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:13
+Completed 200 OK in 33ms (Views: 0.4ms | ActiveRecord: 12.6ms)
+
+
+Started DELETE "/api/posts/117" for ::1 at 2022-08-19 02:18:02 -0400
+Processing by Api::PostsController#destroy as JSON
+  Parameters: {"post"=>{"id"=>"117", "body"=>"whoa"}, "id"=>"117"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "8W9794WrzMCtF9VevwG_QA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9
+  [1m[36mPost Load (2.9ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 117], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:21
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:22
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 117]]
+  ↳ app/controllers/api/posts_controller.rb:22
+  [1m[36mPost Destroy (1.3ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 117]]
+  ↳ app/controllers/api/posts_controller.rb:22
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:22
+Completed 200 OK in 17ms (Views: 0.2ms | ActiveRecord: 9.0ms)
+
+
+Started DELETE "/api/posts/118" for ::1 at 2022-08-19 02:18:04 -0400
+Processing by Api::PostsController#destroy as JSON
+  Parameters: {"post"=>{"id"=>"118", "user_id"=>"1", "body"=>"finally", "created_at"=>"2022-08-19T06:17:57.465Z", "updated_at"=>"2022-08-19T06:17:57.465Z"}, "id"=>"118"}
+  [1m[36mUser Load (6.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "8W9794WrzMCtF9VevwG_QA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9
+  [1m[36mPost Load (5.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 118], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:21
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:22
+  [1m[36mComment Load (2.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 118]]
+  ↳ app/controllers/api/posts_controller.rb:22
+  [1m[36mPost Destroy (7.3ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 118]]
+  ↳ app/controllers/api/posts_controller.rb:22
+  [1m[35m (3.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:22
+Completed 200 OK in 32ms (Views: 0.3ms | ActiveRecord: 25.9ms)
+
+

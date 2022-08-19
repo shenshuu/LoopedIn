@@ -28,12 +28,6 @@ class PostIndexItem extends React.Component {
         this.updateBody = this.updateBody.bind(this);
     }
 
-    // componentDidUpdate(prevProps, prevState) {
-    //     if (prevState.post !== this.props.post) {
-    //         this.props.rerender();
-    //     }
-    // }
-
     updateBody(e) {
         this.setState({post: {
             user_id: this.props.post.user_id,
@@ -77,7 +71,6 @@ class PostIndexItem extends React.Component {
 
     handleDelete() {
         this.setState({action_modal_hidden: true});
-        debugger;
         this.props.deletePost(this.props.post);
     }
 

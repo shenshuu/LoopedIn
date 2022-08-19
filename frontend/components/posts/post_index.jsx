@@ -7,10 +7,8 @@ class PostIndex extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            rerender: '',
             posts: this.props.posts,
         };
-        // this.rerender = this.rerender.bind(this);
     }
 
     componentDidUpdate(prevProps) {
@@ -22,13 +20,7 @@ class PostIndex extends React.Component {
     componentDidMount() {
         this.props.fetchPosts();
         this.setState({posts: this.props.posts});
-        // console.log(this.state.posts);
     }
-
-
-    // rerender() {
-    //     this.setState({state: this.props.state});
-    // }
 
     render() {
         console.log('this.state.posts: ', Object.values(this.state.posts));

@@ -8932,10 +8932,8 @@ var PostIndex = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      rerender: '',
       posts: _this.props.posts
-    }; // this.rerender = this.rerender.bind(this);
-
+    };
     return _this;
   }
 
@@ -8954,16 +8952,11 @@ var PostIndex = /*#__PURE__*/function (_React$Component) {
       this.props.fetchPosts();
       this.setState({
         posts: this.props.posts
-      }); // console.log(this.state.posts);
-    } // rerender() {
-    //     this.setState({state: this.props.state});
-    // }
-
+      });
+    }
   }, {
     key: "render",
     value: function render() {
-      // console.log('this.state.posts: ', this.state.posts);
-      // console.log('this.props: ', this.props);
       console.log('this.state.posts: ', Object.values(this.state.posts));
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_post_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, Object.values(this.state.posts).map(function (post, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_post_index_item_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -9106,12 +9099,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
     _this.updateModal = _this.updateModal.bind(_assertThisInitialized(_this));
     _this.updateBody = _this.updateBody.bind(_assertThisInitialized(_this));
     return _this;
-  } // componentDidUpdate(prevProps, prevState) {
-  //     if (prevState.post !== this.props.post) {
-  //         this.props.rerender();
-  //     }
-  // }
-
+  }
 
   _createClass(PostIndexItem, [{
     key: "updateBody",
@@ -9170,7 +9158,6 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       this.setState({
         action_modal_hidden: true
       });
-      debugger;
       this.props.deletePost(this.props.post);
     }
   }, {
