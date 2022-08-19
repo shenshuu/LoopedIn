@@ -22,14 +22,15 @@ class Sidebar extends React.Component {
     }
 
     render() {
+        debugger;
         return (
             <div className="sidebar">
                 <div className="sidebar-top">
                     <img src="https://wallpapercave.com/wp/wp4518438.jpg" alt="profile-img" />
                     <AccountCircle />
-                    <h2 className="demo-name">{`${this.state.first_name} ${this.state.last_name}`}</h2>
-                    <p className="demo-profession">{`${this.state.headline}`}</p>
-                    <p className="demo-location">{`${this.state.location_city}, ${this.state.location_country}`}</p>
+                    <h2 className="demo-name">{`${this.state?.first_name} ${this.state?.last_name}`}</h2>
+                    <p className="demo-profession">{`${this.state?.headline}`}</p>
+                    <p className="demo-location">{`${this.state?.location_city}, ${this.state?.location_country}`}</p>
                 </div>
 
                 <div className="sidebar-stats">

@@ -41,6 +41,7 @@ class CommentIndexItem extends React.Component {
     handleUpdate(e) {
         e.preventDefault();
         this.setState({update_modal_hidden: true});
+        debugger;
         this.props.updateComment(this.state.comment);
     }
 
@@ -85,8 +86,6 @@ class CommentIndexItem extends React.Component {
     }
 
     render() {
-        console.log('this.props: ', this.props);
-        console.log('this.props.user: ', this.props.user);
         return (
             <div className="comments">
                 {this.state.action_modal_hidden ? "" : this.actionModal()}

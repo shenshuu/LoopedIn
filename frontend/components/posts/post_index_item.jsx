@@ -26,6 +26,7 @@ class PostIndexItem extends React.Component {
         this.toggleUpdateModal = this.toggleUpdateModal.bind(this);
         this.updateModal = this.updateModal.bind(this);
         this.updateBody = this.updateBody.bind(this);
+        this.renderUser = this.renderUser.bind(this);
     }
 
     updateBody(e) {
@@ -100,7 +101,7 @@ class PostIndexItem extends React.Component {
         )
     }
 
-    render() {
+    renderUser() {
         return (
             <div className="post">
                 {this.state.update_modal_hidden ? "" : this.updateModal()}
@@ -137,6 +138,10 @@ class PostIndexItem extends React.Component {
                 {this.state.action_modal_hidden ? "" : this.actionModal()}
             </div>
         )
+    }
+
+    render() {
+        return this.state.user && this.renderUser();
     }
 }
 

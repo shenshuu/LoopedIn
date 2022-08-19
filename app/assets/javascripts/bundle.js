@@ -8373,6 +8373,7 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
       this.setState({
         update_modal_hidden: true
       });
+      debugger;
       this.props.updateComment(this.state.comment);
     }
   }, {
@@ -8425,8 +8426,6 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log('this.props: ', this.props);
-      console.log('this.props.user: ', this.props.user);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "comments"
       }, this.state.action_modal_hidden ? "" : this.actionModal(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -8692,6 +8691,9 @@ var Sidebar = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this$state, _this$state2, _this$state3, _this$state4, _this$state5;
+
+      debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "sidebar"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -8701,11 +8703,11 @@ var Sidebar = /*#__PURE__*/function (_React$Component) {
         alt: "profile-img"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
         className: "demo-name"
-      }, "".concat(this.state.first_name, " ").concat(this.state.last_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+      }, "".concat((_this$state = this.state) === null || _this$state === void 0 ? void 0 : _this$state.first_name, " ").concat((_this$state2 = this.state) === null || _this$state2 === void 0 ? void 0 : _this$state2.last_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
         className: "demo-profession"
-      }, "".concat(this.state.headline)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+      }, "".concat((_this$state3 = this.state) === null || _this$state3 === void 0 ? void 0 : _this$state3.headline)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
         className: "demo-location"
-      }, "".concat(this.state.location_city, ", ").concat(this.state.location_country))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      }, "".concat((_this$state4 = this.state) === null || _this$state4 === void 0 ? void 0 : _this$state4.location_city, ", ").concat((_this$state5 = this.state) === null || _this$state5 === void 0 ? void 0 : _this$state5.location_country))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "sidebar-stats"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "sidebar-stats-top"
@@ -9198,6 +9200,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
     _this.toggleUpdateModal = _this.toggleUpdateModal.bind(_assertThisInitialized(_this));
     _this.updateModal = _this.updateModal.bind(_assertThisInitialized(_this));
     _this.updateBody = _this.updateBody.bind(_assertThisInitialized(_this));
+    _this.renderUser = _this.renderUser.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -9289,8 +9292,8 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_icons_material_DeleteRounded__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, "Delete Post")));
     }
   }, {
-    key: "render",
-    value: function render() {
+    key: "renderUser",
+    value: function renderUser() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "post"
       }, this.state.update_modal_hidden ? "" : this.updateModal(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
@@ -9320,6 +9323,11 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_comments_comment_index_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
         post: this.props.post
       })), this.state.action_modal_hidden ? "" : this.actionModal());
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return this.state.user && this.renderUser();
     }
   }]);
 
