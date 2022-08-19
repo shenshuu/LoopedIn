@@ -7,7 +7,12 @@ class Post < ApplicationRecord
         primary_key: :id
 
     has_many :comments,
-        foreign_key: :post_id,
         class_name: :Comment,
+        foreign_key: :post_id,
         dependent: :destroy 
+
+    has_many :likes,
+        class_name: :Like,
+        foreign_key: :post_id,
+        dependent: :destroy
 end

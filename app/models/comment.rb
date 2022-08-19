@@ -10,4 +10,8 @@ class Comment < ApplicationRecord
         foreign_key: :post_id,
         primary_key: :id,
         class_name: :Post
+
+    has_many :likes,
+        foreign_key: :comment_id,
+        class_name: :Like
 end
