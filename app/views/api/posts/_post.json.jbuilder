@@ -1,1 +1,1 @@
-json.extract! post,:id, :body
+json.extract! post,:id, :body, :user_id 
