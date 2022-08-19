@@ -60,3 +60,15 @@
     width: 60px;
     height: 50px;
 }
+
+.comments > .post-actions-modal {
+    width: 140px;
+}
+
+.comments > .post-actions-modal > .edit-post-action {
+    font-size: 12px;
+}
+
+.comments > .post-actions-modal > .delete-post-action {
+    font-size: 12px;
+}
