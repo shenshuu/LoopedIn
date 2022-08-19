@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import PostIndex from './post_index';
 
 const mapStateToProps = (state) => {
-    window.s = state;
+    console.log(state);
     return {
-        posts: Object.values(state.entities.posts),
+        posts: state.entities.posts
     }
 };
 

@@ -1,0 +1,11 @@
+.widgets-top, .widgets-bottom {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    background-color: red;
+    border: 1px solid black;
+}
+
+.widgets {
+    display: flex;
+}

@@ -29,15 +29,15 @@ class PostIndexItem extends React.Component {
     }
 
     // componentDidUpdate(prevProps, prevState) {
-    //     if (prevState.post !== this.state.post) {
+    //     if (prevState.post !== this.props.post) {
     //         this.props.rerender();
     //     }
     // }
 
     updateBody(e) {
         this.setState({post: {
-            user_id: this.state.post.user_id,
-            id: this.state.post.id,
+            user_id: this.props.post.user_id,
+            id: this.props.post.id,
             body: e.target.value
         }
         });
@@ -60,7 +60,7 @@ class PostIndexItem extends React.Component {
                         </div>
                     </div>
                     <input type="text" required placeholder="What do you want to talk about?" 
-                    onChange={this.updateBody} value={this.state.post.body}/>
+                    onChange={this.updateBody} value={this.props.post.body}/>
                     <div className="create-post-modal-footer">
                         <InsertPhotoIcon />
                         <button type="submit" className="create-post-btn">Save</button>
@@ -72,14 +72,13 @@ class PostIndexItem extends React.Component {
 
     handleUpdate() {
         this.setState({update_modal_hidden: true});
-        this.props.updatePost(this.state.post);
-        this.props.rerender();
+        this.props.updatePost(this.props.post);
     }
 
     handleDelete() {
         this.setState({action_modal_hidden: true});
-        this.props.deletePost(this.state.post);
-        this.props.rerender();
+        debugger;
+        this.props.deletePost(this.props.post);
     }
 
     openActionModal() {
@@ -125,7 +124,7 @@ class PostIndexItem extends React.Component {
                     </div>
                 </div>
                 <div className="post-body">
-                    {this.state.post.body} 
+                    {this.props.post.body} 
                 </div>
                 <div className="post-btn-divider"></div>
                 <div className="post-btn-container">
@@ -139,8 +138,8 @@ class PostIndexItem extends React.Component {
                     </div>
                 </div>
                 <div className="comment-container">
-                    <CommentFormContainer post={this.state.post}/>
-                    <CommentIndexContainer post={this.state.post}/>
+                    <CommentFormContainer post={this.props.post}/>
+                    <CommentIndexContainer post={this.props.post}/>
                 </div>
                 {this.state.action_modal_hidden ? "" : this.actionModal()}
             </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import PostFormContainer from './post_form_container';
 import PostIndexItemContainer from './post_index_item_container';
+import equal from 'fast-deep-equal';
 
 class PostIndex extends React.Component {
     constructor(props) {
@@ -9,39 +10,35 @@ class PostIndex extends React.Component {
             rerender: '',
             posts: this.props.posts,
         };
-        this.rerender = this.rerender.bind(this);
+        // this.rerender = this.rerender.bind(this);
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.posts !== this.props.posts) {
+        if (!equal(this.props.posts, prevProps.posts)) {
             this.setState({posts: this.props.posts});
         }
     }
 
-    // componentDidMount() {
-    //     this.props.fetchPosts();
-    //     this.setState({state: this.props.state})
-    //     console.log(this.state.posts);
-    // }
-
-
-    rerender() {
-        console.log(this.props.posts);
-        console.log(this.state.posts);
-        this.setState({state: this.props.state});
-        console.log(this.props.posts);
-        console.log(this.state.posts);
-        this.forceUpdate();
+    componentDidMount() {
+        this.props.fetchPosts();
+        this.setState({posts: this.props.posts});
+        // console.log(this.state.posts);
     }
 
+
+    // rerender() {
+    //     this.setState({state: this.props.state});
+    // }
+
     render() {
+        console.log('this.state.posts: ', Object.values(this.state.posts));
         return (
             <div>
                 <PostFormContainer />
                 <ul>
-                    {this.state.posts.map((post, i) => {
+                    {Object.values(this.state.posts).map((post, i) => {
                         return <PostIndexItemContainer post={post} key={i} 
-                        rerender={this.rerender} />
+                        /> // rerender={this.rerender} /> 
                     })}
                 </ul>
             </div>

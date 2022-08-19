@@ -8891,6 +8891,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _post_form_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./post_form_container */ "./frontend/components/posts/post_form_container.jsx");
 /* harmony import */ var _post_index_item_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./post_index_item_container */ "./frontend/components/posts/post_index_item_container.jsx");
+/* harmony import */ var fast_deep_equal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! fast-deep-equal */ "./node_modules/fast-deep-equal/index.js");
+/* harmony import */ var fast_deep_equal__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(fast_deep_equal__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -8917,6 +8919,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var PostIndex = /*#__PURE__*/function (_React$Component) {
   _inherits(PostIndex, _React$Component);
 
@@ -8931,48 +8934,42 @@ var PostIndex = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       rerender: '',
       posts: _this.props.posts
-    };
-    _this.rerender = _this.rerender.bind(_assertThisInitialized(_this));
+    }; // this.rerender = this.rerender.bind(this);
+
     return _this;
   }
 
   _createClass(PostIndex, [{
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      if (prevProps.posts !== this.props.posts) {
+      if (!fast_deep_equal__WEBPACK_IMPORTED_MODULE_3___default()(this.props.posts, prevProps.posts)) {
         this.setState({
           posts: this.props.posts
         });
       }
-    } // componentDidMount() {
-    //     this.props.fetchPosts();
-    //     this.setState({state: this.props.state})
-    //     console.log(this.state.posts);
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchPosts();
+      this.setState({
+        posts: this.props.posts
+      }); // console.log(this.state.posts);
+    } // rerender() {
+    //     this.setState({state: this.props.state});
     // }
 
   }, {
-    key: "rerender",
-    value: function rerender() {
-      console.log(this.props.posts);
-      console.log(this.state.posts);
-      this.setState({
-        state: this.props.state
-      });
-      console.log(this.props.posts);
-      console.log(this.state.posts);
-      this.forceUpdate();
-    }
-  }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_post_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, this.state.posts.map(function (post, i) {
+      // console.log('this.state.posts: ', this.state.posts);
+      // console.log('this.props: ', this.props);
+      console.log('this.state.posts: ', Object.values(this.state.posts));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_post_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, Object.values(this.state.posts).map(function (post, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_post_index_item_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
           post: post,
-          key: i,
-          rerender: _this2.rerender
-        });
+          key: i
+        }); // rerender={this.rerender} /> 
       })));
     }
   }]);
@@ -9003,9 +9000,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state) {
-  window.s = state;
+  console.log(state);
   return {
-    posts: Object.values(state.entities.posts)
+    posts: state.entities.posts
   };
 };
 
@@ -9110,7 +9107,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
     _this.updateBody = _this.updateBody.bind(_assertThisInitialized(_this));
     return _this;
   } // componentDidUpdate(prevProps, prevState) {
-  //     if (prevState.post !== this.state.post) {
+  //     if (prevState.post !== this.props.post) {
   //         this.props.rerender();
   //     }
   // }
@@ -9121,8 +9118,8 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
     value: function updateBody(e) {
       this.setState({
         post: {
-          user_id: this.state.post.user_id,
-          id: this.state.post.id,
+          user_id: this.props.post.user_id,
+          id: this.props.post.id,
           body: e.target.value
         }
       });
@@ -9151,7 +9148,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
         required: true,
         placeholder: "What do you want to talk about?",
         onChange: this.updateBody,
-        value: this.state.post.body
+        value: this.props.post.body
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "create-post-modal-footer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_icons_material_InsertPhoto__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("button", {
@@ -9165,8 +9162,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       this.setState({
         update_modal_hidden: true
       });
-      this.props.updatePost(this.state.post);
-      this.props.rerender();
+      this.props.updatePost(this.props.post);
     }
   }, {
     key: "handleDelete",
@@ -9174,8 +9170,8 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       this.setState({
         action_modal_hidden: true
       });
-      this.props.deletePost(this.state.post);
-      this.props.rerender();
+      debugger;
+      this.props.deletePost(this.props.post);
     }
   }, {
     key: "openActionModal",
@@ -9222,7 +9218,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
         onClick: this.openActionModal
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "post-body"
-      }, this.state.post.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      }, this.props.post.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "post-btn-divider"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "post-btn-container"
@@ -9233,9 +9229,9 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_icons_material_MessageRounded__WEBPACK_IMPORTED_MODULE_10__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, "Comment"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "comment-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_comments_comment_form_container__WEBPACK_IMPORTED_MODULE_0__["default"], {
-        post: this.state.post
+        post: this.props.post
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_comments_comment_index_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        post: this.state.post
+        post: this.props.post
       })), this.state.action_modal_hidden ? "" : this.actionModal());
     }
   }]);
@@ -10499,6 +10495,63 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 function r(e){var t,f,n="";if("string"==typeof e||"number"==typeof e)n+=e;else if("object"==typeof e)if(Array.isArray(e))for(t=0;t<e.length;t++)e[t]&&(f=r(e[t]))&&(n&&(n+=" "),n+=f);else for(t in e)e[t]&&(n&&(n+=" "),n+=t);return n}function clsx(){for(var e,t,f=0,n="";f<arguments.length;)(e=arguments[f++])&&(t=r(e))&&(n&&(n+=" "),n+=t);return n}/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (clsx);
+
+/***/ }),
+
+/***/ "./node_modules/fast-deep-equal/index.js":
+/*!***********************************************!*\
+  !*** ./node_modules/fast-deep-equal/index.js ***!
+  \***********************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+// do not edit .js files directly - edit src/index.jst
+
+
+
+module.exports = function equal(a, b) {
+  if (a === b) return true;
+
+  if (a && b && typeof a == 'object' && typeof b == 'object') {
+    if (a.constructor !== b.constructor) return false;
+
+    var length, i, keys;
+    if (Array.isArray(a)) {
+      length = a.length;
+      if (length != b.length) return false;
+      for (i = length; i-- !== 0;)
+        if (!equal(a[i], b[i])) return false;
+      return true;
+    }
+
+
+
+    if (a.constructor === RegExp) return a.source === b.source && a.flags === b.flags;
+    if (a.valueOf !== Object.prototype.valueOf) return a.valueOf() === b.valueOf();
+    if (a.toString !== Object.prototype.toString) return a.toString() === b.toString();
+
+    keys = Object.keys(a);
+    length = keys.length;
+    if (length !== Object.keys(b).length) return false;
+
+    for (i = length; i-- !== 0;)
+      if (!Object.prototype.hasOwnProperty.call(b, keys[i])) return false;
+
+    for (i = length; i-- !== 0;) {
+      var key = keys[i];
+
+      if (!equal(a[key], b[key])) return false;
+    }
+
+    return true;
+  }
+
+  // true if both NaN, false otherwise
+  return a!==a && b!==b;
+};
+
 
 /***/ }),
 
