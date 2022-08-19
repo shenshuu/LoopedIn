@@ -275,3 +275,7 @@
     background-color: whitesmoke;
     cursor: pointer;
 }
+
+.comment-container {
+    margin-top: 5px;
+}

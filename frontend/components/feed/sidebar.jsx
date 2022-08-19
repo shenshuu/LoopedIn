@@ -22,7 +22,6 @@ class Sidebar extends React.Component {
     }
 
     render() {
-        debugger;
         return (
             <div className="sidebar">
                 <div className="sidebar-top">

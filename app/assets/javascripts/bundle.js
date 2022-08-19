@@ -8693,7 +8693,6 @@ var Sidebar = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$state, _this$state2, _this$state3, _this$state4, _this$state5;
 
-      debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "sidebar"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -9190,6 +9189,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       user: _this.props.user,
       post: _this.props.post,
+      commenting: false,
       action_modal_hidden: true,
       update_modal_hidden: true
     };
@@ -9198,6 +9198,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
     _this.actionModal = _this.actionModal.bind(_assertThisInitialized(_this));
     _this.openActionModal = _this.openActionModal.bind(_assertThisInitialized(_this));
     _this.toggleUpdateModal = _this.toggleUpdateModal.bind(_assertThisInitialized(_this));
+    _this.toggleComments = _this.toggleComments.bind(_assertThisInitialized(_this));
     _this.updateModal = _this.updateModal.bind(_assertThisInitialized(_this));
     _this.updateBody = _this.updateBody.bind(_assertThisInitialized(_this));
     _this.renderUser = _this.renderUser.bind(_assertThisInitialized(_this));
@@ -9279,6 +9280,13 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "toggleComments",
+    value: function toggleComments() {
+      this.setState({
+        commenting: !this.state.commenting
+      });
+    }
+  }, {
     key: "actionModal",
     value: function actionModal() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
@@ -9302,11 +9310,11 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
         className: "post-header"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_icons_material_AccountCircle__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "post-header-info"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("h3", null, "".concat(this.state.user.first_name, " ").concat(this.state.user.last_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, "Professional Tester"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("h3", null, "".concat(this.state.user.first_name, " ").concat(this.state.user.last_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, "Professional Tester"))), this.props.post.user_id === this.props.user.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "post-actions"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_icons_material_MoreHorizRounded__WEBPACK_IMPORTED_MODULE_8__["default"], {
         onClick: this.openActionModal
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      })) : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "post-body"
       }, this.props.post.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "post-btn-divider"
@@ -9315,14 +9323,15 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "post-btn"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_icons_material_ThumbUpOffAlt__WEBPACK_IMPORTED_MODULE_9__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, "Like")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
-        className: "post-btn"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_icons_material_MessageRounded__WEBPACK_IMPORTED_MODULE_10__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, "Comment"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+        className: "post-btn",
+        onClick: this.toggleComments
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_icons_material_MessageRounded__WEBPACK_IMPORTED_MODULE_10__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, "Comment"))), this.state.commenting ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "comment-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_comments_comment_form_container__WEBPACK_IMPORTED_MODULE_0__["default"], {
         post: this.props.post
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_comments_comment_index_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
         post: this.props.post
-      })), this.state.action_modal_hidden ? "" : this.actionModal());
+      })) : "", this.state.action_modal_hidden ? "" : this.actionModal());
     }
   }, {
     key: "render",
@@ -10105,7 +10114,6 @@ var commentsReducer = function commentsReducer() {
       return action.comments;
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_COMMENT:
-      debugger;
       nextState[action.comment.id] = action.comment;
       return nextState;
 

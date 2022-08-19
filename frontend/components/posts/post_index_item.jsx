@@ -16,6 +16,7 @@ class PostIndexItem extends React.Component {
         this.state = {
             user: this.props.user,
             post: this.props.post,
+            commenting: false,
             action_modal_hidden: true,
             update_modal_hidden: true,
         }
@@ -24,6 +25,7 @@ class PostIndexItem extends React.Component {
         this.actionModal = this.actionModal.bind(this);
         this.openActionModal = this.openActionModal.bind(this);
         this.toggleUpdateModal = this.toggleUpdateModal.bind(this);
+        this.toggleComments = this.toggleComments.bind(this);
         this.updateModal = this.updateModal.bind(this);
         this.updateBody = this.updateBody.bind(this);
         this.renderUser = this.renderUser.bind(this);
@@ -86,6 +88,10 @@ class PostIndexItem extends React.Component {
         });
     }
 
+    toggleComments() {
+        this.setState({commenting: !this.state.commenting})
+    }
+
     actionModal() {
         return (
             <div className="post-actions-modal">
@@ -113,9 +119,9 @@ class PostIndexItem extends React.Component {
                             <p>Professional Tester</p>
                         </div>
                     </div>
-                    <div className="post-actions">
+                    {this.props.post.user_id === this.props.user.id ? <div className="post-actions">
                         <MoreHorizRoundedIcon onClick={this.openActionModal}/>
-                    </div>
+                    </div>: ""}
                 </div>
                 <div className="post-body">
                     {this.props.post.body} 
@@ -126,15 +132,15 @@ class PostIndexItem extends React.Component {
                         <ThumbUpOffAltIcon />
                         <p>Like</p>
                     </div>
-                    <div className="post-btn">
+                    <div className="post-btn" onClick={this.toggleComments}>
                         <MessageRoundedIcon />
                         <p>Comment</p>
                     </div>
                 </div>
-                <div className="comment-container">
+                {this.state.commenting ? <div className="comment-container">
                     <CommentFormContainer post={this.props.post}/>
                     <CommentIndexContainer post={this.props.post}/>
-                </div>
+                </div>: ""}
                 {this.state.action_modal_hidden ? "" : this.actionModal()}
             </div>
         )
