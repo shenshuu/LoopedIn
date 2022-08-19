@@ -40,6 +40,16 @@
     padding: 10px;
 }
 
+.comment-message-contents > .comment-message {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.comment-header-info {
+    display: flex;
+    justify-content: space-between;
+}
+
 .comment-message-header-top > p, .comment-message-header-bottom > p {
     color: gray;
     font-size: 13px;
@@ -62,7 +72,9 @@
 }
 
 .comments > .post-actions-modal {
+    margin-top: 25px;
     width: 140px;
+    height: 45px;
 }
 
 .comments > .post-actions-modal > .edit-post-action {

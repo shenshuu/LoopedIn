@@ -3,6 +3,7 @@ import CommentIndexItem from './comment_index_item';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state, ownProps) => ({
+    current_user: state.entities.users[state.session.id],
     user: state.entities.users[ownProps.comment.user_id],
 });
 

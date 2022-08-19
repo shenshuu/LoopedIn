@@ -8,10 +8,11 @@ class CommentIndexItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            action_modal_hidden: false,
+            action_modal_hidden: true,
             update_modal_hidden: true,
         };
         this.toggleUpdateModal = this.toggleUpdateModal.bind(this);
+        this.toggleActionModal = this.toggleActionModal.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
         this.updateModal = this.updateModal.bind(this);
@@ -27,7 +28,11 @@ class CommentIndexItem extends React.Component {
     }
 
     toggleUpdateModal() {
+        this.setState({update_modal_hidden: !this.state.update_modal_hidden});
+    }
 
+    toggleActionModal() {
+        this.setState({action_modal_hidden: !this.state.action_modal_hidden});
     }
 
     updateModal() {
@@ -59,9 +64,16 @@ class CommentIndexItem extends React.Component {
                     <div className="profile-pic"><AccountCircle /></div>
                     <div className="comment-message-contents">
                         <div className="comment-message-header">
-                            <div className="comment-message-header-top">
-                                <h4>{`${this.props.user.first_name} ${this.props.user.last_name}`}</h4>
-                                <p>{`(${this.props.user.pronouns})`}</p>
+                            <div className="comment-header-info">
+                                <div className="comment-message-header-top">
+                                    <h4>{`${this.props.user.first_name} ${this.props.user.last_name}`}</h4>
+                                    <p>{`(${this.props.user.pronouns})`}</p>
+                                </div>
+                                {this.props.current_user.id === this.props.post.user_id ? 
+                                <div className="post-actions" onClick={this.toggleActionModal}>
+                                    <MoreHorizRoundedIcon />
+                                </div> : ""
+                                }
                             </div>
                             <div className="comment-message-header-bottom">
                                 <p>{`${this.props.user.headline}`}</p>
