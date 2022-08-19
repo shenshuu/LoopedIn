@@ -8345,7 +8345,12 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
 
   _createClass(CommentIndexItem, [{
     key: "handleDelete",
-    value: function handleDelete() {}
+    value: function handleDelete() {
+      this.setState({
+        action_modal_hidden: true
+      });
+      this.props.deleteComment(this.props.comment);
+    }
   }, {
     key: "handleUpdate",
     value: function handleUpdate() {}
@@ -8365,7 +8370,9 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "updateModal",
-    value: function updateModal() {}
+    value: function updateModal() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null);
+    }
   }, {
     key: "actionModal",
     value: function actionModal() {

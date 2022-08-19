@@ -20,7 +20,8 @@ class CommentIndexItem extends React.Component {
     }
 
     handleDelete() {
-        
+        this.setState({action_modal_hidden: true});
+        this.props.deleteComment(this.props.comment);
     }
 
     handleUpdate() {
@@ -36,7 +37,11 @@ class CommentIndexItem extends React.Component {
     }
 
     updateModal() {
-
+        return (
+            <div>
+                
+            </div>
+        )
     }
 
     actionModal() {
