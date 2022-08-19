@@ -101,3 +101,19 @@
     margin-left: -10px;
     padding-top: 10px;
 }
+
+.cancel-update-post {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 12px 6px 12px;
+    color: rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(0, 0, 0, 0.75);
+    border-radius: 28px;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.cancel-update-post:hover {
+    cursor: pointer;
+}

@@ -41,7 +41,6 @@ class CommentIndexItem extends React.Component {
     handleUpdate(e) {
         e.preventDefault();
         this.setState({update_modal_hidden: true});
-        debugger;
         this.props.updateComment(this.state.comment);
     }
 
@@ -63,7 +62,7 @@ class CommentIndexItem extends React.Component {
                     <input type="text" onChange={this.updateBody} value={this.state.comment.body}/>
                     <div className="update-comment-btns">
                         <button className="create-post-btn" type="submit">Save Changes</button>
-                        {/* <button className="cancel-update-post" onClick={this.toggleUpdateModal}>Cancel</button> */}
+                        <button className="cancel-update-post" onClick={this.toggleUpdateModal}>Cancel</button>
                     </div>
                 </form>
             </div>

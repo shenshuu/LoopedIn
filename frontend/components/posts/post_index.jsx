@@ -23,7 +23,6 @@ class PostIndex extends React.Component {
     }
 
     render() {
-        console.log('this.state.posts: ', Object.values(this.state.posts));
         return (
             <div>
                 <PostFormContainer />

@@ -126,6 +126,10 @@ class PostIndexItem extends React.Component {
                 <div className="post-body">
                     {this.props.post.body} 
                 </div>
+                <div className="likes-comments-info">
+                    <div className="likes-count">0 likes</div>
+                    <div className="comments-count">0 comments</div>
+                </div>
                 <div className="post-btn-divider"></div>
                 <div className="post-btn-container">
                     <div className="post-btn">
@@ -147,6 +151,11 @@ class PostIndexItem extends React.Component {
     }
 
     render() {
+        console.log('this.props.comments: ', this.props.comments);
+        console.log('this.state.comments: ', this.state.comments);
+        console.log('this.props.comments: (arr), ', Object.values(this.props.comments));
+        console.log('this.props.post', this.props.post);
+        console.log('this')
         return this.state.user && this.renderUser();
     }
 }

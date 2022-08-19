@@ -8440,7 +8440,6 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
       this.setState({
         update_modal_hidden: true
       });
-      debugger;
       this.props.updateComment(this.state.comment);
     }
   }, {
@@ -8475,7 +8474,10 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
         className: "create-post-btn",
         type: "submit"
-      }, "Save Changes"))));
+      }, "Save Changes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+        className: "cancel-update-post",
+        onClick: this.toggleUpdateModal
+      }, "Cancel"))));
     }
   }, {
     key: "actionModal",
@@ -9125,7 +9127,6 @@ var PostIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log('this.state.posts: ', Object.values(this.state.posts));
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_post_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, Object.values(this.state.posts).map(function (post, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_post_index_item_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
           post: post,
@@ -9384,6 +9385,12 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       })) : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "post-body"
       }, this.props.post.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+        className: "likes-comments-info"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+        className: "likes-count"
+      }, "0 likes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+        className: "comments-count"
+      }, "0 comments")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "post-btn-divider"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "post-btn-container"
@@ -9403,6 +9410,11 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      console.log('this.props.comments: ', this.props.comments);
+      console.log('this.state.comments: ', this.state.comments);
+      console.log('this.props.comments: (arr), ', Object.values(this.props.comments));
+      console.log('this.props.post', this.props.post);
+      console.log('this');
       return this.state.user && this.renderUser();
     }
   }]);
@@ -9428,13 +9440,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _post_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./post_index_item */ "./frontend/components/posts/post_index_item.jsx");
 /* harmony import */ var _actions_post_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/post_actions */ "./frontend/actions/post_actions.js");
+/* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/comment_actions */ "./frontend/actions/comment_actions.js");
+/* harmony import */ var _actions_like_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/like_actions */ "./frontend/actions/like_actions.js");
+
+
 
 
 
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    user: state.entities.users[state.session.id]
+    user: state.entities.users[state.session.id],
+    comments: state.entities.comments,
+    likes: state.entities.likes
   };
 };
 
@@ -9445,6 +9463,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     deletePost: function deletePost(post) {
       return dispatch((0,_actions_post_actions__WEBPACK_IMPORTED_MODULE_2__.deletePost)(post));
+    },
+    fetchComments: function fetchComments() {
+      return dispatch((0,_actions_comment_actions__WEBPACK_IMPORTED_MODULE_3__.fetchComments)());
+    },
+    fetchLikes: function fetchLikes() {
+      return dispatch((0,_actions_like_actions__WEBPACK_IMPORTED_MODULE_4__.fetchLikes)());
     }
   };
 };
