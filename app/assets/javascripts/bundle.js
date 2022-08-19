@@ -8332,7 +8332,8 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       action_modal_hidden: true,
-      update_modal_hidden: true
+      update_modal_hidden: true,
+      comment: _this.props.comment
     };
     _this.toggleUpdateModal = _this.toggleUpdateModal.bind(_assertThisInitialized(_this));
     _this.toggleActionModal = _this.toggleActionModal.bind(_assertThisInitialized(_this));
@@ -8340,10 +8341,24 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
     _this.handleUpdate = _this.handleUpdate.bind(_assertThisInitialized(_this));
     _this.updateModal = _this.updateModal.bind(_assertThisInitialized(_this));
     _this.actionModal = _this.actionModal.bind(_assertThisInitialized(_this));
+    _this.updateBody = _this.updateBody.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(CommentIndexItem, [{
+    key: "updateBody",
+    value: function updateBody(e) {
+      this.setState({
+        comment: {
+          id: this.props.comment.id,
+          parent_comment_id: this.props.parent_comment_id,
+          user_id: this.props.comment.user_id,
+          post_id: this.props.post.id,
+          body: e.target.value
+        }
+      });
+    }
+  }, {
     key: "handleDelete",
     value: function handleDelete() {
       this.setState({
@@ -8353,12 +8368,19 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "handleUpdate",
-    value: function handleUpdate() {}
+    value: function handleUpdate(e) {
+      e.preventDefault();
+      this.setState({
+        update_modal_hidden: true
+      });
+      this.props.updateComment(this.state.comment);
+    }
   }, {
     key: "toggleUpdateModal",
     value: function toggleUpdateModal() {
       this.setState({
-        update_modal_hidden: !this.state.update_modal_hidden
+        update_modal_hidden: !this.state.update_modal_hidden,
+        action_modal_hidden: true
       });
     }
   }, {
@@ -8371,7 +8393,21 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "updateModal",
     value: function updateModal() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "comment-form"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+        className: "create-post-form",
+        onSubmit: this.handleUpdate
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "text",
+        onChange: this.updateBody,
+        value: this.state.comment.body
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "update-comment-btns"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+        className: "create-post-btn",
+        type: "submit"
+      }, "Save Changes"))));
     }
   }, {
     key: "actionModal",
@@ -8412,7 +8448,7 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
         className: "comment-message-header-bottom"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "".concat(this.props.user.headline)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "comment-message"
-      }, this.props.comment.body))));
+      }, this.state.update_modal_hidden ? this.props.comment.body : this.updateModal()))));
     }
   }]);
 
@@ -10001,7 +10037,7 @@ var Widgets = /*#__PURE__*/function (_React$Component) {
         className: "widgets-top"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "About the developer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "profile-pic"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material__WEBPACK_IMPORTED_MODULE_1__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Michael Shen is a full stack software engineer who's proficient in JavaScript, Ruby, React, Redux, and Ruby on Rails. He's currently looking for opportunities to learn and sharper his skill set as an engineer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "Connect with the developer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material__WEBPACK_IMPORTED_MODULE_1__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Michael Shen is a full stack software engineer who's proficient in JavaScript, Ruby, React, Redux, and Ruby on Rails. He's currently looking for opportunities to learn and sharpen his skill set as an engineer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "Connect with the developer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "widget-links"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material__WEBPACK_IMPORTED_MODULE_1__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "widgets-bottom"
@@ -10061,6 +10097,7 @@ var commentsReducer = function commentsReducer() {
       return action.comments;
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_COMMENT:
+      debugger;
       nextState[action.comment.id] = action.comment;
       return nextState;
 

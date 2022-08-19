@@ -84,3 +84,20 @@
 .comments > .post-actions-modal > .delete-post-action {
     font-size: 12px;
 }
+
+.comment-message > .comment-form {
+    width: 400px;
+}
+
+.comment-message .create-post-form > input {
+    background: transparent;
+    width: 405px;
+    margin-left: -5px;
+}
+
+
+.update-comment-btns {
+    display: flex;
+    margin-left: -10px;
+    padding-top: 10px;
+}

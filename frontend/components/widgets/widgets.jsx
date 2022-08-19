@@ -21,7 +21,7 @@ class Widgets extends React.Component {
                         in JavaScript, Ruby, React, Redux, 
                         and Ruby on Rails. He's currently 
                         looking for opportunities to learn 
-                        and sharper his skill set as an engineer
+                        and sharpen his skill set as an engineer
                     </p>
                     <h5>Connect with the developer</h5>
                     <div className="widget-links">
