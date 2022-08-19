@@ -2,12 +2,13 @@ class CreateLikes < ActiveRecord::Migration[5.2]
   def change
     create_table :likes do |t|
       t.integer :user_id, null: false 
-      t.integer :post_id 
-      t.integer :comment_id
+      t.integer :likeable_id, null: false
+      t.string :likeable_type, null: false 
       t.timestamps
     end
     add_index :likes, :user_id 
-    add_index :likes, :post_id
-    add_index :likes, :comment_id
+    add_index :likes, :likeable_id
+    add_index :likes, :likeable_type
+    add_index :likes, [:user_id, :likeable_id, :likeable_type] ,unique: true 
   end
 end

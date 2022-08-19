@@ -4,6 +4,7 @@ import configureStore from './store/store';
 import {login, logout, signup} from './actions/session_actions';
 import {createPost, updatePost, deletePost, fetchPosts} from './actions/post_actions';
 import {createComment, updateComment, deleteComment, fetchComments} from './actions/comment_actions';
+import {createLike, deleteLike, fetchLikes} from './actions/like_actions';
 
 import Root from './components/root';
 
@@ -18,6 +19,9 @@ window.createComment = createComment;
 window.updateComment = updateComment;
 window.deleteComment = deleteComment;
 window.fetchComments = fetchComments;
+window.createLike = createLike;
+window.deleteLike = deleteLike;
+window.fetchLikes = fetchLikes;
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;
