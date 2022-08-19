@@ -9,12 +9,15 @@
 }
 
 .widgets {
-    display: flex;
-    /* position: sticky; */
+    /* display: flex; */
+    position: sticky;
     top: 80px;
-    flex-direction: column;
-    padding: 10px;
-    row-gap: 10px;
+    /* flex-direction: column; */
+    /* padding: 10px;
+    row-gap: 10px; */
+    flex: 0.2;
+    height: fit-content;
+    bottom: 500px;
 }
 
 .widgets-top > p, .project-description > p {
