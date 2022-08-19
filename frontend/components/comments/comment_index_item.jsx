@@ -11,6 +11,7 @@ class CommentIndexItem extends React.Component {
     }
 
     render() {
+        console.log('this.props.comment: ', this.props.comment);
         return (
             <div className="comments">
                 <div className="comment-contents">
@@ -18,15 +19,15 @@ class CommentIndexItem extends React.Component {
                     <div className="comment-message-contents">
                         <div className="comment-message-header">
                             <div className="comment-message-header-top">
-                                <h4>{`${this.state.user.first_name} ${this.state.user.last_name}`}</h4>
-                                <p>{`(${this.state.user.pronouns})`}</p>
+                                <h4>{`${this.props.user.first_name} ${this.props.user.last_name}`}</h4>
+                                <p>{`(${this.props.user.pronouns})`}</p>
                             </div>
                             <div className="comment-message-header-bottom">
-                                <p>{`${this.state.user.headline}`}</p>
+                                <p>{`${this.props.user.headline}`}</p>
                             </div>
                         </div>
                         <div className="comment-message">
-                            {this.state.comment.body}
+                            {this.props.comment.body}
                         </div>
                     </div>
                 </div>

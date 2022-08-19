@@ -3,7 +3,7 @@ import CommentIndex from './comment_index';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({
-    comments: Object.values(state.entities.comments),
+    comments: state.entities.comments,
 });
 
 const mapDispatchToProps = dispatch => ({

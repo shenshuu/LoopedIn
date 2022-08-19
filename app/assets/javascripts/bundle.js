@@ -8221,7 +8221,7 @@ var CommentIndex = /*#__PURE__*/function (_React$Component) {
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
         className: "comment-index"
-      }, this.props.comments.map(function (comment, i) {
+      }, Object.values(this.props.comments).map(function (comment, i) {
         return comment.post_id === _this.props.post.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_comment_index_item_container__WEBPACK_IMPORTED_MODULE_0__["default"], {
           comment: comment,
           key: comment + i
@@ -8257,7 +8257,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    comments: Object.values(state.entities.comments)
+    comments: state.entities.comments
   };
 };
 
@@ -8333,6 +8333,7 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
   _createClass(CommentIndexItem, [{
     key: "render",
     value: function render() {
+      console.log('this.props.comment: ', this.props.comment);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "comments"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -8345,11 +8346,11 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
         className: "comment-message-header"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "comment-message-header-top"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "".concat(this.state.user.first_name, " ").concat(this.state.user.last_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "(".concat(this.state.user.pronouns, ")"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "".concat(this.props.user.first_name, " ").concat(this.props.user.last_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "(".concat(this.props.user.pronouns, ")"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "comment-message-header-bottom"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "".concat(this.state.user.headline)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "".concat(this.props.user.headline)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "comment-message"
-      }, this.state.comment.body))));
+      }, this.props.comment.body))));
     }
   }]);
 
