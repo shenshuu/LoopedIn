@@ -54,7 +54,7 @@ class PostIndexItem extends React.Component {
                         </div>
                     </div>
                     <input type="text" required placeholder="What do you want to talk about?" 
-                    onChange={this.updateBody} value={this.props.post.body}/>
+                    onChange={this.updateBody} value={this.state.post.body}/>
                     <div className="create-post-modal-footer">
                         <InsertPhotoIcon />
                         <button type="submit" className="create-post-btn">Save</button>
@@ -66,7 +66,7 @@ class PostIndexItem extends React.Component {
 
     handleUpdate() {
         this.setState({update_modal_hidden: true});
-        this.props.updatePost(this.props.post);
+        this.props.updatePost(this.state.post);
     }
 
     handleDelete() {

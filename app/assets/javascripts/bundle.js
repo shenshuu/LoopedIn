@@ -9136,7 +9136,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
         required: true,
         placeholder: "What do you want to talk about?",
         onChange: this.updateBody,
-        value: this.props.post.body
+        value: this.state.post.body
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "create-post-modal-footer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_icons_material_InsertPhoto__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("button", {
@@ -9150,7 +9150,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       this.setState({
         update_modal_hidden: true
       });
-      this.props.updatePost(this.props.post);
+      this.props.updatePost(this.state.post);
     }
   }, {
     key: "handleDelete",
