@@ -1,11 +1,29 @@
 .widgets-top, .widgets-bottom {
+    background-color: white;
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
     padding: 15px;
-    background-color: red;
-    border: 1px solid black;
+    border: 1px solid lightgray;
+    width: 200px;
 }
 
 .widgets {
     display: flex;
+    /* position: sticky; */
+    top: 80px;
+    flex-direction: column;
+    padding: 10px;
+    row-gap: 10px;
+}
+
+.widgets-top > p, .project-description > p {
+    font-size: 13px;
+    color: gray;
+}
+
+.technology {
+    display: flex;
+    font-size: 14px;
+    padding: 10px;
 }
