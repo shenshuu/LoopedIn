@@ -125,6 +125,7 @@
 }
 
 .splash-header-contents {
+    min-width: 1165px;
     width: 1165px;
     display: flex;
     justify-content: space-between;
