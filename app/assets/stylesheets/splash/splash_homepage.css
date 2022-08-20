@@ -6,6 +6,10 @@
 .homepage {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 120px;
+    margin-right: 120px;
 }
 
 .homepage-body {
@@ -33,4 +37,9 @@
 .homepage-left-container form {
     background-color: rgba(255, 255, 255, 0);
     margin-left: -90px;
+}
+
+.form-body > .session-form-container {
+    margin-top: -55px;
+    background: transparent;
 }

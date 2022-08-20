@@ -35,15 +35,24 @@ class Widgets extends React.Component {
                     <div className="widgets-top-b">
                         <p className="widgets-headline">Connect with the developer</p>
                         <div className="widget-links">
-                            <a href="https://github.com/shenshuu" className="fa">
-                                <FontAwesomeIcon icon={faSquareGithub} className="font-awesome-icon"></FontAwesomeIcon>
-                            </a>
-                            <a href="https://www.linkedin.com/in/michael-s-b7698b239/" className="fa">
-                                <FontAwesomeIcon icon={faLinkedin} className="font-awesome-icon"></FontAwesomeIcon>
+                            <div className="fa-container">
+                                <a href="https://github.com/shenshuu" className="fa">
+                                    <FontAwesomeIcon icon={faSquareGithub} className="font-awesome-icon"></FontAwesomeIcon>
                                 </a>
-                            <a href="#" className="fa">
-                                <FontAwesomeIcon icon={faAngellist} className="font-awesome-icon"></FontAwesomeIcon>
+                                <p>Github</p>
+                            </div>
+                            <div className="fa-container">
+                                <a href="https://www.linkedin.com/in/michael-s-b7698b239/" className="fa">
+                                    <FontAwesomeIcon icon={faLinkedin} className="font-awesome-icon"></FontAwesomeIcon>
                                 </a>
+                                <p>LinkedIn</p>
+                            </div>
+                            <div className="fa-container">
+                                <a href="#" className="fa">
+                                    <FontAwesomeIcon icon={faAngellist} className="font-awesome-icon"></FontAwesomeIcon>
+                                </a>
+                                <p>AngelList</p>
+                            </div>
                         </div>
                     </div>
                 </div>

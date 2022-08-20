@@ -59,7 +59,7 @@
 }
 
 .signup-btn:hover {
-    background-color: whitesmoke;
+    background-color: rgba(0, 0, 0, 0.10);
 }
 
 .login-btn:hover {

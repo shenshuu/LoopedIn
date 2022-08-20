@@ -7,15 +7,19 @@
     margin: 0 auto;
     margin-top: 6%;
     background-color: white;
+    border-radius: 10px;
 }
 
 .session-form-container form {
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    border-radius: 10px;
     max-width: 60vw;
     padding: 20px;
+    width: 100%;
 }
 
 .session-form-container input {

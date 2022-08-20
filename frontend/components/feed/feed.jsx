@@ -16,10 +16,12 @@ class Feed extends React.Component {
 
     render() {
         return (
-            <div className="feed">
+            <div className="feed-container">
+                <div className="feed">
                 <SidebarContainer />
                 <PostIndexContainer />
                 <Widgets />
+                </div>
             </div>
         )
     }

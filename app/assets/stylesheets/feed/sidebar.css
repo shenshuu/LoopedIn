@@ -20,6 +20,7 @@
 }
 
 .sidebar-bottom {
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -27,6 +28,7 @@
     border-radius: 10px;
     padding: 10px;
 }
+
 
 .sidebar-top > img {
     margin-bottom: -10px;
@@ -38,7 +40,7 @@
 }
 
 .sidebar-stats {
-    width: 94%;
+    width: 95.25%;
     padding: 5px;
     margin-bottom: 10px;
     border: 1px solid lightgray;
@@ -52,8 +54,8 @@
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 500;
     color: gray;
     width: 100%;
 }
@@ -63,9 +65,14 @@
     color: #0a66c2;
 }
 
-.demo-location {
+.demo-location, .demo-profession {
     color: gray;
-    font-size: 13px;
+    font-size: 14px;
+}
+
+.demo-name {
+    font-size: 16px;
+    font-weight: 500;
 }
 
 .tags {
@@ -80,7 +87,7 @@
     margin-bottom: 10px;
     margin-top: 10px;
     color: gray;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .tags li:hover {
@@ -88,4 +95,29 @@
     cursor: pointer;
     border-radius: 10px;
     color: black;
+}
+
+.sidebar-hashtag-logo {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.user-details > p {
+    padding: 4px;
+}
+
+.sidebar-divider-container {
+    display: flex;
+    justify-content: center;
+    padding: 6px;
+}
+
+.sidebar-divider {
+    border-bottom: 1px solid lightgray;
+    width: 100%;
+    padding: 5px;
+}
+
+.aa {
+    color: rgba(0, 0, 0, 0.7);
 }
