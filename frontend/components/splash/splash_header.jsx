@@ -1,3 +1,5 @@
+import {faHouse, faUserGroup, faCircleUser} from '@fortawesome/free-solid-svg-icons';
+import  {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import React from 'react';
 
@@ -26,7 +28,18 @@ class SplashHeader extends React.Component {
     signinLinks() {
         return (
             <div className="header-links">
-                <button className="signout-btn" onClick={this.handleSignout}>Sign out</button>
+                <div id="home-link">
+                    <Link to="#"><FontAwesomeIcon icon={faHouse}></FontAwesomeIcon></Link>
+                    <p>Home</p>
+                </div>
+                <div id="network-link">
+                    <Link to="#"><FontAwesomeIcon icon={faUserGroup}></FontAwesomeIcon></Link>
+                    <p>My Network</p>
+                </div>
+                <div id="profile-link">
+                    <FontAwesomeIcon className="signout-btn" onClick={this.handleSignout} icon={faCircleUser}></FontAwesomeIcon>
+                    <p>Sign Out</p>
+                </div>
             </div>
         )
     }

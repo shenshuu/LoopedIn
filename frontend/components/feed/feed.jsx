@@ -7,7 +7,9 @@ import equal from 'fast-deep-equal';
 class Feed extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {user: this.props.user};
+        this.state = {
+            user: this.props.user,
+        };
         this.renderFeed = this.renderFeed.bind(this);
     }
 

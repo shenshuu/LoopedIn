@@ -1,5 +1,5 @@
 import React from 'react';
-
+import HeaderContainer from '../splash/header_container';
 class SessionForm extends React.Component {
     constructor(props) {
         super(props);
@@ -77,7 +77,8 @@ class SessionForm extends React.Component {
     render() {
 
         return (
-            <div className="form-body">
+            <div className="">
+                <div className="form-body">
                 <div className="session-form-container">
                     <form onSubmit={this.handleSubmit}>
                     
@@ -102,6 +103,7 @@ class SessionForm extends React.Component {
                         {this.props.formType === 'Sign in' ? this.demoLogin() : ""}
                     </form>
                 </div>
+            </div>
             </div>
         )
     }

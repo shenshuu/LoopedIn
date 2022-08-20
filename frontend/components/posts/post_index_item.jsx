@@ -119,7 +119,7 @@ class PostIndexItem extends React.Component {
                                 <p id="poster-name">{`${this.props.user.first_name} ${this.props.user.last_name}`}</p>
                                 <p id="poster-pronouns">{`(${this.props.user.pronouns})`}</p>
                             </div>
-                            <p id="poster-profession">Professional Tester</p>
+                            <p id="poster-profession">{`${this.props.user.headline}`}</p>
                         </div>
                     </div>
                     {this.props.post.user_id === this.props.current_user.id ? <div className="post-actions">

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import SplashContainer from './splash/splash_container';
 import { Route, Switch } from 'react-router-dom';
 import AuthRoute from '../util/route_util';
@@ -8,10 +8,6 @@ import HeaderContainer from './splash/header_container';
 import FeedContainer from './feed/feed_container';
 
 const App = () => {
-
-    // useEffect(() => {
-    //     fetchUsers();
-    // }, [])
 
     return (
         <div>
