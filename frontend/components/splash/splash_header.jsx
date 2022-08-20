@@ -28,18 +28,24 @@ class SplashHeader extends React.Component {
     signinLinks() {
         return (
             <div className="header-links">
-                <div id="home-link">
-                    <Link to="#"><FontAwesomeIcon icon={faHouse}></FontAwesomeIcon></Link>
-                    <p>Home</p>
-                </div>
-                <div id="network-link">
-                    <Link to="#"><FontAwesomeIcon icon={faUserGroup}></FontAwesomeIcon></Link>
-                    <p>My Network</p>
-                </div>
-                <div id="profile-link">
-                    <FontAwesomeIcon className="signout-btn" onClick={this.handleSignout} icon={faCircleUser}></FontAwesomeIcon>
-                    <p>Sign Out</p>
-                </div>
+                <Link to="#">
+                    <div id="home-link">
+                        <FontAwesomeIcon icon={faHouse} className="fa-header-link"></FontAwesomeIcon>
+                        <p>Home</p>
+                    </div>
+                </Link>
+                <Link to="#">
+                    <div id="network-link">
+                        <FontAwesomeIcon icon={faUserGroup} className="fa-header-link"></FontAwesomeIcon>
+                        <p>My Network</p>
+                    </div>
+                </Link>
+                <Link to="#">
+                    <div id="profile-link" onClick={this.handleSignout}>
+                        <FontAwesomeIcon icon={faCircleUser} className="fa-header-link"></FontAwesomeIcon>
+                        <p>Me</p>
+                    </div>
+                </Link>
             </div>
         )
     }

@@ -317,3 +317,14 @@
 .post-actions-modal {
     width: 172px;
 }
+
+#post-form-separator-container {
+    display: flex;
+    justify-content: center;
+}
+
+#post-form-separator {
+    width: 99%;
+    border-top: 1.5px solid rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+}

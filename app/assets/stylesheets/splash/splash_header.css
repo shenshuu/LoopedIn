@@ -3,8 +3,13 @@
     justify-content: space-between;
     align-items: center;
     /* background-color: #0b66c2 ; */
-    height: 12vh;
+    height: 50px;
     width: 100vw;
+    /* margin-bottom: 20px; */
+    border-bottom: 1px solid lightgray;
+    background-color: white;
+    position: sticky;
+    top: 0px;
 }
 
 .header-links {
@@ -64,4 +69,25 @@
 
 .login-btn:hover {
     background-color: rgba(10, 102, 194, 0.15);
+}
+
+#home-link, #network-link, #profile-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+#home-link > p, #network-link > p, #profile-link > p {
+    font-size: 14px;
+    color: gray;
+}
+
+#home-link > *:hover {
+    color: rgba(0, 0, 0, 1);
+}
+
+.fa-header-link {
+    color: rgba(0, 0, 0, 0.7);
 }

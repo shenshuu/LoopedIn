@@ -30,6 +30,10 @@ class PostIndex extends React.Component {
         return (
             <div>
                 <PostFormContainer />
+                <div id="post-form-separator-container">
+                    <div id="post-form-separator"></div>
+                    {/* <div>Sort by:</div> */}
+                </div>
                 <ul>
                     {Object.values(this.state.posts).map((post, i) => {
                         return <PostIndexItemContainer post={post} key={post+i} /> 
