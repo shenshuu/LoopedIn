@@ -1,4 +1,4 @@
-import {faHouse, faUserGroup, faCircleUser} from '@fortawesome/free-solid-svg-icons';
+import {faHouse, faUserGroup, faCircleUser, faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
 import  {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import React from 'react';
@@ -6,6 +6,7 @@ import React from 'react';
 class SplashHeader extends React.Component {
     constructor(props) {
         super(props);
+        this.searchContainer = this.searchContainer.bind(this);
         this.handleSignout = this.handleSignout.bind(this);
         this.signoutLinks = this.signoutLinks.bind(this);
         this.signinLinks = this.signinLinks.bind(this);
@@ -50,16 +51,32 @@ class SplashHeader extends React.Component {
         )
     }
 
+    searchContainer() {
+        return (
+            <div className="search-container">
+                <FontAwesomeIcon icon={faMagnifyingGlass} className="fa-header-link"></FontAwesomeIcon>
+                <input type="text" placeholder="Search"/>
+            </div>
+        )
+    }
+
     render() {
         return (
             <div className="splash-header">
                 
-                <Link to={this.props.loggedIn ? "/feed" : "/"} 
-                className="header-logo">
-                    <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.pngall.com%2Fwp-content%2Fuploads%2F2016%2F07%2FLinkedin-Free-PNG-Image.png&f=1&nofb=1" alt="" width="140px" height="100px"/>
-                </Link>
+                <div className="splash-header-contents">
+                    <div id="splash-header-left">
+                        <Link to={this.props.loggedIn ? "/feed" : "/"} 
+                        className="header-logo">
+                            <FontAwesomeIcon icon={faHouse} className="fa-header-link"></FontAwesomeIcon>
+                        </Link>
+                        {this.props.loggedIn ? this.searchContainer() : ""}
+                    </div>
 
-                {this.props.loggedIn ? this.signinLinks() : this.signoutLinks()}
+                    <div id="splash-header-right">
+                        {this.props.loggedIn ? this.signinLinks() : this.signoutLinks()}
+                    </div>
+                </div>
             </div>
         )
     }

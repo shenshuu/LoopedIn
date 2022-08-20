@@ -28370,6 +28370,7 @@ var SplashHeader = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, SplashHeader);
 
     _this = _super.call(this, props);
+    _this.searchContainer = _this.searchContainer.bind(_assertThisInitialized(_this));
     _this.handleSignout = _this.handleSignout.bind(_assertThisInitialized(_this));
     _this.signoutLinks = _this.signoutLinks.bind(_assertThisInitialized(_this));
     _this.signinLinks = _this.signinLinks.bind(_assertThisInitialized(_this));
@@ -28425,19 +28426,36 @@ var SplashHeader = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, "Me"))));
     }
   }, {
+    key: "searchContainer",
+    value: function searchContainer() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+        className: "search-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_0__.FontAwesomeIcon, {
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faMagnifyingGlass,
+        className: "fa-header-link"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("input", {
+        type: "text",
+        placeholder: "Search"
+      }));
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
         className: "splash-header"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+        className: "splash-header-contents"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+        id: "splash-header-left"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
         to: this.props.loggedIn ? "/feed" : "/",
         className: "header-logo"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("img", {
-        src: "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.pngall.com%2Fwp-content%2Fuploads%2F2016%2F07%2FLinkedin-Free-PNG-Image.png&f=1&nofb=1",
-        alt: "",
-        width: "140px",
-        height: "100px"
-      })), this.props.loggedIn ? this.signinLinks() : this.signoutLinks());
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_0__.FontAwesomeIcon, {
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faHouse,
+        className: "fa-header-link"
+      })), this.props.loggedIn ? this.searchContainer() : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+        id: "splash-header-right"
+      }, this.props.loggedIn ? this.signinLinks() : this.signoutLinks())));
     }
   }]);
 
