@@ -17,10 +17,10 @@ class PostIndex extends React.Component {
         }
     }
 
-    componentDidMount() {
-        this.props.fetchPosts();
-        this.setState({posts: this.props.posts});
-    }
+    // componentDidMount() {
+    //     this.props.fetchPosts();
+    //     this.setState({posts: this.props.posts});
+    // }
 
     render() {
         return (
@@ -28,8 +28,7 @@ class PostIndex extends React.Component {
                 <PostFormContainer />
                 <ul>
                     {Object.values(this.state.posts).map((post, i) => {
-                        return <PostIndexItemContainer post={post} key={i} 
-                        /> // rerender={this.rerender} /> 
+                        return <PostIndexItemContainer post={post} key={post+i} /> 
                     })}
                 </ul>
             </div>

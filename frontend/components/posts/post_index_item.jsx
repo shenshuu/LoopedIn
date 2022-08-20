@@ -16,7 +16,7 @@ class PostIndexItem extends React.Component {
         this.state = {
             user: this.props.user,
             post: this.props.post,
-            commenting: false,
+            display_comments: false,
             action_modal_hidden: true,
             update_modal_hidden: true,
         }
@@ -89,7 +89,7 @@ class PostIndexItem extends React.Component {
     }
 
     toggleComments() {
-        this.setState({commenting: !this.state.commenting})
+        this.setState({display_comments: !this.state.display_comments})
     }
 
     actionModal() {
@@ -141,7 +141,7 @@ class PostIndexItem extends React.Component {
                         <p>Comment</p>
                     </div>
                 </div>
-                {this.state.commenting ? <div className="comment-container">
+                {this.state.display_comments ? <div className="comment-container">
                     <CommentFormContainer post={this.props.post}/>
                     <CommentIndexContainer post={this.props.post}/>
                 </div>: ""}
@@ -151,11 +151,6 @@ class PostIndexItem extends React.Component {
     }
 
     render() {
-        console.log('this.props.comments: ', this.props.comments);
-        console.log('this.state.comments: ', this.state.comments);
-        console.log('this.props.comments: (arr), ', Object.values(this.props.comments));
-        console.log('this.props.post', this.props.post);
-        console.log('this')
         return this.state.user && this.renderUser();
     }
 }
