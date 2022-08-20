@@ -154,6 +154,7 @@ class PostIndexItem extends React.Component {
     }
 
     render() {
+        // debugger;
         return this.state.user && this.renderUser();
     }
 }

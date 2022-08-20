@@ -5,9 +5,13 @@ import { fetchComments } from '../../actions/comment_actions';
 import { fetchLikes } from '../../actions/like_actions';
 import Feed from './feed';
 
-const mapStateToProps = state => ({
-    user: state.entities.users[state.session.id],
-});
+const mapStateToProps = state => {
+    // debugger;
+    return {
+        user: state.entities.users[state.session.id],
+        users: state.entities.users,
+    }
+};
 
 const mapDispatchToProps = dispatch => ({
     fetchPosts: () => dispatch(fetchPosts()),

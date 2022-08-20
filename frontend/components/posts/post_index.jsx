@@ -18,11 +18,15 @@ class PostIndex extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchPosts();
+        // console.log('inside componentDidMount: ', this.props.fetchPosts);
+        // debugger;
+        this.props.fetchPosts().then();
         this.setState({posts: this.props.posts});
     }
 
     render() {
+        // console.log('inside render: ', this.props.fetchPosts);
+        // debugger;
         return (
             <div>
                 <PostFormContainer />

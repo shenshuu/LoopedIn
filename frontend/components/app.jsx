@@ -6,7 +6,6 @@ import SignupFormContainer from './session_form/signup_form_container';
 import LoginFormContainer from './session_form/login_form_container';
 import HeaderContainer from './splash/header_container';
 import FeedContainer from './feed/feed_container';
-import { fetchUsers } from '../actions/session_actions';
 
 const App = () => {
 

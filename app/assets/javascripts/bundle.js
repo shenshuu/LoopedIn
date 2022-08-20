@@ -26330,14 +26330,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _splash_splash_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./splash/splash_container */ "./frontend/components/splash/splash_container.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
 /* harmony import */ var _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session_form/signup_form_container */ "./frontend/components/session_form/signup_form_container.jsx");
 /* harmony import */ var _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./session_form/login_form_container */ "./frontend/components/session_form/login_form_container.jsx");
 /* harmony import */ var _splash_header_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./splash/header_container */ "./frontend/components/splash/header_container.jsx");
 /* harmony import */ var _feed_feed_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./feed/feed_container */ "./frontend/components/feed/feed_container.jsx");
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
-
 
 
 
@@ -26351,7 +26349,7 @@ var App = function App() {
   // useEffect(() => {
   //     fetchUsers();
   // }, [])
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_splash_header_container__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_splash_header_container__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["default"], {
     exact: true,
     path: "/",
     component: _splash_splash_container__WEBPACK_IMPORTED_MODULE_1__["default"]
@@ -26363,7 +26361,7 @@ var App = function App() {
     exact: true,
     path: "/signup",
     component: _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
     exact: true,
     path: "/feed",
     component: _feed_feed_container__WEBPACK_IMPORTED_MODULE_6__["default"]
@@ -26871,6 +26869,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sidebar_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sidebar_container */ "./frontend/components/feed/sidebar_container.jsx");
 /* harmony import */ var _posts_post_index_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../posts/post_index_container */ "./frontend/components/posts/post_index_container.jsx");
 /* harmony import */ var _widgets_widgets__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../widgets/widgets */ "./frontend/components/widgets/widgets.jsx");
+/* harmony import */ var fast_deep_equal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! fast-deep-equal */ "./node_modules/fast-deep-equal/index.js");
+/* harmony import */ var fast_deep_equal__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(fast_deep_equal__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26898,15 +26898,23 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var Feed = /*#__PURE__*/function (_React$Component) {
   _inherits(Feed, _React$Component);
 
   var _super = _createSuper(Feed);
 
   function Feed(props) {
+    var _this;
+
     _classCallCheck(this, Feed);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      user: _this.props.user
+    };
+    _this.renderFeed = _this.renderFeed.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(Feed, [{
@@ -26918,13 +26926,27 @@ var Feed = /*#__PURE__*/function (_React$Component) {
       this.props.fetchLikes();
     }
   }, {
-    key: "render",
-    value: function render() {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (!fast_deep_equal__WEBPACK_IMPORTED_MODULE_4___default()(this.props.user, prevProps.user)) {
+        this.setState({
+          user: this.props.user
+        });
+      }
+    }
+  }, {
+    key: "renderFeed",
+    value: function renderFeed() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "feed-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "feed"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_sidebar_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_posts_post_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_widgets_widgets__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return this.state.user && this.renderFeed();
     }
   }]);
 
@@ -26960,8 +26982,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state) {
+  // debugger;
   return {
-    user: state.entities.users[state.session.id]
+    user: state.entities.users[state.session.id],
+    users: state.entities.users
   };
 };
 
@@ -27431,7 +27455,9 @@ var PostIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchPosts();
+      // console.log('inside componentDidMount: ', this.props.fetchPosts);
+      // debugger;
+      this.props.fetchPosts().then();
       this.setState({
         posts: this.props.posts
       });
@@ -27439,6 +27465,8 @@ var PostIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      // console.log('inside render: ', this.props.fetchPosts);
+      // debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_post_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, Object.values(this.state.posts).map(function (post, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_post_index_item_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
           post: post,
@@ -27729,6 +27757,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      // debugger;
       return this.state.user && this.renderUser();
     }
   }]);
