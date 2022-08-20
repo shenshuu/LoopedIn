@@ -9,8 +9,9 @@ class Feed extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchPosts();
+        this.props.fetchUsers();
         this.props.fetchComments();
+        this.props.fetchPosts();
         this.props.fetchLikes();
     }
 

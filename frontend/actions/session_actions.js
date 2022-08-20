@@ -1,8 +1,14 @@
 import * as ApiUtil from '../util/session_api_util';
 
+export const RECEIVE_USERS = "RECEIVE_USERS";
 export const RECEIVE_USER = "RECEIVE_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
+
+const receiveUsers = users => ({
+    type: RECEIVE_USERS,
+    users
+});
 
 const receiveUser = user => ({
     type: RECEIVE_USER,
@@ -31,4 +37,9 @@ export const logout = () => dispatch => (
 export const signup = user => dispatch => (
     ApiUtil.signup(user)
     .then(user => dispatch(receiveUser(user)))
+);
+
+export const fetchUsers = users => dispatch => (
+    ApiUtil.fetchUsers(users)
+    .then(users => dispatch(receiveUsers(users)))
 );

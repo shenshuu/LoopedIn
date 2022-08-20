@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { login } from '../../actions/session_actions';
+import { login, fetchUsers } from '../../actions/session_actions';
 import { fetchPosts } from '../../actions/post_actions';
 import { fetchComments } from '../../actions/comment_actions';
 import { fetchLikes } from '../../actions/like_actions';
@@ -13,6 +13,7 @@ const mapDispatchToProps = dispatch => ({
     fetchPosts: () => dispatch(fetchPosts()),
     fetchComments: () => dispatch(fetchComments()),
     fetchLikes: () => dispatch(fetchLikes()),
+    fetchUsers: () => dispatch(fetchUsers()),
     login: user => dispatch(login(user)),
 });
 
