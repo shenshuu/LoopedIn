@@ -283,6 +283,37 @@
 .likes-comments-info {
     display: flex;
     justify-content: space-between;
-    font-size: 12px;
+    font-size: 14px;
     color: gray;
+    padding-bottom: 6px;
+}
+
+/* .likes-comments-info > p {
+    font-size: 14px;
+} */
+
+#poster-name {
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+    padding: 4px;
+}
+
+#poster-profession {
+    font-size: 14px;
+}
+
+#poster-info {
+    display: flex;
+}
+
+#poster-pronouns {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: gray;
+}
+
+.post-actions-modal {
+    width: 172px;
 }

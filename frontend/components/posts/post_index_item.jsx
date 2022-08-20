@@ -115,11 +115,14 @@ class PostIndexItem extends React.Component {
                     <div className="post-header">
                         <AccountCircle />
                         <div className="post-header-info">
-                            <h3>{`${this.state.user.first_name} ${this.state.user.last_name}`}</h3>
-                            <p>Professional Tester</p>
+                            <div id="poster-info">
+                                <p id="poster-name">{`${this.props.user.first_name} ${this.props.user.last_name}`}</p>
+                                <p id="poster-pronouns">{`(${this.props.user.pronouns})`}</p>
+                            </div>
+                            <p id="poster-profession">Professional Tester</p>
                         </div>
                     </div>
-                    {this.props.post.user_id === this.props.user.id ? <div className="post-actions">
+                    {this.props.post.user_id === this.props.current_user.id ? <div className="post-actions">
                         <MoreHorizRoundedIcon onClick={this.openActionModal}/>
                     </div>: ""}
                 </div>
@@ -127,8 +130,8 @@ class PostIndexItem extends React.Component {
                     {this.props.post.body} 
                 </div>
                 <div className="likes-comments-info">
-                    <div className="likes-count">0 likes</div>
-                    <div className="comments-count">0 comments</div>
+                    <p className="likes-count">0 likes</p>
+                    <p className="comments-count">0 comments</p>
                 </div>
                 <div className="post-btn-divider"></div>
                 <div className="post-btn-container">

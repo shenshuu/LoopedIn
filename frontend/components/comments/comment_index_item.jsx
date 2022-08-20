@@ -94,8 +94,8 @@ class CommentIndexItem extends React.Component {
                         <div className="comment-message-header">
                             <div className="comment-header-info">
                                 <div className="comment-message-header-top">
-                                    <h4>{`${this.props.user.first_name} ${this.props.user.last_name}`}</h4>
-                                    <p>{`(${this.props.user.pronouns})`}</p>
+                                    <p id="comment-user-name">{`${this.props.user.first_name} ${this.props.user.last_name}`}</p>
+                                    <p id="comment-user-pronouns">{`(${this.props.user.pronouns})`}</p>
                                 </div>
                                 {this.props.current_user.id === this.props.post.user_id ? 
                                 <div className="post-actions" onClick={this.toggleActionModal}>
@@ -104,7 +104,7 @@ class CommentIndexItem extends React.Component {
                                 }
                             </div>
                             <div className="comment-message-header-bottom">
-                                <p>{`${this.props.user.headline}`}</p>
+                                <p id="comment-user-headline">{`${this.props.user.headline}`}</p>
                             </div>
                         </div>
                         <div className="comment-message">

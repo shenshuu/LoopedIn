@@ -26769,12 +26769,18 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
         className: "comment-header-info"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "comment-message-header-top"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "".concat(this.props.user.first_name, " ").concat(this.props.user.last_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "(".concat(this.props.user.pronouns, ")"))), this.props.current_user.id === this.props.post.user_id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+        id: "comment-user-name"
+      }, "".concat(this.props.user.first_name, " ").concat(this.props.user.last_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+        id: "comment-user-pronouns"
+      }, "(".concat(this.props.user.pronouns, ")"))), this.props.current_user.id === this.props.post.user_id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "post-actions",
         onClick: this.toggleActionModal
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_MoreHorizRounded__WEBPACK_IMPORTED_MODULE_4__["default"], null)) : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "comment-message-header-bottom"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "".concat(this.props.user.headline)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+        id: "comment-user-headline"
+      }, "".concat(this.props.user.headline)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "comment-message"
       }, this.state.update_modal_hidden ? this.props.comment.body : this.updateModal()))));
     }
@@ -27653,7 +27659,15 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
         className: "post-header"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_icons_material_AccountCircle__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "post-header-info"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("h3", null, "".concat(this.state.user.first_name, " ").concat(this.state.user.last_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, "Professional Tester"))), this.props.post.user_id === this.props.user.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+        id: "poster-info"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
+        id: "poster-name"
+      }, "".concat(this.props.user.first_name, " ").concat(this.props.user.last_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
+        id: "poster-pronouns"
+      }, "(".concat(this.props.user.pronouns, ")"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
+        id: "poster-profession"
+      }, "Professional Tester"))), this.props.post.user_id === this.props.current_user.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "post-actions"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_icons_material_MoreHorizRounded__WEBPACK_IMPORTED_MODULE_8__["default"], {
         onClick: this.openActionModal
@@ -27661,9 +27675,9 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
         className: "post-body"
       }, this.props.post.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "likes-comments-info"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
         className: "likes-count"
-      }, "0 likes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      }, "0 likes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
         className: "comments-count"
       }, "0 comments")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "post-btn-divider"
@@ -27714,9 +27728,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(state) {
+var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    user: state.entities.users[state.session.id],
+    user: state.entities.users[ownProps.post.user_id],
+    current_user: state.entities.users[state.session.id],
     comments: state.entities.comments,
     likes: state.entities.likes
   };

@@ -73,16 +73,16 @@
 
 .comments > .post-actions-modal {
     margin-top: 25px;
-    width: 140px;
+    width: 160px;
     height: 45px;
 }
 
 .comments > .post-actions-modal > .edit-post-action {
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .comments > .post-actions-modal > .delete-post-action {
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .comment-message > .comment-form {
@@ -116,4 +116,21 @@
 
 .cancel-update-post:hover {
     cursor: pointer;
+}
+
+#comment-user-headline {
+    padding: 0px;
+}
+
+#comment-user-name {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 4px;
+    color: black;
+}
+
+#comment-user-pronouns {
+    display: flex;
+    align-items: center;
+    padding: 0px;
 }
