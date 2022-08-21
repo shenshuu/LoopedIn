@@ -27600,12 +27600,15 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       user: _this.props.user,
       post: _this.props.post,
+      is_liked: false,
       comments: [],
       likes: [],
       display_comments: false,
       action_modal_hidden: true,
       update_modal_hidden: true
     };
+    _this.handleCreateLike = _this.handleCreateLike.bind(_assertThisInitialized(_this));
+    _this.handleDeleteLike = _this.handleDeleteLike.bind(_assertThisInitialized(_this));
     _this.handleUpdate = _this.handleUpdate.bind(_assertThisInitialized(_this));
     _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
     _this.actionModal = _this.actionModal.bind(_assertThisInitialized(_this));
@@ -27662,6 +27665,32 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       }, "Save"))));
     }
   }, {
+    key: "handleCreateLike",
+    value: function handleCreateLike() {
+      this.setState({
+        is_liked: true
+      });
+      this.props.createLike({
+        user_id: this.state.user.id,
+        likeable_id: this.state.post.id,
+        likeable_type: 'Post'
+      });
+    } // need id for delete like 
+
+  }, {
+    key: "handleDeleteLike",
+    value: function handleDeleteLike() {
+      var _this2 = this;
+
+      this.setState({
+        is_liked: false
+      });
+      var userLike = this.state.likes.filter(function (like) {
+        return like.likeable_id === _this2.props.post.id && like.user_id === _this2.props.user.id && like.likeable_type === 'Post';
+      })[0];
+      this.props.deleteLike(userLike);
+    }
+  }, {
     key: "handleUpdate",
     value: function handleUpdate() {
       this.setState({
@@ -27702,22 +27731,24 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log('inside componentDidMount'); // debugger;
-
       this.props.fetchComments();
       this.props.fetchLikes();
     }
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      var _this2 = this;
-
-      console.log('inside componentDidUpdate'); // debugger;
+      var _this3 = this;
 
       if (!fast_deep_equal__WEBPACK_IMPORTED_MODULE_2___default()(this.props.comments, prevProps.comments)) {
         this.setState({
           comments: Object.values(this.props.comments).filter(function (comment) {
-            return comment.post_id === _this2.props.post.id;
+            return comment.post_id === _this3.props.post.id;
+          })
+        });
+      } else if (!fast_deep_equal__WEBPACK_IMPORTED_MODULE_2___default()(this.props.likes, prevProps.likes)) {
+        this.setState({
+          likes: Object.values(this.props.likes).filter(function (like) {
+            return like.likeable_id === _this3.props.post.id;
           })
         });
       }
@@ -27764,7 +27795,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
         className: "likes-comments-info"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("p", {
         className: "likes-count"
-      }, "0 likes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("p", {
+      }, this.state.likes.length, " likes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("p", {
         className: "comments-count",
         onClick: this.toggleComments
       }, this.state.comments.length, " comments")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
@@ -27772,7 +27803,8 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "post-btn-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
-        className: "post-btn"
+        className: "post-btn",
+        onClick: this.state.is_liked ? this.handleDeleteLike : this.handleCreateLike
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_icons_material_ThumbUpOffAlt__WEBPACK_IMPORTED_MODULE_10__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("p", null, "Like")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "post-btn",
         onClick: this.toggleComments
@@ -27787,7 +27819,6 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      // debugger;
       return this.state.user && this.renderUser();
     }
   }]);
@@ -27821,6 +27852,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     user: state.entities.users[ownProps.post.user_id],
@@ -27837,6 +27869,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     deletePost: function deletePost(post) {
       return dispatch((0,_actions_post_actions__WEBPACK_IMPORTED_MODULE_2__.deletePost)(post));
+    },
+    createLike: function createLike(like) {
+      return dispatch((0,_actions_like_actions__WEBPACK_IMPORTED_MODULE_3__.createLike)(like));
+    },
+    deleteLike: function deleteLike(like) {
+      return dispatch((0,_actions_like_actions__WEBPACK_IMPORTED_MODULE_3__.deleteLike)(like));
     },
     fetchComments: function fetchComments() {
       return dispatch((0,_actions_comment_actions__WEBPACK_IMPORTED_MODULE_4__.fetchComments)());

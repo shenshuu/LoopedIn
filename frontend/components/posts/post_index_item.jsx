@@ -17,12 +17,15 @@ class PostIndexItem extends React.Component {
         this.state = {
             user: this.props.user,
             post: this.props.post,
+            is_liked: false,
             comments: [],
             likes: [],
             display_comments: false,
             action_modal_hidden: true,
             update_modal_hidden: true,
         }
+        this.handleCreateLike = this.handleCreateLike.bind(this);
+        this.handleDeleteLike = this.handleDeleteLike.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.actionModal = this.actionModal.bind(this);
@@ -70,6 +73,25 @@ class PostIndexItem extends React.Component {
         )
     }
 
+    handleCreateLike() {
+        this.setState({is_liked: true});
+        this.props.createLike({
+            user_id: this.state.user.id,
+            likeable_id: this.state.post.id,
+            likeable_type: 'Post',
+            }
+        );
+    }
+
+    // need id for delete like 
+    handleDeleteLike() {
+        this.setState({is_liked: false});
+        let userLike = this.state.likes.filter(
+            (like) => like.likeable_id === this.props.post.id && like.user_id === this.props.user.id && like.likeable_type === 'Post'
+        )[0]
+        this.props.deleteLike(userLike);
+    }
+
     handleUpdate() {
         this.setState({update_modal_hidden: true});
         this.props.updatePost(this.state.post);
@@ -96,18 +118,18 @@ class PostIndexItem extends React.Component {
     }
 
     componentDidMount() {
-        console.log('inside componentDidMount');
-        // debugger;
         this.props.fetchComments();
         this.props.fetchLikes();
     }
 
     componentDidUpdate(prevProps) {
-        console.log('inside componentDidUpdate');
-        // debugger;
+        
         if (!equal(this.props.comments, prevProps.comments)) {
             this.setState({comments: Object.values(this.props.comments).filter(
                 (comment) => comment.post_id === this.props.post.id) });
+        } else if (!equal(this.props.likes, prevProps.likes)) {
+            this.setState({likes: Object.values(this.props.likes).filter(
+                (like) => like.likeable_id === this.props.post.id) });
         }
     }
 
@@ -149,12 +171,12 @@ class PostIndexItem extends React.Component {
                     {this.props.post.body} 
                 </div>
                 <div className="likes-comments-info">
-                    <p className="likes-count">0 likes</p>
+                    <p className="likes-count">{this.state.likes.length} likes</p>
                     <p className="comments-count" onClick={this.toggleComments}>{this.state.comments.length} comments</p>
                 </div>
                 <div className="post-btn-divider"></div>
                 <div className="post-btn-container">
-                    <div className="post-btn">
+                    <div className="post-btn" onClick={this.state.is_liked ? this.handleDeleteLike : this.handleCreateLike}>
                         <ThumbUpOffAltIcon />
                         <p>Like</p>
                     </div>
@@ -173,7 +195,6 @@ class PostIndexItem extends React.Component {
     }
 
     render() {
-        // debugger;
         return this.state.user && this.renderUser();
     }
 }

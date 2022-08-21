@@ -329,7 +329,7 @@
     margin-top: 20px;
 }
 
-.comments-count:hover {
+.comments-count:hover, .likes-count:hover {
     color: rgba(0, 0, 0, 0.67);
     text-decoration: underline;
     cursor: pointer;

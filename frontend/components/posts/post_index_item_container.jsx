@@ -3,6 +3,7 @@ import PostIndexItem from './post_index_item';
 import {updatePost, deletePost} from '../../actions/post_actions';
 import { fetchLikes } from '../../actions/like_actions'; 
 import { fetchComments } from '../../actions/comment_actions';
+import { createLike, deleteLike } from '../../actions/like_actions';
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -16,6 +17,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
     updatePost: post => dispatch(updatePost(post)),
     deletePost: post => dispatch(deletePost(post)),
+    createLike: like => dispatch(createLike(like)),
+    deleteLike: like => dispatch(deleteLike(like)),
     fetchComments: () => dispatch(fetchComments()),
     fetchLikes: () => dispatch(fetchLikes()),
 })
