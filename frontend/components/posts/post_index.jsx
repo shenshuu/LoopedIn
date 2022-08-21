@@ -18,21 +18,16 @@ class PostIndex extends React.Component {
     }
 
     componentDidMount() {
-        // console.log('inside componentDidMount: ', this.props.fetchPosts);
-        // debugger;
-        this.props.fetchPosts().then();
+        this.props.fetchPosts();
         this.setState({posts: this.props.posts});
     }
 
     render() {
-        // console.log('inside render: ', this.props.fetchPosts);
-        // debugger;
         return (
             <div>
                 <PostFormContainer />
                 <div id="post-form-separator-container">
                     <div id="post-form-separator"></div>
-                    {/* <div>Sort by:</div> */}
                 </div>
                 <ul>
                     {Object.values(this.state.posts).map((post, i) => {

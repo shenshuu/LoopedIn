@@ -34,7 +34,7 @@ class PostIndexItem extends React.Component {
         this.toggleComments = this.toggleComments.bind(this);
         this.updateModal = this.updateModal.bind(this);
         this.updateBody = this.updateBody.bind(this);
-        this.renderUser = this.renderUser.bind(this);
+        this.renderPost = this.renderPost.bind(this);
     }
 
     updateBody(e) {
@@ -85,7 +85,7 @@ class PostIndexItem extends React.Component {
 
     handleDeleteLike() {
         this.setState({is_liked: false});
-        let userLike = this.state.likes.filter(
+        let userLike = Object.values(this.props.likes).filter(
             (like) => like.likeable_id === this.props.post.id && like.user_id === this.props.user.id && like.likeable_type === 'Post'
         )[0]
         this.props.deleteLike(userLike);
@@ -150,7 +150,7 @@ class PostIndexItem extends React.Component {
         )
     }
 
-    renderUser() {
+    renderPost() {
         return (
             <div className="post">
                 {this.state.update_modal_hidden ? "" : this.updateModal()}
@@ -197,7 +197,7 @@ class PostIndexItem extends React.Component {
     }
 
     render() {
-        return this.state.user && this.renderUser();
+        return this.state.user && this.renderPost();
     }
 }
 

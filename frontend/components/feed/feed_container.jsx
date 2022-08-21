@@ -6,10 +6,12 @@ import { fetchLikes } from '../../actions/like_actions';
 import Feed from './feed';
 
 const mapStateToProps = state => {
-    // debugger;
     return {
         user: state.entities.users[state.session.id],
         users: state.entities.users,
+        posts: state.entities.posts,
+        comments: state.entities.comments,
+        likes: state.entities.likes,
     }
 };
 

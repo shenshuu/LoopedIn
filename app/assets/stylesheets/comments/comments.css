@@ -47,7 +47,7 @@
 
 .comment-header-info {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 
 .comment-message-header-top > p, .comment-message-header-bottom > p {
@@ -133,4 +133,27 @@
     display: flex;
     align-items: center;
     padding: 0px;
+}
+
+#comment-author {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 4px 2px 4px;
+    background-color: #576879;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}
+
+.comment-message-header-top > #comment-user-name {
+    display: inline-block;
+    white-space: nowrap;
+    padding: 0px;
+    /* width: 300px; */
+}
+
+#comment-message-header-top-container {
+    width: 95%;
 }

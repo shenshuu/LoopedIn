@@ -26785,12 +26785,16 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "comment-header-info"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        id: "comment-message-header-top-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "comment-message-header-top"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
         id: "comment-user-name"
       }, "".concat(this.props.user.first_name, " ").concat(this.props.user.last_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
         id: "comment-user-pronouns"
-      }, "(".concat(this.props.user.pronouns, ")"))), this.props.current_user.id === this.props.post.user_id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      }, "(".concat(this.props.user.pronouns, ")")),  true ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        id: "comment-author"
+      }, "Author") : 0)), this.props.current_user.id === this.props.post.user_id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "post-actions",
         onClick: this.toggleActionModal
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_MoreHorizRounded__WEBPACK_IMPORTED_MODULE_4__["default"], null)) : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -26908,7 +26912,11 @@ var Feed = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      user: _this.props.user
+      user: _this.props.user,
+      users: _this.props.users,
+      likes: _this.props.likes,
+      posts: _this.props.posts,
+      comments: _this.props.comments
     };
     _this.renderFeed = _this.renderFeed.bind(_assertThisInitialized(_this));
     return _this;
@@ -26929,6 +26937,22 @@ var Feed = /*#__PURE__*/function (_React$Component) {
         this.setState({
           user: this.props.user
         });
+      } else if (!fast_deep_equal__WEBPACK_IMPORTED_MODULE_4___default()(this.props.likes, prevProps.likes)) {
+        this.setState({
+          likes: this.props.likes
+        });
+      } else if (!fast_deep_equal__WEBPACK_IMPORTED_MODULE_4___default()(this.props.posts, prevProps.posts)) {
+        this.setState({
+          posts: this.props.posts
+        });
+      } else if (!fast_deep_equal__WEBPACK_IMPORTED_MODULE_4___default()(this.props.comments, prevProps.comments)) {
+        this.setState({
+          comments: this.props.comments
+        });
+      } else if (!fast_deep_equal__WEBPACK_IMPORTED_MODULE_4___default()(this.props.users, prevProps.users)) {
+        this.setState({
+          users: this.props.users
+        });
       }
     }
   }, {
@@ -26938,7 +26962,9 @@ var Feed = /*#__PURE__*/function (_React$Component) {
         className: "feed-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "feed"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_sidebar_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_posts_post_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_widgets_widgets__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_sidebar_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_posts_post_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        rerender: this.rerender
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_widgets_widgets__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
     }
   }, {
     key: "render",
@@ -26979,10 +27005,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state) {
-  // debugger;
   return {
     user: state.entities.users[state.session.id],
-    users: state.entities.users
+    users: state.entities.users,
+    posts: state.entities.posts,
+    comments: state.entities.comments,
+    likes: state.entities.likes
   };
 };
 
@@ -27452,9 +27480,7 @@ var PostIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      // console.log('inside componentDidMount: ', this.props.fetchPosts);
-      // debugger;
-      this.props.fetchPosts().then();
+      this.props.fetchPosts();
       this.setState({
         posts: this.props.posts
       });
@@ -27462,8 +27488,6 @@ var PostIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      // console.log('inside render: ', this.props.fetchPosts);
-      // debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_post_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         id: "post-form-separator-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -27617,7 +27641,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
     _this.toggleComments = _this.toggleComments.bind(_assertThisInitialized(_this));
     _this.updateModal = _this.updateModal.bind(_assertThisInitialized(_this));
     _this.updateBody = _this.updateBody.bind(_assertThisInitialized(_this));
-    _this.renderUser = _this.renderUser.bind(_assertThisInitialized(_this));
+    _this.renderPost = _this.renderPost.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -27684,7 +27708,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       this.setState({
         is_liked: false
       });
-      var userLike = this.state.likes.filter(function (like) {
+      var userLike = Object.values(this.props.likes).filter(function (like) {
         return like.likeable_id === _this2.props.post.id && like.user_id === _this2.props.user.id && like.likeable_type === 'Post';
       })[0];
       this.props.deleteLike(userLike);
@@ -27769,8 +27793,8 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_icons_material_DeleteRounded__WEBPACK_IMPORTED_MODULE_8__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("p", null, "Delete Post")));
     }
   }, {
-    key: "renderUser",
-    value: function renderUser() {
+    key: "renderPost",
+    value: function renderPost() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "post"
       }, this.state.update_modal_hidden ? "" : this.updateModal(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
@@ -27821,7 +27845,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return this.state.user && this.renderUser();
+      return this.state.user && this.renderPost();
     }
   }]);
 

@@ -93,9 +93,12 @@ class CommentIndexItem extends React.Component {
                     <div className="comment-message-contents">
                         <div className="comment-message-header">
                             <div className="comment-header-info">
-                                <div className="comment-message-header-top">
-                                    <p id="comment-user-name">{`${this.props.user.first_name} ${this.props.user.last_name}`}</p>
-                                    <p id="comment-user-pronouns">{`(${this.props.user.pronouns})`}</p>
+                                <div id="comment-message-header-top-container">
+                                    <div className="comment-message-header-top">
+                                        <p id="comment-user-name">{`${this.props.user.first_name} ${this.props.user.last_name}`}</p>
+                                        <p id="comment-user-pronouns">{`(${this.props.user.pronouns})`}</p>
+                                        {true ? <div id="comment-author">Author</div> : ""}
+                                    </div>
                                 </div>
                                 {this.props.current_user.id === this.props.post.user_id ? 
                                 <div className="post-actions" onClick={this.toggleActionModal}>
