@@ -28754,6 +28754,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/comment_actions */ "./frontend/actions/comment_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+
 
 
 var commentsReducer = function commentsReducer() {
@@ -28769,6 +28771,9 @@ var commentsReducer = function commentsReducer() {
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_COMMENT:
       nextState[action.comment.id] = action.comment;
       return nextState;
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__.LOGOUT_USER:
+      return {};
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_COMMENT:
       delete nextState[action.comment.id];
@@ -28848,6 +28853,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _actions_like_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/like_actions */ "./frontend/actions/like_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+
 
 
 var likesReducer = function likesReducer() {
@@ -28857,6 +28864,9 @@ var likesReducer = function likesReducer() {
   var nextState = Object.assign({}, state);
 
   switch (action.type) {
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__.LOGOUT_USER:
+      return {};
+
     case _actions_like_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_LIKES:
       return action.likes;
 

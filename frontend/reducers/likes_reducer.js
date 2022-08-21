@@ -1,10 +1,13 @@
 import { RECEIVE_LIKES, RECEIVE_LIKE, REMOVE_LIKE } from "../actions/like_actions";
+import { LOGOUT_USER } from "../actions/session_actions";
 
 const likesReducer = (state={}, action) => {
     Object.freeze(state);
     let nextState = Object.assign({}, state);
 
     switch (action.type) {
+        case LOGOUT_USER:
+            return {}
         case RECEIVE_LIKES:
             return action.likes;
         case RECEIVE_LIKE:
