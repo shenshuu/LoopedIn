@@ -76,6 +76,7 @@ class CommentIndexItem extends React.Component {
                     <CreateIcon />
                     <p>Edit Comment</p>
                 </div>
+                
                 <div className="delete-post-action" onClick={this.handleDelete}>
                     <DeleteRoundedIcon/>
                     <p>Delete Comment</p>
@@ -97,10 +98,10 @@ class CommentIndexItem extends React.Component {
                                     <div className="comment-message-header-top">
                                         <p id="comment-user-name">{`${this.props.user.first_name} ${this.props.user.last_name}`}</p>
                                         <p id="comment-user-pronouns">{`(${this.props.user.pronouns})`}</p>
-                                        {true ? <div id="comment-author">Author</div> : ""}
+                                        {this.props.user.id === this.props.post.user_id ? <div id="comment-author">Author</div> : ""}
                                     </div>
                                 </div>
-                                {this.props.current_user.id === this.props.post.user_id ? 
+                                {this.props.current_user.id === this.props.comment.user_id ? 
                                 <div className="post-actions" onClick={this.toggleActionModal}>
                                     <MoreHorizRoundedIcon />
                                 </div> : ""

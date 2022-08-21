@@ -26792,9 +26792,9 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
         id: "comment-user-name"
       }, "".concat(this.props.user.first_name, " ").concat(this.props.user.last_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
         id: "comment-user-pronouns"
-      }, "(".concat(this.props.user.pronouns, ")")),  true ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      }, "(".concat(this.props.user.pronouns, ")")), this.props.user.id === this.props.post.user_id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         id: "comment-author"
-      }, "Author") : 0)), this.props.current_user.id === this.props.post.user_id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      }, "Author") : "")), this.props.current_user.id === this.props.comment.user_id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "post-actions",
         onClick: this.toggleActionModal
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_MoreHorizRounded__WEBPACK_IMPORTED_MODULE_4__["default"], null)) : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
