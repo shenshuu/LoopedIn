@@ -76,14 +76,13 @@ class PostIndexItem extends React.Component {
     handleCreateLike() {
         this.setState({is_liked: true});
         this.props.createLike({
-            user_id: this.state.user.id,
-            likeable_id: this.state.post.id,
+            user_id: this.props.user.id,
+            likeable_id: this.props.post.id,
             likeable_type: 'Post',
             }
         );
     }
 
-    // need id for delete like 
     handleDeleteLike() {
         this.setState({is_liked: false});
         let userLike = this.state.likes.filter(
@@ -128,8 +127,11 @@ class PostIndexItem extends React.Component {
             this.setState({comments: Object.values(this.props.comments).filter(
                 (comment) => comment.post_id === this.props.post.id) });
         } else if (!equal(this.props.likes, prevProps.likes)) {
-            this.setState({likes: Object.values(this.props.likes).filter(
-                (like) => like.likeable_id === this.props.post.id) });
+            this.setState({
+                likes: Object.values(this.props.likes).filter(
+                (like) => like.likeable_id === this.props.post.id), 
+                is_liked: Object.values(this.props.likes).filter( like => this.props.user.id === like.user_id && this.props.post.id === like.likeable_id && like.likeable_type === 'Post').length > 0
+            });
         }
     }
 

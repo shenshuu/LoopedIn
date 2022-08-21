@@ -27671,12 +27671,11 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
         is_liked: true
       });
       this.props.createLike({
-        user_id: this.state.user.id,
-        likeable_id: this.state.post.id,
+        user_id: this.props.user.id,
+        likeable_id: this.props.post.id,
         likeable_type: 'Post'
       });
-    } // need id for delete like 
-
+    }
   }, {
     key: "handleDeleteLike",
     value: function handleDeleteLike() {
@@ -27749,7 +27748,10 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
         this.setState({
           likes: Object.values(this.props.likes).filter(function (like) {
             return like.likeable_id === _this3.props.post.id;
-          })
+          }),
+          is_liked: Object.values(this.props.likes).filter(function (like) {
+            return _this3.props.user.id === like.user_id && _this3.props.post.id === like.likeable_id && like.likeable_type === 'Post';
+          }).length > 0
         });
       }
     }
