@@ -91,28 +91,37 @@ class CommentIndexItem extends React.Component {
                 {this.state.action_modal_hidden ? "" : this.actionModal()}
                 <div className="comment-contents">
                     <div className="profile-pic"><AccountCircle /></div>
-                    <div className="comment-message-contents">
-                        <div className="comment-message-header">
-                            <div className="comment-header-info">
-                                <div id="comment-message-header-top-container">
-                                    <div className="comment-message-header-top">
-                                        <p id="comment-user-name">{`${this.props.user.first_name} ${this.props.user.last_name}`}</p>
-                                        <p id="comment-user-pronouns">{`(${this.props.user.pronouns})`}</p>
-                                        {this.props.user.id === this.props.post.user_id ? <div id="comment-author">Author</div> : ""}
+                    <div className="comment-container-a">
+                        <div className="comment-message-contents">
+                            <div className="comment-message-header">
+                                <div className="comment-header-info">
+                                    <div id="comment-message-header-top-container">
+                                        <div className="comment-message-header-top">
+                                            <p id="comment-user-name">{`${this.props.user.first_name} ${this.props.user.last_name}`}</p>
+                                            <p id="comment-user-pronouns">{`(${this.props.user.pronouns})`}</p>
+                                            {this.props.user.id === this.props.post.user_id ? <div id="comment-author">Author</div> : ""}
+                                        </div>
                                     </div>
+                                    {this.props.current_user.id === this.props.comment.user_id ? 
+                                    <div className="post-actions" onClick={this.toggleActionModal}>
+                                        <MoreHorizRoundedIcon />
+                                    </div> : ""
+                                    }
                                 </div>
-                                {this.props.current_user.id === this.props.comment.user_id ? 
-                                <div className="post-actions" onClick={this.toggleActionModal}>
-                                    <MoreHorizRoundedIcon />
-                                </div> : ""
-                                }
+                                <div className="comment-message-header-bottom">
+                                    <p id="comment-user-headline">{`${this.props.user.headline}`}</p>
+                                </div>
                             </div>
-                            <div className="comment-message-header-bottom">
-                                <p id="comment-user-headline">{`${this.props.user.headline}`}</p>
+                            <div className="comment-message">
+                                {this.state.update_modal_hidden ? this.props.comment.body : this.updateModal()}
                             </div>
                         </div>
-                        <div className="comment-message">
-                            {this.state.update_modal_hidden ? this.props.comment.body : this.updateModal()}
+                        <div className="comment-responses">
+                            <div className="comment-like">
+                                <p id="comment-like">Like</p>
+                            </div>
+                            <div className="comment-response-separator">|</div>
+                            <div className="comment-reply">Reply</div>
                         </div>
                     </div>
                 </div>

@@ -26779,6 +26779,8 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "profile-pic"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_AccountCircle__WEBPACK_IMPORTED_MODULE_3__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "comment-container-a"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "comment-message-contents"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "comment-message-header"
@@ -26803,7 +26805,17 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
         id: "comment-user-headline"
       }, "".concat(this.props.user.headline)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "comment-message"
-      }, this.state.update_modal_hidden ? this.props.comment.body : this.updateModal()))));
+      }, this.state.update_modal_hidden ? this.props.comment.body : this.updateModal())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "comment-responses"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "comment-like"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+        id: "comment-like"
+      }, "Like")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "comment-response-separator"
+      }, "|"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "comment-reply"
+      }, "Reply")))));
     }
   }]);
 
