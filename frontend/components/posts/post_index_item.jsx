@@ -8,6 +8,7 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import CreateIcon from '@mui/icons-material/Create';
 import CommentFormContainer from '../comments/comment_form_container';
 import CommentIndexContainer from '../comments/comment_index_container';
+import equal from 'fast-deep-equal';
 import React from 'react';
 
 class PostIndexItem extends React.Component {
@@ -16,6 +17,8 @@ class PostIndexItem extends React.Component {
         this.state = {
             user: this.props.user,
             post: this.props.post,
+            comments: [],
+            likes: [],
             display_comments: false,
             action_modal_hidden: true,
             update_modal_hidden: true,
@@ -92,6 +95,22 @@ class PostIndexItem extends React.Component {
         this.setState({display_comments: !this.state.display_comments})
     }
 
+    componentDidMount() {
+        console.log('inside componentDidMount');
+        // debugger;
+        this.props.fetchComments();
+        this.props.fetchLikes();
+    }
+
+    componentDidUpdate(prevProps) {
+        console.log('inside componentDidUpdate');
+        // debugger;
+        if (!equal(this.props.comments, prevProps.comments)) {
+            this.setState({comments: Object.values(this.props.comments).filter(
+                (comment) => comment.post_id === this.props.post.id) });
+        }
+    }
+
     actionModal() {
         return (
             <div className="post-actions-modal">
@@ -131,7 +150,7 @@ class PostIndexItem extends React.Component {
                 </div>
                 <div className="likes-comments-info">
                     <p className="likes-count">0 likes</p>
-                    <p className="comments-count">0 comments</p>
+                    <p className="comments-count" onClick={this.toggleComments}>{this.state.comments.length} comments</p>
                 </div>
                 <div className="post-btn-divider"></div>
                 <div className="post-btn-container">

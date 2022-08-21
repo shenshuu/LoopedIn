@@ -27537,18 +27537,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _mui_icons_material_ThumbUpOffAlt__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @mui/icons-material/ThumbUpOffAlt */ "./node_modules/@mui/icons-material/ThumbUpOffAlt.js");
-/* harmony import */ var _mui_icons_material_MessageRounded__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @mui/icons-material/MessageRounded */ "./node_modules/@mui/icons-material/MessageRounded.js");
-/* harmony import */ var _mui_icons_material_MoreHorizRounded__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/icons-material/MoreHorizRounded */ "./node_modules/@mui/icons-material/MoreHorizRounded.js");
-/* harmony import */ var _mui_icons_material_DeleteRounded__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/icons-material/DeleteRounded */ "./node_modules/@mui/icons-material/DeleteRounded.js");
-/* harmony import */ var _mui_icons_material_AccountCircle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/icons-material/AccountCircle */ "./node_modules/@mui/icons-material/AccountCircle.js");
-/* harmony import */ var _mui_icons_material_InsertPhoto__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/icons-material/InsertPhoto */ "./node_modules/@mui/icons-material/InsertPhoto.js");
-/* harmony import */ var _mui_icons_material_CloseRounded__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/icons-material/CloseRounded */ "./node_modules/@mui/icons-material/CloseRounded.js");
-/* harmony import */ var _mui_icons_material_Create__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/icons-material/Create */ "./node_modules/@mui/icons-material/Create.js");
+/* harmony import */ var _mui_icons_material_ThumbUpOffAlt__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @mui/icons-material/ThumbUpOffAlt */ "./node_modules/@mui/icons-material/ThumbUpOffAlt.js");
+/* harmony import */ var _mui_icons_material_MessageRounded__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @mui/icons-material/MessageRounded */ "./node_modules/@mui/icons-material/MessageRounded.js");
+/* harmony import */ var _mui_icons_material_MoreHorizRounded__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @mui/icons-material/MoreHorizRounded */ "./node_modules/@mui/icons-material/MoreHorizRounded.js");
+/* harmony import */ var _mui_icons_material_DeleteRounded__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/icons-material/DeleteRounded */ "./node_modules/@mui/icons-material/DeleteRounded.js");
+/* harmony import */ var _mui_icons_material_AccountCircle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/icons-material/AccountCircle */ "./node_modules/@mui/icons-material/AccountCircle.js");
+/* harmony import */ var _mui_icons_material_InsertPhoto__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/icons-material/InsertPhoto */ "./node_modules/@mui/icons-material/InsertPhoto.js");
+/* harmony import */ var _mui_icons_material_CloseRounded__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/icons-material/CloseRounded */ "./node_modules/@mui/icons-material/CloseRounded.js");
+/* harmony import */ var _mui_icons_material_Create__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/icons-material/Create */ "./node_modules/@mui/icons-material/Create.js");
 /* harmony import */ var _comments_comment_form_container__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../comments/comment_form_container */ "./frontend/components/comments/comment_form_container.jsx");
 /* harmony import */ var _comments_comment_index_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../comments/comment_index_container */ "./frontend/components/comments/comment_index_container.jsx");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var fast_deep_equal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! fast-deep-equal */ "./node_modules/fast-deep-equal/index.js");
+/* harmony import */ var fast_deep_equal__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(fast_deep_equal__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27583,6 +27585,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var PostIndexItem = /*#__PURE__*/function (_React$Component) {
   _inherits(PostIndexItem, _React$Component);
 
@@ -27597,6 +27600,8 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       user: _this.props.user,
       post: _this.props.post,
+      comments: [],
+      likes: [],
       display_comments: false,
       action_modal_hidden: true,
       update_modal_hidden: true
@@ -27627,31 +27632,31 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "updateModal",
     value: function updateModal() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "create-post-modal"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "create-post-modal-header"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("h2", null, "Edit post"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("h2", null, "Edit post"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "close-create-post-modal",
         onClick: this.toggleUpdateModal
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_icons_material_CloseRounded__WEBPACK_IMPORTED_MODULE_3__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_icons_material_CloseRounded__WEBPACK_IMPORTED_MODULE_4__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "create-post-modal-header-divider"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("form", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("form", {
         className: "create-post-form",
         onSubmit: this.handleUpdate
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "create-post-user-info"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_icons_material_AccountCircle__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_icons_material_AccountCircle__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "create-post-user-header"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("h3", null, "".concat(this.state.user.first_name, " ").concat(this.state.user.last_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, "Professional Tester"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("h3", null, "".concat(this.state.user.first_name, " ").concat(this.state.user.last_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("p", null, "Professional Tester"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("input", {
         type: "text",
         required: true,
         placeholder: "What do you want to talk about?",
         onChange: this.updateBody,
         value: this.state.post.body
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "create-post-modal-footer"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_icons_material_InsertPhoto__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("button", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_icons_material_InsertPhoto__WEBPACK_IMPORTED_MODULE_6__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("button", {
         type: "submit",
         className: "create-post-btn"
       }, "Save"))));
@@ -27695,63 +27700,87 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      console.log('inside componentDidMount'); // debugger;
+
+      this.props.fetchComments();
+      this.props.fetchLikes();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      var _this2 = this;
+
+      console.log('inside componentDidUpdate'); // debugger;
+
+      if (!fast_deep_equal__WEBPACK_IMPORTED_MODULE_2___default()(this.props.comments, prevProps.comments)) {
+        this.setState({
+          comments: Object.values(this.props.comments).filter(function (comment) {
+            return comment.post_id === _this2.props.post.id;
+          })
+        });
+      }
+    }
+  }, {
     key: "actionModal",
     value: function actionModal() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "post-actions-modal"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "edit-post-action",
         onClick: this.toggleUpdateModal
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_icons_material_Create__WEBPACK_IMPORTED_MODULE_6__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, "Edit Post")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_icons_material_Create__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("p", null, "Edit Post")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "delete-post-action",
         onClick: this.handleDelete
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_icons_material_DeleteRounded__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, "Delete Post")));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_icons_material_DeleteRounded__WEBPACK_IMPORTED_MODULE_8__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("p", null, "Delete Post")));
     }
   }, {
     key: "renderUser",
     value: function renderUser() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "post"
-      }, this.state.update_modal_hidden ? "" : this.updateModal(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      }, this.state.update_modal_hidden ? "" : this.updateModal(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "post-top"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "post-header"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_icons_material_AccountCircle__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_icons_material_AccountCircle__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "post-header-info"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         id: "poster-info"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("p", {
         id: "poster-name"
-      }, "".concat(this.props.user.first_name, " ").concat(this.props.user.last_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
+      }, "".concat(this.props.user.first_name, " ").concat(this.props.user.last_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("p", {
         id: "poster-pronouns"
-      }, "(".concat(this.props.user.pronouns, ")"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
+      }, "(".concat(this.props.user.pronouns, ")"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("p", {
         id: "poster-profession"
-      }, "".concat(this.props.user.headline)))), this.props.post.user_id === this.props.current_user.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      }, "".concat(this.props.user.headline)))), this.props.post.user_id === this.props.current_user.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "post-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_icons_material_MoreHorizRounded__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_icons_material_MoreHorizRounded__WEBPACK_IMPORTED_MODULE_9__["default"], {
         onClick: this.openActionModal
-      })) : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      })) : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "post-body"
-      }, this.props.post.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      }, this.props.post.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "likes-comments-info"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("p", {
         className: "likes-count"
-      }, "0 likes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
-        className: "comments-count"
-      }, "0 comments")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      }, "0 likes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("p", {
+        className: "comments-count",
+        onClick: this.toggleComments
+      }, this.state.comments.length, " comments")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "post-btn-divider"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "post-btn-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "post-btn"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_icons_material_ThumbUpOffAlt__WEBPACK_IMPORTED_MODULE_9__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, "Like")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_icons_material_ThumbUpOffAlt__WEBPACK_IMPORTED_MODULE_10__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("p", null, "Like")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "post-btn",
         onClick: this.toggleComments
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_icons_material_MessageRounded__WEBPACK_IMPORTED_MODULE_10__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, "Comment"))), this.state.display_comments ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_icons_material_MessageRounded__WEBPACK_IMPORTED_MODULE_11__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("p", null, "Comment"))), this.state.display_comments ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "comment-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_comments_comment_form_container__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_comments_comment_form_container__WEBPACK_IMPORTED_MODULE_0__["default"], {
         post: this.props.post
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_comments_comment_index_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_comments_comment_index_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
         post: this.props.post
       })) : "", this.state.action_modal_hidden ? "" : this.actionModal());
     }
@@ -27764,7 +27793,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return PostIndexItem;
-}((react__WEBPACK_IMPORTED_MODULE_2___default().Component));
+}((react__WEBPACK_IMPORTED_MODULE_3___default().Component));
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PostIndexItem);
 
@@ -27784,6 +27813,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _post_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./post_index_item */ "./frontend/components/posts/post_index_item.jsx");
 /* harmony import */ var _actions_post_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/post_actions */ "./frontend/actions/post_actions.js");
+/* harmony import */ var _actions_like_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/like_actions */ "./frontend/actions/like_actions.js");
+/* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/comment_actions */ "./frontend/actions/comment_actions.js");
+
+
 
 
 
@@ -27804,6 +27837,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     deletePost: function deletePost(post) {
       return dispatch((0,_actions_post_actions__WEBPACK_IMPORTED_MODULE_2__.deletePost)(post));
+    },
+    fetchComments: function fetchComments() {
+      return dispatch((0,_actions_comment_actions__WEBPACK_IMPORTED_MODULE_4__.fetchComments)());
+    },
+    fetchLikes: function fetchLikes() {
+      return dispatch((0,_actions_like_actions__WEBPACK_IMPORTED_MODULE_3__.fetchLikes)());
     }
   };
 };
