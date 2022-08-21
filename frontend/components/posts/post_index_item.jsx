@@ -173,12 +173,12 @@ class PostIndexItem extends React.Component {
                     {this.props.post.body} 
                 </div>
                 <div className="likes-comments-info">
-                    <p className="likes-count">{this.state.likes.length} likes</p>
+                    <p className={this.state.is_liked ? "likes-count likes-count-liked" : "likes-count"}>{this.state.likes.length} likes</p>
                     <p className="comments-count" onClick={this.toggleComments}>{this.state.comments.length} comments</p>
                 </div>
                 <div className="post-btn-divider"></div>
                 <div className="post-btn-container">
-                    <div className="post-btn" onClick={this.state.is_liked ? this.handleDeleteLike : this.handleCreateLike}>
+                    <div className={this.state.is_liked ? "post-btn post-btn-liked" : "post-btn"} onClick={this.state.is_liked ? this.handleDeleteLike : this.handleCreateLike}>
                         <ThumbUpOffAltIcon />
                         <p>Like</p>
                     </div>

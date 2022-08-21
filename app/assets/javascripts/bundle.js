@@ -27796,7 +27796,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       }, this.props.post.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "likes-comments-info"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("p", {
-        className: "likes-count"
+        className: this.state.is_liked ? "likes-count likes-count-liked" : "likes-count"
       }, this.state.likes.length, " likes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("p", {
         className: "comments-count",
         onClick: this.toggleComments
@@ -27805,7 +27805,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "post-btn-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
-        className: "post-btn",
+        className: this.state.is_liked ? "post-btn post-btn-liked" : "post-btn",
         onClick: this.state.is_liked ? this.handleDeleteLike : this.handleCreateLike
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_icons_material_ThumbUpOffAlt__WEBPACK_IMPORTED_MODULE_10__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("p", null, "Like")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "post-btn",

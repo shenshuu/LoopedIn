@@ -117,6 +117,14 @@
     margin-left: 6px;
 }
 
+.post-btn-liked {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    color: #0b66c2;
+}
+
 .post-btn-divider {
     border-top: 1px solid lightgray;
     width: 100%;
@@ -333,4 +341,12 @@
     color: rgba(0, 0, 0, 0.67);
     text-decoration: underline;
     cursor: pointer;
+}
+
+.likes-count-liked {
+    color: #0b66c2;
+}
+
+.likes-count-liked:hover {
+    color: #0b66c2;
 }
