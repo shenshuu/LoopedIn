@@ -26925,10 +26925,9 @@ var Feed = /*#__PURE__*/function (_React$Component) {
   _createClass(Feed, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchUsers();
-      this.props.fetchComments();
-      this.props.fetchPosts();
-      this.props.fetchLikes();
+      this.props.fetchUsers(); // this.props.fetchComments();
+
+      this.props.fetchPosts(); // this.props.fetchLikes();
     }
   }, {
     key: "componentDidUpdate",
@@ -26937,23 +26936,16 @@ var Feed = /*#__PURE__*/function (_React$Component) {
         this.setState({
           user: this.props.user
         });
-      } else if (!fast_deep_equal__WEBPACK_IMPORTED_MODULE_4___default()(this.props.likes, prevProps.likes)) {
-        this.setState({
-          likes: this.props.likes
-        });
-      } else if (!fast_deep_equal__WEBPACK_IMPORTED_MODULE_4___default()(this.props.posts, prevProps.posts)) {
-        this.setState({
-          posts: this.props.posts
-        });
-      } else if (!fast_deep_equal__WEBPACK_IMPORTED_MODULE_4___default()(this.props.comments, prevProps.comments)) {
-        this.setState({
-          comments: this.props.comments
-        });
-      } else if (!fast_deep_equal__WEBPACK_IMPORTED_MODULE_4___default()(this.props.users, prevProps.users)) {
-        this.setState({
-          users: this.props.users
-        });
-      }
+      } // } else if (!equal(this.props.likes, prevProps.likes)) {
+      //     this.setState({likes: this.props.likes});
+      // } else if (!equal(this.props.posts, prevProps.posts)) {
+      //     this.setState({posts: this.props.posts});
+      // } else if (!equal(this.props.comments, prevProps.comments)) {
+      //     this.setState({comments: this.props.comments});
+      // } else if (!equal(this.props.users, prevProps.users)) {
+      //     this.setState({users: this.props.users});
+      // }
+
     }
   }, {
     key: "renderFeed",
@@ -27476,15 +27468,11 @@ var PostIndex = /*#__PURE__*/function (_React$Component) {
           posts: this.props.posts
         });
       }
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.fetchPosts();
-      this.setState({
-        posts: this.props.posts
-      });
-    }
+    } // componentDidMount() {
+    //     this.props.fetchPosts();
+    //     this.setState({posts: this.props.posts});
+    // }
+
   }, {
     key: "render",
     value: function render() {
@@ -27687,7 +27675,22 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
         type: "submit",
         className: "create-post-btn"
       }, "Save"))));
-    }
+    } // handleLike() {
+    //     let likes = Object.values(this.props.likes).filter(
+    //         (like) => like.likeable_id === this.props.post.id && like.user_id === this.props.current_user.id && like.likeable_type === 'Post'
+    //     );
+    //     if (likes.length > 0) {
+    //         this.props.deleteLike(likes[0]);
+    //     } else {
+    //         this.props.createLike({
+    //             user_id: this.props.user.id,
+    //             likeable_id: this.props.post.id,
+    //             likeable_type: 'Post',
+    //             }
+    //         );
+    //     }
+    // }
+
   }, {
     key: "handleCreateLike",
     value: function handleCreateLike() {
@@ -27695,7 +27698,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
         is_liked: true
       });
       this.props.createLike({
-        user_id: this.props.user.id,
+        user_id: this.props.current_user.id,
         likeable_id: this.props.post.id,
         likeable_type: 'Post'
       });
@@ -27709,7 +27712,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
         is_liked: false
       });
       var userLike = Object.values(this.props.likes).filter(function (like) {
-        return like.likeable_id === _this2.props.post.id && like.user_id === _this2.props.user.id && like.likeable_type === 'Post';
+        return like.likeable_id === _this2.props.post.id && like.user_id === _this2.props.current_user.id && like.likeable_type === 'Post';
       })[0];
       this.props.deleteLike(userLike);
     }
@@ -27759,7 +27762,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps) {
+    value: function componentDidUpdate(prevProps, prevState) {
       var _this3 = this;
 
       if (!fast_deep_equal__WEBPACK_IMPORTED_MODULE_2___default()(this.props.comments, prevProps.comments)) {
@@ -27774,8 +27777,21 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
             return like.likeable_id === _this3.props.post.id;
           }),
           is_liked: Object.values(this.props.likes).filter(function (like) {
-            return _this3.props.user.id === like.user_id && _this3.props.post.id === like.likeable_id && like.likeable_type === 'Post';
+            return _this3.props.current_user.id === like.user_id && _this3.props.post.id === like.likeable_id && like.likeable_type === 'Post';
           }).length > 0
+        });
+      } else if (!fast_deep_equal__WEBPACK_IMPORTED_MODULE_2___default()(this.state.comments, prevState.comments)) {
+        this.setState({
+          comments: this.state.comments
+        });
+      } else if (!fast_deep_equal__WEBPACK_IMPORTED_MODULE_2___default()(this.state.likes, prevState.likes)) {
+        this.setState({
+          likes: this.state.likes
+        });
+      } else if (!fast_deep_equal__WEBPACK_IMPORTED_MODULE_2___default()(this.props.current_user, prevProps.current_user)) {
+        this.setState({
+          comments: [],
+          likes: []
         });
       }
     }
@@ -28143,9 +28159,6 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         placeholder: "Password"
       }), this.props.formType === 'Sign up' ? this.signupFields() : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
         type: "submit",
-        onClick: function onClick() {
-          document.getElementsByClassName('form-body').style.background_color = "#f3f2ef";
-        },
         className: "submit"
       }, this.props.formType), this.props.formType === 'Sign in' ? this.demoLogin() : ""))));
     }

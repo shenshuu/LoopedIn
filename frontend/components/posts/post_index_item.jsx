@@ -73,10 +73,26 @@ class PostIndexItem extends React.Component {
         )
     }
 
+    // handleLike() {
+    //     let likes = Object.values(this.props.likes).filter(
+    //         (like) => like.likeable_id === this.props.post.id && like.user_id === this.props.current_user.id && like.likeable_type === 'Post'
+    //     );
+    //     if (likes.length > 0) {
+    //         this.props.deleteLike(likes[0]);
+    //     } else {
+    //         this.props.createLike({
+    //             user_id: this.props.user.id,
+    //             likeable_id: this.props.post.id,
+    //             likeable_type: 'Post',
+    //             }
+    //         );
+    //     }
+    // }
+
     handleCreateLike() {
         this.setState({is_liked: true});
         this.props.createLike({
-            user_id: this.props.user.id,
+            user_id: this.props.current_user.id,
             likeable_id: this.props.post.id,
             likeable_type: 'Post',
             }
@@ -86,7 +102,7 @@ class PostIndexItem extends React.Component {
     handleDeleteLike() {
         this.setState({is_liked: false});
         let userLike = Object.values(this.props.likes).filter(
-            (like) => like.likeable_id === this.props.post.id && like.user_id === this.props.user.id && like.likeable_type === 'Post'
+            (like) => like.likeable_id === this.props.post.id && like.user_id === this.props.current_user.id && like.likeable_type === 'Post'
         )[0]
         this.props.deleteLike(userLike);
     }
@@ -121,7 +137,7 @@ class PostIndexItem extends React.Component {
         this.props.fetchLikes();
     }
 
-    componentDidUpdate(prevProps) {
+    componentDidUpdate(prevProps, prevState) {
         
         if (!equal(this.props.comments, prevProps.comments)) {
             this.setState({comments: Object.values(this.props.comments).filter(
@@ -130,8 +146,14 @@ class PostIndexItem extends React.Component {
             this.setState({
                 likes: Object.values(this.props.likes).filter(
                 (like) => like.likeable_id === this.props.post.id), 
-                is_liked: Object.values(this.props.likes).filter( like => this.props.user.id === like.user_id && this.props.post.id === like.likeable_id && like.likeable_type === 'Post').length > 0
+                is_liked: Object.values(this.props.likes).filter( like => this.props.current_user.id === like.user_id && this.props.post.id === like.likeable_id && like.likeable_type === 'Post').length > 0
             });
+        } else if (!equal(this.state.comments, prevState.comments)) {
+            this.setState({comments: this.state.comments});
+        } else if (!equal(this.state.likes, prevState.likes)) {
+            this.setState({likes: this.state.likes});
+        } else if (!equal(this.props.current_user, prevProps.current_user)) {
+            this.setState({comments: [], likes: []});
         }
     }
 

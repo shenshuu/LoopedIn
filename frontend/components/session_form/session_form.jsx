@@ -95,11 +95,7 @@ class SessionForm extends React.Component {
                         />
 
                         {this.props.formType === 'Sign up' ? this.signupFields() : ""}
-                        <button type="submit" onClick={() => {
-                            document.getElementsByClassName('form-body').style.background_color = "#f3f2ef";
-
-                        }}
-                        className="submit">{this.props.formType}</button>
+                        <button type="submit" className="submit">{this.props.formType}</button>
                         {this.props.formType === 'Sign in' ? this.demoLogin() : ""}
                     </form>
                 </div>
