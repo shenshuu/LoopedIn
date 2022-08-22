@@ -26094,6 +26094,81 @@ var deleteComment = function deleteComment(comment) {
 
 /***/ }),
 
+/***/ "./frontend/actions/experience_actions.js":
+/*!************************************************!*\
+  !*** ./frontend/actions/experience_actions.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "RECEIVE_EXPERIENCE": () => (/* binding */ RECEIVE_EXPERIENCE),
+/* harmony export */   "RECEIVE_EXPERIENCES": () => (/* binding */ RECEIVE_EXPERIENCES),
+/* harmony export */   "REMOVE_EXPERIENCE": () => (/* binding */ REMOVE_EXPERIENCE),
+/* harmony export */   "createExperience": () => (/* binding */ createExperience),
+/* harmony export */   "deleteExperience": () => (/* binding */ deleteExperience),
+/* harmony export */   "fetchExperiences": () => (/* binding */ fetchExperiences),
+/* harmony export */   "updateExperience": () => (/* binding */ updateExperience)
+/* harmony export */ });
+/* harmony import */ var _util_experience_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/experience_api_util */ "./frontend/util/experience_api_util.js");
+
+var RECEIVE_EXPERIENCES = "RECEIVE_EXPERIENCES";
+var RECEIVE_EXPERIENCE = "RECEIVE_EXPERIENCE";
+var REMOVE_EXPERIENCE = "REMOVE_EXPERIENCE";
+
+var receiveExperiences = function receiveExperiences(experiences) {
+  return {
+    type: RECEIVE_EXPERIENCES,
+    experiences: experiences
+  };
+};
+
+var receiveExperience = function receiveExperience(experience) {
+  return {
+    type: RECEIVE_EXPERIENCE,
+    experience: experience
+  };
+};
+
+var removeExperience = function removeExperience(experience) {
+  return {
+    type: REMOVE_EXPERIENCE,
+    experience: experience
+  };
+};
+
+var updateExperience = function updateExperience(experience) {
+  return function (dispatch) {
+    return _util_experience_api_util__WEBPACK_IMPORTED_MODULE_0__.updateExperience(experience).then(function (experience) {
+      return dispatch(receiveExperience(experience));
+    });
+  };
+};
+var createExperience = function createExperience(experience) {
+  return function (dispatch) {
+    return _util_experience_api_util__WEBPACK_IMPORTED_MODULE_0__.createExperience(experience).then(function (experience) {
+      return dispatch(receiveExperience(experience));
+    });
+  };
+};
+var deleteExperience = function deleteExperience(experience) {
+  return function (dispatch) {
+    return _util_experience_api_util__WEBPACK_IMPORTED_MODULE_0__.deleteExperience(experience).then(function () {
+      return dispatch(removeExperience(experience));
+    });
+  };
+};
+var fetchExperiences = function fetchExperiences(experiences) {
+  return function (dispatch) {
+    return _util_experience_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchExperiences(experiences).then(function (experiences) {
+      return dispatch(receiveExperiences(experiences));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/like_actions.js":
 /*!******************************************!*\
   !*** ./frontend/actions/like_actions.js ***!
@@ -28913,21 +28988,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _posts_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./posts_reducer */ "./frontend/reducers/posts_reducer.js");
 /* harmony import */ var _comments_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./comments_reducer */ "./frontend/reducers/comments_reducer.js");
 /* harmony import */ var _likes_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./likes_reducer */ "./frontend/reducers/likes_reducer.js");
+/* harmony import */ var _experiences_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./experiences_reducer */ "./frontend/reducers/experiences_reducer.js");
 
 
 
 
 
-var entitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
+
+var entitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_5__.combineReducers)({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_0__["default"],
   posts: _posts_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   comments: _comments_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  likes: _likes_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+  likes: _likes_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  experiences: _experiences_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (entitiesReducer);
 
@@ -28952,6 +29030,47 @@ var errorsReducer = (0,redux__WEBPACK_IMPORTED_MODULE_1__.combineReducers)({
   session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__["default"]
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (errorsReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/experiences_reducer.js":
+/*!**************************************************!*\
+  !*** ./frontend/reducers/experiences_reducer.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_experience_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/experience_actions */ "./frontend/actions/experience_actions.js");
+
+
+var experiencesReducer = function experiencesReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  var nextState = Object.assign({}, state);
+
+  switch (action.type) {
+    case _actions_experience_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_EXPERIENCES:
+      return action.experiences;
+
+    case _actions_experience_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_EXPERIENCE:
+      nextState[action.experience.id] = action.experience;
+      return nextState;
+
+    case _actions_experience_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_EXPERIENCE:
+      delete nextState[action.experience.id];
+      return nextState;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (experiencesReducer);
 
 /***/ }),
 
@@ -29278,6 +29397,59 @@ var deleteComment = function deleteComment(comment) {
     method: 'DELETE',
     data: {
       comment: comment
+    }
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/experience_api_util.js":
+/*!**********************************************!*\
+  !*** ./frontend/util/experience_api_util.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "createExperience": () => (/* binding */ createExperience),
+/* harmony export */   "deleteExperience": () => (/* binding */ deleteExperience),
+/* harmony export */   "fetchExperiences": () => (/* binding */ fetchExperiences),
+/* harmony export */   "updateExperience": () => (/* binding */ updateExperience)
+/* harmony export */ });
+var createExperience = function createExperience(experience) {
+  return $.ajax({
+    url: '/api/experiences',
+    method: 'POST',
+    data: {
+      experience: experience
+    }
+  });
+};
+var deleteExperience = function deleteExperience(experience) {
+  return $.ajax({
+    url: "/api/experiences/".concat(experience.id),
+    method: 'DELETE',
+    data: {
+      experience: experience
+    }
+  });
+};
+var updateExperience = function updateExperience(experience) {
+  return $.ajax({
+    url: "/api/experiences/".concat(experience.id),
+    method: 'PATCH',
+    data: {
+      experience: experience
+    }
+  });
+};
+var fetchExperiences = function fetchExperiences(experiences) {
+  return $.ajax({
+    url: '/api/experiences',
+    method: 'GET',
+    data: {
+      experiences: experiences
     }
   });
 };
@@ -73250,8 +73422,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_post_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/post_actions */ "./frontend/actions/post_actions.js");
 /* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions/comment_actions */ "./frontend/actions/comment_actions.js");
 /* harmony import */ var _actions_like_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./actions/like_actions */ "./frontend/actions/like_actions.js");
-/* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
+/* harmony import */ var _actions_experience_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./actions/experience_actions */ "./frontend/actions/experience_actions.js");
+/* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -73275,6 +73449,10 @@ window.fetchComments = _actions_comment_actions__WEBPACK_IMPORTED_MODULE_5__.fet
 window.createLike = _actions_like_actions__WEBPACK_IMPORTED_MODULE_6__.createLike;
 window.deleteLike = _actions_like_actions__WEBPACK_IMPORTED_MODULE_6__.deleteLike;
 window.fetchLikes = _actions_like_actions__WEBPACK_IMPORTED_MODULE_6__.fetchLikes;
+window.createExperience = _actions_experience_actions__WEBPACK_IMPORTED_MODULE_7__.createExperience;
+window.updateExperience = _actions_experience_actions__WEBPACK_IMPORTED_MODULE_7__.updateExperience;
+window.deleteExperience = _actions_experience_actions__WEBPACK_IMPORTED_MODULE_7__.deleteExperience;
+window.fetchExperiences = _actions_experience_actions__WEBPACK_IMPORTED_MODULE_7__.fetchExperiences;
 document.addEventListener('DOMContentLoaded', function () {
   var store;
 
@@ -73295,7 +73473,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   window.store = store;
   var root = document.getElementById('root');
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_root__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_root__WEBPACK_IMPORTED_MODULE_8__["default"], {
     store: store
   }), root);
 });

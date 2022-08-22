@@ -5,7 +5,7 @@ import {login, logout, signup} from './actions/session_actions';
 import {createPost, updatePost, deletePost, fetchPosts} from './actions/post_actions';
 import {createComment, updateComment, deleteComment, fetchComments} from './actions/comment_actions';
 import {createLike, deleteLike, fetchLikes} from './actions/like_actions';
-
+import { createExperience, deleteExperience, updateExperience, fetchExperiences } from './actions/experience_actions';
 import Root from './components/root';
 
 window.login = login;
@@ -22,6 +22,10 @@ window.fetchComments = fetchComments;
 window.createLike = createLike;
 window.deleteLike = deleteLike;
 window.fetchLikes = fetchLikes;
+window.createExperience = createExperience;
+window.updateExperience = updateExperience;
+window.deleteExperience = deleteExperience;
+window.fetchExperiences = fetchExperiences;
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;
