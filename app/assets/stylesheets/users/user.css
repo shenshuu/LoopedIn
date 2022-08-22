@@ -1,0 +1,169 @@
+.user-container {
+    display: grid;
+    grid-template-columns: 750px 300px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    column-gap: 30px;
+    margin-top: 40px;
+}
+
+.user-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-intro {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.user-intro > img {
+    height: 200px;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    object-fit: fill;
+}
+
+.user-intro-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.user-intro-contents {
+    display: flex;
+    flex-direction: column;
+    row-gap: 6px;
+    height: 110px;
+    padding: 10px;
+    margin-top: -6px;
+}
+
+.user-profile-icon {
+    font-size: 1000px;
+}
+
+.user-intro-headline {
+    font-size: 16px;
+}
+
+.user-intro-location {
+    font-size: 14px;
+    color: gray;
+}
+
+.user-intro-name {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    font-size: 24px;
+    font-weight: 500;
+    padding-left: 10px;
+}
+
+.user-intro-actions {
+    display: flex;
+    column-gap: 8px;
+}
+
+#add-profile-section, #user-more-section {
+    padding: 6px 16px;
+    color: white;
+    background-color: #0a66c2;
+    font-weight: 500;
+    border-radius: 30px;
+    border: none;
+}
+
+#user-more-section {
+    color: #0a66c2;
+    background-color: white;
+    border: 1px solid #0a66c2;
+}
+
+#add-profile-section:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+}
+
+#user-more-section:hover {
+    background-color: rgba(11,102,194, 0.2);
+    cursor: pointer;
+}
+
+.user-intro-pronouns {
+    color: gray;
+    font-size: 14px;
+}
+
+.user-connection-count {
+    display: flex;
+    color: #0a66c2;
+    column-gap: 6px;
+    font-size: 14px;
+    padding: 6px 0px;
+    font-weight: 600;
+}
+
+.user-connection-count:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.user-profile-photo {
+    width: 100px;
+    height: 100px;
+    background-color: whitesmoke;
+    /* border: 1px solid lightgray; */
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -70px;
+}
+
+.user-profile-photo > img {
+    width: 60px;
+    height: 60px;
+    margin-top: -10px;
+}
+
+.user-intro-contents-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-education-photo {
+    width: 50px;
+    height: 50px;
+}
+
+.user-intro-education {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    column-gap: 6px;
+    margin-top: -110px;
+    margin-right: 70px;
+}
+
+.school-name {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.other-users {
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    height: 560px;
+}
+
+#user-intro {
+    height: 400px;
+}

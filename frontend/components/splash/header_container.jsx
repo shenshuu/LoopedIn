@@ -4,11 +4,12 @@ import { logout } from "../../actions/session_actions";
 import SplashHeader from "./splash_header";
 
 const mapStateToProps = (state, ownProps) => ({
-    loggedIn: Boolean(state.session.id)
+    user: state.entities.users[state.session.id],
+    loggedIn: Boolean(state.session.id),
 })
 
 const mapDispatchToProps = dispatch => ({
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SplashHeader));

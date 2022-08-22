@@ -56,7 +56,10 @@ class PostForm extends React.Component {
                         </div>
                         <input type="text" required placeholder="What do you want to talk about?" onChange={this.updateBody}/>
                         <div className="create-post-modal-footer">
-                            <InsertPhotoIcon />
+                            <div>
+                                <input type="file" accept="image/png, image/jpeg" />
+                                {/* <InsertPhotoIcon /> */}
+                            </div>
                             <button type="submit" className="create-post-btn">Post</button>
                         </div>
                     </form>

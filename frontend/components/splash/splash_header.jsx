@@ -29,13 +29,13 @@ class SplashHeader extends React.Component {
     signinLinks() {
         return (
             <div className="header-links">
-                <Link to="#">
+                <Link to="/feed">
                     <div id="home-link">
                         <FontAwesomeIcon icon={faHouse} className="fa-header-link"></FontAwesomeIcon>
                         <p>Home</p>
                     </div>
                 </Link>
-                <Link to="#">
+                <Link to={`/users/${this.props.user.id}`}>
                     <div id="network-link">
                         <FontAwesomeIcon icon={faUserGroup} className="fa-header-link"></FontAwesomeIcon>
                         <p>My Network</p>
