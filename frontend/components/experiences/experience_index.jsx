@@ -29,13 +29,28 @@ class ExperienceIndex extends React.Component {
 
     render() {
         return (
-            <div className="experiences-container">
+            <div id="experiences-container">
                 <p className="experiences-title">Experience</p>
                 <ul>
-                    {this.state.experiences.map((exp, i) => {
+                    {Object.values(this.props.experiences).map((exp, i) => {
                         return <ExperienceIndexItem experience={exp} key={exp+i} />
                     })}
                 </ul>
+                <div>Why</div>
+                <div>Why</div>
+                <div>Why</div>
+                <div>Why</div>
+                <div>Why</div>
+                <div>Why</div>
+                <div>Why</div>
+                <div>Why</div>
+                <div>Why</div>
+                <div>Why</div>
+                <div>Why</div>
+                <div>Why</div>
+                <div>Why</div>
+                <div>Why</div>
+                <div>Why</div>
             </div>
         )
     }

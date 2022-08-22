@@ -27152,15 +27152,15 @@ var ExperienceIndex = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
-        className: "experiences-container"
+        id: "experiences-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
         className: "experiences-title"
-      }, "Experience"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("ul", null, this.state.experiences.map(function (exp, i) {
+      }, "Experience"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("ul", null, Object.values(this.props.experiences).map(function (exp, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_experience_index_item_container__WEBPACK_IMPORTED_MODULE_0__["default"], {
           experience: exp,
           key: exp + i
         });
-      })));
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"));
     }
   }]);
 
