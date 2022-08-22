@@ -68,12 +68,12 @@ class User extends React.Component {
                                 </div>
                             </div>
                         </div>
+                        <ExperienceIndexContainer user={this.props.user} />
                     </div>
                     <div className="other-users">
                     Users you may know
                     </div>
                 </div>
-                <ExperienceIndexContainer user={this.props.user} />
             </div>
         )
     }

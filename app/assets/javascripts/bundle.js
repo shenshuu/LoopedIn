@@ -29181,11 +29181,11 @@ var User = /*#__PURE__*/function (_React$Component) {
         alt: "user-education"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", {
         className: "school-name"
-      }, "Hunter College"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
-        className: "other-users"
-      }, "Users you may know")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_experiences_experience_index_container__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      }, "Hunter College")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_experiences_experience_index_container__WEBPACK_IMPORTED_MODULE_0__["default"], {
         user: this.props.user
-      }));
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+        className: "other-users"
+      }, "Users you may know")));
     }
   }]);
 
