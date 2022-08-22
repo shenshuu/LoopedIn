@@ -33,7 +33,10 @@ class CommentIndexItem extends React.Component {
             this.setState({likes: Object.values(this.props.likes).filter(
                 like => like.likeable_id === this.props.comment.id)});
         } else if (!equal(prevState.likes, this.state.likes)) {
-            this.setState({likes: this.state.likes});
+            this.setState({
+                likes: this.state.likes,
+                is_liked: Object.values(this.props.likes).filter( like => this.props.current_user.id === like.user_id && this.props.comment.id === like.likeable_id && like.likeable_type === 'Comment').length > 0
+            });
         }
     } 
 

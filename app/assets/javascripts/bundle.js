@@ -26712,7 +26712,10 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
         });
       } else if (!fast_deep_equal__WEBPACK_IMPORTED_MODULE_1___default()(prevState.likes, this.state.likes)) {
         this.setState({
-          likes: this.state.likes
+          likes: this.state.likes,
+          is_liked: Object.values(this.props.likes).filter(function (like) {
+            return _this2.props.current_user.id === like.user_id && _this2.props.comment.id === like.likeable_id && like.likeable_type === 'Comment';
+          }).length > 0
         });
       }
     }
