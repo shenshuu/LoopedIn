@@ -1,5 +1,6 @@
 import CreateIcon from '@mui/icons-material/Create';
 import AddIcon from '@mui/icons-material/Add';
+import ExperienceIndexContainer from '../experiences/experience_index_container';
 
 import React from 'react';
 
@@ -72,6 +73,7 @@ class User extends React.Component {
                     Users you may know
                     </div>
                 </div>
+                <ExperienceIndexContainer user={this.props.user} />
             </div>
         )
     }
