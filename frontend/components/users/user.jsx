@@ -1,10 +1,36 @@
 import CreateIcon from '@mui/icons-material/Create';
+import AddIcon from '@mui/icons-material/Add';
 
 import React from 'react';
 
 class User extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            action_modal_hidden: true,
+        };
+        this.toggleActionModal = this.toggleActionModal.bind(this);
+        this.actionModal = this.actionModal.bind(this);
+    }
+
+    toggleActionModal() {
+        this.setState({action_modal_hidden: !this.state.action_modal_hidden});
+    }
+
+    actionModal() {
+        return (
+            <div className="profile-action-modal">
+                <div className="profile-action">
+                    <AddIcon />
+                    <p>Add experience</p>
+                </div>
+                <div className="profile-action">
+                    <AddIcon />
+                    <p>Add education</p>
+                </div>
+            </div>
+        )
     }
 
     render() {
@@ -30,9 +56,10 @@ class User extends React.Component {
                                     <div className="user-intro-location">{`${this.props.user.location_city}, ${this.props.user.location_country}`}</div>
                                     <div className="user-connection-count">11 connections</div>
                                     <div className="user-intro-actions">
-                                        <button id="add-profile-section">Add Profile Section</button>
+                                        <button id="add-profile-section" onClick={this.toggleActionModal}>Add Profile Section</button>
                                         <button id="user-more-section">More</button>
                                     </div>
+                                    {this.state.action_modal_hidden ? "" : this.actionModal()}
                                 </div>
                                 <div className="user-intro-education">
                                     <img className="user-education-photo" src="https://i.postimg.cc/pdtrHFTQ/image.png" alt="user-education"/>
