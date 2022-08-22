@@ -1,0 +1,1 @@
+json.extract! experience, :id, :user_id, :company, :title, :start_date, :end_date, :location, :current_job, :employment_type

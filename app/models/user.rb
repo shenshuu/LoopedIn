@@ -39,6 +39,11 @@ class User < ApplicationRecord
         foreign_key: :user_id,
         dependent: :destroy 
 
+    has_many :experiences,
+        class_name: :Experience,
+        foreign_key: :user_id,
+        dependent: :destroy 
+
     def self.find_by_credentials(email, password) 
         user = User.find_by(email: email)
         return nil if user.nil?
