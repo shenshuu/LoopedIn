@@ -38,26 +38,29 @@ class PostForm extends React.Component {
 
     createModal() {
         return (
-            <div className="create-post-modal">
-                <div className="create-post-modal-header">
-                    <h2>Create a post</h2>
-                    <div className="close-create-post-modal" onClick={this.toggleModal}><CloseRoundedIcon /></div>
-                </div>
-                <div className="create-post-modal-header-divider"></div>
-                <form className="create-post-form" onSubmit={this.handleCreate}>
-                    <div className="create-post-user-info">
-                        <AccountCircle />
-                        <div className="create-post-user-header">
-                            <h3>{`${this.state.user.first_name} ${this.state.user.last_name}`}</h3>
-                            <p>Professional Tester</p>
+            <div>
+                <div id="overlay" onClick={this.toggleModal}></div>
+                <div className="create-post-modal">
+                    <div className="create-post-modal-header">
+                        <h2>Create a post</h2>
+                        <div className="close-create-post-modal" onClick={this.toggleModal}><CloseRoundedIcon /></div>
+                    </div>
+                    <div className="create-post-modal-header-divider"></div>
+                    <form className="create-post-form" onSubmit={this.handleCreate}>
+                        <div className="create-post-user-info">
+                            <AccountCircle />
+                            <div className="create-post-user-header">
+                                <h3>{`${this.state.user.first_name} ${this.state.user.last_name}`}</h3>
+                                <p>Professional Tester</p>
+                            </div>
                         </div>
-                    </div>
-                    <input type="text" required placeholder="What do you want to talk about?" onChange={this.updateBody}/>
-                    <div className="create-post-modal-footer">
-                        <InsertPhotoIcon />
-                        <button type="submit" className="create-post-btn">Post</button>
-                    </div>
-                </form>
+                        <input type="text" required placeholder="What do you want to talk about?" onChange={this.updateBody}/>
+                        <div className="create-post-modal-footer">
+                            <InsertPhotoIcon />
+                            <button type="submit" className="create-post-btn">Post</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         )
     }
@@ -89,11 +92,12 @@ class PostForm extends React.Component {
         return (
             <div className="post-form-content">
                 {this.state.modal_hidden ? "" : this.createModal()}
-                <div className="post-form-container">
+                <div className="post-form-container" onClick={this.toggleModal}>
                     <CreateIcon />
                     <form className="post-form">
-                        <input type="text" onClick={this.toggleModal}
-                        placeholder="Have a topic that excites you? Post about it"/>
+                        <p className="post-form-placeholder">Have a topic that excites you? Post about it</p>
+                        {/* <input type="text"
+                        placeholder="Have a topic that excites you? Post about it" readOnly={true}/> */}
                     </form>
                 </div>
                 {this.postOption()}

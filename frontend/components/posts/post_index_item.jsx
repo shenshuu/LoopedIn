@@ -48,27 +48,30 @@ class PostIndexItem extends React.Component {
 
     updateModal() {
         return (
-            <div className="create-post-modal">
-                <div className="create-post-modal-header">
-                    <h2>Edit post</h2>
-                    <div className="close-create-post-modal" onClick={this.toggleUpdateModal}><CloseRoundedIcon /></div>
-                </div>
-                <div className="create-post-modal-header-divider"></div>
-                <form className="create-post-form" onSubmit={this.handleUpdate}>
-                    <div className="create-post-user-info">
-                        <AccountCircle />
-                        <div className="create-post-user-header">
-                            <h3>{`${this.state.user.first_name} ${this.state.user.last_name}`}</h3>
-                            <p>Professional Tester</p>
+            <div>
+                <div id="overlay" onClick={this.toggleUpdateModal}></div>
+                <div className="create-post-modal">
+                    <div className="create-post-modal-header">
+                        <h2>Edit post</h2>
+                        <div className="close-create-post-modal" onClick={this.toggleUpdateModal}><CloseRoundedIcon /></div>
+                    </div>
+                    <div className="create-post-modal-header-divider"></div>
+                    <form className="create-post-form" onSubmit={this.handleUpdate}>
+                        <div className="create-post-user-info">
+                            <AccountCircle />
+                            <div className="create-post-user-header">
+                                <h3>{`${this.state.user.first_name} ${this.state.user.last_name}`}</h3>
+                                <p>Professional Tester</p>
+                            </div>
                         </div>
-                    </div>
-                    <input type="text" required placeholder="What do you want to talk about?" 
-                    onChange={this.updateBody} value={this.state.post.body}/>
-                    <div className="create-post-modal-footer">
-                        <InsertPhotoIcon />
-                        <button type="submit" className="create-post-btn">Save</button>
-                    </div>
-                </form>
+                        <input type="text" required placeholder="What do you want to talk about?" 
+                        onChange={this.updateBody} value={this.state.post.body}/>
+                        <div className="create-post-modal-footer">
+                            <InsertPhotoIcon />
+                            <button type="submit" className="create-post-btn">Save</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         )
     }

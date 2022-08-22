@@ -197,11 +197,40 @@
     background-color: white;
     border: 1px solid lightgray;
     border-radius: 10px;
-    position: absolute;
+    position: fixed;
     width: 520px;
     height: 290px;
-    margin-left: -20px;
-    margin-top: -20px;
+    margin-left: -25px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -90%);
+    z-index: 5;
+}
+
+#overlay {
+    width: 101vw;
+    height: 101vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 4;
+    top: 0;
+    left: 0;
+    position: fixed;
+}
+
+.post-form-container:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.post-form-placeholder {
+    font-size: 14px;
+    font-weight: 500;
+    padding-left: 6px;
+}
+
+.post-form {
+    display: flex;
+    align-items: center;
 }
 
 .create-post-modal-header-divider {

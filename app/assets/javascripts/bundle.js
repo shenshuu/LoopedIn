@@ -27465,7 +27465,10 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "createModal",
     value: function createModal() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        id: "overlay",
+        onClick: this.toggleModal
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "create-post-modal"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "create-post-modal-header"
@@ -27491,7 +27494,7 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_InsertPhoto__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
         type: "submit",
         className: "create-post-btn"
-      }, "Post"))));
+      }, "Post")))));
     }
   }, {
     key: "postOption",
@@ -27522,14 +27525,13 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "post-form-content"
       }, this.state.modal_hidden ? "" : this.createModal(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-        className: "post-form-container"
+        className: "post-form-container",
+        onClick: this.toggleModal
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_Create__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
         className: "post-form"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-        type: "text",
-        onClick: this.toggleModal,
-        placeholder: "Have a topic that excites you? Post about it"
-      }))), this.postOption());
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+        className: "post-form-placeholder"
+      }, "Have a topic that excites you? Post about it"))), this.postOption());
     }
   }]);
 
@@ -27828,7 +27830,10 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "updateModal",
     value: function updateModal() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
+        id: "overlay",
+        onClick: this.toggleUpdateModal
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "create-post-modal"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "create-post-modal-header"
@@ -27855,7 +27860,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_icons_material_InsertPhoto__WEBPACK_IMPORTED_MODULE_6__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("button", {
         type: "submit",
         className: "create-post-btn"
-      }, "Save"))));
+      }, "Save")))));
     } // handleLike() {
     //     let likes = Object.values(this.props.likes).filter(
     //         (like) => like.likeable_id === this.props.post.id && like.user_id === this.props.current_user.id && like.likeable_type === 'Post'
