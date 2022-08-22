@@ -1,4 +1,4 @@
-import { RECEIVE_COMMENTS, RECEIVE_COMMENT, REMOVE_COMMENT } from "../actions/comment_actions";
+import { RECEIVE_COMMENTS, RECEIVE_COMMENT, REMOVE_COMMENTS, REMOVE_COMMENT } from "../actions/comment_actions";
 import { LOGOUT_USER } from "../actions/session_actions";
 
 const commentsReducer = (state={}, action) => {
@@ -12,7 +12,9 @@ const commentsReducer = (state={}, action) => {
             nextState[action.comment.id] = action.comment;
             return nextState;
         case LOGOUT_USER: 
-            return {}
+            return {};
+        case REMOVE_COMMENTS:
+            return {};
         case REMOVE_COMMENT:
             delete nextState[action.comment.id];
             return nextState;

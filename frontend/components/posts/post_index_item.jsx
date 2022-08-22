@@ -129,7 +129,9 @@ class PostIndexItem extends React.Component {
     }
 
     toggleComments() {
-        this.setState({display_comments: !this.state.display_comments})
+        // debugger;
+        this.setState({display_comments: !this.state.display_comments});
+        this.props.deleteLikes();
     }
 
     componentDidMount() {

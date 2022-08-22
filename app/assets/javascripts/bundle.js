@@ -26029,6 +26029,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "RECEIVE_COMMENT": () => (/* binding */ RECEIVE_COMMENT),
 /* harmony export */   "RECEIVE_COMMENTS": () => (/* binding */ RECEIVE_COMMENTS),
 /* harmony export */   "REMOVE_COMMENT": () => (/* binding */ REMOVE_COMMENT),
+/* harmony export */   "REMOVE_COMMENTS": () => (/* binding */ REMOVE_COMMENTS),
 /* harmony export */   "createComment": () => (/* binding */ createComment),
 /* harmony export */   "deleteComment": () => (/* binding */ deleteComment),
 /* harmony export */   "fetchComments": () => (/* binding */ fetchComments),
@@ -26038,6 +26039,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var RECEIVE_COMMENTS = "RECEIVE_COMMENTS";
 var RECEIVE_COMMENT = "RECEIVE_COMMENT";
+var REMOVE_COMMENTS = "REMOVE_COMMENTS";
 var REMOVE_COMMENT = "REMOVE_COMMENT";
 
 var receiveComments = function receiveComments(comments) {
@@ -26104,14 +26106,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "RECEIVE_LIKE": () => (/* binding */ RECEIVE_LIKE),
 /* harmony export */   "RECEIVE_LIKES": () => (/* binding */ RECEIVE_LIKES),
 /* harmony export */   "REMOVE_LIKE": () => (/* binding */ REMOVE_LIKE),
+/* harmony export */   "REMOVE_LIKES": () => (/* binding */ REMOVE_LIKES),
 /* harmony export */   "createLike": () => (/* binding */ createLike),
 /* harmony export */   "deleteLike": () => (/* binding */ deleteLike),
-/* harmony export */   "fetchLikes": () => (/* binding */ fetchLikes)
+/* harmony export */   "deleteLikes": () => (/* binding */ deleteLikes),
+/* harmony export */   "fetchLikes": () => (/* binding */ fetchLikes),
+/* harmony export */   "removeLikes": () => (/* binding */ removeLikes)
 /* harmony export */ });
 /* harmony import */ var _util_like_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/like_api_util */ "./frontend/util/like_api_util.js");
 
 var RECEIVE_LIKES = "RECEIVE_LIKES";
 var RECEIVE_LIKE = "RECEIVE_LIKE";
+var REMOVE_LIKES = "REMOVE_LIKES";
 var REMOVE_LIKE = "REMOVE_LIKE";
 
 var receiveLikes = function receiveLikes(likes) {
@@ -26135,6 +26141,16 @@ var removeLike = function removeLike(like) {
   };
 };
 
+var removeLikes = function removeLikes() {
+  return {
+    type: REMOVE_LIKES
+  };
+};
+var deleteLikes = function deleteLikes() {
+  return function (dispatch) {
+    return dispatch(removeLikes());
+  };
+};
 var createLike = function createLike(like) {
   return function (dispatch) {
     return _util_like_api_util__WEBPACK_IMPORTED_MODULE_0__.createLike(like).then(function (like) {
@@ -26720,6 +26736,11 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
       }
     }
   }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchLikes();
+    }
+  }, {
     key: "updateBody",
     value: function updateBody(e) {
       this.setState({
@@ -26928,6 +26949,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     createLike: function createLike(like) {
       return dispatch((0,_actions_like_actions__WEBPACK_IMPORTED_MODULE_1__.createLike)(like));
+    },
+    fetchLikes: function fetchLikes() {
+      return dispatch((0,_actions_like_actions__WEBPACK_IMPORTED_MODULE_1__.fetchLikes)());
     }
   };
 };
@@ -27832,9 +27856,11 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "toggleComments",
     value: function toggleComments() {
+      // debugger;
       this.setState({
         display_comments: !this.state.display_comments
       });
+      this.props.deleteLikes();
     }
   }, {
     key: "componentDidMount",
@@ -27999,6 +28025,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     deleteLike: function deleteLike(like) {
       return dispatch((0,_actions_like_actions__WEBPACK_IMPORTED_MODULE_3__.deleteLike)(like));
+    },
+    deleteLikes: function deleteLikes() {
+      return dispatch((0,_actions_like_actions__WEBPACK_IMPORTED_MODULE_3__.deleteLikes)());
     },
     fetchComments: function fetchComments() {
       return dispatch((0,_actions_comment_actions__WEBPACK_IMPORTED_MODULE_4__.fetchComments)());
@@ -28857,6 +28886,9 @@ var commentsReducer = function commentsReducer() {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__.LOGOUT_USER:
       return {};
 
+    case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_COMMENTS:
+      return {};
+
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_COMMENT:
       delete nextState[action.comment.id];
       return nextState;
@@ -28955,6 +28987,19 @@ var likesReducer = function likesReducer() {
     case _actions_like_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_LIKE:
       nextState[action.like.id] = action.like;
       return nextState;
+
+    case _actions_like_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_LIKES:
+      // debugger;
+      var postLikes = {};
+      var likes = Object.values(state);
+
+      for (var i = 0; i < likes.length; i++) {
+        if (likes[i].likeable_type === 'Post') {
+          postLikes[likes[i].id] = likes[i];
+        }
+      }
+
+      return postLikes;
 
     case _actions_like_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_LIKE:
       delete nextState[action.like.id];

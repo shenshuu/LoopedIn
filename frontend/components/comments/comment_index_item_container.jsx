@@ -1,5 +1,5 @@
 import { deleteComment, updateComment } from '../../actions/comment_actions';
-import { deleteLike, createLike } from '../../actions/like_actions';
+import { fetchLikes, deleteLike, createLike } from '../../actions/like_actions';
 import CommentIndexItem from './comment_index_item';
 import { connect } from 'react-redux';
 
@@ -14,6 +14,7 @@ const mapDispatchToProps = dispatch => ({
     updateComment: comment => dispatch(updateComment(comment)),
     deleteLike: like => dispatch(deleteLike(like)),
     createLike: like => dispatch(createLike(like)),
+    fetchLikes: () => dispatch(fetchLikes()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentIndexItem);

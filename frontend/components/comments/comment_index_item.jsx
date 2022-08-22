@@ -40,6 +40,10 @@ class CommentIndexItem extends React.Component {
         }
     } 
 
+    componentDidMount() {
+        this.props.fetchLikes();
+    }
+
     updateBody(e) {
         this.setState({
             comment: {
