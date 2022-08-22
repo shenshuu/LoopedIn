@@ -1,13 +1,19 @@
+import {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import CreateIcon from '@mui/icons-material/Create';
+import equal from 'fast-deep-equal';
 import React from 'react';
+
 
 class CommentIndexItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            likes: [],
+            is_liked: false,
             action_modal_hidden: true,
             update_modal_hidden: true,
             comment: this.props.comment,
@@ -19,7 +25,17 @@ class CommentIndexItem extends React.Component {
         this.updateModal = this.updateModal.bind(this);
         this.actionModal = this.actionModal.bind(this);
         this.updateBody = this.updateBody.bind(this);
+        this.handleLike = this.handleLike.bind(this);
     }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (!equal(prevProps.likes, this.props.likes)) {
+            this.setState({likes: Object.values(this.props.likes).filter(
+                like => like.likeable_id === this.props.comment.id)});
+        } else if (!equal(prevState.likes, this.state.likes)) {
+            this.setState({likes: this.state.likes});
+        }
+    } 
 
     updateBody(e) {
         this.setState({
@@ -31,6 +47,23 @@ class CommentIndexItem extends React.Component {
                 body: e.target.value,
             }
         });
+    }
+
+    handleLike() {
+        let likes = Object.values(this.props.likes).filter(
+            like => like.likeable_id === this.props.comment.id && like.likeable_type === 'Comment' && like.user_id === this.props.current_user.id
+        )
+        if (likes.length > 0) {
+            this.setState({is_liked: false});
+            this.props.deleteLike(likes[0]);
+        } else {
+            this.setState({is_liked: true});
+            this.props.createLike({
+                user_id: this.props.current_user.id,
+                likeable_id: this.props.comment.id,
+                likeable_type: 'Comment',
+            })
+        }
     }
 
     handleDelete() {
@@ -117,8 +150,14 @@ class CommentIndexItem extends React.Component {
                             </div>
                         </div>
                         <div className="comment-responses">
-                            <div className="comment-like">
-                                <p id="comment-like">Like</p>
+                            <div className={this.state.is_liked ? "comment-like comment-liked" : "comment-like"}>
+                                <p id="comment-like" onClick={this.handleLike}>Like</p>
+                                
+                                {this.state.likes.length > 0 ? 
+                                <div className="comment-like-contents">
+                                <FontAwesomeIcon className="fa-comment-like" icon={faThumbsUp}></FontAwesomeIcon>
+                                <p>{this.state.likes.length}</p>
+                                </div> : ""}
                             </div>
                             <div className="comment-response-separator">|</div>
                             <div className="comment-reply">Reply</div>

@@ -171,3 +171,19 @@
     cursor: pointer;
     text-decoration: underline;
 }
+
+.comment-like, .comment-like-contents {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+}
+
+.comment-like-contents {
+    display: flex;
+    column-gap: 4px;
+    align-items: center;
+}
+
+.comment-liked {
+    color: #0b66c2;
+}
