@@ -1,6 +1,7 @@
 import CreateIcon from '@mui/icons-material/Create';
 import AddIcon from '@mui/icons-material/Add';
 import ExperienceIndexContainer from '../experiences/experience_index_container';
+import EducationIndexContainer from '../educations/education_index_container';
 import CreateExperienceForm from '../experiences/create_experience_form';
 import React from 'react';
 
@@ -81,7 +82,8 @@ class User extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <ExperienceIndexContainer user={this.props.user} current_user={this.props.current_user}/>
+                        <ExperienceIndexContainer user={this.props.user} current_user={this.props.current_user} />
+                        <EducationIndexContainer user={this.props.user} current_user={this.props.current_user} />
                     </div>
                     <div className="other-users">
                     Users you may know

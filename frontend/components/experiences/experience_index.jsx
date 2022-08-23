@@ -1,4 +1,4 @@
-import ExperienceIndexItem from './experience_index_item_container';
+import ExperienceIndexItemContainer from './experience_index_item_container';
 import CreateExperienceForm from './create_experience_form';
 import CreateIcon from '@mui/icons-material/Create';
 import AddIcon from '@mui/icons-material/Add';
@@ -57,7 +57,7 @@ class ExperienceIndex extends React.Component {
                     <ul>
                         {Object.values(this.props.experiences).map((exp, i) => {
                             if (this.props.user.id === exp.user_id)
-                                return <ExperienceIndexItem experience={exp} key={exp+i} editing={this.state.editing_experience}/>
+                                return <ExperienceIndexItemContainer experience={exp} key={exp+i} editing={this.state.editing_experience}/>
                         })}
                     </ul>
                 </div>

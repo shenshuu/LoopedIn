@@ -226,3 +226,8 @@
     margin-left: -170px;
     margin-top: -10px;
 }
+
+#education-item > #education-photo {
+    display: flex;
+    align-items: flex-end;
+}
