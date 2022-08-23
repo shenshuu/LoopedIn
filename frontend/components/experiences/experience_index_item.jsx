@@ -1,3 +1,4 @@
+import EditExperienceForm from './edit_experience_form';
 import CreateIcon from '@mui/icons-material/Create';
 import React from 'react';
 
@@ -5,6 +6,14 @@ class ExperienceIndexItem extends React.Component {
     constructor(props) {
         super(props);
         this.calculateDate = this.calculateDate.bind(this);
+        this.state = {
+            editing_experience: false,
+        }
+        this.toggleEditing = this.toggleEditing.bind(this);
+    }
+
+    toggleEditing() {
+        this.setState({editing_experience: !this.state.editing_experience});
     }
 
     calculateDate(date) {
@@ -29,28 +38,34 @@ class ExperienceIndexItem extends React.Component {
     render() {
         return (
             <div className="experience-item-container">
-                <div className="experience-item">
-                    <div className="company-photo">
-                        <img src="https://i.postimg.cc/yNSmf9GF/image.png" alt="company-photo" />
-                    </div>
-                    <div className="experience-item-contents">
-                        <div className="experience-item-header">
-                            <p id="company-title">{`${this.props.experience.company}`}</p>
-                            <div className="create-icon-div"><CreateIcon/></div>
+                <EditExperienceForm editing={this.state.editing_experience} 
+                experience={this.props.experience} toggleEditing={() => this.toggleEditing()}
+                updateExperience={this.props.updateExperience}/>
+                <div className="experience-item-container-a">
+                    <div className="experience-item">
+                        <div className="company-photo">
+                            <img src="https://i.postimg.cc/yNSmf9GF/image.png" alt="company-photo" />
                         </div>
-                        <div id="job">
-                            <p id="job-title">{`${this.props.experience.title}`}</p>
-                            <p id="job-separator">.</p>
-                            <p id="employment-type">{`${this.props.experience.employment_type}`}</p>
+                        <div className="experience-item-contents">
+                            <div className="experience-item-header">
+                                <p id="company-title">{`${this.props.experience.company}`}</p>
+                                {/* <div className="create-icon-div"><CreateIcon/></div> */}
+                            </div>
+                            <div id="job">
+                                <p id="job-title">{`${this.props.experience.title}`}</p>
+                                <p id="job-separator">.</p>
+                                <p id="employment-type">{`${this.props.experience.employment_type}`}</p>
+                            </div>
+                            <div id="employment-duration">
+                                {this.calculateDate(this.props.experience.start_date)}
+                                <div id="employment-duration-separator"> - </div>
+                                {Boolean(this.props.experience.end_date) ? this.calculateDate(this.props.experience.end_date) : "Present"}
+                            </div>
+                            <div id="employment-location">
+                                {`${this.props.experience.location}`}
+                            </div>
                         </div>
-                        <div id="employment-duration">
-                            {this.calculateDate(this.props.experience.start_date)}
-                            <div id="employment-duration-separator"> - </div>
-                            {Boolean(this.props.experience.end_date) ? this.calculateDate(this.props.experience.end_date) : "Present"}
-                        </div>
-                        <div id="employment-location">
-                            {`${this.props.experience.location}`}
-                        </div>
+                        {this.props.editing ? <div className="create-icon-div" onClick={this.toggleEditing}><CreateIcon/></div> : ""}
                     </div>
                 </div>
                 <div id="experiences-separator"></div>

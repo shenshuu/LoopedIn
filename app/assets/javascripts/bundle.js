@@ -27131,6 +27131,7 @@ var CreateExperienceForm = /*#__PURE__*/function (_React$Component) {
       current_job: true
     }, _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.update = _this.update.bind(_assertThisInitialized(_this));
+    _this.renderForm = _this.renderForm.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -27159,11 +27160,14 @@ var CreateExperienceForm = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
-    key: "render",
-    value: function render() {
+    key: "renderForm",
+    value: function renderForm() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "create-experience-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        id: "overlay",
+        onClick: this.props.toggleAdding
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "create-experience-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "create-experience-header"
@@ -27171,7 +27175,9 @@ var CreateExperienceForm = /*#__PURE__*/function (_React$Component) {
         className: "create-experience-title"
       }, "Add Experience"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "close"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_CloseRounded__WEBPACK_IMPORTED_MODULE_1__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_CloseRounded__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        onClick: this.props.toggleAdding
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         id: "create-exp-divider"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
         onSubmit: this.handleSubmit
@@ -27187,15 +27193,15 @@ var CreateExperienceForm = /*#__PURE__*/function (_React$Component) {
         type: "text",
         placeholder: "Ex: Retail Sales Manager",
         value: this.state.title,
-        onChange: this.update('title')
+        onChange: this.update('title'),
+        required: true
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "input-field"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
         className: "input-field-name"
       }, "Employment type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
         value: "Please select",
-        onChange: this.update('employment_type'),
-        required: true
+        onChange: this.update('employment_type')
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
         value: "Full-Time"
       }, "Full-Time"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
@@ -27212,7 +27218,8 @@ var CreateExperienceForm = /*#__PURE__*/function (_React$Component) {
         type: "text",
         placeholder: "Ex: Microsoft",
         value: this.state.company,
-        onChange: this.update('company')
+        onChange: this.update('company'),
+        required: true
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "input-field"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
@@ -27229,7 +27236,8 @@ var CreateExperienceForm = /*#__PURE__*/function (_React$Component) {
       }, "Start date*"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
         type: "date",
         value: this.state.start_date,
-        onChange: this.update('start_date')
+        onChange: this.update('start_date'),
+        required: true
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "input-field input-field-date"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
@@ -27245,12 +27253,208 @@ var CreateExperienceForm = /*#__PURE__*/function (_React$Component) {
         type: "submit"
       }, "Save")))));
     }
+  }, {
+    key: "render",
+    value: function render() {
+      return this.props.adding && this.renderForm();
+    }
   }]);
 
   return CreateExperienceForm;
 }((react__WEBPACK_IMPORTED_MODULE_0___default().Component));
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CreateExperienceForm);
+
+/***/ }),
+
+/***/ "./frontend/components/experiences/edit_experience_form.jsx":
+/*!******************************************************************!*\
+  !*** ./frontend/components/experiences/edit_experience_form.jsx ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _mui_icons_material_CloseRounded__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/icons-material/CloseRounded */ "./node_modules/@mui/icons-material/CloseRounded.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var EditExperienceForm = /*#__PURE__*/function (_React$Component) {
+  _inherits(EditExperienceForm, _React$Component);
+
+  var _super = _createSuper(EditExperienceForm);
+
+  function EditExperienceForm(props) {
+    var _this;
+
+    _classCallCheck(this, EditExperienceForm);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      id: _this.props.experience.id,
+      title: _this.props.experience.title,
+      company: _this.props.experience.company,
+      start_date: _this.props.experience.start_date,
+      end_date: _this.props.experience.end_date,
+      location: _this.props.experience.location,
+      employment_type: _this.props.experience.employment_type,
+      current_job: true
+    }, _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.update = _this.update.bind(_assertThisInitialized(_this));
+    _this.renderForm = _this.renderForm.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(EditExperienceForm, [{
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      this.props.updateExperience(this.state);
+    }
+  }, {
+    key: "update",
+    value: function update(field) {
+      var _this2 = this;
+
+      return function (e) {
+        return _this2.setState(_defineProperty({}, field, e.target.value));
+      };
+    }
+  }, {
+    key: "renderForm",
+    value: function renderForm() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "create-experience-form"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        id: "overlay",
+        onClick: this.props.toggleEditing
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "create-experience-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "create-experience-header"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+        className: "create-experience-title"
+      }, "Edit Experience"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "close"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_CloseRounded__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        onClick: this.props.toggleEditing
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        id: "create-exp-divider"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+        onSubmit: this.handleSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        className: "input-field-name",
+        id: "input-field-required"
+      }, "* Indicates required field"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "input-field",
+        id: "first-child"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        className: "input-field-name"
+      }, "Title*"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "text",
+        placeholder: "Ex: Retail Sales Manager",
+        value: this.state.title,
+        onChange: this.update('title'),
+        required: true
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "input-field"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        className: "input-field-name"
+      }, "Employment type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+        value: "Please select",
+        onChange: this.update('employment_type')
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+        value: "Full-Time",
+        "default": true
+      }, "Full-Time"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+        value: "Part-Time"
+      }, "Part-Time"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+        value: "Self-employed"
+      }, "Self-employed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+        value: "Other"
+      }, "Other"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "input-field"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        className: "input-field-name"
+      }, "Company name*"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "text",
+        placeholder: "Ex: Microsoft",
+        value: this.state.company,
+        onChange: this.update('company'),
+        required: true
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "input-field"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        className: "input-field-name"
+      }, "Location"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "text",
+        placeholder: "Ex: New York, United States",
+        value: this.state.location,
+        onChange: this.update('location')
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "input-field input-field-date"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        className: "input-field-name"
+      }, "Start date*"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "date",
+        value: this.state.start_date,
+        onChange: this.update('start_date'),
+        required: true
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "input-field input-field-date"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        className: "input-field-name"
+      }, "End date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "date",
+        value: this.state.end_date,
+        onChange: this.update('end_date')
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "submit-experience"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+        className: "submit-experience-btn",
+        type: "submit"
+      }, "Save")))));
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return this.props.editing && this.renderForm();
+    }
+  }]);
+
+  return EditExperienceForm;
+}((react__WEBPACK_IMPORTED_MODULE_0___default().Component));
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EditExperienceForm);
 
 /***/ }),
 
@@ -27316,8 +27520,12 @@ var ExperienceIndex = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       current_user: _this.props.current_user,
       user: _this.props.user,
-      experiences: []
+      experiences: [],
+      adding_experience: false,
+      editing_experience: false
     };
+    _this.toggleEditing = _this.toggleEditing.bind(_assertThisInitialized(_this));
+    _this.toggleAdding = _this.toggleAdding.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -27340,10 +27548,30 @@ var ExperienceIndex = /*#__PURE__*/function (_React$Component) {
       }
     }
   }, {
+    key: "toggleEditing",
+    value: function toggleEditing() {
+      this.setState({
+        editing_experience: !this.state.editing_experience
+      });
+    }
+  }, {
+    key: "toggleAdding",
+    value: function toggleAdding() {
+      this.setState({
+        adding_experience: !this.state.adding_experience
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_create_experience_form__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        createPost: this.props.createPost
+        createExperience: this.props.createExperience,
+        adding: this.state.adding_experience,
+        toggleAdding: function toggleAdding() {
+          return _this3.toggleAdding();
+        }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         id: "experiences-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
@@ -27353,13 +27581,16 @@ var ExperienceIndex = /*#__PURE__*/function (_React$Component) {
       }, "Experience"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "experience-actions"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_icons_material_Add__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        className: "experience-action"
+        className: "experience-action",
+        onClick: this.toggleAdding
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_icons_material_Create__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        className: "experience-action"
+        className: "experience-action",
+        onClick: this.toggleEditing
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("ul", null, Object.values(this.props.experiences).map(function (exp, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_experience_index_item_container__WEBPACK_IMPORTED_MODULE_0__["default"], {
           experience: exp,
-          key: exp + i
+          key: exp + i,
+          editing: _this3.state.editing_experience
         });
       }))));
     }
@@ -27430,9 +27661,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _mui_icons_material_Create__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/icons-material/Create */ "./node_modules/@mui/icons-material/Create.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _edit_experience_form__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit_experience_form */ "./frontend/components/experiences/edit_experience_form.jsx");
+/* harmony import */ var _mui_icons_material_Create__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/icons-material/Create */ "./node_modules/@mui/icons-material/Create.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27458,6 +27690,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var ExperienceIndexItem = /*#__PURE__*/function (_React$Component) {
   _inherits(ExperienceIndexItem, _React$Component);
 
@@ -27470,15 +27703,26 @@ var ExperienceIndexItem = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.calculateDate = _this.calculateDate.bind(_assertThisInitialized(_this));
+    _this.state = {
+      editing_experience: false
+    };
+    _this.toggleEditing = _this.toggleEditing.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(ExperienceIndexItem, [{
+    key: "toggleEditing",
+    value: function toggleEditing() {
+      this.setState({
+        editing_experience: !this.state.editing_experience
+      });
+    }
+  }, {
     key: "calculateDate",
     value: function calculateDate(date) {
       var newDate = date.split("-");
       var months = [null, 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
         id: "employment-date"
       }, "".concat(months[parseInt(newDate[1])], " ").concat(parseInt(newDate[0])));
     }
@@ -27497,45 +27741,57 @@ var ExperienceIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      var _this2 = this;
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
         className: "experience-item-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_edit_experience_form__WEBPACK_IMPORTED_MODULE_0__["default"], {
+        editing: this.state.editing_experience,
+        experience: this.props.experience,
+        toggleEditing: function toggleEditing() {
+          return _this2.toggleEditing();
+        },
+        updateExperience: this.props.updateExperience
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+        className: "experience-item-container-a"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
         className: "experience-item"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
         className: "company-photo"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("img", {
         src: "https://i.postimg.cc/yNSmf9GF/image.png",
         alt: "company-photo"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
         className: "experience-item-contents"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
         className: "experience-item-header"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", {
         id: "company-title"
-      }, "".concat(this.props.experience.company)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-        className: "create-icon-div"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_Create__WEBPACK_IMPORTED_MODULE_1__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      }, "".concat(this.props.experience.company))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
         id: "job"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", {
         id: "job-title"
-      }, "".concat(this.props.experience.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+      }, "".concat(this.props.experience.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", {
         id: "job-separator"
-      }, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+      }, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", {
         id: "employment-type"
-      }, "".concat(this.props.experience.employment_type))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      }, "".concat(this.props.experience.employment_type))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
         id: "employment-duration"
-      }, this.calculateDate(this.props.experience.start_date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      }, this.calculateDate(this.props.experience.start_date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
         id: "employment-duration-separator"
-      }, " - "), Boolean(this.props.experience.end_date) ? this.calculateDate(this.props.experience.end_date) : "Present"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      }, " - "), Boolean(this.props.experience.end_date) ? this.calculateDate(this.props.experience.end_date) : "Present"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
         id: "employment-location"
-      }, "".concat(this.props.experience.location)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      }, "".concat(this.props.experience.location))), this.props.editing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+        className: "create-icon-div",
+        onClick: this.toggleEditing
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_icons_material_Create__WEBPACK_IMPORTED_MODULE_2__["default"], null)) : "")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
         id: "experiences-separator"
       }));
     }
   }]);
 
   return ExperienceIndexItem;
-}((react__WEBPACK_IMPORTED_MODULE_0___default().Component));
+}((react__WEBPACK_IMPORTED_MODULE_1___default().Component));
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ExperienceIndexItem);
 

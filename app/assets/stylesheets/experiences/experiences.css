@@ -47,13 +47,13 @@
 .experience-item-contents {
     display: flex;
     flex-direction: column;
+    padding-top: 20px;
 }
 
 #company-title {
     font-size: 16px;
     font-weight: 600;
     padding-bottom: 4px;
-    padding-right: 450px;
 }
 
 #employment-type, #job-title, #employment-duration, #employment-location {
@@ -165,7 +165,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    /* transform: translate(50%, 50%); */
+    transform: translate(40%, 10%);
 }
 
 #create-exp-divider {

@@ -13,7 +13,11 @@ class ExperienceIndex extends React.Component {
             current_user: this.props.current_user,
             user: this.props.user,
             experiences: [],
+            adding_experience: false,
+            editing_experience: false,
         }
+        this.toggleEditing = this.toggleEditing.bind(this);
+        this.toggleAdding = this.toggleAdding.bind(this);
     }
 
     componentDidMount() {
@@ -30,21 +34,29 @@ class ExperienceIndex extends React.Component {
         }
     }
 
+    toggleEditing() {
+        this.setState({editing_experience: !this.state.editing_experience});
+    }
+
+    toggleAdding() {
+        this.setState({adding_experience: !this.state.adding_experience});
+    }
+
     render() {
         return (
             <div>
-                <CreateExperienceForm createPost={this.props.createPost} />
+                <CreateExperienceForm createExperience={this.props.createExperience} adding={this.state.adding_experience} toggleAdding={() => this.toggleAdding()}/>
                 <div id="experiences-container">
                     <div id="experiences-header">
                         <p className="experiences-title">Experience</p>
                         <div className="experience-actions">
-                            <AddIcon className="experience-action" />
-                            <CreateIcon className="experience-action" />
+                            <AddIcon className="experience-action" onClick={this.toggleAdding}/>
+                            <CreateIcon className="experience-action" onClick={this.toggleEditing}/>
                         </div>
                     </div>
                     <ul>
                         {Object.values(this.props.experiences).map((exp, i) => {
-                            return <ExperienceIndexItem experience={exp} key={exp+i} />
+                            return <ExperienceIndexItem experience={exp} key={exp+i} editing={this.state.editing_experience}/>
                         })}
                     </ul>
                 </div>
