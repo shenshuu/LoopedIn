@@ -56,8 +56,8 @@ class CreateEducationForm extends React.Component {
                             <input type="text" placeholder="Ex: Hamilton College" value={this.state.school} onChange={this.update('school')} required />
                         </div>
                         <div className="input-field">
-                            <label className="input-field-name">Grade</label>
-                            <input type="text" placeholder="Ex: Bachelor's" value={this.state.grade} onChange={this.update('grade')} required/>
+                            <label className="input-field-name">Degree</label>
+                            <input type="text" placeholder="Ex: Bachelor's" value={this.state.degree} onChange={this.update('degree')} required/>
                         </div>
                         <div className="input-field">
                             <label className="input-field-name">Field of study</label>
@@ -70,6 +70,10 @@ class CreateEducationForm extends React.Component {
                         <div className="input-field input-field-date">
                             <label className="input-field-name">End date*</label>
                             <input type="date" value={this.state.end_date} onChange={this.update('end_date')}/>
+                        </div>
+                        <div className="input-field">
+                            <label className="input-field-name">Grade</label>
+                            <input type="text" placeholder="Ex: 3.7" value={this.state.grade} onChange={this.update('grade')}/>
                         </div>
                         <div className="submit-experience"><button className="submit-experience-btn" type="submit">Save</button></div>
                     </form>

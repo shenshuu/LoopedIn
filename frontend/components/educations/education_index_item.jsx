@@ -96,7 +96,7 @@ class EducationIndexItem extends React.Component {
                             <div id="job">
                                 <p id="job-title">{`${this.props.education.field}`}</p>
                                 <p id="job-separator">.</p>
-                                {/* <p id="employment-type">{`${this.props.experience.employment_type}`}</p> */}
+                                <p id="employment-type">{`${this.props.education.degree}`}</p>
                             </div>
                             <div id="employment-duration">
                                 {this.calculateDate(this.props.education.start_date)}
