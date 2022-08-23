@@ -34,7 +34,7 @@ class ExperienceIndexItem extends React.Component {
                         <p id="company-title">{`${this.props.experience.company}`}</p>
                         <div id="job">
                             <p id="job-title">{`${this.props.experience.title}`}</p>
-                            {/* <p id="job-separator">.</p> */}
+                            <p id="job-separator">.</p>
                             <p id="employment-type">{`${this.props.experience.employment_type}`}</p>
                         </div>
                         <div id="employment-duration">

@@ -27313,6 +27313,8 @@ var ExperienceIndexItem = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
         id: "job-title"
       }, "".concat(this.props.experience.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+        id: "job-separator"
+      }, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
         id: "employment-type"
       }, "".concat(this.props.experience.employment_type))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         id: "employment-duration"

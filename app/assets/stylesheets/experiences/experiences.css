@@ -65,14 +65,14 @@
 #job {
     display: flex;
     padding-bottom: 4px;
-    column-gap: 6px;
+    /* column-gap: 6px; */
 }
 
 #job-separator {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    background-color: red;
+    /* background-color: red; */
+    margin-top: -4px;
+    padding-left: 3px;
+    padding-right: 3px;
 }
 
 #employment-duration {
