@@ -11,3 +11,91 @@
     font-size: 24px;
     font-weight: 500;
 }
+
+#experiences-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.experience-actions {
+    display: flex;
+} 
+
+.experience-action {
+    padding: 8px;
+    border-radius: 50px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.experience-action:hover {
+    background-color: whitesmoke;
+    cursor: pointer;
+}
+
+.company-photo > img {
+    width: 60px;
+    height: 60px;
+}
+
+.experience-item {
+    display: flex;
+    column-gap: 10px;
+}
+
+.experience-item-contents {
+    display: flex;
+    flex-direction: column;
+}
+
+#company-title {
+    font-size: 16px;
+    font-weight: 600;
+    padding-bottom: 4px;
+}
+
+#employment-type, #job-title, #employment-duration, #employment-location {
+    font-size: 14px;
+}
+
+#employment-duration, #employment-location {
+    color: gray;
+    padding-bottom: 4px;
+}
+
+#job {
+    display: flex;
+    padding-bottom: 4px;
+    column-gap: 6px;
+}
+
+#job-separator {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: red;
+}
+
+#employment-duration {
+    display: flex;
+}
+
+#employment-duration-separator {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+#experiences-separator {
+    margin-top: 20px;
+    border: 1px solid lightgray;
+}
+
+.experience-item > p {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.company-photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

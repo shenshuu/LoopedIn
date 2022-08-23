@@ -1,4 +1,6 @@
 import ExperienceIndexItem from './experience_index_item_container';
+import CreateIcon from '@mui/icons-material/Create';
+import AddIcon from '@mui/icons-material/Add';
 import equal from 'fast-deep-equal';
 import React from 'react';
 
@@ -30,27 +32,18 @@ class ExperienceIndex extends React.Component {
     render() {
         return (
             <div id="experiences-container">
-                <p className="experiences-title">Experience</p>
+                <div id="experiences-header">
+                    <p className="experiences-title">Experience</p>
+                    <div className="experience-actions">
+                        <AddIcon className="experience-action" />
+                        <CreateIcon className="experience-action" />
+                    </div>
+                </div>
                 <ul>
                     {Object.values(this.props.experiences).map((exp, i) => {
                         return <ExperienceIndexItem experience={exp} key={exp+i} />
                     })}
                 </ul>
-                <div>Why</div>
-                <div>Why</div>
-                <div>Why</div>
-                <div>Why</div>
-                <div>Why</div>
-                <div>Why</div>
-                <div>Why</div>
-                <div>Why</div>
-                <div>Why</div>
-                <div>Why</div>
-                <div>Why</div>
-                <div>Why</div>
-                <div>Why</div>
-                <div>Why</div>
-                <div>Why</div>
             </div>
         )
     }

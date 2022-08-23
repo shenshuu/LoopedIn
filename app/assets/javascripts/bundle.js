@@ -27081,6 +27081,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _experience_index_item_container__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./experience_index_item_container */ "./frontend/components/experiences/experience_index_item_container.jsx");
+/* harmony import */ var _mui_icons_material_Create__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/icons-material/Create */ "./node_modules/@mui/icons-material/Create.js");
+/* harmony import */ var _mui_icons_material_Add__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/icons-material/Add */ "./node_modules/@mui/icons-material/Add.js");
 /* harmony import */ var fast_deep_equal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! fast-deep-equal */ "./node_modules/fast-deep-equal/index.js");
 /* harmony import */ var fast_deep_equal__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(fast_deep_equal__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -27106,6 +27108,8 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
 
 
 
@@ -27153,14 +27157,22 @@ var ExperienceIndex = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         id: "experiences-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+        id: "experiences-header"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
         className: "experiences-title"
-      }, "Experience"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("ul", null, Object.values(this.props.experiences).map(function (exp, i) {
+      }, "Experience"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+        className: "experience-actions"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_icons_material_Add__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        className: "experience-action"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_mui_icons_material_Create__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        className: "experience-action"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("ul", null, Object.values(this.props.experiences).map(function (exp, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_experience_index_item_container__WEBPACK_IMPORTED_MODULE_0__["default"], {
           experience: exp,
           key: exp + i
         });
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Why"));
+      })));
     }
   }]);
 
@@ -27252,15 +27264,65 @@ var ExperienceIndexItem = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(ExperienceIndexItem);
 
   function ExperienceIndexItem(props) {
+    var _this;
+
     _classCallCheck(this, ExperienceIndexItem);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.calculateDate = _this.calculateDate.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(ExperienceIndexItem, [{
+    key: "calculateDate",
+    value: function calculateDate(date) {
+      var newDate = date.split("-");
+      var months = [null, 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        id: "employment-date"
+      }, "".concat(months[parseInt(newDate[1])], " ").concat(parseInt(newDate[0])));
+    }
+  }, {
+    key: "calculateDuration",
+    value: function calculateDuration(startDate, endDate) {
+      startDate = startDate.split("-").map(function (num) {
+        return parseInt(num);
+      });
+      endDate = endDate.split("-").map(function (num) {
+        return parseInt(num);
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "hello");
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "experience-item-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "experience-item"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "company-photo"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+        src: "https://i.postimg.cc/yNSmf9GF/image.png",
+        alt: "company-photo"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "experience-item-contents"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+        id: "company-title"
+      }, "".concat(this.props.experience.company)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        id: "job"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+        id: "job-title"
+      }, "".concat(this.props.experience.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+        id: "employment-type"
+      }, "".concat(this.props.experience.employment_type))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        id: "employment-duration"
+      }, this.calculateDate(this.props.experience.start_date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        id: "employment-duration-separator"
+      }, " - "), Boolean(this.props.experience.end_date) ? this.calculateDate(this.props.experience.end_date) : "Present"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        id: "employment-location"
+      }, "".concat(this.props.experience.location)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        id: "experiences-separator"
+      }));
     }
   }]);
 
