@@ -1,7 +1,7 @@
 import { AccountCircle } from '@mui/icons-material';
 import  {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSquareGithub, faLinkedin, faAngellist, faReact } from '@fortawesome/free-brands-svg-icons';
-import {faLaptopCode, faDatabase, } from '@fortawesome/free-solid-svg-icons';
+import { faSquareGithub, faLinkedin, faReact } from '@fortawesome/free-brands-svg-icons';
+import {faGem, faDatabase, faBriefcase} from '@fortawesome/free-solid-svg-icons';
 // import { faSquareUser } from '@fortawesome/free-solid-svg-icons';
 
 import React from 'react';
@@ -37,21 +37,21 @@ class Widgets extends React.Component {
                         <div className="widget-links">
                             <div className="fa-container">
                                 <a href="https://github.com/shenshuu" className="fa">
-                                    <FontAwesomeIcon icon={faSquareGithub} className="font-awesome-icon"></FontAwesomeIcon>
+                                    <FontAwesomeIcon icon={faSquareGithub} className="font-awesome-icon" id="fa-github"></FontAwesomeIcon>
                                 </a>
                                 <p>Github</p>
                             </div>
                             <div className="fa-container">
                                 <a href="https://www.linkedin.com/in/michael-s-b7698b239/" className="fa">
-                                    <FontAwesomeIcon icon={faLinkedin} className="font-awesome-icon"></FontAwesomeIcon>
+                                    <FontAwesomeIcon icon={faLinkedin} className="font-awesome-icon" id="fa-linkedin"></FontAwesomeIcon>
                                 </a>
                                 <p>LinkedIn</p>
                             </div>
                             <div className="fa-container">
                                 <a href="#" className="fa">
-                                    <FontAwesomeIcon icon={faAngellist} className="font-awesome-icon"></FontAwesomeIcon>
+                                    <FontAwesomeIcon icon={faBriefcase} className="font-awesome-icon" id="fa-briefcase"></FontAwesomeIcon>
                                 </a>
-                                <p>AngelList</p>
+                                <p>Portfolio</p>
                             </div>
                         </div>
                     </div>
@@ -72,21 +72,21 @@ class Widgets extends React.Component {
                         <p className="widgets-headline">Technologies Implemented</p>
                         <div className="technology">
                             <div className="technology-a">
-                                <FontAwesomeIcon icon={faLaptopCode} className="font-awesome-icon-a"></FontAwesomeIcon>
-                                <p className="tech-role">Backend:</p>
-                            </div>
-                            <p className="tech-stack">Ruby on Rails</p>
-                        </div>
-                        <div className="technology">
-                            <div className="technology-a">
-                                <FontAwesomeIcon icon={faReact} className="font-awesome-icon-a"></FontAwesomeIcon>
+                                <FontAwesomeIcon icon={faReact} className="font-awesome-icon-a" id="fa-react"></FontAwesomeIcon>
                                 <p className="tech-role">Frontend:</p>
                             </div>
                             <p className="tech-stack">React, Redux</p>
                         </div>
                         <div className="technology">
                             <div className="technology-a">
-                                <FontAwesomeIcon icon={faDatabase} className="font-awesome-icon-a"></FontAwesomeIcon>
+                                <FontAwesomeIcon icon={faGem} className="font-awesome-icon-a" id="fa-ruby"></FontAwesomeIcon>
+                                <p className="tech-role">Backend:</p>
+                            </div>
+                            <p className="tech-stack">Ruby on Rails</p>
+                        </div>
+                        <div className="technology">
+                            <div className="technology-a">
+                                <FontAwesomeIcon icon={faDatabase} className="font-awesome-icon-a" id="fa-postgresql"></FontAwesomeIcon>
                                 <p className="tech-role">Database:</p>
                             </div>
                             <p className="tech-stack">PostgreSQL</p>

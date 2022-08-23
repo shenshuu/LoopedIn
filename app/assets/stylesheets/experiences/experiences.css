@@ -230,6 +230,7 @@
 #education-item > #education-photo {
     display: flex;
     align-items: center;
+    margin-top: 10px;
 }
 
 #education-grade {
