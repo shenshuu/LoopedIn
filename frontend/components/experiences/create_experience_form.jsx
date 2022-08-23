@@ -32,6 +32,7 @@ class CreateExperienceForm extends React.Component {
                 current_job: true,
             }
         );
+        this.props.toggleAdding();
     }
 
     update(field) {
