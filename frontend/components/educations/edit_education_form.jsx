@@ -13,6 +13,7 @@ class EditEducationForm extends React.Component {
             activities: this.props.education.activities,
             description: this.props.education.description,
             grade: this.props.education.grade,
+            degree: this.props.education.degree,
         },
         this.handleSubmit = this.handleSubmit.bind(this);
         this.update = this.update.bind(this);
@@ -35,7 +36,7 @@ class EditEducationForm extends React.Component {
                 <div id="overlay" onClick={this.props.toggleEditing}></div>
                 <div className="create-experience-container">
                     <div className="create-experience-header">
-                        <p className="create-experience-title">Add Education</p>
+                        <p className="create-experience-title">Edit Education</p>
                         <div className="close"><CloseRoundedIcon onClick={this.props.toggleEditing} /></div>
                     </div>
                     <div id="create-exp-divider"></div>

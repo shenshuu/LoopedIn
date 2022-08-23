@@ -229,5 +229,10 @@
 
 #education-item > #education-photo {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+}
+
+#education-grade {
+    font-size: 14px;
+    color: black;
 }

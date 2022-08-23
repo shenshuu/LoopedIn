@@ -3,6 +3,7 @@ import AddIcon from '@mui/icons-material/Add';
 import ExperienceIndexContainer from '../experiences/experience_index_container';
 import EducationIndexContainer from '../educations/education_index_container';
 import CreateExperienceForm from '../experiences/create_experience_form';
+import CreateEducationForm from '../educations/create_education_form';
 import React from 'react';
 
 class User extends React.Component {
@@ -12,10 +13,12 @@ class User extends React.Component {
         this.state = {
             action_modal_hidden: true,
             adding_experience: false,
+            adding_education: false,
         };
         this.toggleActionModal = this.toggleActionModal.bind(this);
         this.actionModal = this.actionModal.bind(this);
         this.toggleAddingExperience = this.toggleAddingExperience.bind(this);
+        this.toggleAddingEducation = this.toggleAddingEducation.bind(this);
     }
 
     toggleAddingExperience() {
@@ -23,6 +26,13 @@ class User extends React.Component {
             adding_experience: !this.state.adding_experience,
             action_modal_hidden: true,
         });
+    }
+
+    toggleAddingEducation() {
+        this.setState({
+            adding_education: !this.state.adding_education,
+            action_modal_hidden: true,
+        })
     }
 
     toggleActionModal() {
@@ -36,7 +46,7 @@ class User extends React.Component {
                     <AddIcon />
                     <p>Add experience</p>
                 </div>
-                <div className="profile-action">
+                <div className="profile-action" onClick={this.toggleAddingEducation}>
                     <AddIcon />
                     <p>Add education</p>
                 </div>
@@ -48,6 +58,7 @@ class User extends React.Component {
         return (
             <div className="user-profile">
                 {this.state.adding_experience ? <CreateExperienceForm toggleAdding={() => this.toggleAddingExperience()} adding={this.state.adding_experience} createExperience={this.props.createExperience}/> : ""}
+                {this.state.adding_education ? <CreateEducationForm toggleAdding={() => this.toggleAddingEducation()} adding={this.state.adding_education} createEducation={this.props.createEducation}/> : ""}
                 <div className="user-container">
                     <div className="user-intro" id="user-intro">
                         <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi0.wp.com%2Fwww.scienceabc.com%2Fwp-content%2Fuploads%2F2020%2F02%2FPythagoras-mathematical-numbers-seriessymbolMark-RademakerS.jpg%3Fssl%3D1&f=1&nofb=1" alt=""/>

@@ -11,6 +11,7 @@ class CreateEducationForm extends React.Component {
             end_date: '',
             activities: '',
             description: '',
+            degree: '',
             grade: 0,
         },
         this.handleSubmit = this.handleSubmit.bind(this);

@@ -101,11 +101,11 @@ class EducationIndexItem extends React.Component {
                             <div id="employment-duration">
                                 {this.calculateDate(this.props.education.start_date)}
                                 <div id="employment-duration-separator"> - </div>
-                                {/* {Boolean(this.props.education.end_date) ? this.calculateDate(this.props.experience.end_date) : "Present"} */}
+                                {Boolean(this.props.education.end_date) ? this.calculateDate(this.props.education.end_date) : "Present"}
                             </div>
-                            {/* <div id="employment-location">
-                                {`${this.props.education.location}`}
-                            </div> */}
+                            <div id="education-grade">
+                                {`Grade: ${this.props.education.grade}`}
+                            </div>
                         </div>
                         {/* {this.props.editing ? <div className="create-icon-div" onClick={this.toggleEditing}><CreateIcon/></div> : ""} */}
                     </div>
