@@ -1,3 +1,4 @@
+import CreateIcon from '@mui/icons-material/Create';
 import React from 'react';
 
 class ExperienceIndexItem extends React.Component {
@@ -9,8 +10,8 @@ class ExperienceIndexItem extends React.Component {
     calculateDate(date) {
         let newDate = date.split("-");
         let months = [
-            null, 'January','February','March','April','May','June',
-            'July', 'August', 'September', 'October', 'November', 'December'
+            null, 'Jan','Feb','Mar','Apr','May','Jun',
+            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
         ];
         return (
             <div id="employment-date">{`${months[parseInt(newDate[1])]} ${parseInt(newDate[0])}`}</div>
@@ -20,7 +21,9 @@ class ExperienceIndexItem extends React.Component {
     calculateDuration(startDate, endDate) {
         startDate = startDate.split("-").map(num => parseInt(num));
         endDate = endDate.split("-").map(num => parseInt(num));
-        
+        let years = endDate[0] - startDate[0];
+        let months = endDate[1] - startDate[1];
+        // if (months < 0) 
     }
 
     render() {
@@ -31,7 +34,10 @@ class ExperienceIndexItem extends React.Component {
                         <img src="https://i.postimg.cc/yNSmf9GF/image.png" alt="company-photo" />
                     </div>
                     <div className="experience-item-contents">
-                        <p id="company-title">{`${this.props.experience.company}`}</p>
+                        <div className="experience-item-header">
+                            <p id="company-title">{`${this.props.experience.company}`}</p>
+                            <div className="create-icon-div"><CreateIcon/></div>
+                        </div>
                         <div id="job">
                             <p id="job-title">{`${this.props.experience.title}`}</p>
                             <p id="job-separator">.</p>

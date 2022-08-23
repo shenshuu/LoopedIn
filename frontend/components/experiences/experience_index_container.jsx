@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchExperiences } from '../../actions/experience_actions';
+import { fetchExperiences, updateExperience, createExperience, deleteExperience } from '../../actions/experience_actions';
 import ExperienceIndex from './experience_index';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -10,6 +10,9 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
     fetchExperiences: () => dispatch(fetchExperiences()),
+    createExperience: experience => dispatch(createExperience(experience)),
+    updateExperience: experience => dispatch(updateExperience(experience)),
+    deleteExperience: experience => dispatch(deleteExperience(experience)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExperienceIndex);
