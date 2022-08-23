@@ -1,3 +1,5 @@
+import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
+import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 import EditExperienceForm from './edit_experience_form';
 import CreateIcon from '@mui/icons-material/Create';
 import React from 'react';
@@ -8,12 +10,46 @@ class ExperienceIndexItem extends React.Component {
         this.calculateDate = this.calculateDate.bind(this);
         this.state = {
             editing_experience: false,
+            action_modal_hidden: true,
         }
         this.toggleEditing = this.toggleEditing.bind(this);
+        this.toggleActionModal = this.toggleActionModal.bind(this);
+        this.actionModal = this.actionModal.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
+    }
+
+    toggleActionModal() {
+        this.setState({action_modal_hidden: !this.state.action_modal_hidden});
+    }
+
+    actionModal() {
+        return (
+            <div className="post-actions-modal" id="experience-actions-modal">
+                <div className="edit-post-action" onClick={this.handleEdit}>
+                    <CreateIcon />
+                    <p>Edit Experience</p>
+                </div>
+                <div className="delete-post-action" onClick={this.handleDelete}>
+                    <DeleteRoundedIcon/>
+                    <p>Delete Experience</p>
+                </div>
+            </div>
+        )
     }
 
     toggleEditing() {
         this.setState({editing_experience: !this.state.editing_experience});
+    }
+
+    handleEdit() {
+        this.setState({action_modal_hidden: true});
+        this.toggleEditing();
+    }
+
+    handleDelete() {
+        this.setState({action_modal_hidden: true});
+        this.props.deleteExperience({id: this.props.experience.id});
     }
 
     calculateDate(date) {
@@ -49,7 +85,13 @@ class ExperienceIndexItem extends React.Component {
                         <div className="experience-item-contents">
                             <div className="experience-item-header">
                                 <p id="company-title">{`${this.props.experience.company}`}</p>
-                                {/* <div className="create-icon-div"><CreateIcon/></div> */}
+                                <div className="experience-actions-modal-container">
+                                    {this.props.editing ? 
+                                    <div className="create-icon-div" onClick={this.toggleActionModal}>
+                                        <MoreHorizRoundedIcon />
+                                    </div> : ""}
+                                    {this.state.action_modal_hidden ? "" : this.actionModal()}
+                                </div>
                             </div>
                             <div id="job">
                                 <p id="job-title">{`${this.props.experience.title}`}</p>
@@ -65,7 +107,7 @@ class ExperienceIndexItem extends React.Component {
                                 {`${this.props.experience.location}`}
                             </div>
                         </div>
-                        {this.props.editing ? <div className="create-icon-div" onClick={this.toggleEditing}><CreateIcon/></div> : ""}
+                        {/* {this.props.editing ? <div className="create-icon-div" onClick={this.toggleEditing}><CreateIcon/></div> : ""} */}
                     </div>
                 </div>
                 <div id="experiences-separator"></div>

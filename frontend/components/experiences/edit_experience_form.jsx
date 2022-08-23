@@ -22,6 +22,7 @@ class EditExperienceForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.updateExperience(this.state);
+        this.props.toggleEditing();
     }
 
     update(field) {
@@ -47,7 +48,7 @@ class EditExperienceForm extends React.Component {
                         <div className="input-field">
                             <label className="input-field-name">Employment type</label>
                             <select value="Please select" onChange={this.update('employment_type')}>
-                                <option value="Full-Time" default>Full-Time</option>
+                                <option value="Full-Time">Full-Time</option>
                                 <option value="Part-Time">Part-Time</option>
                                 <option value="Self-employed">Self-employed</option>
                                 <option value="Other">Other</option>

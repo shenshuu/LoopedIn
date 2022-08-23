@@ -27339,6 +27339,7 @@ var EditExperienceForm = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       this.props.updateExperience(this.state);
+      this.props.toggleEditing();
     }
   }, {
     key: "update",
@@ -27393,8 +27394,7 @@ var EditExperienceForm = /*#__PURE__*/function (_React$Component) {
         value: "Please select",
         onChange: this.update('employment_type')
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-        value: "Full-Time",
-        "default": true
+        value: "Full-Time"
       }, "Full-Time"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
         value: "Part-Time"
       }, "Part-Time"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
@@ -27661,6 +27661,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _mui_icons_material_MoreHorizRounded__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/icons-material/MoreHorizRounded */ "./node_modules/@mui/icons-material/MoreHorizRounded.js");
+/* harmony import */ var _mui_icons_material_DeleteRounded__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/icons-material/DeleteRounded */ "./node_modules/@mui/icons-material/DeleteRounded.js");
 /* harmony import */ var _edit_experience_form__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit_experience_form */ "./frontend/components/experiences/edit_experience_form.jsx");
 /* harmony import */ var _mui_icons_material_Create__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/icons-material/Create */ "./node_modules/@mui/icons-material/Create.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -27691,6 +27693,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
 var ExperienceIndexItem = /*#__PURE__*/function (_React$Component) {
   _inherits(ExperienceIndexItem, _React$Component);
 
@@ -27704,17 +27708,61 @@ var ExperienceIndexItem = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.calculateDate = _this.calculateDate.bind(_assertThisInitialized(_this));
     _this.state = {
-      editing_experience: false
+      editing_experience: false,
+      action_modal_hidden: true
     };
     _this.toggleEditing = _this.toggleEditing.bind(_assertThisInitialized(_this));
+    _this.toggleActionModal = _this.toggleActionModal.bind(_assertThisInitialized(_this));
+    _this.actionModal = _this.actionModal.bind(_assertThisInitialized(_this));
+    _this.handleEdit = _this.handleEdit.bind(_assertThisInitialized(_this));
+    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(ExperienceIndexItem, [{
+    key: "toggleActionModal",
+    value: function toggleActionModal() {
+      this.setState({
+        action_modal_hidden: !this.state.action_modal_hidden
+      });
+    }
+  }, {
+    key: "actionModal",
+    value: function actionModal() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+        className: "post-actions-modal",
+        id: "experience-actions-modal"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+        className: "edit-post-action",
+        onClick: this.handleEdit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_icons_material_Create__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, "Edit Experience")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+        className: "delete-post-action",
+        onClick: this.handleDelete
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_icons_material_DeleteRounded__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, "Delete Experience")));
+    }
+  }, {
     key: "toggleEditing",
     value: function toggleEditing() {
       this.setState({
         editing_experience: !this.state.editing_experience
+      });
+    }
+  }, {
+    key: "handleEdit",
+    value: function handleEdit() {
+      this.setState({
+        action_modal_hidden: true
+      });
+      this.toggleEditing();
+    }
+  }, {
+    key: "handleDelete",
+    value: function handleDelete() {
+      this.setState({
+        action_modal_hidden: true
+      });
+      this.props.deleteExperience({
+        id: this.props.experience.id
       });
     }
   }, {
@@ -27767,7 +27815,12 @@ var ExperienceIndexItem = /*#__PURE__*/function (_React$Component) {
         className: "experience-item-header"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", {
         id: "company-title"
-      }, "".concat(this.props.experience.company))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+      }, "".concat(this.props.experience.company)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+        className: "experience-actions-modal-container"
+      }, this.props.editing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+        className: "create-icon-div",
+        onClick: this.toggleActionModal
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_icons_material_MoreHorizRounded__WEBPACK_IMPORTED_MODULE_4__["default"], null)) : "", this.state.action_modal_hidden ? "" : this.actionModal())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
         id: "job"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", {
         id: "job-title"
@@ -27781,10 +27834,7 @@ var ExperienceIndexItem = /*#__PURE__*/function (_React$Component) {
         id: "employment-duration-separator"
       }, " - "), Boolean(this.props.experience.end_date) ? this.calculateDate(this.props.experience.end_date) : "Present"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
         id: "employment-location"
-      }, "".concat(this.props.experience.location))), this.props.editing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
-        className: "create-icon-div",
-        onClick: this.toggleEditing
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_mui_icons_material_Create__WEBPACK_IMPORTED_MODULE_2__["default"], null)) : "")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+      }, "".concat(this.props.experience.location))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
         id: "experiences-separator"
       }));
     }
