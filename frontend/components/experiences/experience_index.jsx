@@ -49,14 +49,15 @@ class ExperienceIndex extends React.Component {
                 <div id="experiences-container">
                     <div id="experiences-header">
                         <p className="experiences-title">Experience</p>
-                        <div className="experience-actions">
+                        {this.props.user.id === this.props.current_user.id ? <div className="experience-actions">
                             <AddIcon className="experience-action" onClick={this.toggleAdding}/>
                             <CreateIcon className="experience-action" onClick={this.toggleEditing}/>
-                        </div>
+                        </div>: ""}
                     </div>
                     <ul>
                         {Object.values(this.props.experiences).map((exp, i) => {
-                            return <ExperienceIndexItem experience={exp} key={exp+i} editing={this.state.editing_experience}/>
+                            if (this.props.user.id === exp.user_id)
+                                return <ExperienceIndexItem experience={exp} key={exp+i} editing={this.state.editing_experience}/>
                         })}
                     </ul>
                 </div>

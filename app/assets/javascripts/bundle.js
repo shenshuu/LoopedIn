@@ -27654,7 +27654,7 @@ var ExperienceIndex = /*#__PURE__*/function (_React$Component) {
         id: "experiences-header"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("p", {
         className: "experiences-title"
-      }, "Experience"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
+      }, "Experience"), this.props.user.id === this.props.current_user.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
         className: "experience-actions"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_icons_material_Add__WEBPACK_IMPORTED_MODULE_4__["default"], {
         className: "experience-action",
@@ -27662,8 +27662,8 @@ var ExperienceIndex = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_mui_icons_material_Create__WEBPACK_IMPORTED_MODULE_5__["default"], {
         className: "experience-action",
         onClick: this.toggleEditing
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("ul", null, Object.values(this.props.experiences).map(function (exp, i) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_experience_index_item_container__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      })) : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("ul", null, Object.values(this.props.experiences).map(function (exp, i) {
+        if (_this3.props.user.id === exp.user_id) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_experience_index_item_container__WEBPACK_IMPORTED_MODULE_0__["default"], {
           experience: exp,
           key: exp + i,
           editing: _this3.state.editing_experience
@@ -29841,10 +29841,12 @@ var User = /*#__PURE__*/function (_React$Component) {
         className: "user-connection-count"
       }, "11 connections"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "user-intro-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("button", {
+      }, this.props.current_user.id === this.props.user.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("button", {
         id: "add-profile-section",
         onClick: this.toggleActionModal
-      }, "Add Profile Section"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("button", {
+      }, "Add Profile Section") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("button", {
+        id: "add-profile-section"
+      }, "Connect"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("button", {
         id: "user-more-section"
       }, "More")), this.state.action_modal_hidden ? "" : this.actionModal()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "user-intro-education"
@@ -29855,7 +29857,8 @@ var User = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
         className: "school-name"
       }, "Hunter College")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_experiences_experience_index_container__WEBPACK_IMPORTED_MODULE_0__["default"], {
-        user: this.props.user
+        user: this.props.user,
+        current_user: this.props.current_user
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "other-users"
       }, "Users you may know")));

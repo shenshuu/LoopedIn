@@ -67,7 +67,10 @@ class User extends React.Component {
                                     <div className="user-intro-location">{`${this.props.user.location_city}, ${this.props.user.location_country}`}</div>
                                     <div className="user-connection-count">11 connections</div>
                                     <div className="user-intro-actions">
+                                        {this.props.current_user.id === this.props.user.id ? 
                                         <button id="add-profile-section" onClick={this.toggleActionModal}>Add Profile Section</button>
+                                        : <button id="add-profile-section">Connect</button>
+                                        }
                                         <button id="user-more-section">More</button>
                                     </div>
                                     {this.state.action_modal_hidden ? "" : this.actionModal()}
@@ -78,7 +81,7 @@ class User extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <ExperienceIndexContainer user={this.props.user} />
+                        <ExperienceIndexContainer user={this.props.user} current_user={this.props.current_user}/>
                     </div>
                     <div className="other-users">
                     Users you may know
