@@ -95,6 +95,7 @@
 
 .post-body {
     padding: 12px;
+    margin-top: -10px;
 }
 
 .post-btn-container {
@@ -378,4 +379,12 @@
 
 .likes-count-liked:hover {
     color: #0b66c2;
+}
+
+#post-img > img {
+    width: 518px;
+    height: 240px;
+    object-fit: cover;
+    margin-left: -10px;
+    margin-bottom: 8px;
 }

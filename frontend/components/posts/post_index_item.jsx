@@ -200,6 +200,7 @@ class PostIndexItem extends React.Component {
                 <div className="post-body">
                     {this.props.post.body} 
                 </div>
+                <div id="post-img">{Boolean(this.props.post.image) ? <img src={this.props.post.image} alt="post-image" /> : ""}</div>
                 <div className="likes-comments-info">
                     <p className={this.state.is_liked ? "likes-count likes-count-liked" : "likes-count"}>{this.state.likes.length} likes</p>
                     <p className="comments-count" onClick={this.toggleComments}>{this.state.comments.length} comments</p>
