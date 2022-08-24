@@ -130,7 +130,14 @@ class CommentIndexItem extends React.Component {
             <div className="comments">
                 {this.state.action_modal_hidden ? "" : this.actionModal()}
                 <div className="comment-contents">
-                    <div className="profile-pic"><AccountCircle /></div>
+                    <div className="profile-pic">
+                        <div id="comment-user-image">
+                            {Boolean(this.props.user.image) ? 
+                            <img src={this.props.user.image} alt="user-photo" /> :
+                            <AccountCircle />
+                            }
+                        </div>
+                    </div>
                     <div className="comment-container-a">
                         <div className="comment-message-contents">
                             <div className="comment-message-header">

@@ -132,6 +132,10 @@
     margin-top: -70px;
 }
 
+.user-profile-photo:hover {
+    cursor: pointer;
+}
+
 .user-profile-photo > img {
     width: 100px;
     height: 100px;

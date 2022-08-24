@@ -68,7 +68,12 @@ class PostForm extends React.Component {
                     <div className="create-post-modal-header-divider"></div>
                     <form className="create-post-form" onSubmit={this.handleCreate}>
                         <div className="create-post-user-info">
-                            <AccountCircle />
+                            <div id="post-user-image">
+                                {Boolean(this.props.user.image) ? 
+                                <img src={this.props.user.image} alt="user-photo" /> :
+                                <AccountCircle />
+                                }
+                            </div>
                             <div className="create-post-user-header">
                                 <h3>{`${this.state.user.first_name} ${this.state.user.last_name}`}</h3>
                                 <p>Professional Tester</p>
