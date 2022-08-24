@@ -3,7 +3,7 @@ import { createEducation } from '../../actions/education_actions';
 import { deletePosts } from '../../actions/post_actions';
 import { deleteLikes } from '../../actions/like_actions';
 import { deleteComments } from '../../actions/comment_actions';
-import { fetchUsers } from '../../actions/session_actions';
+import { fetchUsers, updateUser } from '../../actions/session_actions';
 import { connect } from 'react-redux';
 import User from './user';
 
@@ -20,6 +20,7 @@ const mapDispatchToProps = dispatch => ({
     deleteLikes: () => dispatch(deleteLikes()),
     deleteComments: () => dispatch(deleteComments()),
     fetchUsers: () => dispatch(fetchUsers()),
+    updateUser: user => dispatch(updateUser(user)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(User);

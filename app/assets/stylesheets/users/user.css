@@ -201,3 +201,7 @@
     background-color: rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
+
+#edit-about-modal {
+    height: 220px;
+}

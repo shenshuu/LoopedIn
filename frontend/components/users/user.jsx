@@ -5,6 +5,7 @@ import EducationIndexContainer from '../educations/education_index_container';
 import CreateExperienceForm from '../experiences/create_experience_form';
 import CreateEducationForm from '../educations/create_education_form';
 import UpdateUserForm from './update_user_form';
+import About from './about';
 import equal from 'fast-deep-equal';
 import React from 'react';
 
@@ -17,12 +18,14 @@ class User extends React.Component {
             adding_experience: false,
             adding_education: false,
             editing_user_image: false,
+            editing_about: false, 
         };
         this.toggleActionModal = this.toggleActionModal.bind(this);
         this.actionModal = this.actionModal.bind(this);
         this.toggleAddingExperience = this.toggleAddingExperience.bind(this);
         this.toggleAddingEducation = this.toggleAddingEducation.bind(this);
         this.toggleEditingUserImage = this.toggleEditingUserImage.bind(this);
+        this.toggleEditingAbout = this.toggleEditingAbout.bind(this);
     }
 
     componentDidMount() {
@@ -54,6 +57,10 @@ class User extends React.Component {
 
     toggleEditingUserImage() {
         this.setState({editing_user_image: !this.state.editing_user_image});
+    }
+
+    toggleEditingAbout() {
+        this.setState({editing_about: !this.state.editing_about});
     }
 
     toggleActionModal() {
@@ -116,6 +123,9 @@ class User extends React.Component {
                                 </div>
                             </div>
                         </div>
+                        <About user={this.props.user} current_user={this.props.current_user} 
+                        editing={this.state.editing_about} toggleEditing={() => this.toggleEditingAbout()}
+                        updateUser={this.props.updateUser} />
                         <ExperienceIndexContainer user={this.props.user} current_user={this.props.current_user} />
                         <EducationIndexContainer user={this.props.user} current_user={this.props.current_user} />
                     </div>
