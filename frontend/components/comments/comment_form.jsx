@@ -26,7 +26,12 @@ class CommentForm extends React.Component {
     render() {
         return (
             <div className="comment-form-container">
-                <AccountCircle />
+                <div id="comment-form-user-image">
+                    {Boolean(this.props.user.image) ? 
+                    <img src={this.props.user.image} alt="user-photo" /> :
+                    <AccountCircle />
+                    }
+                </div>
                 <form className="comment-form" onSubmit={this.handleSubmit}>
                     <input type="text" value={this.state.body}
                     placeholder="Add a comment..."

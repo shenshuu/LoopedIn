@@ -120,11 +120,19 @@ class PostForm extends React.Component {
         return (
             <div className="post-form-content">
                 {this.state.modal_hidden ? "" : this.createModal()}
-                <div className="post-form-container" onClick={this.toggleModal}>
-                    <CreateIcon />
-                    <form className="post-form">
-                        <p className="post-form-placeholder">Have a topic that excites you? Post about it</p>
-                    </form>
+                <div className="post-form-input">
+                    <div id="post-user-image">
+                        {Boolean(this.props.user.image) ? 
+                        <img src={this.props.user.image} alt="user-photo" /> :
+                        <AccountCircle />
+                        }
+                    </div>
+                    <div className="post-form-container" onClick={this.toggleModal}>
+                        <CreateIcon />
+                        <form className="post-form">
+                            <p className="post-form-placeholder">Have a topic that excites you? Post about it</p>
+                        </form>
+                    </div>
                 </div>
                 {this.postOption()}
             </div>

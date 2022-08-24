@@ -1,5 +1,6 @@
 import {faHouse, faUserGroup, faCircleUser, faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
 import  {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { Link } from 'react-router-dom';
 import React from 'react';
 
@@ -68,7 +69,7 @@ class SplashHeader extends React.Component {
                     <div id="splash-header-left">
                         <Link to={this.props.loggedIn ? "/feed" : "/"} 
                         className="header-logo">
-                            <FontAwesomeIcon icon={faHouse} className="fa-header-link"></FontAwesomeIcon>
+                            <FontAwesomeIcon icon={faLinkedin} className="fa-header-link" id="fa-linkedin"></FontAwesomeIcon>
                         </Link>
                         {this.props.loggedIn ? this.searchContainer() : ""}
                     </div>

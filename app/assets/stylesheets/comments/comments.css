@@ -194,3 +194,10 @@
     border-radius: 50px;
     margin-right: 10px;
 }
+
+#comment-form-user-image > img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    margin-left: -4px;
+}
