@@ -4,7 +4,7 @@ import ExperienceIndexContainer from '../experiences/experience_index_container'
 import EducationIndexContainer from '../educations/education_index_container';
 import CreateExperienceForm from '../experiences/create_experience_form';
 import CreateEducationForm from '../educations/create_education_form';
-import UpdateUserForm from './update_user_form';
+import UpdateUserImageForm from './update_user_image_form';
 import About from './about';
 import equal from 'fast-deep-equal';
 import React from 'react';
@@ -85,7 +85,7 @@ class User extends React.Component {
     render() {
         return (
             <div className="user-profile">
-                {this.state.editing_user_image ? <UpdateUserForm toggleModal={() => this.toggleEditingUserImage()} user={this.props.user} /> : ""}
+                {this.state.editing_user_image ? <UpdateUserImageForm toggleModal={() => this.toggleEditingUserImage()} user={this.props.user} /> : ""}
                 {this.state.adding_experience ? <CreateExperienceForm toggleAdding={() => this.toggleAddingExperience()} adding={this.state.adding_experience} createExperience={this.props.createExperience}/> : ""}
                 {this.state.adding_education ? <CreateEducationForm toggleAdding={() => this.toggleAddingEducation()} adding={this.state.adding_education} createEducation={this.props.createEducation}/> : ""}
                 <div className="user-container">

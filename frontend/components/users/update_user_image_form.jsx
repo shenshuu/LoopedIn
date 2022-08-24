@@ -1,7 +1,7 @@
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import React from 'react';
 
-class UpdateUserForm extends React.Component {
+class UpdateUserImageForm extends React.Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -55,4 +55,4 @@ class UpdateUserForm extends React.Component {
     }
 }
 
-export default UpdateUserForm;
+export default UpdateUserImageForm;
