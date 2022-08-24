@@ -334,11 +334,13 @@
     font-size: 16px;
     font-weight: 500;
     color: black;
-    padding: 4px;
+    padding-right: 4px;
+    /* padding-bottom: 4px;  */
 }
 
 #poster-profession {
     font-size: 14px;
+    padding-top: 4px;
 }
 
 #poster-info {
