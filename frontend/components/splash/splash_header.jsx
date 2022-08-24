@@ -1,4 +1,4 @@
-import {faHouse, faUserGroup, faCircleUser, faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
+import {faHouse, faUserGroup, faCircleUser, faMagnifyingGlass, faRightFromBracket} from '@fortawesome/free-solid-svg-icons';
 import  {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { Link } from 'react-router-dom';
@@ -36,16 +36,22 @@ class SplashHeader extends React.Component {
                         <p>Home</p>
                     </div>
                 </Link>
-                <Link to={`/users/${this.props.user.id}`}>
-                    <div id="network-link">
+                <Link to="/network">
+                    <div id="home-link">
                         <FontAwesomeIcon icon={faUserGroup} className="fa-header-link"></FontAwesomeIcon>
                         <p>My Network</p>
                     </div>
                 </Link>
+                <Link to={`/users/${this.props.user.id}`}>
+                    <div id="profile-link">
+                        <FontAwesomeIcon icon={faCircleUser} className="fa-header-link"></FontAwesomeIcon>
+                        <p>My Profile</p>
+                    </div>
+                </Link>
                 <Link to="#">
                     <div id="profile-link" onClick={this.handleSignout}>
-                        <FontAwesomeIcon icon={faCircleUser} className="fa-header-link"></FontAwesomeIcon>
-                        <p>Me</p>
+                        <FontAwesomeIcon icon={faRightFromBracket} className="fa-header-link"></FontAwesomeIcon>
+                        <p>Sign out</p>
                     </div>
                 </Link>
             </div>
