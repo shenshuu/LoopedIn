@@ -85,6 +85,7 @@
 .post-header-info {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     margin-left: 10px;
 }
 
@@ -389,4 +390,10 @@
     object-fit: cover;
     margin-left: -10px;
     margin-bottom: 8px;
+}
+
+#post-user-image > img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
 }

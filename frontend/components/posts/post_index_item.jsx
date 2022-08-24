@@ -58,7 +58,12 @@ class PostIndexItem extends React.Component {
                     <div className="create-post-modal-header-divider"></div>
                     <form className="create-post-form" onSubmit={this.handleUpdate}>
                         <div className="create-post-user-info">
-                            <AccountCircle />
+                            <div id="post-user-image">
+                                {Boolean(this.props.user.image) ? 
+                                <img src={this.props.user.image} alt="user-photo" /> :
+                                <AccountCircle />
+                                }
+                            </div>
                             <div className="create-post-user-header">
                                 <h3>{`${this.state.user.first_name} ${this.state.user.last_name}`}</h3>
                                 <p>Professional Tester</p>
@@ -183,7 +188,12 @@ class PostIndexItem extends React.Component {
                 {this.state.update_modal_hidden ? "" : this.updateModal()}
                 <div className="post-top">
                     <div className="post-header">
-                        <AccountCircle />
+                            <div id="post-user-image">
+                                {Boolean(this.props.user.image) ? 
+                                <img src={this.props.user.image} alt="user-photo" /> :
+                                <AccountCircle />
+                                }
+                            </div>
                         {/* {Boolean(this.props.post.image) ? <img src={this.props.post.image} alt="profile-pic" /> : ""} */}
                         <div className="post-header-info">
                             <div id="poster-info">

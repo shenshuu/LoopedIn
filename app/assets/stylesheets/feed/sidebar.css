@@ -121,3 +121,10 @@
 .aa {
     color: rgba(0, 0, 0, 0.7);
 }
+
+#sidebar-user-img > img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+    margin-top: -30px;
+}

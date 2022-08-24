@@ -4,6 +4,8 @@ import ExperienceIndexContainer from '../experiences/experience_index_container'
 import EducationIndexContainer from '../educations/education_index_container';
 import CreateExperienceForm from '../experiences/create_experience_form';
 import CreateEducationForm from '../educations/create_education_form';
+import UpdateUserForm from './update_user_form';
+import equal from 'fast-deep-equal';
 import React from 'react';
 
 class User extends React.Component {
@@ -14,18 +16,27 @@ class User extends React.Component {
             action_modal_hidden: true,
             adding_experience: false,
             adding_education: false,
+            editing_user_image: false,
         };
         this.toggleActionModal = this.toggleActionModal.bind(this);
         this.actionModal = this.actionModal.bind(this);
         this.toggleAddingExperience = this.toggleAddingExperience.bind(this);
         this.toggleAddingEducation = this.toggleAddingEducation.bind(this);
+        this.toggleEditingUserImage = this.toggleEditingUserImage.bind(this);
     }
 
     componentDidMount() {
         this.props.deletePosts();
         this.props.deleteLikes();
         this.props.deleteComments();
+        this.props.fetchUsers();
     }
+
+    // componentDidUpdate(prevProps) {
+    //     if (!equal(prevProps.users, this.props.users)) {
+    //         this.setState({action_modal_hidden: this.state.action_modal_hidden});
+    //     }
+    // }
 
     toggleAddingExperience() {
         this.setState({
@@ -39,6 +50,10 @@ class User extends React.Component {
             adding_education: !this.state.adding_education,
             action_modal_hidden: true,
         })
+    }
+
+    toggleEditingUserImage() {
+        this.setState({editing_user_image: !this.state.editing_user_image});
     }
 
     toggleActionModal() {
@@ -63,14 +78,16 @@ class User extends React.Component {
     render() {
         return (
             <div className="user-profile">
+                {this.state.editing_user_image ? <UpdateUserForm toggleModal={() => this.toggleEditingUserImage()} user={this.props.user} /> : ""}
                 {this.state.adding_experience ? <CreateExperienceForm toggleAdding={() => this.toggleAddingExperience()} adding={this.state.adding_experience} createExperience={this.props.createExperience}/> : ""}
                 {this.state.adding_education ? <CreateEducationForm toggleAdding={() => this.toggleAddingEducation()} adding={this.state.adding_education} createEducation={this.props.createEducation}/> : ""}
                 <div className="user-container">
                     <div className="user-intro" id="user-intro">
                         <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi0.wp.com%2Fwww.scienceabc.com%2Fwp-content%2Fuploads%2F2020%2F02%2FPythagoras-mathematical-numbers-seriessymbolMark-RademakerS.jpg%3Fssl%3D1&f=1&nofb=1" alt=""/>
                         <div className="user-intro-header">
-                            <div className="user-profile-photo">
-                                <img src="https://i.postimg.cc/bYDLSPVZ/image-removebg-preview.png" alt="user-profile-photo" />
+                            <div className="user-profile-photo" onClick={this.toggleEditingUserImage}>
+                                {Boolean(this.props.user.image) ? <img src={this.props.user.image} alt="user-profile-photo" /> : 
+                                <img src="https://i.postimg.cc/bYDLSPVZ/image-removebg-preview.png" alt="user-profile-photo" />}
                             </div>
                             <CreateIcon />
                         </div>
