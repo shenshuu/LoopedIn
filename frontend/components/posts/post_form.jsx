@@ -24,8 +24,28 @@ class PostForm extends React.Component {
 
     handleCreate(e) {
         e.preventDefault();
+        const formData = new FormData();
+        formData.append('post[image]', e.target[1].files[0]);
+        formData.append('post[body]', this.state.post.body);
+        formData.append('post[user_id]', this.state.post.user_id);
+        $.ajax({
+            url: '/api/posts',
+            method: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+        }).then(() => {
+            this.setState({
+                post: {
+                    user_id: "",
+                    body: "",
+                }
+            });
+            this.props.fetchPosts().then(posts => {
+                this.setState({posts: posts});
+            });
+        })
         this.setState({modal_hidden: true});
-        this.props.createPost(this.state.post);
     }
 
     updateBody(e) {
@@ -99,8 +119,6 @@ class PostForm extends React.Component {
                     <CreateIcon />
                     <form className="post-form">
                         <p className="post-form-placeholder">Have a topic that excites you? Post about it</p>
-                        {/* <input type="text"
-                        placeholder="Have a topic that excites you? Post about it" readOnly={true}/> */}
                     </form>
                 </div>
                 {this.postOption()}

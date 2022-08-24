@@ -184,6 +184,7 @@ class PostIndexItem extends React.Component {
                 <div className="post-top">
                     <div className="post-header">
                         <AccountCircle />
+                        {/* {Boolean(this.props.post.image) ? <img src={this.props.post.image} alt="profile-pic" /> : ""} */}
                         <div className="post-header-info">
                             <div id="poster-info">
                                 <p id="poster-name">{`${this.props.user.first_name} ${this.props.user.last_name}`}</p>
