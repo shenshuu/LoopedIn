@@ -21,6 +21,12 @@ class User extends React.Component {
         this.toggleAddingEducation = this.toggleAddingEducation.bind(this);
     }
 
+    componentDidMount() {
+        this.props.deletePosts();
+        this.props.deleteLikes();
+        this.props.deleteComments();
+    }
+
     toggleAddingExperience() {
         this.setState({
             adding_experience: !this.state.adding_experience,

@@ -1,4 +1,4 @@
-import { RECEIVE_POSTS, RECEIVE_POST, REMOVE_POST } from "../actions/post_actions";
+import { RECEIVE_POSTS, RECEIVE_POST, REMOVE_POST, REMOVE_POSTS } from "../actions/post_actions";
 
 const postsReducer = (state={}, action) => {
     Object.freeze(state);
@@ -11,6 +11,8 @@ const postsReducer = (state={}, action) => {
         case RECEIVE_POST:
             nextState[action.post.id] = action.post;
             return nextState;
+        case REMOVE_POSTS:
+            return {};
         case REMOVE_POST:
             delete nextState[action.post.id];
             return nextState;

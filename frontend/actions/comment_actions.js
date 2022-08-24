@@ -15,6 +15,10 @@ const receiveComment = comment => ({
     comment 
 });
 
+const removeComments = () => ({
+    type: REMOVE_COMMENTS,
+})
+
 const removeComment = comment => ({
     type: REMOVE_COMMENT,
     comment
@@ -38,4 +42,8 @@ export const updateComment = comment => dispatch => (
 export const deleteComment = comment => dispatch => (
     ApiUtil.deleteComment(comment)
     .then(() => dispatch(removeComment(comment)))
+);
+
+export const deleteComments = () => dispatch => (
+    dispatch(removeComments())
 );
