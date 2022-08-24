@@ -1,4 +1,6 @@
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+// import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 
 class UpdateUserImageForm extends React.Component {
@@ -37,7 +39,10 @@ class UpdateUserImageForm extends React.Component {
                 <div className="create-post-modal">
                     <div className="create-post-modal-header">
                         <h2>Add photo</h2>
-                        <div className="close-create-post-modal" onClick={this.props.toggleModal}><CloseRoundedIcon /></div>
+                        <div className="close-create-post-modal" onClick={this.props.toggleModal}>
+                            {/* <CloseRoundedIcon /> */}
+                            <FontAwesomeIcon icon={faXmark}></FontAwesomeIcon>
+                        </div>
                     </div>
                     <div className="create-post-modal-header-divider"></div>
                     <form className="create-post-form" onSubmit={this.handleSubmit}>

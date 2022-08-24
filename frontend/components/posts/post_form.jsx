@@ -1,10 +1,11 @@
-import CreateIcon from '@mui/icons-material/Create';
-import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
-import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
-import EventNoteIcon from '@mui/icons-material/EventNote';
-import CalendarViewDayIcon from '@mui/icons-material/CalendarViewDay';
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import AccountCircle from '@mui/icons-material/AccountCircle';
+// import CreateIcon from '@mui/icons-material/Create';
+// import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
+// import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
+// import EventNoteIcon from '@mui/icons-material/EventNote';
+// import CalendarViewDayIcon from '@mui/icons-material/CalendarViewDay';
+// import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark, faPen, faImage, faVideo, faCalendarDays, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 
 class PostForm extends React.Component {
@@ -63,16 +64,16 @@ class PostForm extends React.Component {
                 <div className="create-post-modal">
                     <div className="create-post-modal-header">
                         <h2>Create a post</h2>
-                        <div className="close-create-post-modal" onClick={this.toggleModal}><CloseRoundedIcon /></div>
+                        <div className="close-create-post-modal" onClick={this.toggleModal}>
+                            {/* <CloseRoundedIcon /> */}
+                            <FontAwesomeIcon icon={faXmark}></FontAwesomeIcon>
+                        </div>
                     </div>
                     <div className="create-post-modal-header-divider"></div>
                     <form className="create-post-form" onSubmit={this.handleCreate}>
                         <div className="create-post-user-info">
                             <div id="post-user-image">
-                                {Boolean(this.props.user.image) ? 
-                                <img src={this.props.user.image} alt="user-photo" /> :
-                                <AccountCircle />
-                                }
+                                <img src={this.props.user.image} alt="user-photo" />
                             </div>
                             <div className="create-post-user-header">
                                 <h3>{`${this.state.user.first_name} ${this.state.user.last_name}`}</h3>
@@ -97,19 +98,31 @@ class PostForm extends React.Component {
         return (
             <div className="post-option">
                 <div className="option">
-                    <InsertPhotoIcon className="photo-icon"/>
+                    {/* <InsertPhotoIcon className="photo-icon"/> */}
+                    <div className="photo-icon">
+                        <FontAwesomeIcon icon={faImage}></FontAwesomeIcon>
+                    </div>
                     <p>Photo</p>
                 </div>
                 <div className="option">
-                    <SubscriptionsIcon className="video-icon"/>
+                    {/* <SubscriptionsIcon className="video-icon"/> */}
+                    <div className="video-icon">
+                        <FontAwesomeIcon icon={faVideo}></FontAwesomeIcon>
+                    </div>
                     <p>Video</p>
                 </div>
                 <div className="option">
-                    <EventNoteIcon className="event-icon"/>
+                    {/* <EventNoteIcon className="event-icon"/> */}
+                    <div className="event-icon">
+                        <FontAwesomeIcon icon={faCalendarDays}></FontAwesomeIcon>
+                    </div>
                     <p>Event</p>
                 </div>
                 <div className="option">
-                    <CalendarViewDayIcon className="article-icon"/>
+                    {/* <CalendarViewDayIcon className="article-icon"/> */}
+                    <div className="article-icon">
+                        <FontAwesomeIcon icon={faNewspaper}></FontAwesomeIcon>
+                    </div>
                     <p>Write article</p>
                 </div>
             </div>
@@ -122,13 +135,11 @@ class PostForm extends React.Component {
                 {this.state.modal_hidden ? "" : this.createModal()}
                 <div className="post-form-input">
                     <div id="post-user-image">
-                        {Boolean(this.props.user.image) ? 
-                        <img src={this.props.user.image} alt="user-photo" /> :
-                        <AccountCircle />
-                        }
+                        <img src={this.props.user.image} alt="user-photo" /> 
                     </div>
                     <div className="post-form-container" onClick={this.toggleModal}>
-                        <CreateIcon />
+                        {/* <CreateIcon /> */}
+                        <div id="create-post-pen"><FontAwesomeIcon icon={faPen}></FontAwesomeIcon></div>
                         <form className="post-form">
                             <p className="post-form-placeholder">Have a topic that excites you? Post about it</p>
                         </form>

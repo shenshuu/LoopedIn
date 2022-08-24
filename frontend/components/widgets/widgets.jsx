@@ -1,7 +1,7 @@
-import { AccountCircle } from '@mui/icons-material';
+// import { AccountCircle } from '@mui/icons-material';
 import  {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareGithub, faLinkedin, faReact } from '@fortawesome/free-brands-svg-icons';
-import {faGem, faDatabase, faBriefcase} from '@fortawesome/free-solid-svg-icons';
+import {faGem, faDatabase, faBriefcase, faCircleUser} from '@fortawesome/free-solid-svg-icons';
 // import { faSquareUser } from '@fortawesome/free-solid-svg-icons';
 
 import React from 'react';
@@ -19,7 +19,8 @@ class Widgets extends React.Component {
                     <div className="widgets-top-a">
                         <div className="widgets-developer-header">
                             <div className="profile-pic">
-                                <AccountCircle />
+                                {/* <AccountCircle /> */}
+                                <FontAwesomeIcon icon={faCircleUser}></FontAwesomeIcon>
                             </div>
                             <p className="widgets-headline">About the developer</p>
                         </div>

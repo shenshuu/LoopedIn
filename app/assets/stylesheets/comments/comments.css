@@ -78,11 +78,15 @@
 }
 
 .comments > .post-actions-modal > .edit-post-action {
+    padding: 4px;
     font-size: 13px;
+    column-gap: 4px;
 }
 
 .comments > .post-actions-modal > .delete-post-action {
+    padding: 4px;
     font-size: 13px;
+    column-gap: 2px;
 }
 
 .comment-message > .comment-form {

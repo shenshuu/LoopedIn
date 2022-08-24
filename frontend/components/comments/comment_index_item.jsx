@@ -1,9 +1,9 @@
 import {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
-import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
-import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import CreateIcon from '@mui/icons-material/Create';
+import { faThumbsUp, faEllipsis, faTrashCan, faPen} from '@fortawesome/free-solid-svg-icons';
+// import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
+// import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
+// import AccountCircle from '@mui/icons-material/AccountCircle';
+// import CreateIcon from '@mui/icons-material/Create';
 import equal from 'fast-deep-equal';
 import React from 'react';
 
@@ -113,12 +113,14 @@ class CommentIndexItem extends React.Component {
         return (
             <div className="post-actions-modal">
                 <div className="edit-post-action" onClick={this.toggleUpdateModal}>
-                    <CreateIcon />
+                    {/* <CreateIcon /> */}
+                    <FontAwesomeIcon icon={faPen}></FontAwesomeIcon>
                     <p>Edit Comment</p>
                 </div>
                 
                 <div className="delete-post-action" onClick={this.handleDelete}>
-                    <DeleteRoundedIcon/>
+                    {/* <DeleteRoundedIcon/> */}
+                    <FontAwesomeIcon icon={faTrashCan}></FontAwesomeIcon>
                     <p>Delete Comment</p>
                 </div>
             </div>
@@ -131,11 +133,8 @@ class CommentIndexItem extends React.Component {
                 {this.state.action_modal_hidden ? "" : this.actionModal()}
                 <div className="comment-contents">
                     <div className="profile-pic">
-                        <div id="comment-user-image">
-                            {Boolean(this.props.user.image) ? 
-                            <img src={this.props.user.image} alt="user-photo" /> :
-                            <AccountCircle />
-                            }
+                        <div id="comment-user-image"> 
+                            <img src={this.props.user.image} alt="user-photo" />
                         </div>
                     </div>
                     <div className="comment-container-a">
@@ -151,7 +150,8 @@ class CommentIndexItem extends React.Component {
                                     </div>
                                     {this.props.current_user.id === this.props.comment.user_id ? 
                                     <div className="post-actions" onClick={this.toggleActionModal}>
-                                        <MoreHorizRoundedIcon />
+                                        {/* <MoreHorizRoundedIcon /> */}
+                                        <FontAwesomeIcon icon={faEllipsis}></FontAwesomeIcon>
                                     </div> : ""
                                     }
                                 </div>

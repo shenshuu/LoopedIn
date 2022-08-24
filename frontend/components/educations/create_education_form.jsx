@@ -1,4 +1,6 @@
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+// import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 
 class CreateEducationForm extends React.Component {
@@ -47,7 +49,10 @@ class CreateEducationForm extends React.Component {
                 <div className="create-experience-container">
                     <div className="create-experience-header">
                         <p className="create-experience-title">Add Education</p>
-                        <div className="close"><CloseRoundedIcon onClick={this.props.toggleAdding} /></div>
+                        <div className="close">
+                            {/* <CloseRoundedIcon onClick={this.props.toggleAdding} /> */}
+                            <FontAwesomeIcon onClick={this.props.toggleAdding} icon={faXmark}></FontAwesomeIcon>
+                        </div>
                     </div>
                     <div id="create-exp-divider"></div>
                     <form onSubmit={this.handleSubmit}>

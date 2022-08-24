@@ -172,8 +172,10 @@
     align-items: center;
     font-weight: 600;
     font-size: 14px;
-    width: 100%;
+    width: 90%;
     border-radius: 10px;
+    padding: 6px 10px;
+    column-gap: 4px;
 }
 
 .edit-post-action > p, .delete-post-action > p {
@@ -244,7 +246,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px;
+    padding: 6px;
 }
 
 .create-post-user-info {
@@ -309,6 +311,8 @@
     align-items: center;
     width: 25px;
     height: 25px;
+    font-size: 20px;
+    padding: 6px;
 }
 
 .close-create-post-modal:hover {
@@ -403,4 +407,19 @@
     display: flex;
     column-gap: 10px;
     width: 100%;
+}
+
+#create-post-pen {
+    display: flex;
+    align-items: center;
+    padding: 4px;
+}
+
+#post-actions-toggler {
+    font-size: 20px;
+    padding: 4px;
+}
+
+#fa-thumbs-up, #fa-comment {
+    font-size: 18px;
 }

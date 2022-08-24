@@ -1,5 +1,7 @@
-import CreateIcon from '@mui/icons-material/Create';
-import AddIcon from '@mui/icons-material/Add';
+// import CreateIcon from '@mui/icons-material/Create';
+// import AddIcon from '@mui/icons-material/Add';
+import {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPen, faPlus } from '@fortawesome/free-solid-svg-icons';
 import ExperienceIndexContainer from '../experiences/experience_index_container';
 import EducationIndexContainer from '../educations/education_index_container';
 import CreateExperienceForm from '../experiences/create_experience_form';
@@ -71,11 +73,13 @@ class User extends React.Component {
         return (
             <div className="profile-action-modal">
                 <div className="profile-action" onClick={this.toggleAddingExperience}>
-                    <AddIcon />
+                    {/* <AddIcon /> */}
+                    <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
                     <p>Add experience</p>
                 </div>
                 <div className="profile-action" onClick={this.toggleAddingEducation}>
-                    <AddIcon />
+                    {/* <AddIcon /> */}
+                    <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
                     <p>Add education</p>
                 </div>
             </div>
@@ -96,7 +100,8 @@ class User extends React.Component {
                                 {Boolean(this.props.user.image) ? <img src={this.props.user.image} alt="user-profile-photo" /> : 
                                 <img src="https://i.postimg.cc/bYDLSPVZ/image-removebg-preview.png" alt="user-profile-photo" />}
                             </div>
-                            <CreateIcon />
+                            {/* <CreateIcon /> */}
+                            <FontAwesomeIcon icon={faPen}></FontAwesomeIcon>
                         </div>
                         <div className="user-intro-info">
                             <div className="user-intro-name">

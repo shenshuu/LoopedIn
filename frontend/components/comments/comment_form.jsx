@@ -1,4 +1,3 @@
-import AccountCircle from '@mui/icons-material/AccountCircle';
 import React from 'react';
 
 class CommentForm extends React.Component {
@@ -27,10 +26,7 @@ class CommentForm extends React.Component {
         return (
             <div className="comment-form-container">
                 <div id="comment-form-user-image">
-                    {Boolean(this.props.user.image) ? 
-                    <img src={this.props.user.image} alt="user-photo" /> :
-                    <AccountCircle />
-                    }
+                    <img src={this.props.user.image} alt="user-photo" />
                 </div>
                 <form className="comment-form" onSubmit={this.handleSubmit}>
                     <input type="text" value={this.state.body}

@@ -1,5 +1,4 @@
 import React from 'react';
-import { AccountCircle } from '@mui/icons-material';
 
 class Sidebar extends React.Component {
     constructor(props) {
@@ -27,10 +26,7 @@ class Sidebar extends React.Component {
                 <div className="sidebar-top">
                     <img src="https://wallpapercave.com/wp/wp4518438.jpg" alt="profile-img" />
                     <div id="sidebar-user-img">
-                        {Boolean(this.props.user.image) ? 
-                        <img src={this.props.user.image} alt="user-photo" /> :
-                        <AccountCircle />
-                        }
+                        <img src={this.props.user.image} alt="user-photo" />
                     </div>
                     <div className="user-details">
                         <p className="demo-name">{`${this.state?.first_name} ${this.state?.last_name}`}</p>

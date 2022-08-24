@@ -1,11 +1,15 @@
-import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
-import MessageRoundedIcon from '@mui/icons-material/MessageRounded';
-import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
-import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import CreateIcon from '@mui/icons-material/Create';
+// import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+// import MessageRoundedIcon from '@mui/icons-material/MessageRounded';
+// import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
+// import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
+// import AccountCircle from '@mui/icons-material/AccountCircle';
+// import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
+// import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+// import CreateIcon from '@mui/icons-material/Create';
+
+import {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark, faPen, faEllipsis, faTrashCan, faImage, } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp, faComment } from '@fortawesome/free-regular-svg-icons';
 import CommentFormContainer from '../comments/comment_form_container';
 import CommentIndexContainer from '../comments/comment_index_container';
 import equal from 'fast-deep-equal';
@@ -53,16 +57,16 @@ class PostIndexItem extends React.Component {
                 <div className="create-post-modal">
                     <div className="create-post-modal-header">
                         <h2>Edit post</h2>
-                        <div className="close-create-post-modal" onClick={this.toggleUpdateModal}><CloseRoundedIcon /></div>
+                        <div className="close-create-post-modal" onClick={this.toggleUpdateModal}>
+                            {/* <CloseRoundedIcon /> */}
+                            <FontAwesomeIcon icon={faXmark}></FontAwesomeIcon>
+                        </div>
                     </div>
                     <div className="create-post-modal-header-divider"></div>
                     <form className="create-post-form" onSubmit={this.handleUpdate}>
                         <div className="create-post-user-info">
                             <div id="post-user-image">
-                                {Boolean(this.props.user.image) ? 
-                                <img src={this.props.user.image} alt="user-photo" /> :
-                                <AccountCircle />
-                                }
+                                <img src={this.props.user.image} alt="user-photo" /> 
                             </div>
                             <div className="create-post-user-header">
                                 <h3>{`${this.state.user.first_name} ${this.state.user.last_name}`}</h3>
@@ -72,7 +76,8 @@ class PostIndexItem extends React.Component {
                         <input type="text" required placeholder="What do you want to talk about?" 
                         onChange={this.updateBody} value={this.state.post.body}/>
                         <div className="create-post-modal-footer">
-                            <InsertPhotoIcon />
+                            {/* <InsertPhotoIcon /> */}
+                            <FontAwesomeIcon icon={faImage}></FontAwesomeIcon>
                             <button type="submit" className="create-post-btn">Save</button>
                         </div>
                     </form>
@@ -171,11 +176,13 @@ class PostIndexItem extends React.Component {
         return (
             <div className="post-actions-modal">
                 <div className="edit-post-action" onClick={this.toggleUpdateModal}>
-                    <CreateIcon />
+                    {/* <CreateIcon /> */}
+                    <FontAwesomeIcon icon={faPen}></FontAwesomeIcon>
                     <p>Edit Post</p>
                 </div>
                 <div className="delete-post-action" onClick={this.handleDelete}>
-                    <DeleteRoundedIcon/>
+                    {/* <DeleteRoundedIcon/> */}
+                    <FontAwesomeIcon icon={faTrashCan}></FontAwesomeIcon>
                     <p>Delete Post</p>
                 </div>
             </div>
@@ -189,10 +196,7 @@ class PostIndexItem extends React.Component {
                 <div className="post-top">
                     <div className="post-header">
                             <div id="post-user-image">
-                                {Boolean(this.props.user.image) ? 
-                                <img src={this.props.user.image} alt="user-photo" /> :
-                                <AccountCircle />
-                                }
+                                <img src={this.props.user.image} alt="user-photo" /> 
                             </div>
                         {/* {Boolean(this.props.post.image) ? <img src={this.props.post.image} alt="profile-pic" /> : ""} */}
                         <div className="post-header-info">
@@ -204,7 +208,10 @@ class PostIndexItem extends React.Component {
                         </div>
                     </div>
                     {this.props.post.user_id === this.props.current_user.id ? <div className="post-actions">
-                        <MoreHorizRoundedIcon onClick={this.openActionModal}/>
+                        {/* <MoreHorizRoundedIcon onClick={this.openActionModal}/> */}
+                        <div id="post-actions-toggler" onClick={this.openActionModal}>
+                            <FontAwesomeIcon icon={faEllipsis}></FontAwesomeIcon>
+                        </div>
                     </div>: ""}
                 </div>
                 <div className="post-body">
@@ -218,11 +225,18 @@ class PostIndexItem extends React.Component {
                 <div className="post-btn-divider"></div>
                 <div className="post-btn-container">
                     <div className={this.state.is_liked ? "post-btn post-btn-liked" : "post-btn"} onClick={this.state.is_liked ? this.handleDeleteLike : this.handleCreateLike}>
-                        <ThumbUpOffAltIcon />
+                        {/* <ThumbUpOffAltIcon /> */}
+                        <div id="fa-thumbs-up">
+                            <FontAwesomeIcon icon={faThumbsUp}></FontAwesomeIcon>
+                        </div>
+                            
                         <p>Like</p>
                     </div>
                     <div className="post-btn" onClick={this.toggleComments}>
-                        <MessageRoundedIcon />
+                        {/* <MessageRoundedIcon /> */}
+                        <div id="fa-comment">
+                            <FontAwesomeIcon icon={faComment}></FontAwesomeIcon>
+                        </div>
                         <p>Comment</p>
                     </div>
                 </div>

@@ -1,7 +1,9 @@
 import ExperienceIndexItemContainer from './experience_index_item_container';
 import CreateExperienceForm from './create_experience_form';
-import CreateIcon from '@mui/icons-material/Create';
-import AddIcon from '@mui/icons-material/Add';
+import {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPen, faPlus } from '@fortawesome/free-solid-svg-icons';
+// import CreateIcon from '@mui/icons-material/Create';
+// import AddIcon from '@mui/icons-material/Add';
 import equal from 'fast-deep-equal';
 import React from 'react';
 
@@ -50,8 +52,14 @@ class ExperienceIndex extends React.Component {
                     <div id="experiences-header">
                         <p className="experiences-title">Experience</p>
                         {this.props.user.id === this.props.current_user.id ? <div className="experience-actions">
-                            <AddIcon className="experience-action" onClick={this.toggleAdding}/>
-                            <CreateIcon className="experience-action" onClick={this.toggleEditing}/>
+                            {/* <AddIcon className="experience-action" onClick={this.toggleAdding}/>
+                            <CreateIcon className="experience-action" onClick={this.toggleEditing}/> */}
+                            <div className="experience-action">
+                                <FontAwesomeIcon onClick={this.toggleAdding} icon={faPlus}></FontAwesomeIcon>
+                            </div>
+                            <div className="experience-action">
+                                <FontAwesomeIcon onClick={this.toggleEditing} icon={faPen}></FontAwesomeIcon>
+                            </div>
                         </div>: ""}
                     </div>
                     <ul>

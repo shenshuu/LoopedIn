@@ -1,7 +1,9 @@
-import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
-import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
+// import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
+// import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
+// import CreateIcon from '@mui/icons-material/Create';
 import EditExperienceForm from './edit_experience_form';
-import CreateIcon from '@mui/icons-material/Create';
+import {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEllipsis, faPen, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 
 class ExperienceIndexItem extends React.Component {
@@ -27,11 +29,13 @@ class ExperienceIndexItem extends React.Component {
         return (
             <div className="post-actions-modal" id="experience-actions-modal">
                 <div className="edit-post-action" onClick={this.handleEdit}>
-                    <CreateIcon />
+                    {/* <CreateIcon /> */}
+                    <FontAwesomeIcon icon={faPen}></FontAwesomeIcon>
                     <p>Edit Experience</p>
                 </div>
                 <div className="delete-post-action" onClick={this.handleDelete}>
-                    <DeleteRoundedIcon/>
+                    {/* <DeleteRoundedIcon/> */}
+                    <FontAwesomeIcon icon={faTrashCan}></FontAwesomeIcon>
                     <p>Delete Experience</p>
                 </div>
             </div>
@@ -88,7 +92,8 @@ class ExperienceIndexItem extends React.Component {
                                 <div className="experience-actions-modal-container">
                                     {this.props.editing ? 
                                     <div className="create-icon-div" onClick={this.toggleActionModal}>
-                                        <MoreHorizRoundedIcon />
+                                        {/* <MoreHorizRoundedIcon /> */}
+                                        <FontAwesomeIcon icon={faEllipsis}></FontAwesomeIcon>
                                     </div> : ""}
                                     {this.state.action_modal_hidden ? "" : this.actionModal()}
                                 </div>
