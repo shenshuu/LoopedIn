@@ -6,7 +6,7 @@ import CreateExperienceForm from '../experiences/create_experience_form';
 import CreateEducationForm from '../educations/create_education_form';
 import UpdateUserImageForm from './update_user_image_form';
 import UpdateUserForm from './update_user_form';
-import UserIndexItem from './user_index_item';
+import UserIndexItemContainer from './user_index_item_container';
 import HeaderContainer from '../splash/header_container';
 import About from './about';
 import equal from 'fast-deep-equal';
@@ -119,9 +119,10 @@ class User extends React.Component {
                                     {Boolean(this.props.user.image) ? <img src={this.props.user.image} alt="user-profile-photo" /> : 
                                     <img src="https://i.postimg.cc/bYDLSPVZ/image-removebg-preview.png" alt="user-profile-photo" />}
                                 </div>
+                                {this.props.user.id === this.props.current_user.id ? 
                                 <div id="edit-user" onClick={this.toggleEditingUser}>
-                                    <FontAwesomeIcon icon={faPen}></FontAwesomeIcon>
-                                </div>
+                                <FontAwesomeIcon icon={faPen}></FontAwesomeIcon>
+                                </div> : ""}
                             </div>
                             <div className="user-intro-info">
                                 <div className="user-intro-name">
@@ -159,7 +160,7 @@ class User extends React.Component {
                                 <p id="other-users-logo">People you may know</p>
                             </div>
                             {Object.values(this.props.users).map((user, i) => {
-                                if (i < 5) return <UserIndexItem user={user} key={user+i} />
+                                if (i < 5) return <UserIndexItemContainer user={user} key={user+i} />
                             })}
                         </div>
                     </div>
