@@ -24807,7 +24807,8 @@ var UpdateUserImageForm = /*#__PURE__*/function (_React$Component) {
         className: "create-post-form",
         onSubmit: this.handleSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
-        className: "create-post-modal-footer"
+        className: "create-post-modal-footer",
+        id: "create-post-modal-footer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("input", {
         type: "file",
         accept: "image/png, image/jpeg"

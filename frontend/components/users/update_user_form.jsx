@@ -51,7 +51,6 @@ class UpdateUserForm extends React.Component {
                     <div className="create-experience-header">
                         <p className="create-experience-title">Edit user into</p>
                         <div className="close">
-                            {/* <CloseRoundedIcon onClick={this.props.toggleEditing} /> */}
                             <FontAwesomeIcon onClick={this.props.toggleEditing} icon={faXmark}></FontAwesomeIcon>
                         </div>
                     </div>

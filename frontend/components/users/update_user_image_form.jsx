@@ -46,7 +46,7 @@ class UpdateUserImageForm extends React.Component {
                     </div>
                     <div className="create-post-modal-header-divider"></div>
                     <form className="create-post-form" onSubmit={this.handleSubmit}>
-                        <div className="create-post-modal-footer">
+                        <div className="create-post-modal-footer" id="create-post-modal-footer">
                             <div>
                                 <input type="file" accept="image/png, image/jpeg" />
                                 {/* <InsertPhotoIcon /> */}
