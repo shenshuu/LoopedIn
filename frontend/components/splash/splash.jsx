@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginFormContainer from '../session_form/login_form_container';
+import SessionFormContainer from '../session_form/session_form_container';
 
 class Splash extends React.Component {
     constructor(props) {
@@ -47,7 +47,7 @@ class Splash extends React.Component {
                 <div className="homepage-left-container">
                     <h1 className="homepage-slogan">Welcome to your professional community</h1>
                     {/* {this.props.loggedIn ? "" : this.loginForm()} */}
-                    <LoginFormContainer className="homepage-login-form"/>
+                    <SessionFormContainer className="homepage-login-form"/>
                 </div>
                 <img className="homepage-img" src="https://static-exp1.licdn.com/aero-v1/sc/h/dxf91zhqd2z6b0bwg85ktm5s4" alt="homepage-img" />
             </div>
