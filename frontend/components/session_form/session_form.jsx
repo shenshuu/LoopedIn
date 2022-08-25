@@ -1,5 +1,6 @@
 import React from 'react';
 import HeaderContainer from '../splash/header_container';
+import { Link } from 'react-router-dom';
 class SessionForm extends React.Component {
     constructor(props) {
         super(props);
@@ -46,6 +47,10 @@ class SessionForm extends React.Component {
                 placeholder="Last Name"
                 />
                 <br />
+                <div className="login-footer">
+                    Already have an account? 
+                    <Link id="join-now-link" to='/signup'>Sign in</Link>
+                </div>
             </div>
         )
     }
@@ -58,7 +63,7 @@ class SessionForm extends React.Component {
             location_city: 'New York',
             first_name: 'Cappy',
             last_name: 'Bara',
-            pronouns: 'He/him',
+            pronouns: 'He/Him',
             headline: 'Professional Tester',
         }
         this.props.history.push('/feed');
@@ -70,6 +75,10 @@ class SessionForm extends React.Component {
             <div>
                 {/* <div><span id="or-separator">or</span></div> */}
                 <button className="demo-btn" onClick={this.handleDemo}>Demo User</button>
+                <div className="login-footer">
+                    Don't have an account? 
+                    <Link id="join-now-link" to='/signup'>Join now</Link>
+                </div>
             </div>
         )
     }
@@ -77,29 +86,29 @@ class SessionForm extends React.Component {
     render() {
 
         return (
-            <div className="">
+            <div className="form-body-container">
                 <div className="form-body">
-                <div className="session-form-container">
-                    <form onSubmit={this.handleSubmit}>
-                    
-                        <input type="text" required
-                        value={this.state.email} 
-                        onChange={this.update('email')}
-                        placeholder="Email"
-                        />
+                    <div className="session-form-container">
+                        <form onSubmit={this.handleSubmit}>
 
-                        <input type="password" required 
-                        value={this.state.password} 
-                        onChange={this.update('password')}
-                        placeholder="Password"
-                        />
+                            <input type="text" required
+                            value={this.state.email} 
+                            onChange={this.update('email')}
+                            placeholder="Email"
+                            />
 
-                        {this.props.formType === 'Sign up' ? this.signupFields() : ""}
-                        <button type="submit" className="submit">{this.props.formType}</button>
-                        {this.props.formType === 'Sign in' ? this.demoLogin() : ""}
-                    </form>
+                            <input type="password" required 
+                            value={this.state.password} 
+                            onChange={this.update('password')}
+                            placeholder="Password"
+                            />
+
+                            {this.props.formType === 'Sign up' ? this.signupFields() : ""}
+                            <button type="submit" className="submit">{this.props.formType}</button>
+                            {this.props.formType === 'Sign in' ? this.demoLogin() : ""}
+                        </form>
+                    </div>
                 </div>
-            </div>
             </div>
         )
     }

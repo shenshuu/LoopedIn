@@ -11,6 +11,7 @@ class UpdateUserImageForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        debugger;
         const formData = new FormData();
         formData.append('user[image]', e.target[0].files[0]);
         formData.append('user[first_name]', this.props.user.first_name);

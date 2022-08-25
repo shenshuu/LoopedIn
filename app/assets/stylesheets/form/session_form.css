@@ -72,3 +72,23 @@
     margin-left: -2rem;
     padding-left: 0;
 }
+
+.form-body-container {
+    /* height: 100vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#join-now-link {
+    text-decoration: none;
+    font-weight: 600;
+    color: #0b66c2;
+}
+
+.login-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    column-gap: 6px;
+}
