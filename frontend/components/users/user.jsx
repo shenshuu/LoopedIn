@@ -1,5 +1,3 @@
-// import CreateIcon from '@mui/icons-material/Create';
-// import AddIcon from '@mui/icons-material/Add';
 import {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faPlus } from '@fortawesome/free-solid-svg-icons';
 import ExperienceIndexContainer from '../experiences/experience_index_container';
@@ -7,6 +5,7 @@ import EducationIndexContainer from '../educations/education_index_container';
 import CreateExperienceForm from '../experiences/create_experience_form';
 import CreateEducationForm from '../educations/create_education_form';
 import UpdateUserImageForm from './update_user_image_form';
+import UpdateUserForm from './update_user_form';
 import About from './about';
 import equal from 'fast-deep-equal';
 import React from 'react';
@@ -21,12 +20,14 @@ class User extends React.Component {
             adding_education: false,
             editing_user_image: false,
             editing_about: false, 
+            editing_user: false,
         };
         this.toggleActionModal = this.toggleActionModal.bind(this);
         this.actionModal = this.actionModal.bind(this);
         this.toggleAddingExperience = this.toggleAddingExperience.bind(this);
         this.toggleAddingEducation = this.toggleAddingEducation.bind(this);
         this.toggleEditingUserImage = this.toggleEditingUserImage.bind(this);
+        this.toggleEditingUser = this.toggleEditingUser.bind(this);
         this.toggleEditingAbout = this.toggleEditingAbout.bind(this);
     }
 
@@ -43,6 +44,13 @@ class User extends React.Component {
     //     }
     // }
 
+    toggleEditingUser() {
+        this.setState({
+            editing_user: !this.state.editing_user,
+            action_modal_hidden: true,
+        });
+    }
+
     toggleAddingExperience() {
         this.setState({
             adding_experience: !this.state.adding_experience,
@@ -58,11 +66,17 @@ class User extends React.Component {
     }
 
     toggleEditingUserImage() {
-        this.setState({editing_user_image: !this.state.editing_user_image});
+        this.setState({
+            editing_user_image: !this.state.editing_user_image,
+            action_modal_hidden: true,
+        });
     }
 
     toggleEditingAbout() {
-        this.setState({editing_about: !this.state.editing_about});
+        this.setState({
+            editing_about: !this.state.editing_about,
+            action_modal_hidden: true,
+        });
     }
 
     toggleActionModal() {
@@ -92,6 +106,7 @@ class User extends React.Component {
                 {this.state.editing_user_image ? <UpdateUserImageForm toggleModal={() => this.toggleEditingUserImage()} user={this.props.user} /> : ""}
                 {this.state.adding_experience ? <CreateExperienceForm toggleAdding={() => this.toggleAddingExperience()} adding={this.state.adding_experience} createExperience={this.props.createExperience}/> : ""}
                 {this.state.adding_education ? <CreateEducationForm toggleAdding={() => this.toggleAddingEducation()} adding={this.state.adding_education} createEducation={this.props.createEducation}/> : ""}
+                {this.state.editing_user ? <UpdateUserForm toggleEditing={() => this.toggleEditingUser()} current_user={this.props.current_user} editing={this.state.editing_user} updateUser={this.props.updateUser} /> : ""}
                 <div className="user-container">
                     <div className="user-intro" id="user-intro">
                         <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi0.wp.com%2Fwww.scienceabc.com%2Fwp-content%2Fuploads%2F2020%2F02%2FPythagoras-mathematical-numbers-seriessymbolMark-RademakerS.jpg%3Fssl%3D1&f=1&nofb=1" alt=""/>
@@ -100,8 +115,9 @@ class User extends React.Component {
                                 {Boolean(this.props.user.image) ? <img src={this.props.user.image} alt="user-profile-photo" /> : 
                                 <img src="https://i.postimg.cc/bYDLSPVZ/image-removebg-preview.png" alt="user-profile-photo" />}
                             </div>
-                            {/* <CreateIcon /> */}
-                            <FontAwesomeIcon icon={faPen}></FontAwesomeIcon>
+                            <div id="edit-user" onClick={this.toggleEditingUser}>
+                                <FontAwesomeIcon icon={faPen}></FontAwesomeIcon>
+                            </div>
                         </div>
                         <div className="user-intro-info">
                             <div className="user-intro-name">
