@@ -72,7 +72,15 @@ class SessionForm extends React.Component {
     demoLogin() {
         return (
             <div>
-                {/* <div><span id="or-separator">or</span></div> */}
+                <div id="or-separator">
+                    <div id="or-separator-left">
+                        <div id="or-separator-left-contents"></div>
+                    </div>
+                    <p id="or-separator-content">or</p>
+                    <div id="or-separator-right">
+                        <div id="or-separator-right-contents"></div>
+                    </div>
+                </div>
                 <button className="demo-btn" onClick={this.handleDemo}>Demo User</button>
                 <div className="login-footer">
                     Don't have an account? 

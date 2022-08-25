@@ -142,3 +142,7 @@
     background-color: none;
     padding-top: 20px;
 }
+
+#splash-header-right-links {
+    margin-right: 15px;
+}

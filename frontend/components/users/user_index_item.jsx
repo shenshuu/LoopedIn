@@ -7,14 +7,20 @@ class UserIndexItem extends React.Component {
 
     render() {
         return (
-            <div>
-                <div>
-                    <div id="other-user-img">
+            <div className="other-user-container">
+                <div className="other-user-contents">
+                    <div className="other-user-img">
                         <img src={this.props.user.image} alt="user-photo" />
                     </div>
-                    <div id="other-user-info">
-                        <p id="other-user-name">{`${this.props.user.first_name} ${this.props.user.last_name}`}</p>
-                        <p id="other-user-headline">{this.props.user.headline}</p>
+                    <div className="other-user-info">
+                        <div className="other-user-name-contents">
+                            <p className="other-user-name">{`${this.props.user.first_name} ${this.props.user.last_name}`}</p>
+                            <div className="other-user-pronouns-container">
+                                <p className="other-user-pronouns">{`(${this.props.user.pronouns})`}</p>
+                            </div>
+                        </div>
+                        <p className="other-user-headline">{this.props.user.headline}</p>
+                        <button className="connect">Connect</button>
                     </div>
                 </div>
             </div>

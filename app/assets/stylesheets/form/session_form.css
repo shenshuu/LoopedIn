@@ -37,7 +37,7 @@
     flex-wrap: nowrap;
 }
 
-.submit, .demo-btn {
+.submit {
     background-color: #0b66c2;
     color: white;
     border-radius: 28px;
@@ -49,6 +49,17 @@
     border: 0;
 }
 
+.demo-btn {
+    background-color: #0b66c2;
+    color: white;
+    border-radius: 28px;
+    cursor: pointer;
+    padding: 12px 24px 12px 24px;
+    width: 300px;
+    font-size: 16px;
+    margin-top: 6px;
+    border: 0;
+}
 
 .homepage-left-container .session-form-container {
     position:absolute;
@@ -152,4 +163,28 @@
 #user-login-header {
     padding-left: 45px;
     width: 100%;
+}
+
+#or-separator {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 5px;
+    column-gap: 5px;
+}
+
+#or-separator-left-contents, #or-separator-right-contents {
+    border-bottom: 1px solid gray;
+    width: 100%;
+}
+
+#or-separator-left, #or-separator-right {
+    display: flex;
+    align-items: center;
+    width: 40%;
+}
+
+#or-separator-content {
+    font-size: 14px;
+    color: gray;
 }

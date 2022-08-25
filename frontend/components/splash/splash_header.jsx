@@ -80,7 +80,7 @@ class SplashHeader extends React.Component {
                         {this.props.loggedIn ? this.searchContainer() : ""}
                     </div>
 
-                    <div id="splash-header-right">
+                    <div id="splash-header-right-links">
                         {this.props.loggedIn ? this.signinLinks() : this.signoutLinks()}
                     </div>
                 </div>
