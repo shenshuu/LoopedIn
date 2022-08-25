@@ -66,8 +66,12 @@ class LoginForm extends React.Component {
             <div id="login-body-container">
                 <div className="form-body">
                     <div className="session-form-container">
+                
                         <form onSubmit={this.handleSubmit}>
-
+                            <div id="user-login-header">
+                                <p id="user-login-logo">Sign in</p>
+                                <p id="user-login-info">Stay looped in your professional world</p> 
+                            </div>
                             <input type="text" required
                             value={this.state.email} 
                             onChange={this.update('email')}

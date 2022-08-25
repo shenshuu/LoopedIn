@@ -1,5 +1,4 @@
 import React from 'react';
-import HeaderContainer from '../splash/header_container';
 import { Link } from 'react-router-dom';
 class SessionForm extends React.Component {
     constructor(props) {
@@ -88,7 +87,7 @@ class SessionForm extends React.Component {
         return (
             <div className="form-body-container">
                 <div className="form-body">
-                    <div className="session-form-container">
+                    <div className="session-form-container" id="session-form-container">
                         <form onSubmit={this.handleSubmit}>
 
                             <input type="text" required
