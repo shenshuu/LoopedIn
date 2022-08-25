@@ -14,6 +14,7 @@
 
 .homepage-body {
     display: flex;
+    column-gap: 35px;
 }
 
 .homepage-img {
@@ -25,13 +26,15 @@
     font-size: 56px;
     font-weight: 200;
     color: #8F5849;
+    width: 400px;
+    word-wrap: break-word;
 }
 
 .homepage-left-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 50px;
+    margin-left: 20px;
 }
 
 .homepage-left-container form {

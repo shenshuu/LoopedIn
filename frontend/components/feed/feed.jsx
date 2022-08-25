@@ -1,6 +1,7 @@
 import React from 'react';
 import SidebarContainer from './sidebar_container';
 import PostIndexContainer from '../posts/post_index_container';
+import HeaderContainer from '../splash/header_container';
 import Widgets from '../widgets/widgets';
 import equal from 'fast-deep-equal';
 
@@ -53,7 +54,12 @@ class Feed extends React.Component {
     }
 
     render() {
-        return this.state.user && this.renderFeed();
+        return (
+            <div>
+                <HeaderContainer />
+                {this.state.user && this.renderFeed()}
+            </div>
+        )
     }
 }
 

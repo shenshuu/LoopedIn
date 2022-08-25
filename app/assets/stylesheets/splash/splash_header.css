@@ -137,3 +137,8 @@
     display: flex;
     justify-content: space-between;
 }
+
+#splash-nav {
+    background-color: none;
+    padding-top: 20px;
+}
