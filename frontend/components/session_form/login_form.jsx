@@ -1,5 +1,5 @@
 import React from 'react';
-import HeaderContainer from '../splash/header_container';
+import SessionNav from '../nav/session_nav';
 import { Link } from 'react-router-dom';
 class LoginForm extends React.Component {
     constructor(props) {
@@ -63,35 +63,37 @@ class LoginForm extends React.Component {
     render() {
 
         return (
-            <div id="login-body-container">
-                <div className="form-body">
-                    <div className="session-form-container">
-                
-                        <form onSubmit={this.handleSubmit}>
-                            <div id="user-login-header">
-                                <p id="user-login-logo">Sign in</p>
-                                <p id="user-login-info">Stay looped in your professional world</p> 
-                            </div>
-                            <input type="text" required
-                            value={this.state.email} 
-                            onChange={this.update('email')}
-                            placeholder="Email"
-                            />
+            <div>
+                <SessionNav />
+                <div id="login-body-container">
+                    <div className="form-body">
+                        <div className="session-form-container">
+                    
+                            <form onSubmit={this.handleSubmit}>
+                                <div id="user-login-header">
+                                    <p id="user-login-logo">Sign in</p>
+                                    <p id="user-login-info">Stay looped in your professional world</p> 
+                                </div>
+                                <input type="text" required
+                                value={this.state.email} 
+                                onChange={this.update('email')}
+                                placeholder="Email"
+                                />
 
-                            <input type="password" required 
-                            value={this.state.password} 
-                            onChange={this.update('password')}
-                            placeholder="Password"
-                            />
+                                <input type="password" required 
+                                value={this.state.password} 
+                                onChange={this.update('password')}
+                                placeholder="Password"
+                                />
 
-                            <button type="submit" className="submit">{this.props.formType}</button>
-                            <button className="demo-btn" onClick={this.handleDemo}>Demo User</button>
-                            <div className="login-footer">
-                                Don't have an account? 
-                                <Link id="join-now-link" to='/signup'>Join now</Link>
-                            </div>
-                            {/* {this.props.formType === 'Sign in' ? this.demoLogin() : ""} */}
-                        </form>
+                                <button type="submit" className="submit">{this.props.formType}</button>
+                                <button className="demo-btn" onClick={this.handleDemo}>Demo User</button>
+                                <div className="login-footer">
+                                    Don't have an account? 
+                                    <Link id="join-now-link" to='/signup'>Join now</Link>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
