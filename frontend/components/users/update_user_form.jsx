@@ -1,4 +1,3 @@
-// import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
@@ -9,7 +8,7 @@ class UpdateUserForm extends React.Component {
         this.state = {
             first_name: this.props.current_user.first_name,
             last_name: this.props.current_user.last_name,
-            pronouns: this.props.current_user.pronouns || '',
+            pronouns: this.props.current_user.pronouns || 'Other',
             headline: this.props.current_user.headline || '',
             location_country: this.props.current_user.location_country || '',
             location_city: this.props.current_user.location_city || '',
@@ -68,10 +67,11 @@ class UpdateUserForm extends React.Component {
                         {/* </div> */}
                         <div className="input-field">
                             <label className="input-field-name">Pronouns</label>
-                            <select value="Please select" onChange={this.update('pronouns')}>
-                                <option value="Full-Time">He/Him</option>
-                                <option value="Part-Time">She/Her</option>
-                                <option value="Self-employed">Non-binary</option>
+                            <select value={this.state.pronouns} onChange={this.update('pronouns')}>
+                                <option value="Please select">Please select</option>
+                                <option value="He/Him">He/Him</option>
+                                <option value="She/Her">She/Her</option>
+                                <option value="Non-binary">Non-binary</option>
                                 <option value="Other">Other</option>
                             </select>
                         </div>

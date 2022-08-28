@@ -1,9 +1,3 @@
-// import CreateIcon from '@mui/icons-material/Create';
-// import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
-// import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
-// import EventNoteIcon from '@mui/icons-material/EventNote';
-// import CalendarViewDayIcon from '@mui/icons-material/CalendarViewDay';
-// import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faPen, faImage, faVideo, faCalendarDays, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
@@ -25,12 +19,13 @@ class PostForm extends React.Component {
 
     handleCreate(e) {
         e.preventDefault();
+        debugger;
         const formData = new FormData();
         formData.append('post[image]', e.target[1].files[0]);
         formData.append('post[body]', this.state.post.body);
         formData.append('post[user_id]', this.state.post.user_id);
         $.ajax({
-            url: '/api/posts',
+            url: `/api/posts`,
             method: 'POST',
             data: formData,
             contentType: false,
@@ -65,7 +60,6 @@ class PostForm extends React.Component {
                     <div className="create-post-modal-header">
                         <h2>Create a post</h2>
                         <div className="close-create-post-modal" onClick={this.toggleModal}>
-                            {/* <CloseRoundedIcon /> */}
                             <FontAwesomeIcon icon={faXmark}></FontAwesomeIcon>
                         </div>
                     </div>
@@ -84,7 +78,6 @@ class PostForm extends React.Component {
                         <div className="create-post-modal-footer">
                             <div>
                                 <input type="file" accept="image/png, image/jpeg" />
-                                {/* <InsertPhotoIcon /> */}
                             </div>
                             <button type="submit" className="create-post-btn">Post</button>
                         </div>
@@ -98,28 +91,24 @@ class PostForm extends React.Component {
         return (
             <div className="post-option">
                 <div className="option">
-                    {/* <InsertPhotoIcon className="photo-icon"/> */}
                     <div className="photo-icon">
                         <FontAwesomeIcon icon={faImage}></FontAwesomeIcon>
                     </div>
                     <p>Photo</p>
                 </div>
                 <div className="option">
-                    {/* <SubscriptionsIcon className="video-icon"/> */}
                     <div className="video-icon">
                         <FontAwesomeIcon icon={faVideo}></FontAwesomeIcon>
                     </div>
                     <p>Video</p>
                 </div>
                 <div className="option">
-                    {/* <EventNoteIcon className="event-icon"/> */}
                     <div className="event-icon">
                         <FontAwesomeIcon icon={faCalendarDays}></FontAwesomeIcon>
                     </div>
                     <p>Event</p>
                 </div>
                 <div className="option">
-                    {/* <CalendarViewDayIcon className="article-icon"/> */}
                     <div className="article-icon">
                         <FontAwesomeIcon icon={faNewspaper}></FontAwesomeIcon>
                     </div>

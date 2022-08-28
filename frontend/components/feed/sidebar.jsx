@@ -38,11 +38,11 @@ class Sidebar extends React.Component {
                 <div className="sidebar-stats">
                     <div className="sidebar-stats-top">
                         <p>Connections</p>
-                        <p className="sidebar-stat-number">43</p>
+                        <p className="sidebar-stat-number">11</p>
                     </div>
                     <div className="sidebar-stats-bottom">
                         <p>Who's viewed your profile</p>
-                        <p className="sidebar-stat-number">53</p>
+                        <p className="sidebar-stat-number">24</p>
                     </div>
                 </div>
 

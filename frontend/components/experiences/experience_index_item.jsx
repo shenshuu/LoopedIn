@@ -1,6 +1,3 @@
-// import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
-// import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
-// import CreateIcon from '@mui/icons-material/Create';
 import EditExperienceForm from './edit_experience_form';
 import {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsis, faPen, faTrashCan } from '@fortawesome/free-solid-svg-icons';
@@ -29,12 +26,10 @@ class ExperienceIndexItem extends React.Component {
         return (
             <div className="post-actions-modal" id="experience-actions-modal">
                 <div className="edit-post-action" onClick={this.handleEdit}>
-                    {/* <CreateIcon /> */}
                     <FontAwesomeIcon icon={faPen}></FontAwesomeIcon>
                     <p>Edit Experience</p>
                 </div>
                 <div className="delete-post-action" onClick={this.handleDelete}>
-                    {/* <DeleteRoundedIcon/> */}
                     <FontAwesomeIcon icon={faTrashCan}></FontAwesomeIcon>
                     <p>Delete Experience</p>
                 </div>
@@ -92,7 +87,6 @@ class ExperienceIndexItem extends React.Component {
                                 <div className="experience-actions-modal-container">
                                     {this.props.editing ? 
                                     <div className="create-icon-div" onClick={this.toggleActionModal}>
-                                        {/* <MoreHorizRoundedIcon /> */}
                                         <FontAwesomeIcon icon={faEllipsis}></FontAwesomeIcon>
                                     </div> : ""}
                                     {this.state.action_modal_hidden ? "" : this.actionModal()}
@@ -111,8 +105,8 @@ class ExperienceIndexItem extends React.Component {
                             <div id="employment-location">
                                 {`${this.props.experience.location}`}
                             </div>
+                            <div id="employment-description"></div>
                         </div>
-                        {/* {this.props.editing ? <div className="create-icon-div" onClick={this.toggleEditing}><CreateIcon/></div> : ""} */}
                     </div>
                 </div>
                 <div id="experiences-separator"></div>
