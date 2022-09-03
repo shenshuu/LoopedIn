@@ -118,7 +118,6 @@ class CommentIndexItem extends React.Component {
     }
 
     render() {
-        debugger;
         return (
             <div className="comments">
                 {this.state.action_modal_hidden ? "" : this.actionModal()}
