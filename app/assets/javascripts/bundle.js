@@ -23220,7 +23220,6 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       e.preventDefault();
-      debugger;
       var formData = new FormData();
       formData.append('post[image]', e.target[1].files[0]);
       formData.append('post[body]', this.state.post.body);
@@ -23486,11 +23485,19 @@ var PostIndex = /*#__PURE__*/function (_React$Component) {
           posts: this.props.posts
         });
       }
-    } // componentDidMount() {
-    //     this.props.fetchPosts();
-    //     this.setState({posts: this.props.posts});
-    // }
 
+      if (!fast_deep_equal__WEBPACK_IMPORTED_MODULE_3___default()(this.props.likes, prevProps.likes)) {
+        this.setState({
+          posts: this.props.posts
+        });
+      }
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchComments();
+      this.props.fetchLikes();
+    }
   }, {
     key: "render",
     value: function render() {
@@ -23526,8 +23533,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _actions_post_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../actions/post_actions */ "./frontend/actions/post_actions.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _post_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./post_index */ "./frontend/components/posts/post_index.jsx");
+/* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/comment_actions */ "./frontend/actions/comment_actions.js");
+/* harmony import */ var _actions_like_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/like_actions */ "./frontend/actions/like_actions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _post_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./post_index */ "./frontend/components/posts/post_index.jsx");
+
+
 
 
 
@@ -23548,11 +23559,17 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     fetchPosts: function fetchPosts() {
       return dispatch((0,_actions_post_actions__WEBPACK_IMPORTED_MODULE_0__.fetchPosts)());
+    },
+    fetchComments: function fetchComments() {
+      return dispatch((0,_actions_comment_actions__WEBPACK_IMPORTED_MODULE_1__.fetchComments)());
+    },
+    fetchLikes: function fetchLikes() {
+      return dispatch((0,_actions_like_actions__WEBPACK_IMPORTED_MODULE_2__.fetchLikes)());
     }
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(_post_index__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_3__.connect)(mapStateToProps, mapDispatchToProps)(_post_index__WEBPACK_IMPORTED_MODULE_4__["default"]));
 
 /***/ }),
 
@@ -23621,14 +23638,11 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       user: _this.props.user,
       post: _this.props.post,
       is_liked: false,
-      comments: [],
-      likes: [],
       display_comments: false,
       action_modal_hidden: true,
       update_modal_hidden: true
     };
-    _this.handleCreateLike = _this.handleCreateLike.bind(_assertThisInitialized(_this));
-    _this.handleDeleteLike = _this.handleDeleteLike.bind(_assertThisInitialized(_this));
+    _this.handleLike = _this.handleLike.bind(_assertThisInitialized(_this));
     _this.handleUpdate = _this.handleUpdate.bind(_assertThisInitialized(_this));
     _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
     _this.actionModal = _this.actionModal.bind(_assertThisInitialized(_this));
@@ -23695,46 +23709,25 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
         type: "submit",
         className: "create-post-btn"
       }, "Save")))));
-    } // handleLike() {
-    //     let likes = Object.values(this.props.likes).filter(
-    //         (like) => like.likeable_id === this.props.post.id && like.user_id === this.props.current_user.id && like.likeable_type === 'Post'
-    //     );
-    //     if (likes.length > 0) {
-    //         this.props.deleteLike(likes[0]);
-    //     } else {
-    //         this.props.createLike({
-    //             user_id: this.props.user.id,
-    //             likeable_id: this.props.post.id,
-    //             likeable_type: 'Post',
-    //             }
-    //         );
-    //     }
-    // }
-
-  }, {
-    key: "handleCreateLike",
-    value: function handleCreateLike() {
-      this.setState({
-        is_liked: true
-      });
-      this.props.createLike({
-        user_id: this.props.current_user.id,
-        likeable_id: this.props.post.id,
-        likeable_type: 'Post'
-      });
     }
   }, {
-    key: "handleDeleteLike",
-    value: function handleDeleteLike() {
+    key: "handleLike",
+    value: function handleLike() {
       var _this2 = this;
 
-      this.setState({
-        is_liked: false
-      });
-      var userLike = Object.values(this.props.likes).filter(function (like) {
+      var likes = Object.values(this.props.likes).filter(function (like) {
         return like.likeable_id === _this2.props.post.id && like.user_id === _this2.props.current_user.id && like.likeable_type === 'Post';
-      })[0];
-      this.props.deleteLike(userLike);
+      });
+
+      if (likes.length > 0) {
+        this.props.deleteLike(likes[0]);
+      } else {
+        this.props.createLike({
+          user_id: this.props.user.id,
+          likeable_id: this.props.post.id,
+          likeable_type: 'Post'
+        });
+      }
     }
   }, {
     key: "handleUpdate",
@@ -23770,17 +23763,9 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "toggleComments",
     value: function toggleComments() {
-      // debugger;
       this.setState({
         display_comments: !this.state.display_comments
       });
-      this.props.deleteLikes();
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.fetchComments();
-      this.props.fetchLikes();
     }
   }, {
     key: "componentDidUpdate",
@@ -23793,7 +23778,9 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
             return comment.post_id === _this3.props.post.id;
           })
         });
-      } else if (!fast_deep_equal__WEBPACK_IMPORTED_MODULE_3___default()(this.props.likes, prevProps.likes)) {
+      }
+
+      if (!fast_deep_equal__WEBPACK_IMPORTED_MODULE_3___default()(this.props.likes, prevProps.likes)) {
         this.setState({
           likes: Object.values(this.props.likes).filter(function (like) {
             return like.likeable_id === _this3.props.post.id;
@@ -23801,19 +23788,6 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
           is_liked: Object.values(this.props.likes).filter(function (like) {
             return _this3.props.current_user.id === like.user_id && _this3.props.post.id === like.likeable_id && like.likeable_type === 'Post';
           }).length > 0
-        });
-      } else if (!fast_deep_equal__WEBPACK_IMPORTED_MODULE_3___default()(this.state.comments, prevState.comments)) {
-        this.setState({
-          comments: this.state.comments
-        });
-      } else if (!fast_deep_equal__WEBPACK_IMPORTED_MODULE_3___default()(this.state.likes, prevState.likes)) {
-        this.setState({
-          likes: this.state.likes
-        });
-      } else if (!fast_deep_equal__WEBPACK_IMPORTED_MODULE_3___default()(this.props.current_user, prevProps.current_user)) {
-        this.setState({
-          comments: [],
-          likes: []
         });
       }
     }
@@ -23837,6 +23811,9 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "renderPost",
     value: function renderPost() {
+      var _this4 = this;
+
+      // debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("div", {
         className: "post"
       }, this.state.update_modal_hidden ? "" : this.updateModal(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("div", {
@@ -23875,17 +23852,25 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       }) : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("div", {
         className: "likes-comments-info"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("p", {
-        className: this.state.is_liked ? "likes-count likes-count-liked" : "likes-count"
-      }, this.state.likes.length, " likes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("p", {
+        className: Object.values(this.props.likes).filter(function (like) {
+          return like.user_id === _this4.props.current_user.id && like.likeable_id === _this4.props.post.id;
+        }).length > 0 ? "likes-count likes-count-liked" : "likes-count"
+      }, Object.values(this.props.likes).filter(function (like) {
+        return like.likeable_id === _this4.props.post.id;
+      }).length, " likes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("p", {
         className: "comments-count",
         onClick: this.toggleComments
-      }, this.state.comments.length, " comments")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("div", {
+      }, Object.values(this.props.comments).length, " comments")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("div", {
         className: "post-btn-divider"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("div", {
         className: "post-btn-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("div", {
-        className: this.state.is_liked ? "post-btn post-btn-liked" : "post-btn",
-        onClick: this.state.is_liked ? this.handleDeleteLike : this.handleCreateLike
+        className: Object.values(this.props.likes).filter(function (like) {
+          return like.user_id === _this4.props.current_user.id && like.likeable_id === _this4.props.post.id;
+        }).length > 0 ? "post-btn post-btn-liked" : "post-btn",
+        onClick: function onClick() {
+          return _this4.handleLike();
+        }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("div", {
         id: "fa-thumbs-up"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_0__.FontAwesomeIcon, {

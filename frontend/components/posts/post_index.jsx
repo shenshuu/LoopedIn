@@ -14,13 +14,16 @@ class PostIndex extends React.Component {
     componentDidUpdate(prevProps) {
         if (!equal(this.props.posts, prevProps.posts)) {
             this.setState({posts: this.props.posts});
+        } 
+        if (!equal(this.props.likes, prevProps.likes)) {
+            this.setState({posts: this.props.posts});
         }
     }
 
-    // componentDidMount() {
-    //     this.props.fetchPosts();
-    //     this.setState({posts: this.props.posts});
-    // }
+    componentDidMount() {
+        this.props.fetchComments();
+        this.props.fetchLikes();
+    }
 
     render() {
         return (

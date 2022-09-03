@@ -19,7 +19,6 @@ class PostForm extends React.Component {
 
     handleCreate(e) {
         e.preventDefault();
-        debugger;
         const formData = new FormData();
         formData.append('post[image]', e.target[1].files[0]);
         formData.append('post[body]', this.state.post.body);
