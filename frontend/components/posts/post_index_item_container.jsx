@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
 import PostIndexItem from './post_index_item';
 import {updatePost, deletePost} from '../../actions/post_actions';
-import { fetchLikes, deleteLikes } from '../../actions/like_actions'; 
-import { fetchComments } from '../../actions/comment_actions';
+import { deleteLikes } from '../../actions/like_actions'; 
 import { createLike, deleteLike } from '../../actions/like_actions';
 
 const mapStateToProps = (state, ownProps) => {
@@ -20,8 +19,6 @@ const mapDispatchToProps = dispatch => ({
     createLike: like => dispatch(createLike(like)),
     deleteLike: like => dispatch(deleteLike(like)),
     deleteLikes: () => dispatch(deleteLikes()),
-    fetchComments: () => dispatch(fetchComments()),
-    fetchLikes: () => dispatch(fetchLikes()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostIndexItem);

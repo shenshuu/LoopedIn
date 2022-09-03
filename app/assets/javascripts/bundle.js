@@ -23485,12 +23485,6 @@ var PostIndex = /*#__PURE__*/function (_React$Component) {
           posts: this.props.posts
         });
       }
-
-      if (!fast_deep_equal__WEBPACK_IMPORTED_MODULE_3___default()(this.props.likes, prevProps.likes)) {
-        this.setState({
-          posts: this.props.posts
-        });
-      }
     }
   }, {
     key: "componentDidMount",
@@ -23860,7 +23854,9 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       }).length, " likes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("p", {
         className: "comments-count",
         onClick: this.toggleComments
-      }, Object.values(this.props.comments).length, " comments")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("div", {
+      }, Object.values(this.props.comments).filter(function (comment) {
+        return comment.post_id === _this4.props.post.id;
+      }).length, " comments")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("div", {
         className: "post-btn-divider"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("div", {
         className: "post-btn-container"
@@ -23919,8 +23915,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _post_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./post_index_item */ "./frontend/components/posts/post_index_item.jsx");
 /* harmony import */ var _actions_post_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/post_actions */ "./frontend/actions/post_actions.js");
 /* harmony import */ var _actions_like_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/like_actions */ "./frontend/actions/like_actions.js");
-/* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/comment_actions */ "./frontend/actions/comment_actions.js");
-
 
 
 
@@ -23952,12 +23946,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     deleteLikes: function deleteLikes() {
       return dispatch((0,_actions_like_actions__WEBPACK_IMPORTED_MODULE_3__.deleteLikes)());
-    },
-    fetchComments: function fetchComments() {
-      return dispatch((0,_actions_comment_actions__WEBPACK_IMPORTED_MODULE_4__.fetchComments)());
-    },
-    fetchLikes: function fetchLikes() {
-      return dispatch((0,_actions_like_actions__WEBPACK_IMPORTED_MODULE_3__.fetchLikes)());
     }
   };
 };

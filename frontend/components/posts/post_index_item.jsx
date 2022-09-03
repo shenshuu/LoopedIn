@@ -174,7 +174,7 @@ class PostIndexItem extends React.Component {
                 <div id="post-img">{Boolean(this.props.post.image) ? <img src={this.props.post.image} alt="post-image" /> : ""}</div>
                 <div className="likes-comments-info">
                     <p className={Object.values(this.props.likes).filter(like => like.user_id === this.props.current_user.id && like.likeable_id === this.props.post.id).length > 0 ? "likes-count likes-count-liked" : "likes-count"}>{Object.values(this.props.likes).filter(like => like.likeable_id === this.props.post.id).length} likes</p>
-                    <p className="comments-count" onClick={this.toggleComments}>{Object.values(this.props.comments).length} comments</p>
+                    <p className="comments-count" onClick={this.toggleComments}>{Object.values(this.props.comments).filter(comment => comment.post_id === this.props.post.id).length} comments</p>
                 </div>
                 <div className="post-btn-divider"></div>
                 <div className="post-btn-container">
