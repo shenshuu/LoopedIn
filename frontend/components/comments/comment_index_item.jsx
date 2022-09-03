@@ -1,9 +1,5 @@
 import {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp, faEllipsis, faTrashCan, faPen} from '@fortawesome/free-solid-svg-icons';
-// import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
-// import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
-// import AccountCircle from '@mui/icons-material/AccountCircle';
-// import CreateIcon from '@mui/icons-material/Create';
 import equal from 'fast-deep-equal';
 import React from 'react';
 
@@ -39,10 +35,6 @@ class CommentIndexItem extends React.Component {
             });
         }
     } 
-
-    componentDidMount() {
-        this.props.fetchLikes();
-    }
 
     updateBody(e) {
         this.setState({
@@ -113,13 +105,11 @@ class CommentIndexItem extends React.Component {
         return (
             <div className="post-actions-modal">
                 <div className="edit-post-action" onClick={this.toggleUpdateModal}>
-                    {/* <CreateIcon /> */}
                     <FontAwesomeIcon icon={faPen}></FontAwesomeIcon>
                     <p>Edit Comment</p>
                 </div>
                 
                 <div className="delete-post-action" onClick={this.handleDelete}>
-                    {/* <DeleteRoundedIcon/> */}
                     <FontAwesomeIcon icon={faTrashCan}></FontAwesomeIcon>
                     <p>Delete Comment</p>
                 </div>
@@ -128,6 +118,7 @@ class CommentIndexItem extends React.Component {
     }
 
     render() {
+        debugger;
         return (
             <div className="comments">
                 {this.state.action_modal_hidden ? "" : this.actionModal()}
@@ -150,7 +141,6 @@ class CommentIndexItem extends React.Component {
                                     </div>
                                     {this.props.current_user.id === this.props.comment.user_id ? 
                                     <div className="post-actions" onClick={this.toggleActionModal}>
-                                        {/* <MoreHorizRoundedIcon /> */}
                                         <FontAwesomeIcon icon={faEllipsis}></FontAwesomeIcon>
                                     </div> : ""
                                     }
@@ -164,13 +154,13 @@ class CommentIndexItem extends React.Component {
                             </div>
                         </div>
                         <div className="comment-responses">
-                            <div className={this.state.is_liked ? "comment-like comment-liked" : "comment-like"}>
-                                <p id="comment-like" onClick={this.handleLike}>Like</p>
+                            <div className={Object.values(this.props.likes).filter(like => like.likeable_id === this.props.comment.id && like.user_id === this.props.current_user.id && like.likeable_type === 'Comment').length > 0 ? "comment-like comment-liked" : "comment-like"}>
+                                <p id="comment-like" onClick={() => this.handleLike()}>Like</p>
                                 
-                                {this.state.likes.length > 0 ? 
+                                {Object.values(this.props.likes).filter(like => like.likeable_id === this.props.comment.id && like.likeable_type === 'Comment').length > 0 ? 
                                 <div className="comment-like-contents">
                                 <FontAwesomeIcon className="fa-comment-like" icon={faThumbsUp}></FontAwesomeIcon>
-                                <p>{this.state.likes.length}</p>
+                                <p>{Object.values(this.props.likes).filter(like => like.likeable_id === this.props.comment.id && like.likeable_type === 'Comment').length}</p>
                                 </div> : ""}
                             </div>
                             <div className="comment-response-separator">|</div>

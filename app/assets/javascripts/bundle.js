@@ -20571,10 +20571,6 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
- // import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
-// import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
-// import AccountCircle from '@mui/icons-material/AccountCircle';
-// import CreateIcon from '@mui/icons-material/Create';
 
 
 
@@ -20627,11 +20623,6 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
           }).length > 0
         });
       }
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.fetchLikes();
     }
   }, {
     key: "updateBody",
@@ -20745,6 +20736,9 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
+      debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "comments"
       }, this.state.action_modal_hidden ? "" : this.actionModal(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
@@ -20788,16 +20782,24 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
       }, this.state.update_modal_hidden ? this.props.comment.body : this.updateModal())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "comment-responses"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
-        className: this.state.is_liked ? "comment-like comment-liked" : "comment-like"
+        className: Object.values(this.props.likes).filter(function (like) {
+          return like.likeable_id === _this4.props.comment.id && like.user_id === _this4.props.current_user.id && like.likeable_type === 'Comment';
+        }).length > 0 ? "comment-like comment-liked" : "comment-like"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
         id: "comment-like",
-        onClick: this.handleLike
-      }, "Like"), this.state.likes.length > 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+        onClick: function onClick() {
+          return _this4.handleLike();
+        }
+      }, "Like"), Object.values(this.props.likes).filter(function (like) {
+        return like.likeable_id === _this4.props.comment.id && like.likeable_type === 'Comment';
+      }).length > 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "comment-like-contents"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_0__.FontAwesomeIcon, {
         className: "fa-comment-like",
         icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faThumbsUp
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, this.state.likes.length)) : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, Object.values(this.props.likes).filter(function (like) {
+        return like.likeable_id === _this4.props.comment.id && like.likeable_type === 'Comment';
+      }).length)) : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "comment-response-separator"
       }, "|"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "comment-reply"
@@ -23847,10 +23849,10 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
         className: "likes-comments-info"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("p", {
         className: Object.values(this.props.likes).filter(function (like) {
-          return like.user_id === _this4.props.current_user.id && like.likeable_id === _this4.props.post.id;
+          return like.user_id === _this4.props.current_user.id && like.likeable_id === _this4.props.post.id && like.likeable_type === 'Post';
         }).length > 0 ? "likes-count likes-count-liked" : "likes-count"
       }, Object.values(this.props.likes).filter(function (like) {
-        return like.likeable_id === _this4.props.post.id;
+        return like.likeable_id === _this4.props.post.id && like.likeable_type === 'Post';
       }).length, " likes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("p", {
         className: "comments-count",
         onClick: this.toggleComments
@@ -23862,7 +23864,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
         className: "post-btn-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("div", {
         className: Object.values(this.props.likes).filter(function (like) {
-          return like.user_id === _this4.props.current_user.id && like.likeable_id === _this4.props.post.id;
+          return like.user_id === _this4.props.current_user.id && like.likeable_id === _this4.props.post.id && like.likeable_type === 'Post';
         }).length > 0 ? "post-btn post-btn-liked" : "post-btn",
         onClick: function onClick() {
           return _this4.handleLike();
