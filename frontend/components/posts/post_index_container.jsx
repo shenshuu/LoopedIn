@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import PostIndex from './post_index';
 
 const mapStateToProps = (state) => ({
-    posts: state.entities.posts   
+    posts: state.entities.posts,
 });
 
 const mapDispatchToProps = dispatch => ({

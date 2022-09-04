@@ -7,11 +7,13 @@ import { fetchUsers, updateUser } from '../../actions/session_actions';
 import { connect } from 'react-redux';
 import User from './user';
 
-const mapStateToProps = (state, ownProps) => ({
-    current_user: state.entities.users[state.session.id],
-    user: state.entities.users[ownProps.match.params.userId],
-    users: state.entities.users,
-});
+const mapStateToProps = (state, ownProps) => {
+    return {
+        current_user: state.entities.users[state.session.id],
+        user: state.entities.users[ownProps.match.params.userId],
+        users: state.entities.users,
+    }
+};
 
 const mapDispatchToProps = dispatch => ({
     createExperience: experience => dispatch(createExperience(experience)),

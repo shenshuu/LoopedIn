@@ -65,7 +65,9 @@ class Network extends React.Component {
                         </div>
                         <div className="network-container-right">
                             {Object.values(this.props.users).map((user, i) => {
-                                return <NetworkItemContainer user={user} key={user+i} />
+                                if (i < 6 && this.props.current_user.id !== user.id) {
+                                    return <NetworkItemContainer user={user} key={user+i} />
+                                }
                             })}
                         </div>
                     </div>

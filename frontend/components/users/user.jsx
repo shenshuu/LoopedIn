@@ -31,6 +31,7 @@ class User extends React.Component {
         this.toggleEditingUserImage = this.toggleEditingUserImage.bind(this);
         this.toggleEditingUser = this.toggleEditingUser.bind(this);
         this.toggleEditingAbout = this.toggleEditingAbout.bind(this);
+        this.renderUser = this.renderUser.bind(this);
         this.shuffleArray = this.shuffleArray.bind(this);
     }
 
@@ -41,11 +42,11 @@ class User extends React.Component {
         this.props.fetchUsers();
     }
 
-    // componentDidUpdate(prevProps) {
-    //     if (!equal(prevProps.users, this.props.users)) {
-    //         this.setState({action_modal_hidden: this.state.action_modal_hidden});
-    //     }
-    // }
+    componentDidUpdate(prevProps) {
+        if (!equal(prevProps.users, this.props.users)) {
+            this.setState({action_modal_hidden: this.state.action_modal_hidden});
+        }
+    }
 
     toggleEditingUser() {
         this.setState({
@@ -113,7 +114,7 @@ class User extends React.Component {
         return arr;
     }
 
-    render() {
+    renderUser() {
         return (
             <div>
                 <HeaderContainer />
@@ -127,8 +128,8 @@ class User extends React.Component {
                             <img src="https://media-exp1.licdn.com/dms/image/C5616AQFm9VPk7Nd1cQ/profile-displaybackgroundimage-shrink_350_1400/0/1635706270087?e=1667433600&v=beta&t=-GG8YaHFDO0dW6kTxGKSS9yEXHnX56jGMCffQn1cslk" alt=""/>
                             <div className="user-intro-header">
                                 <div className="user-profile-photo" onClick={this.toggleEditingUserImage}>
-                                    {Boolean(this.props.user.image) ? <img src={this.props.user.image} alt="user-profile-photo" /> : 
-                                    <img src="https://i.postimg.cc/bYDLSPVZ/image-removebg-preview.png" alt="user-profile-photo" />}
+                                    {Object.keys(this.props.user.image).length < 5 ? <img src="https://i.postimg.cc/bYDLSPVZ/image-removebg-preview.png" alt="user-profile-photo" /> 
+                                    : <img src={this.props.user.image} alt="user-profile-photo" /> }
                                 </div>
                                 {this.props.user.id === this.props.current_user.id ? 
                                 <div id="edit-user" onClick={this.toggleEditingUser}>
@@ -171,13 +172,19 @@ class User extends React.Component {
                                 <p id="other-users-logo">People you may know</p>
                             </div>
                             {this.shuffleArray(Object.values(this.props.users)).map((user, i) => {
-                                if (i < 5) return <UserIndexItemContainer user={user} key={user+i} />
+                                if (i < 5 && user.id !== this.props.current_user.id) {
+                                    return <UserIndexItemContainer user={user} key={user+i} />
+                                }
                             })}
                         </div>
                     </div>
                 </div>
             </div>
         )
+    }
+
+    render() {
+        return this.props.user && this.renderUser();
     }
 }
 
