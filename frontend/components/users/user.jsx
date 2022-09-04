@@ -31,6 +31,7 @@ class User extends React.Component {
         this.toggleEditingUserImage = this.toggleEditingUserImage.bind(this);
         this.toggleEditingUser = this.toggleEditingUser.bind(this);
         this.toggleEditingAbout = this.toggleEditingAbout.bind(this);
+        this.shuffleArray = this.shuffleArray.bind(this);
     }
 
     componentDidMount() {
@@ -102,6 +103,16 @@ class User extends React.Component {
         )
     }
 
+    shuffleArray(arr) {
+        let currentIndex = arr.length, randomIndex;
+        while (currentIndex !== 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+            [arr[currentIndex], arr[randomIndex]] = [arr[randomIndex], arr[currentIndex]];
+        }
+        return arr;
+    }
+
     render() {
         return (
             <div>
@@ -159,7 +170,7 @@ class User extends React.Component {
                             <div id="other-users-logo-container">
                                 <p id="other-users-logo">People you may know</p>
                             </div>
-                            {Object.values(this.props.users).map((user, i) => {
+                            {this.shuffleArray(Object.values(this.props.users)).map((user, i) => {
                                 if (i < 5) return <UserIndexItemContainer user={user} key={user+i} />
                             })}
                         </div>
