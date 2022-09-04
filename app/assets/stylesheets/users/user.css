@@ -122,8 +122,6 @@
 .user-profile-photo {
     width: 160px;
     height: 160px;
-    /* background-color: red; */
-    border: 1px solid lightgray;
     border-radius: 100px;
     display: flex;
     justify-content: center;
@@ -137,10 +135,10 @@
 }
 
 .user-profile-photo > img {
-    width: 100px;
-    height: 100px;
+    width: 160px;
+    height: 160px;
     object-fit: cover;
-    border-radius: 50px;
+    border-radius: 100px;
 }
 
 .user-intro-contents-container {
