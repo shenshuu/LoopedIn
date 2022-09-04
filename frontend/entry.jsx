@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
-import {updateEducation, createEducation, fetchEducations, deleteEducation} from './actions/education_actions';
+import { fetchConnects, createConnect, deleteConnect, deleteConnects } from './actions/connect_actions';
 
-window.updateEducation = updateEducation;
-window.createEducation = createEducation;
-window.fetchEducations = fetchEducations;
-window.deleteEducation = deleteEducation;
+window.fetchConnects = fetchConnects;
+window.createConnect = createConnect;
+window.deleteConnect = deleteConnect;
+window.deleteConnects = deleteConnects;
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;

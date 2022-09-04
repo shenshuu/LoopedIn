@@ -16,7 +16,7 @@ export const createConnect = connect => (
 
 export const deleteConnect = connect => (
     $.ajax({
-        url: `/api/connects${connect.id}`,
+        url: `/api/connects/${connect.id}`,
         method: 'DELETE',
     })
 );
