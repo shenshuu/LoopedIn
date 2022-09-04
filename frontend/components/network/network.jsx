@@ -12,6 +12,7 @@ class Network extends React.Component {
 
     componentDidMount() {
         this.props.fetchUsers();
+        this.props.fetchConnects();
     }
 
     render() {

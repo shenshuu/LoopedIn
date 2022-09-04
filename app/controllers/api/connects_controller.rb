@@ -8,7 +8,7 @@ class Api::ConnectsController < ApplicationController
         @connect = Connect.new(connect_params)
         @connect.user1_id = current_user.id if current_user
         if @connect.save 
-            render :index
+            render :show
         else
             render json: @connect.errors.full_messages
         end

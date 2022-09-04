@@ -7,7 +7,6 @@ const connectsReducer = (state={}, action) => {
         case RECEIVE_CONNECTS:
             return action.connects;
         case RECEIVE_CONNECT:
-            debugger;
             nextState[action.connect.id] = action.connect;
             return nextState;
         case REMOVE_CONNECT:
