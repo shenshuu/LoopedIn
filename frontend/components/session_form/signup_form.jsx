@@ -21,7 +21,7 @@ class SignupForm extends React.Component {
             password: '',
             first_name: '',
             last_name: '',
-            pronouns: 'He/Him',
+            pronouns: 'Other',
             headline: 'Software Engineer',
             location_country: 'United States',
             location_city: 'New York',

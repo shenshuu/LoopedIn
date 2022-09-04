@@ -24,14 +24,13 @@ class Sidebar extends React.Component {
         return (
             <div className="sidebar">
                 <div className="sidebar-top">
-                    <img src="https://wallpapercave.com/wp/wp4518438.jpg" alt="profile-img" />
+                    <img src="https://media-exp1.licdn.com/dms/image/C5616AQFm9VPk7Nd1cQ/profile-displaybackgroundimage-shrink_350_1400/0/1635706270087?e=1667433600&v=beta&t=-GG8YaHFDO0dW6kTxGKSS9yEXHnX56jGMCffQn1cslk" alt="profile-cover" />
                     <div id="sidebar-user-img">
                         <img src={this.props.user.image} alt="user-photo" />
                     </div>
                     <div className="user-details">
-                        <p className="demo-name">{`${this.state?.first_name} ${this.state?.last_name}`}</p>
-                        <p className="demo-profession">{`${this.state?.headline}`}</p>
-                        <p className="demo-location">{`${this.state?.location_city}, ${this.state?.location_country}`}</p>
+                        <p className="demo-name">Welcome, {`${this.props.user.first_name}`}!</p>
+                        <p>{this.props.user.headline || "Career"}</p>
                     </div>
                 </div>
 

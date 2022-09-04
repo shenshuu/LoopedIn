@@ -113,7 +113,7 @@ class User extends React.Component {
                     {this.state.editing_user ? <UpdateUserForm toggleEditing={() => this.toggleEditingUser()} current_user={this.props.current_user} editing={this.state.editing_user} updateUser={this.props.updateUser} /> : ""}
                     <div className="user-container">
                         <div className="user-intro" id="user-intro">
-                            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi0.wp.com%2Fwww.scienceabc.com%2Fwp-content%2Fuploads%2F2020%2F02%2FPythagoras-mathematical-numbers-seriessymbolMark-RademakerS.jpg%3Fssl%3D1&f=1&nofb=1" alt=""/>
+                            <img src="https://media-exp1.licdn.com/dms/image/C5616AQFm9VPk7Nd1cQ/profile-displaybackgroundimage-shrink_350_1400/0/1635706270087?e=1667433600&v=beta&t=-GG8YaHFDO0dW6kTxGKSS9yEXHnX56jGMCffQn1cslk" alt=""/>
                             <div className="user-intro-header">
                                 <div className="user-profile-photo" onClick={this.toggleEditingUserImage}>
                                     {Boolean(this.props.user.image) ? <img src={this.props.user.image} alt="user-profile-photo" /> : 

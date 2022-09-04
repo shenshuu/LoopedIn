@@ -162,7 +162,7 @@
 
 .create-experience-container {
     background-color: white;
-    width: 700px;
+    width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -173,12 +173,12 @@
     position: fixed;
     top: 0;
     left: 0;
-    transform: translate(40%, 10%);
+    transform: translate(100%, 10%);
 }
 
 #create-exp-divider {
     border-bottom: 1px solid lightgray;
-    width: 740px;
+    width: 100%;
     margin-left: -20px;
     margin-bottom: 10px;
     padding-bottom: 4px;
