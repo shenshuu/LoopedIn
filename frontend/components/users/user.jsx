@@ -32,13 +32,14 @@ class User extends React.Component {
         this.toggleEditingUser = this.toggleEditingUser.bind(this);
         this.toggleEditingAbout = this.toggleEditingAbout.bind(this);
         this.renderUser = this.renderUser.bind(this);
+        this.handleConnect = this.handleConnect.bind(this);
         this.shuffleArray = this.shuffleArray.bind(this);
     }
 
     componentDidMount() {
-        this.props.deletePosts();
-        this.props.deleteLikes();
-        this.props.deleteComments();
+        // this.props.deletePosts();
+        // this.props.deleteLikes();
+        // this.props.deleteComments();
         this.props.fetchUsers();
     }
 
@@ -91,17 +92,27 @@ class User extends React.Component {
         return (
             <div className="profile-action-modal">
                 <div className="profile-action" onClick={this.toggleAddingExperience}>
-                    {/* <AddIcon /> */}
                     <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
                     <p>Add experience</p>
                 </div>
                 <div className="profile-action" onClick={this.toggleAddingEducation}>
-                    {/* <AddIcon /> */}
                     <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
                     <p>Add education</p>
                 </div>
             </div>
         )
+    }
+
+    handleConnect() {
+        const filteredConnects = Object.values(this.props.connects).filter(connect => connect.user1_id === this.props.current_user.id && connect.user2_id === this.props.user.id || connect.user1_id === this.props.user.id && connect.user2_id === this.props.current_user.id)
+        if (filteredConnects.length > 0) {
+            this.props.deleteConnect(filteredConnects[0]);
+        } else {
+            this.props.createConnect({
+                user1_id: this.props.current_user.id,
+                user2_id: this.props.user.id,
+            });
+        }
     }
 
     shuffleArray(arr) {
@@ -149,7 +160,9 @@ class User extends React.Component {
                                         <div className="user-intro-actions">
                                             {this.props.current_user.id === this.props.user.id ? 
                                             <button id="add-profile-section" onClick={this.toggleActionModal}>Add Profile Section</button>
-                                            : <button id="add-profile-section">Connect</button>
+                                            : Object.values(this.props.connects).filter(connect => this.props.user.id === connect.user1_id && this.props.current_user.id === connect.user2_id || this.props.user.id === connect.user2_id && this.props.current_user.id === connect.user1_id).length === 0 ? 
+                                            <button id="add-profile-section" onClick={() => this.handleConnect()}>Connect</button>
+                                            : <button id="add-profile-section" onClick={() => this.handleConnect()}>Disconnect</button>
                                             }
                                             <button id="user-more-section">More</button>
                                         </div>
