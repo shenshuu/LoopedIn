@@ -5,6 +5,7 @@ import commentsReducer from "./comments_reducer";
 import likesReducer from "./likes_reducer";
 import experiencesReducer from "./experiences_reducer";
 import educationsReducer from "./educations_reducer";
+import connectsReducer from "./connects_reducer";
 
 const entitiesReducer = combineReducers({
     users: usersReducer,
@@ -13,6 +14,7 @@ const entitiesReducer = combineReducers({
     likes: likesReducer, 
     experiences: experiencesReducer,
     educations: educationsReducer,
+    connects: connectsReducer,
 })
 
 export default entitiesReducer;
