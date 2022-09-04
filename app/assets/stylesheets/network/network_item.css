@@ -1,0 +1,74 @@
+.network-item-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+}
+
+.network-item-cover-photo {
+    width: 100%;
+    height: 60px;
+    background-color: #0b65c2;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.network-item-profile-photo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+    background-color: green;
+    margin-top: -40px;
+    margin-left: 12px;
+    object-fit: cover;
+}
+
+.network-item-profile-photo > img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+    object-fit: cover;
+}
+
+.network-item-info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    margin-left: 12px;
+}
+
+.network-item-name {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.network-item-headline, .network-item-location {
+    font-size: 14px;
+    color: gray;
+}
+
+.connect-btn-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.connect-btn {
+    border-radius: 28px;
+    border: 1px solid #0b65c2;
+    color: #0b65c2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    padding: 6px 16px;
+    width: 100%;
+    background-color: white;
+    font-size: 16px;
+}
+
+.connect-btn:hover {
+    background-color: rgba(11,101,194,0.2);
+    cursor: pointer;
+}

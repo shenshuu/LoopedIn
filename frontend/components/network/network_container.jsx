@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Network from './network';
 
 const mapStateToProps = state => ({
-
+    users: state.entities.users,
 });
 
 const mapDispatchToProps = dispatch => ({
