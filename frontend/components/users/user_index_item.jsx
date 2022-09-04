@@ -3,7 +3,20 @@ import React from 'react';
 class UserIndexItem extends React.Component {
     constructor(props) {
         super(props);
+        this.handleConnect = this.handleConnect.bind(this);
         this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleConnect() {
+        const filteredConnects = Object.values(this.props.connects).filter(connect => connect.user1_id === this.props.current_user.id && connect.user2_id === this.props.user.id || connect.user1_id === this.props.user.id && connect.user2_id === this.props.current_user.id)
+        if (filteredConnects.length > 0) {
+            this.props.deleteConnect(filteredConnects[0]);
+        } else {
+            this.props.createConnect({
+                user1_id: this.props.current_user.id,
+                user2_id: this.props.user.id,
+            });
+        }
     }
 
     handleClick() {
@@ -27,7 +40,9 @@ class UserIndexItem extends React.Component {
                             </div>
                         </div>
                         <p className="other-user-headline">{this.props.user.headline}</p>
-                        <button className="connect">Connect</button>
+                        {Object.values(this.props.connects).filter(connect => connect.user1_id === this.props.current_user.id && connect.user2_id === this.props.user.id || connect.user1_id === this.props.user.id && connect.user2_id === this.props.current_user.id).length === 0 ? 
+                        <button className="connect" onClick={() => this.handleConnect()}>Connect</button>
+                        :<button className="connect" onClick={() => this.handleConnect()}>Disconnect</button>}
                     </div>
                 </div>
             </div>

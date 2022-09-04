@@ -3,11 +3,13 @@ import React from 'react';
 class NetworkItem extends React.Component {
     constructor(props) {
         super(props);
+        this.handleUserShow = this.handleUserShow.bind(this);
         this.handleConnect = this.handleConnect.bind(this);
     }
 
     handleConnect() {
-        const filteredConnects = Object.values(this.props.connects).filter(connect => connect.user1_id === this.props.current_user.id && connect.user2_id === this.props.user.id)
+        console.log('inside handleConnect');
+        const filteredConnects = Object.values(this.props.connects).filter(connect => connect.user1_id === this.props.current_user.id && connect.user2_id === this.props.user.id || connect.user1_id === this.props.user.id && connect.user2_id === this.props.current_user.id)
         if (filteredConnects.length > 0) {
             this.props.deleteConnect(filteredConnects[0]);
         } else {
@@ -18,9 +20,14 @@ class NetworkItem extends React.Component {
         }
     }
 
+    handleUserShow(userId) {
+        console.log('inside handleUserShow');
+        this.props.history.push(`/users/${userId}`);
+    }
+
     render() {
         return (
-            <div className="network-item-container">
+            <div className="network-item-container" onClick={() => this.handleUserShow(this.props.user.id)}>
                 <div className="network-item-body">
                     <div className="network-item-images">
                         <div className="network-item-cover-photo"><img src="" alt="cover-photo" /></div>

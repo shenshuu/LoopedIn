@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
 import { login, fetchUsers } from '../../actions/session_actions';
 import { fetchPosts } from '../../actions/post_actions';
-import { fetchComments } from '../../actions/comment_actions';
-import { fetchLikes } from '../../actions/like_actions';
+import { fetchConnects } from '../../actions/connect_actions';
 import Feed from './feed';
 
 const mapStateToProps = state => {
@@ -17,9 +16,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     fetchPosts: () => dispatch(fetchPosts()),
-    fetchComments: () => dispatch(fetchComments()),
-    fetchLikes: () => dispatch(fetchLikes()),
     fetchUsers: () => dispatch(fetchUsers()),
+    fetchConnects: () => dispatch(fetchConnects()),
     login: user => dispatch(login(user)),
 });
 

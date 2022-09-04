@@ -20,24 +20,14 @@ class Feed extends React.Component {
 
     componentDidMount() {
         this.props.fetchUsers();
-        // this.props.fetchComments();
         this.props.fetchPosts();
-        // this.props.fetchLikes();
+        this.props.fetchConnects();
     }
 
     componentDidUpdate(prevProps) {
         if (!equal(this.props.user, prevProps.user)) {
             this.setState({user: this.props.user});
         }
-        // } else if (!equal(this.props.likes, prevProps.likes)) {
-        //     this.setState({likes: this.props.likes});
-        // } else if (!equal(this.props.posts, prevProps.posts)) {
-        //     this.setState({posts: this.props.posts});
-        // } else if (!equal(this.props.comments, prevProps.comments)) {
-        //     this.setState({comments: this.props.comments});
-        // } else if (!equal(this.props.users, prevProps.users)) {
-        //     this.setState({users: this.props.users});
-        // }
     }
 
 
