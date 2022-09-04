@@ -66,7 +66,8 @@ class PostForm extends React.Component {
                     <form className="create-post-form" onSubmit={this.handleCreate}>
                         <div className="create-post-user-info">
                             <div id="post-user-image">
-                                <img src={this.props.user.image} alt="user-photo" />
+                                {Object.keys(this.props.user.image).length < 5 ? <img src="https://i.postimg.cc/bYDLSPVZ/image-removebg-preview.png" alt="user-profile-photo" /> 
+                                : <img src={this.props.user.image} alt="user-profile-photo" /> }
                             </div>
                             <div className="create-post-user-header">
                                 <h3>{`${this.state.user.first_name} ${this.state.user.last_name}`}</h3>
@@ -123,10 +124,10 @@ class PostForm extends React.Component {
                 {this.state.modal_hidden ? "" : this.createModal()}
                 <div className="post-form-input">
                     <div id="post-user-image">
-                        <img src={this.props.user.image} alt="user-photo" /> 
+                        {Object.keys(this.props.user.image).length < 5 ? <img src="https://i.postimg.cc/bYDLSPVZ/image-removebg-preview.png" alt="user-profile-photo" /> 
+                        : <img src={this.props.user.image} alt="user-profile-photo" /> }
                     </div>
                     <div className="post-form-container" onClick={this.toggleModal}>
-                        {/* <CreateIcon /> */}
                         <div id="create-post-pen"><FontAwesomeIcon icon={faPen}></FontAwesomeIcon></div>
                         <form className="post-form">
                             <p className="post-form-placeholder">Have a topic that excites you? Post about it</p>

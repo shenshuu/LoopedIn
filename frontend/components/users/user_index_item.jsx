@@ -28,7 +28,8 @@ class UserIndexItem extends React.Component {
             <div className="other-user-container">
                 <div className="other-user-contents">
                     <div className="other-user-img" onClick={this.handleClick}>
-                        <img src={this.props.user.image} alt="user-photo" />
+                        {Object.keys(this.props.user.image).length < 5 ? <img src="https://i.postimg.cc/bYDLSPVZ/image-removebg-preview.png" alt="user-photo" /> 
+                        : <img src={this.props.user.image} alt="user-photo" /> }
                     </div>
                     <div className="other-user-info">
                         <div className="other-user-name-contents">

@@ -113,7 +113,7 @@ class PostIndexItem extends React.Component {
         this.setState({display_comments: !this.state.display_comments});
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
         
         if (!equal(this.props.comments, prevProps.comments)) {
             this.setState({comments: Object.values(this.props.comments).filter(
@@ -144,16 +144,15 @@ class PostIndexItem extends React.Component {
     }
 
     renderPost() {
-        // debugger;
         return (
             <div className="post">
                 {this.state.update_modal_hidden ? "" : this.updateModal()}
                 <div className="post-top">
                     <div className="post-header">
                             <div id="post-user-image">
-                                <img src={this.props.user.image} alt="user-photo" /> 
+                            {Object.keys(this.props.user.image).length < 5 ? <img src="https://i.postimg.cc/bYDLSPVZ/image-removebg-preview.png" alt="user-photo" /> 
+                            : <img src={this.props.user.image} alt="user-photo" /> }
                             </div>
-                        {/* {Boolean(this.props.post.image) ? <img src={this.props.post.image} alt="profile-pic" /> : ""} */}
                         <div className="post-header-info">
                             <div id="poster-info">
                                 <p id="poster-name">{`${this.props.user.first_name} ${this.props.user.last_name}`}</p>

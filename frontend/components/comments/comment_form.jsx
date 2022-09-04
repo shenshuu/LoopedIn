@@ -26,7 +26,8 @@ class CommentForm extends React.Component {
         return (
             <div className="comment-form-container">
                 <div id="comment-form-user-image">
-                    <img src={this.props.user.image} alt="user-photo" />
+                    {Object.keys(this.props.user.image).length < 5 ? <img src="https://i.postimg.cc/bYDLSPVZ/image-removebg-preview.png" alt="user-photo" /> 
+                    : <img src={this.props.user.image} alt="user-photo" /> }
                 </div>
                 <form className="comment-form" onSubmit={this.handleSubmit}>
                     <input type="text" value={this.state.body}

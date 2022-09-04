@@ -26,7 +26,8 @@ class Sidebar extends React.Component {
                 <div className="sidebar-top">
                     <img src="https://media-exp1.licdn.com/dms/image/C5616AQFm9VPk7Nd1cQ/profile-displaybackgroundimage-shrink_350_1400/0/1635706270087?e=1667433600&v=beta&t=-GG8YaHFDO0dW6kTxGKSS9yEXHnX56jGMCffQn1cslk" alt="profile-cover" />
                     <div id="sidebar-user-img">
-                        <img src={this.props.user.image} alt="user-photo" />
+                        {Object.keys(this.props.user.image).length < 5 ? <img src="https://i.postimg.cc/bYDLSPVZ/image-removebg-preview.png" alt="user-profile-photo" /> 
+                        : <img src={this.props.user.image} alt="user-profile-photo" /> }
                     </div>
                     <div className="user-details">
                         <p className="demo-name">Welcome, {`${this.props.user.first_name}`}!</p>
