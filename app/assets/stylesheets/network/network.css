@@ -18,12 +18,19 @@
     background-color: white;
     height: 60vh;
     border-radius: 10px;
+    border: 1px solid lightgray;
 }
 
-.network-container-right {
+.network-container-right-parent {
     background-color: white;
     height: 90vh;
     border-radius: 10px;
+    border: 1px solid lightgray;
+}
+
+.network-container-right-header {
+    font-size: 20px;
+    font-weight: 500;
 }
 
 .network-contents-left {
@@ -84,8 +91,25 @@
     width: 100%;
 }
 
+.network-container-right-parent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .network-container-right {
     display: grid;
     grid-template-columns: repeat(3, 240px);
     grid-template-rows: repeat(2, 250px);
+    column-gap: 10px;
+    row-gap: 10px;
+}
+
+.network-right-header-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: -440px;
+    padding-left: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }

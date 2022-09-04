@@ -58,11 +58,15 @@ class Network extends React.Component {
                             </div>
                         </div>
                     </div>
-
-                    <div className="network-container-right">
-                        {Object.values(this.props.users).map((user, i) => {
-                            return <NetworkItemContainer user={user} key={user+i} />
-                        })}
+                    <div className="network-container-right-parent">
+                        <div className="network-right-header-container">
+                            <p className="network-container-right-header">People who follow you also follow</p>
+                        </div>
+                        <div className="network-container-right">
+                            {Object.values(this.props.users).map((user, i) => {
+                                return <NetworkItemContainer user={user} key={user+i} />
+                            })}
+                        </div>
                     </div>
                 </div>
             </div>

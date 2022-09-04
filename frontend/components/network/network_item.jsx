@@ -20,6 +20,7 @@ class NetworkItem extends React.Component {
                     </div>
                 </div>
                 <div className="connect-btn-container">
+                    <p className="network-item-about">{this.props.user.about}</p>
                     <button className="connect-btn">Connect</button>
                 </div>
             </div>
