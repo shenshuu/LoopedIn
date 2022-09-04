@@ -1,0 +1,1 @@
+json.partial! '/api/connects/connect', connect: @connect

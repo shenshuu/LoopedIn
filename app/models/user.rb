@@ -49,6 +49,16 @@ class User < ApplicationRecord
         foreign_key: :user_id,
         dependent: :destroy
 
+    has_many :connects, 
+        foreign_key: :user1_id,
+        class_name: :Connect,
+        dependent: :destroy
+
+    has_many :connections,
+        through: :connects,
+        source: :follower,
+        dependent: :destroy
+
     has_one_attached :image 
     
     def self.find_by_credentials(email, password) 

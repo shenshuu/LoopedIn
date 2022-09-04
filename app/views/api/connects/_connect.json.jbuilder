@@ -1,0 +1,1 @@
+json.extract! connect, :id, :user1_id, :user2_id
