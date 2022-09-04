@@ -7,7 +7,6 @@ import FeedContainer from './feed/feed_container';
 import UserContainer from './users/user_container';
 import NetworkContainer from './network/network_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import UserSignupInfoContainer from './session_form/user_signup_info_container';
 
 const App = () => {
 
@@ -17,7 +16,6 @@ const App = () => {
                 <AuthRoute exact path='/' component={SplashContainer} />
                 <AuthRoute exact path='/login' component={LoginFormContainer} />
                 <AuthRoute exact path='/signup' component={SignupFormContainer} />
-                <AuthRoute exact path='/signup/userinfo' component={UserSignupInfoContainer} />
                 <ProtectedRoute exact path='/feed' component={FeedContainer} />
                 <ProtectedRoute exact path='/network' component={NetworkContainer} />
                 <ProtectedRoute exact path='/users/:userId' component={UserContainer} />

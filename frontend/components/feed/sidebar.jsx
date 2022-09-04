@@ -30,7 +30,7 @@ class Sidebar extends React.Component {
                     </div>
                     <div className="user-details">
                         <p className="demo-name">Welcome, {`${this.props.user.first_name}`}!</p>
-                        <p>{this.props.user.headline || "Career"}</p>
+                        <p>{"Career"}</p>
                     </div>
                 </div>
 

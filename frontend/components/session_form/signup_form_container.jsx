@@ -8,8 +8,11 @@ const mapStateToProps = state => ({
         password: '',
         first_name: '',
         last_name: '',
+        pronouns: 'Other',
+        headline: 'Software Engineer',
         location_country: 'United States',
         location_city: 'New York',
+        about: 'Who goes there'
     },
     formType: 'Sign up',
     errors: state.errors,
