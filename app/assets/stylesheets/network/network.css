@@ -113,3 +113,16 @@
     padding-top: 20px;
     padding-bottom: 20px;
 }
+
+#pending, #pending-network {
+    border: 1px solid gray;
+    color: gray;
+}
+
+#pending-network:hover, #pending:hover {
+    background-color: rgba(0, 0, 0, 0.07);
+}
+
+#pending-network:hover {
+    border: 2px solid gray;
+}

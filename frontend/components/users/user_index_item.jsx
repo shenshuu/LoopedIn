@@ -3,20 +3,34 @@ import React from 'react';
 class UserIndexItem extends React.Component {
     constructor(props) {
         super(props);
-        this.handleConnect = this.handleConnect.bind(this);
+        this.acceptConnect = this.acceptConnect.bind(this);
+        this.deleteConnect = this.deleteConnect.bind(this);
+        this.sendConnect = this.sendConnect.bind(this);
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleConnect() {
-        // const filteredConnects = Object.values(this.props.connects).filter(connect => connect.user1_id === this.props.current_user.id && connect.user2_id === this.props.user.id || connect.user1_id === this.props.user.id && connect.user2_id === this.props.current_user.id)
-        // if (filteredConnects.length > 0) {
-        //     this.props.deleteConnect(filteredConnects[0]);
-        // } else {
-        //     this.props.createConnect({
-        //         user1_id: this.props.current_user.id,
-        //         user2_id: this.props.user.id,
-        //     });
-        // }
+    sendConnect() {
+        this.props.createConnect({
+            sender_id: this.props.current_user.id,
+            receiver_id: this.props.user.id,
+            pending: true,
+            accepted: false,
+        });
+    }
+
+    acceptConnect() {
+        const pendingConnects = Object.values(this.props.connects).filter(connect => connect.pending && connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id);
+        if (pendingConnects.length > 0) {
+            let updatedConnect = Object.assign({}, pendingConnects[0], {pending: false, accepted: true});
+            this.props.updateConnect(updatedConnect);
+        }
+    }
+
+    deleteConnect() {
+        const filteredConnects = Object.values(this.props.connects).filter(connect => connect.accepted && connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id);
+        if (filteredConnects.length > 0) {
+            this.props.deleteConnect(filteredConnects[0])
+        }
     }
 
     handleClick() {
@@ -41,9 +55,15 @@ class UserIndexItem extends React.Component {
                             </div>
                         </div>
                         <p className="other-user-headline">{this.props.user.headline}</p>
-                        {true ? 
-                        <button className="connect" onClick={() => this.handleConnect()}>Connect</button>
-                        :<button className="connect" onClick={() => this.handleConnect()}>Disconnect</button>}
+                        {Object.values(this.props.connects).filter(connect => connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id).length === 0 ?
+                        <button className="connect" onClick={() => this.sendConnect()}>Connect</button>
+                        : Object.values(this.props.connects).filter(connect => connect.pending && connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id).length > 0 && Object.values(this.props.connects).filter(connect => connect.pending && connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id)[0].sender_id === this.props.current_user.id ? 
+                        <button className="connect" id="pending" onClick={() => this.acceptConnect()}>Pending</button> 
+                        : Object.values(this.props.connects).filter(connect => connect.pending && (connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id)).length > 0 && Object.values(this.props.connects).filter(connect => connect.pending && (connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id))[0].receiver_id === this.props.current_user.id ?
+                        <button className="connect" onClick={() => this.acceptConnect()}>Accept</button>
+                        : Object.values(this.props.connects).filter(connect => connect.accepted && connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id).length === 1 ? 
+                        <button className="connect" onClick={() => this.deleteConnect()}>Disconnect</button>
+                        : <button className="connect" onClick={() => this.deleteConnect()}>Disconnect</button>}
                     </div>
                 </div>
             </div>
