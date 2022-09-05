@@ -7,6 +7,7 @@ import { fetchConnects } from '../../actions/connect_actions';
 const mapStateToProps = state => ({
     current_user: state.entities.users[state.session.id],
     users: state.entities.users,
+    connects: state.entities.connects,
 });
 
 const mapDispatchToProps = dispatch => ({

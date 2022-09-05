@@ -1,0 +1,34 @@
+.network-invitation-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.network-invitation-item-left {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.network-invitation-user-info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.network-invitation-user-img > img {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 50px;
+}
+
+.network-invitation-user-name {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.network-invitation-user-headline, .network-invitation-user-location {
+    color: gray;
+    font-size: 14px;
+}

@@ -134,3 +134,16 @@
 #pending-network:hover {
     border: 2px solid gray;
 }
+
+.network-invitations {
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    height: 30vh;
+}
+
+.network-invitations-divider {
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+}
