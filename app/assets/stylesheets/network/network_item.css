@@ -20,17 +20,27 @@
     border-top-right-radius: 10px;
 }
 
+.network-item-cover-photo > img {
+    width: 100%;
+    height: 60px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    object-fit: cover;
+}
+
 .network-item-profile-photo {
     width: 70px;
     height: 70px;
     border-radius: 50px;
-    background-color: green;
+    background-color: #e7e2dc;
+    border: 1px solid lightgray;
     margin-top: -40px;
     margin-left: 12px;
     object-fit: cover;
 }
 
 .network-item-profile-photo > img {
+    background-color: #e7e2dc;
     width: 70px;
     height: 70px;
     border-radius: 50px;
