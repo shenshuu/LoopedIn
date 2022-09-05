@@ -1,3 +1,4 @@
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Sidebar from './sidebar';
 
@@ -7,4 +8,4 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps, null)(Sidebar);
+export default withRouter(connect(mapStateToProps, null)(Sidebar));

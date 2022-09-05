@@ -3,21 +3,11 @@ import React from 'react';
 class Sidebar extends React.Component {
     constructor(props) {
         super(props);
-        this.state = this.props.user;
-        this.hashtags.bind(this);
+        this.handleUserShow = this.handleUserShow.bind(this);
     }
 
-    hashtags() {
-        return (
-            <div className="sidebar-hashtags">
-                <h3 className="sidebar-hashtag-logo">Followed hashtags</h3>
-                <ul className="tags">
-                    <li>#reactjs</li>
-                    <li>#rubyonrails</li>
-                    <li>#clone</li>
-                </ul>
-            </div>
-        )
+    handleUserShow() {
+        this.props.history.push(`/users/${this.props.user.id}`);
     }
 
     render() {
@@ -25,7 +15,7 @@ class Sidebar extends React.Component {
             <div className="sidebar">
                 <div className="sidebar-top">
                     <img src="https://media-exp1.licdn.com/dms/image/C5616AQFm9VPk7Nd1cQ/profile-displaybackgroundimage-shrink_350_1400/0/1635706270087?e=1667433600&v=beta&t=-GG8YaHFDO0dW6kTxGKSS9yEXHnX56jGMCffQn1cslk" alt="profile-cover" />
-                    <div id="sidebar-user-img">
+                    <div id="sidebar-user-img" onClick={() => this.handleUserShow()}>
                         {Object.keys(this.props.user.image).length < 5 ? <img src="https://i.postimg.cc/bYDLSPVZ/image-removebg-preview.png" alt="user-profile-photo" /> 
                         : <img src={this.props.user.image} alt="user-profile-photo" /> }
                     </div>

@@ -17,6 +17,7 @@ class PostIndexItem extends React.Component {
             action_modal_hidden: true,
             update_modal_hidden: true,
         }
+        this.handleUserShow = this.handleUserShow.bind(this);
         this.handleLike = this.handleLike.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
@@ -27,6 +28,10 @@ class PostIndexItem extends React.Component {
         this.updateModal = this.updateModal.bind(this);
         this.updateBody = this.updateBody.bind(this);
         this.renderPost = this.renderPost.bind(this);
+    }
+
+    handleUserShow(userId) {
+        this.props.history.push(`/users/${userId}`);
     }
 
     updateBody(e) {
@@ -52,11 +57,11 @@ class PostIndexItem extends React.Component {
                     <div className="create-post-modal-header-divider"></div>
                     <form className="create-post-form" onSubmit={this.handleUpdate}>
                         <div className="create-post-user-info">
-                            <div id="post-user-image">
+                            <div id="post-user-image" onClick={() => this.handleUserShow(this.props.user.id)}>
                                 <img src={this.props.user.image} alt="user-photo" /> 
                             </div>
                             <div className="create-post-user-header">
-                                <h3>{`${this.state.user.first_name} ${this.state.user.last_name}`}</h3>
+                                <h3 id="poster-name" onClick={() => this.handleUserShow(this.props.user.id)}>{`${this.state.user.first_name} ${this.state.user.last_name}`}</h3>
                                 <p>Professional Tester</p>
                             </div>
                         </div>
@@ -149,13 +154,13 @@ class PostIndexItem extends React.Component {
                 {this.state.update_modal_hidden ? "" : this.updateModal()}
                 <div className="post-top">
                     <div className="post-header">
-                            <div id="post-user-image">
+                            <div id="post-user-image" onClick={() => this.handleUserShow(this.props.user.id)}>
                             {Object.keys(this.props.user.image).length < 5 ? <img src="https://i.postimg.cc/bYDLSPVZ/image-removebg-preview.png" alt="user-photo" /> 
                             : <img src={this.props.user.image} alt="user-photo" /> }
                             </div>
                         <div className="post-header-info">
                             <div id="poster-info">
-                                <p id="poster-name">{`${this.props.user.first_name} ${this.props.user.last_name}`}</p>
+                                <p id="poster-name" onClick={() => this.handleUserShow(this.props.user.id)}>{`${this.props.user.first_name} ${this.props.user.last_name}`}</p>
                                 <p id="poster-pronouns">{`(${this.props.user.pronouns})`}</p>
                             </div>
                             <p id="poster-profession">{`${this.props.user.headline}`}</p>

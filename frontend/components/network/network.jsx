@@ -57,7 +57,7 @@ class Network extends React.Component {
                                     <p className="network-left-footer-link">Get the LoopedIn app</p>
                                     <p className="network-left-footer-link">More</p>
                                 </div>
-                                {'<LoopedIn logo>'} LoopedIn Corporation (c) 2022
+                                <p id="loopedin-copyright-info">{'<LoopedIn logo>'} LoopedIn Corporation &copy; 2022</p>
                             </div>
                         </div>
                     </div>

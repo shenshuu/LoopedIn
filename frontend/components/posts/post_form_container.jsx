@@ -1,6 +1,7 @@
+import { createPost, fetchPosts } from "../../actions/post_actions";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import PostForm from './post_form';
-import { createPost, fetchPosts } from "../../actions/post_actions";
 
 const mapStateToProps = state => ({
     user: state.entities.users[state.session.id],
@@ -15,4 +16,4 @@ const mapDispatchToProps = dispatch => ({
     fetchPosts: () => dispatch(fetchPosts()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostForm));

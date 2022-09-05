@@ -10,11 +10,16 @@ class PostForm extends React.Component {
             post: this.props.post,
             modal_hidden: true,
         }
+        this.handleUserShow = this.handleUserShow.bind(this);
         this.handleCreate = this.handleCreate.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
         this.createModal = this.createModal.bind(this);
         this.postOption = this.postOption.bind(this);
         this.updateBody = this.updateBody.bind(this);
+    }
+
+    handleUserShow() {
+        this.props.history.push(`/users/${this.props.user.id}`);
     }
 
     handleCreate(e) {
@@ -65,12 +70,12 @@ class PostForm extends React.Component {
                     <div className="create-post-modal-header-divider"></div>
                     <form className="create-post-form" onSubmit={this.handleCreate}>
                         <div className="create-post-user-info">
-                            <div id="post-user-image">
+                            <div id="post-user-image" onClick={() => this.handleUserShow()}>
                                 {Object.keys(this.props.user.image).length < 5 ? <img src="https://i.postimg.cc/bYDLSPVZ/image-removebg-preview.png" alt="user-profile-photo" /> 
                                 : <img src={this.props.user.image} alt="user-profile-photo" /> }
                             </div>
                             <div className="create-post-user-header">
-                                <h3>{`${this.state.user.first_name} ${this.state.user.last_name}`}</h3>
+                                <h3 id="poster-name" onClick={() => this.handleUserShow()}>{`${this.state.user.first_name} ${this.state.user.last_name}`}</h3>
                                 <p>Professional Tester</p>
                             </div>
                         </div>
@@ -123,7 +128,7 @@ class PostForm extends React.Component {
             <div className="post-form-content">
                 {this.state.modal_hidden ? "" : this.createModal()}
                 <div className="post-form-input">
-                    <div id="post-user-image">
+                    <div id="post-user-image" onClick={() => this.handleUserShow()}>
                         {Object.keys(this.props.user.image).length < 5 ? <img src="https://i.postimg.cc/bYDLSPVZ/image-removebg-preview.png" alt="user-profile-photo" /> 
                         : <img src={this.props.user.image} alt="user-profile-photo" /> }
                     </div>

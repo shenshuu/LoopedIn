@@ -154,3 +154,8 @@
     width: 100%;
     border-bottom: 1px solid lightgray;
 }
+
+#loopedin-copyright-info {
+    font-size: 12px;
+    color: gray;
+}

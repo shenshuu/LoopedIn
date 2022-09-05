@@ -3,6 +3,7 @@ import PostIndexItem from './post_index_item';
 import {updatePost, deletePost} from '../../actions/post_actions';
 import { deleteLikes } from '../../actions/like_actions'; 
 import { createLike, deleteLike } from '../../actions/like_actions';
+import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -21,4 +22,4 @@ const mapDispatchToProps = dispatch => ({
     deleteLikes: () => dispatch(deleteLikes()),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostIndexItem);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostIndexItem));

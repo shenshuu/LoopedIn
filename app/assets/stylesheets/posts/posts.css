@@ -258,6 +258,7 @@
 .create-post-user-header {
     display: flex;
     flex-direction: column;
+    row-gap: 5px;
     padding: 10px;
 }
 
@@ -422,4 +423,8 @@
 
 #fa-thumbs-up, #fa-comment {
     font-size: 18px;
+}
+
+#post-user-image:hover, #poster-name:hover {
+    cursor: pointer;
 }
