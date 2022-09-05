@@ -30,7 +30,7 @@ class PostIndex extends React.Component {
                     <div id="post-form-separator"></div>
                 </div>
                 <ul>
-                    {Object.values(this.state.posts).map((post, i) => {
+                    {Object.values(this.state.posts).reverse().map((post, i) => {
                         return <PostIndexItemContainer post={post} key={post+i} /> 
                     })}
                 </ul>

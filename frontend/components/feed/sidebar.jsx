@@ -39,9 +39,9 @@ class Sidebar extends React.Component {
                 <div className="sidebar-bottom">
                     <p className="sidebar-hashtag-logo">Followed hashtags</p>
                     <ul className="tags">
-                        <li>#reactjs</li>
-                        <li>#rubyonrails</li>
-                        <li>#clone</li>
+                        <a id="sidebar-hashtag" href="https://reactjs.org/"><li>#reactjs</li></a>
+                        <a id="sidebar-hashtag" href="https://rubyonrails.org/"><li>#rubyonrails</li></a>
+                        <a id="sidebar-hashtag" href="https://linkedin.com/"><li>#clone</li></a>
                     </ul>
                 </div>
                 <div className="sidebar-divider-container">
