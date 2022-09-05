@@ -114,6 +114,12 @@
     border-radius: 6px;
 }
 
+.searching {
+    width: 300px;
+    transition: 100ms;
+    border: 2px solid black;
+}
+
 .search-container input {
     background-color: rgba(217, 217, 214, 0);
     border: none;
