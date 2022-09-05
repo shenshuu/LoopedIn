@@ -1,7 +1,8 @@
+import { createConnect, deleteConnect, updateConnect, fetchConnects } from '../../actions/connect_actions';
+import { fetchUsers, updateUser } from '../../actions/session_actions';
 import { createExperience } from '../../actions/experience_actions';
 import { createEducation } from '../../actions/education_actions';
-import { fetchUsers, updateUser } from '../../actions/session_actions';
-import { createConnect, deleteConnect, updateConnect, fetchConnects } from '../../actions/connect_actions';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import User from './user';
 
@@ -25,4 +26,4 @@ const mapDispatchToProps = dispatch => ({
     fetchConnects: () => dispatch(fetchConnects()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(User);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(User));

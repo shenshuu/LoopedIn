@@ -103,6 +103,7 @@
 .user-intro-pronouns {
     color: gray;
     font-size: 14px;
+    margin-top: 3px;
 }
 
 .user-connection-count {
@@ -127,7 +128,9 @@
     justify-content: center;
     align-items: center;
     margin-top: -120px;
-    margin-left: 20px;
+    margin-left: 6px;
+    border: 1px solid lightgray;
+    background-color: #e7e2dc;
 }
 
 .user-profile-photo:hover {
@@ -147,8 +150,8 @@
 }
 
 .user-intro-info {
-    margin-left: 20px;
-    margin-top: 20px;
+    margin-left: 8px;
+    margin-top: 12px;
 }
 
 .user-education-photo {
@@ -244,7 +247,7 @@
     width: 65px;
     height: 65px;
     border-radius: 50px;
-    /* background-color: red; */
+    background-color: #e7e2dc;
     border: 0.5px solid lightgray;
 }
 

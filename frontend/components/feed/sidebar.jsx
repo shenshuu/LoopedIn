@@ -3,11 +3,16 @@ import React from 'react';
 class Sidebar extends React.Component {
     constructor(props) {
         super(props);
+        this.numberOfConnections = this.numberOfConnections.bind(this);
         this.handleUserShow = this.handleUserShow.bind(this);
     }
 
     handleUserShow() {
         this.props.history.push(`/users/${this.props.user.id}`);
+    }
+
+    numberOfConnections() {
+        return Object.values(this.props.connects).filter(connect => connect.accepted && (connect.sender_id === this.props.user.id || connect.receiver_id === this.props.user.id)).length
     }
 
     render() {
@@ -28,7 +33,7 @@ class Sidebar extends React.Component {
                 <div className="sidebar-stats">
                     <div className="sidebar-stats-top">
                         <p>Connections</p>
-                        <p className="sidebar-stat-number">11</p>
+                        <p className="sidebar-stat-number">{this.numberOfConnections()}</p>
                     </div>
                     <div className="sidebar-stats-bottom">
                         <p>Who's viewed your profile</p>

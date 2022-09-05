@@ -33,6 +33,8 @@ class User extends React.Component {
         this.toggleEditingAbout = this.toggleEditingAbout.bind(this);
         this.renderUser = this.renderUser.bind(this);
         this.shuffleArray = this.shuffleArray.bind(this);
+        this.numberOfConnections = this.numberOfConnections.bind(this);
+        this.showConnections = this.showConnections.bind(this);
         this.sendConnect = this.sendConnect.bind(this);
         this.acceptConnect = this.acceptConnect.bind(this);
         this.deleteConnect = this.deleteConnect.bind(this);
@@ -46,6 +48,16 @@ class User extends React.Component {
     componentDidUpdate(prevProps) {
         if (!equal(prevProps.users, this.props.users)) {
             this.setState({action_modal_hidden: this.state.action_modal_hidden});
+        }
+    }
+
+    numberOfConnections() {
+        return Object.values(this.props.connects).filter(connect => connect.accepted && (connect.sender_id === this.props.user.id || connect.receiver_id === this.props.user.id)).length
+    }
+
+    showConnections() {
+        if (this.props.user.id === this.props.current_user.id) {
+            this.props.history.push('/network');
         }
     }
 
@@ -168,7 +180,7 @@ class User extends React.Component {
                                     <div className="user-intro-contents">
                                         <div className="user-intro-headline">{this.props.user.headline}</div>
                                         <div className="user-intro-location">{`${this.props.user.location_city}, ${this.props.user.location_country}`}</div>
-                                        <div className="user-connection-count">11 connections</div>
+                                        <div className="user-connection-count" onClick={() => this.showConnections()}>{this.numberOfConnections()} connections</div>
                                         <div className="user-intro-actions">
                                             {this.props.current_user.id === this.props.user.id ? 
                                             <button id="add-profile-section" onClick={this.toggleActionModal}>Add Profile Section</button>
