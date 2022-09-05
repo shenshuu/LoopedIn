@@ -1,12 +1,19 @@
+import PendingModalContainer from '../modals/pending_modal_container';
 import React from 'react';
 
 class UserIndexItem extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {pending_modal_hidden: true};
+        this.togglePendingModal = this.togglePendingModal.bind(this);
         this.acceptConnect = this.acceptConnect.bind(this);
         this.deleteConnect = this.deleteConnect.bind(this);
         this.sendConnect = this.sendConnect.bind(this);
         this.handleClick = this.handleClick.bind(this);
+    }
+
+    togglePendingModal() {
+        this.setState({pending_modal_hidden: !this.state.pending_modal_hidden});
     }
 
     sendConnect() {
@@ -31,6 +38,7 @@ class UserIndexItem extends React.Component {
         if (filteredConnects.length > 0) {
             this.props.deleteConnect(filteredConnects[0])
         }
+        this.setState({pending_modal_hidden: true});
     }
 
     handleClick() {
@@ -58,7 +66,7 @@ class UserIndexItem extends React.Component {
                         {Object.values(this.props.connects).filter(connect => connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id).length === 0 ?
                         <button className="connect" onClick={() => this.sendConnect()}>Connect</button>
                         : Object.values(this.props.connects).filter(connect => connect.pending && connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id).length > 0 && Object.values(this.props.connects).filter(connect => connect.pending && connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id)[0].sender_id === this.props.current_user.id ? 
-                        <button className="connect" id="pending" onClick={() => this.acceptConnect()}>Pending</button> 
+                        <button className="connect" id="pending" onClick={() => this.togglePendingModal()}>Pending</button> 
                         : Object.values(this.props.connects).filter(connect => connect.pending && (connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id)).length > 0 && Object.values(this.props.connects).filter(connect => connect.pending && (connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id))[0].receiver_id === this.props.current_user.id ?
                         <button className="connect" onClick={() => this.acceptConnect()}>Accept</button>
                         : Object.values(this.props.connects).filter(connect => connect.accepted && connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id).length === 1 ? 
@@ -66,6 +74,7 @@ class UserIndexItem extends React.Component {
                         : <button className="connect" onClick={() => this.deleteConnect()}>Disconnect</button>}
                     </div>
                 </div>
+                {this.state.pending_modal_hidden ? "" : <PendingModalContainer user={this.props.user} current_user={this.props.current_user} togglePendingModal={() => this.togglePendingModal()}/>}
             </div>
         )
     }
