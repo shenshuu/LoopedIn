@@ -414,6 +414,8 @@
     height: 50px;
     width: 50px;
     border-radius: 50px;
+    background-color: #e7e2dc;
+    border: 1px solid lightgray;
 }
 
 .post-form-input {

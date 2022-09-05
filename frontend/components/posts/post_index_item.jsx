@@ -58,7 +58,8 @@ class PostIndexItem extends React.Component {
                     <form className="create-post-form" onSubmit={this.handleUpdate}>
                         <div className="create-post-user-info">
                             <div id="post-user-image" onClick={() => this.handleUserShow(this.props.user.id)}>
-                                <img src={this.props.user.image} alt="user-photo" /> 
+                                {Object.keys(this.props.user.image).length < 5 ? <img src="https://i.postimg.cc/bYDLSPVZ/image-removebg-preview.png" alt="user-photo" /> 
+                                : <img src={this.props.user.image} alt="user-photo" /> }
                             </div>
                             <div className="create-post-user-header">
                                 <h3 id="poster-name" onClick={() => this.handleUserShow(this.props.user.id)}>{`${this.state.user.first_name} ${this.state.user.last_name}`}</h3>

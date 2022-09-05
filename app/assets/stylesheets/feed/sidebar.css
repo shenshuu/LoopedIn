@@ -131,6 +131,8 @@
 }
 
 #sidebar-user-img > img {
+    background-color: #e7e2dc;
+    border: 1px solid lightgray;
     width: 70px;
     height: 70px;
     border-radius: 50px;

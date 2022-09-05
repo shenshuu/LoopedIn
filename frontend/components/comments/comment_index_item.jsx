@@ -124,7 +124,8 @@ class CommentIndexItem extends React.Component {
                 <div className="comment-contents">
                     <div className="profile-pic">
                         <div id="comment-user-image"> 
-                            <img src={this.props.user.image} alt="user-photo" />
+                            {Object.keys(this.props.user.image).length < 5 ? <img src="https://i.postimg.cc/bYDLSPVZ/image-removebg-preview.png" alt="user-photo" /> 
+                            : <img src={this.props.user.image} alt="user-photo" /> }
                         </div>
                     </div>
                     <div className="comment-container-a">
