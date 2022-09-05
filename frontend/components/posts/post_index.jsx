@@ -28,9 +28,10 @@ class PostIndex extends React.Component {
                 <PostFormContainer />
                 <div id="post-form-separator-container">
                     <div id="post-form-separator"></div>
+                    <span id="sort-by">Sort by: <span id="selected-sort">Recent</span></span>
                 </div>
                 <ul>
-                    {Object.values(this.state.posts).reverse().map((post, i) => {
+                    {Object.values(this.props.posts).reverse().map((post, i) => {
                         return <PostIndexItemContainer post={post} key={post+i} /> 
                     })}
                 </ul>

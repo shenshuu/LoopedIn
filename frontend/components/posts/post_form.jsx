@@ -14,7 +14,6 @@ class PostForm extends React.Component {
         this.handleCreate = this.handleCreate.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
         this.createModal = this.createModal.bind(this);
-        this.postOption = this.postOption.bind(this);
         this.updateBody = this.updateBody.bind(this);
     }
 
@@ -92,37 +91,6 @@ class PostForm extends React.Component {
         )
     }
 
-    postOption() {
-        return (
-            <div className="post-option">
-                <div className="option">
-                    <div className="photo-icon">
-                        <FontAwesomeIcon icon={faImage}></FontAwesomeIcon>
-                    </div>
-                    <p>Photo</p>
-                </div>
-                <div className="option">
-                    <div className="video-icon">
-                        <FontAwesomeIcon icon={faVideo}></FontAwesomeIcon>
-                    </div>
-                    <p>Video</p>
-                </div>
-                <div className="option">
-                    <div className="event-icon">
-                        <FontAwesomeIcon icon={faCalendarDays}></FontAwesomeIcon>
-                    </div>
-                    <p>Event</p>
-                </div>
-                <div className="option">
-                    <div className="article-icon">
-                        <FontAwesomeIcon icon={faNewspaper}></FontAwesomeIcon>
-                    </div>
-                    <p>Write article</p>
-                </div>
-            </div>
-        )
-    }
-
     render() {
         return (
             <div className="post-form-content">
@@ -139,7 +107,6 @@ class PostForm extends React.Component {
                         </form>
                     </div>
                 </div>
-                {this.postOption()}
             </div>
         )
     }
