@@ -8,7 +8,7 @@ class Sidebar extends React.Component {
     }
 
     handleUserShow() {
-        this.props.history.push(`/users/${this.props.user.id}`);
+        this.props.history.push(`/network`);
     }
 
     numberOfConnections() {
@@ -31,7 +31,7 @@ class Sidebar extends React.Component {
                 </div>
 
                 <div className="sidebar-stats">
-                    <div className="sidebar-stats-top">
+                    <div className="sidebar-stats-top" onClick={() => this.handleUserShow()}>
                         <p>Connections</p>
                         <p className="sidebar-stat-number">{this.numberOfConnections()}</p>
                     </div>

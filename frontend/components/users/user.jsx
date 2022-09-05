@@ -8,6 +8,7 @@ import UpdateUserImageForm from './update_user_image_form';
 import UpdateUserForm from './update_user_form';
 import UserIndexItemContainer from './user_index_item_container';
 import HeaderContainer from '../splash/header_container';
+import PendingModalContainer from '../modals/pending_modal_container';
 import About from './about';
 import equal from 'fast-deep-equal';
 import React from 'react';
@@ -17,6 +18,7 @@ class User extends React.Component {
         super(props);
 
         this.state = {
+            pending_modal_hidden: false,
             action_modal_hidden: true,
             adding_experience: false,
             adding_education: false,
@@ -24,6 +26,7 @@ class User extends React.Component {
             editing_about: false, 
             editing_user: false,
         };
+        this.togglePendingModal = this.togglePendingModal.bind(this);
         this.toggleActionModal = this.toggleActionModal.bind(this);
         this.actionModal = this.actionModal.bind(this);
         this.toggleAddingExperience = this.toggleAddingExperience.bind(this);
@@ -98,6 +101,10 @@ class User extends React.Component {
 
     toggleActionModal() {
         this.setState({action_modal_hidden: !this.state.action_modal_hidden});
+    }
+
+    togglePendingModal() {
+        this.setState({pending_modal_hidden: !this.state.pending_modal_hidden});
     }
 
     actionModal() {
@@ -221,6 +228,7 @@ class User extends React.Component {
                         </div>
                     </div>
                 </div>
+                {this.state.pending_modal_hidden ? "" : <PendingModalContainer togglePendingModal={() => this.togglePendingModal()}/>}
             </div>
         )
     }
