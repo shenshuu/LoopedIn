@@ -11,6 +11,10 @@ class SignupForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+        document.querySelector('body').style.backgroundColor = '#f3f2ee';
+    }
+
 
     handleSubmit(e) {
         e.preventDefault();

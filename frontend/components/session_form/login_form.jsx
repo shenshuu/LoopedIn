@@ -12,6 +12,10 @@ class LoginForm extends React.Component {
         this.demoLogin = this.demoLogin.bind(this);
     }
 
+    componentDidMount() {
+        document.querySelector('body').style.backgroundColor = '#f3f2ee';
+    }
+
 
     handleSubmit(e) {
         e.preventDefault();

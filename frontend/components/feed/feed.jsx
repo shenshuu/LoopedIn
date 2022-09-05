@@ -22,6 +22,7 @@ class Feed extends React.Component {
         this.props.fetchUsers();
         this.props.fetchPosts();
         this.props.fetchConnects();
+        document.querySelector('body').style.backgroundColor = '#f3f2ee';
     }
 
     componentDidUpdate(prevProps) {

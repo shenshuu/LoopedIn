@@ -1,7 +1,8 @@
 .network-invitation-container {
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    align-items: center;
+    padding: 15px;
 }
 
 .network-invitation-item-left {
@@ -14,6 +15,13 @@
     display: flex;
     flex-direction: column;
     row-gap: 5px;
+}
+
+.network-invitation-user-img {
+    width: 75px;
+    height: 75px;
+    border-radius: 50px;
+    background-color: #0d64c2;
 }
 
 .network-invitation-user-img > img {
@@ -31,4 +39,45 @@
 .network-invitation-user-headline, .network-invitation-user-location {
     color: gray;
     font-size: 14px;
+}
+
+.network-invitation-item-right {
+    display: flex;
+    align-items: center;
+    height: 50%;
+    column-gap: 10px;
+}
+
+.network-invitation-ignore, .network-invitation-accept {
+    border-radius: 28px;
+    background-color: white;
+    padding: 6px 16px;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.network-invitation-ignore {
+    color: gray;
+}
+
+.network-invitation-ignore:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+}
+
+.network-invitation-accept {
+    color: rgb(11,101,194);
+    border: 1px solid rgb(11,101,194);
+}
+
+.network-invitation-accept:hover {
+    border: 2px solid rgb(11,101,194);
+    cursor: pointer;
+    background-color: rgba(11,101,194, 0.2);
+    transition: 100ms;
+}
+
+.network-invitation-footer-divider {
+    width: 100%;
+    border-bottom: 1px solid lightgray;
 }
