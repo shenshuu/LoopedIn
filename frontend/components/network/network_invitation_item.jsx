@@ -4,6 +4,24 @@ class NetworkInvitationItem extends React.Component {
     constructor(props) {
         super(props);
         this.renderInvitation = this.renderInvitation.bind(this);
+        this.acceptConnect = this.acceptConnect.bind(this);
+        this.deleteConnect = this.deleteConnect.bind(this);
+    }
+
+    acceptConnect() {
+        const pendingConnects = Object.values(this.props.connects).filter(connect => connect.pending && connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id);
+        if (pendingConnects.length > 0) {
+            let updatedConnect = Object.assign({}, pendingConnects[0], {pending: false, accepted: true});
+            this.props.updateConnect(updatedConnect);
+        }
+    }
+
+    deleteConnect() {
+        const filteredConnects = Object.values(this.props.connects).filter(connect => connect.accepted && connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id);
+        debugger;
+        if (filteredConnects.length > 0) {
+            this.props.deleteConnect(filteredConnects[0])
+        }
     }
 
     renderInvitation() {
@@ -22,8 +40,8 @@ class NetworkInvitationItem extends React.Component {
                         </div>
                     </div>
                     <div className="network-invitation-item-right">
-                        <div className="network-invitation-ignore">Ignore</div>
-                        <div className="network-invitation-accept">Accept</div>
+                        <div className="network-invitation-ignore" onClick={() => this.deleteConnect()}>Ignore</div>
+                        <div className="network-invitation-accept" onClick={() => this.acceptConnect()}>Accept</div>
                     </div>
                 </div>
                 <div className="network-invitation-footer-divider"></div>

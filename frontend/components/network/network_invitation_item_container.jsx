@@ -1,5 +1,5 @@
 import NetworkInvitationItem from "./network_invitation_item";
-import { updateConnect } from "../../actions/connect_actions";
+import { deleteConnect, updateConnect } from "../../actions/connect_actions";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => ({
@@ -9,6 +9,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     updateConnect: connect => dispatch(updateConnect(connect)),
+    deleteConnect: connect => dispatch(deleteConnect(connect)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NetworkInvitationItem);
