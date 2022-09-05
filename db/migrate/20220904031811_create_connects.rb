@@ -1,11 +1,13 @@
 class CreateConnects < ActiveRecord::Migration[5.2]
   def change
     create_table :connects do |t|
-      t.integer :user1_id, null: false
-      t.integer :user2_id, null: false
+      t.integer :sender_id, null: false
+      t.integer :receiver_id, null: false
+      t.boolean :pending, default: false
+      t.boolean :accepted, default: false 
       t.timestamps
     end
-    add_index :connects, :user1_id
-    add_index :connects, :user2_id
+    add_index :connects, :sender_id
+    add_index :connects, :receiver_id
   end
 end

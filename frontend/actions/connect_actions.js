@@ -34,6 +34,11 @@ export const createConnect = connect => dispatch => (
     .then(connect => dispatch(receiveConnect(connect)))
 );
 
+export const updateConnect = connect => dispatch => (
+    ApiUtil.updateConnect(connect)
+    .then(connect => dispatch(receiveConnect(connect)))
+);
+
 export const deleteConnect = connect => dispatch => (
     ApiUtil.deleteConnect(connect)
     .then(() => dispatch(removeConnect(connect)))

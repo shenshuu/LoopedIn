@@ -9,15 +9,15 @@ class NetworkItem extends React.Component {
 
     handleConnect() {
         console.log('inside handleConnect');
-        const filteredConnects = Object.values(this.props.connects).filter(connect => connect.user1_id === this.props.current_user.id && connect.user2_id === this.props.user.id || connect.user1_id === this.props.user.id && connect.user2_id === this.props.current_user.id)
-        if (filteredConnects.length > 0) {
-            this.props.deleteConnect(filteredConnects[0]);
-        } else {
-            this.props.createConnect({
-                user1_id: this.props.current_user.id,
-                user2_id: this.props.user.id,
-            });
-        }
+        // const filteredConnects = Object.values(this.props.connects).filter(connect => connect.user1_id === this.props.current_user.id && connect.user2_id === this.props.user.id || connect.user1_id === this.props.user.id && connect.user2_id === this.props.current_user.id)
+        // if (filteredConnects.length > 0) {
+        //     this.props.deleteConnect(filteredConnects[0]);
+        // } else {
+        //     this.props.createConnect({
+        //         user1_id: this.props.current_user.id,
+        //         user2_id: this.props.user.id,
+        //     });
+        // }
     }
 
     handleUserShow(userId) {
@@ -41,7 +41,7 @@ class NetworkItem extends React.Component {
                 </div>
                 <div className="connect-btn-container">
                     <p className="network-item-about">{this.props.user.about}</p>
-                    {Object.values(this.props.connects).filter(connect => connect.user1_id === this.props.current_user.id && connect.user2_id === this.props.user.id).length === 0 ? 
+                    {true ? 
                     <button className="connect-btn" onClick={() => this.handleConnect()}>Connect</button>
                     :
                     <button className="connect-btn" onClick={() => this.handleConnect()}>Disconnect</button>

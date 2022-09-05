@@ -14,6 +14,14 @@ export const createConnect = connect => (
     })
 );
 
+export const updateConnect = connect => (
+    $.ajax({
+        url: `/api/connects/${connect.id}`,
+        method: 'PATCH',
+        data: { connect }
+    })
+);
+
 export const deleteConnect = connect => (
     $.ajax({
         url: `/api/connects/${connect.id}`,

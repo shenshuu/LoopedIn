@@ -11,6 +11,6 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy, :index]
     resources :experiences, only: [:create, :destroy, :update, :index]
     resources :educations, only: [:create, :destroy, :update, :index]
-    resources :connects, only: [:create, :destroy, :index]
+    resources :connects, only: [:create, :destroy, :update, :index]
   end 
 end

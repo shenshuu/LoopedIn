@@ -50,13 +50,13 @@ class User < ApplicationRecord
         dependent: :destroy
 
     has_many :connects, 
-        foreign_key: :user1_id,
+        foreign_key: :sender_id,
         class_name: :Connect,
         dependent: :destroy
 
     has_many :connections,
         through: :connects,
-        source: :follower,
+        source: :receiver,
         dependent: :destroy
 
     has_one_attached :image 

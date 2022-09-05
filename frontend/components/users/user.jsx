@@ -32,14 +32,14 @@ class User extends React.Component {
         this.toggleEditingUser = this.toggleEditingUser.bind(this);
         this.toggleEditingAbout = this.toggleEditingAbout.bind(this);
         this.renderUser = this.renderUser.bind(this);
-        this.handleConnect = this.handleConnect.bind(this);
         this.shuffleArray = this.shuffleArray.bind(this);
+        this.sendConnect = this.sendConnect.bind(this);
+        this.acceptConnect = this.acceptConnect.bind(this);
+        this.deleteConnect = this.deleteConnect.bind(this);
     }
 
     componentDidMount() {
-        // this.props.deletePosts();
-        // this.props.deleteLikes();
-        // this.props.deleteComments();
+        this.props.fetchConnects();
         this.props.fetchUsers();
     }
 
@@ -103,15 +103,27 @@ class User extends React.Component {
         )
     }
 
-    handleConnect() {
-        const filteredConnects = Object.values(this.props.connects).filter(connect => connect.user1_id === this.props.current_user.id && connect.user2_id === this.props.user.id || connect.user1_id === this.props.user.id && connect.user2_id === this.props.current_user.id)
+    sendConnect() {
+        this.props.createConnect({
+            sender_id: this.props.current_user.id,
+            receiver_id: this.props.user.id,
+            pending: true,
+            accepted: false,
+        });
+    }
+
+    acceptConnect() {
+        const pendingConnects = Object.values(this.props.connects).filter(connect => connect.pending && connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id);
+        if (pendingConnects.length > 0) {
+            let updatedConnect = Object.assign({}, pendingConnects[0], {pending: false, accepted: true});
+            this.props.updateConnect(updatedConnect);
+        }
+    }
+
+    deleteConnect() {
+        const filteredConnects = Object.values(this.props.connects).filter(connect => connect.accepted && connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id);
         if (filteredConnects.length > 0) {
-            this.props.deleteConnect(filteredConnects[0]);
-        } else {
-            this.props.createConnect({
-                user1_id: this.props.current_user.id,
-                user2_id: this.props.user.id,
-            });
+            this.props.deleteConnect(filteredConnects[0])
         }
     }
 
@@ -160,10 +172,15 @@ class User extends React.Component {
                                         <div className="user-intro-actions">
                                             {this.props.current_user.id === this.props.user.id ? 
                                             <button id="add-profile-section" onClick={this.toggleActionModal}>Add Profile Section</button>
-                                            : Object.values(this.props.connects).filter(connect => this.props.user.id === connect.user1_id && this.props.current_user.id === connect.user2_id || this.props.user.id === connect.user2_id && this.props.current_user.id === connect.user1_id).length === 0 ? 
-                                            <button id="add-profile-section" onClick={() => this.handleConnect()}>Connect</button>
-                                            : <button id="add-profile-section" onClick={() => this.handleConnect()}>Disconnect</button>
-                                            }
+                                            : Object.values(this.props.connects).filter(connect => connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id).length === 0 ?
+                                            <button id="add-profile-section" onClick={() => this.sendConnect()}>Connect</button>
+                                            : Object.values(this.props.connects).filter(connect => connect.pending && connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id).length > 0 && Object.values(this.props.connects).filter(connect => connect.pending && connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id)[0].sender_id === this.props.current_user.id ? 
+                                            <button id="add-profile-section" onClick={() => this.acceptConnect()}>Pending</button> 
+                                            : Object.values(this.props.connects).filter(connect => connect.pending && (connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id)).length > 0 && Object.values(this.props.connects).filter(connect => connect.pending && (connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id))[0].receiver_id === this.props.current_user.id ?
+                                            <button id="add-profile-section" onClick={() => this.acceptConnect()}>Accept</button>
+                                            : Object.values(this.props.connects).filter(connect => connect.accepted && connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id).length === 1 ? 
+                                            <button id="add-profile-section" onClick={() => this.deleteConnect()}>Disconnect</button>
+                                            : <button id="add-profile-section" onClick={() => this.deleteConnect()}>Disconnect</button>}
                                             <button id="user-more-section">More</button>
                                         </div>
                                         {this.state.action_modal_hidden ? "" : this.actionModal()}

@@ -1,1 +1,1 @@
-json.extract! connect, :id, :user1_id, :user2_id
+json.extract! connect, :id, :sender_id, :receiver_id, :pending, :accepted

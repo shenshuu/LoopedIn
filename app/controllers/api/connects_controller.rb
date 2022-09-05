@@ -6,8 +6,17 @@ class Api::ConnectsController < ApplicationController
 
     def create 
         @connect = Connect.new(connect_params)
-        @connect.user1_id = current_user.id if current_user
+        @connect.sender_id = current_user.id if current_user
         if @connect.save 
+            render :show
+        else
+            render json: @connect.errors.full_messages
+        end
+    end
+
+    def update 
+        @connect = Connect.find_by(id: params[:id])
+        if @connect.update(connect_params)
             render :show
         else
             render json: @connect.errors.full_messages
@@ -25,6 +34,6 @@ class Api::ConnectsController < ApplicationController
 
     private
     def connect_params
-        params.require(:connect).permit(:user1_id, :user2_id)
+        params.require(:connect).permit(:sender_id, :receiver_id, :pending, :accepted)
     end
 end

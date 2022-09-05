@@ -49,12 +49,14 @@ ActiveRecord::Schema.define(version: 2022_09_04_031811) do
   end
 
   create_table "connects", force: :cascade do |t|
-    t.integer "user1_id", null: false
-    t.integer "user2_id", null: false
+    t.integer "sender_id", null: false
+    t.integer "receiver_id", null: false
+    t.boolean "pending", default: false
+    t.boolean "accepted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user1_id"], name: "index_connects_on_user1_id"
-    t.index ["user2_id"], name: "index_connects_on_user2_id"
+    t.index ["receiver_id"], name: "index_connects_on_receiver_id"
+    t.index ["sender_id"], name: "index_connects_on_sender_id"
   end
 
   create_table "educations", force: :cascade do |t|
