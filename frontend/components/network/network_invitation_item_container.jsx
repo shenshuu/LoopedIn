@@ -3,8 +3,8 @@ import { deleteConnect, updateConnect } from "../../actions/connect_actions";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => ({
-    current_user: state.entities.users[state.session.id],
-    connects: state.entities.connects,
+    // current_user: state.entities.users[state.session.id],
+    // connects: state.entities.connects,
 });
 
 const mapDispatchToProps = dispatch => ({

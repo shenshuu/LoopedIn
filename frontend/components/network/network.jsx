@@ -1,7 +1,7 @@
 import HeaderContainer from '../splash/header_container';
 import NetworkItemContainer from './network_item_container';
 import { HiUserGroup, HiHashtag } from 'react-icons/hi';
-import NetworkInvitationItem from './network_invitation_item';
+import NetworkInvitationItemContainer from './network_invitation_item_container';
 import { TiContacts } from 'react-icons/ti';
 import React from 'react';
 
@@ -9,6 +9,7 @@ import React from 'react';
 class Network extends React.Component {
     constructor(props) {
         super(props);
+        this.renderNetworkPage = this.renderNetworkPage.bind(this);
     }
 
     componentDidMount() {
@@ -16,7 +17,7 @@ class Network extends React.Component {
         this.props.fetchConnects();
     }
 
-    render() {
+    renderNetworkPage() {
         return (
             <div className="network-page">
                 <HeaderContainer />
@@ -65,7 +66,7 @@ class Network extends React.Component {
                             <p className="network-left-title">Invitations</p>
                             <div className="network-invitations-divider"></div>
                             {Object.values(this.props.connects).filter((connect) => connect.pending && connect.receiver_id === this.props.current_user.id)
-                            .map((connect, i) => <NetworkInvitationItem user={this.props.users[connect.sender_id]} key={connect+i+Math.random()*100000}/>)}
+                            .map((connect, i) => <NetworkInvitationItemContainer users={this.props.users} connects={this.props.connects} current_user={this.props.current_user} user={this.props.users[connect.sender_id]} key={connect+i+Math.random()*100000}/>)}
                         </div>
                         <div className="network-container-right-parent">
                             <div className="network-right-header-container">
@@ -83,6 +84,10 @@ class Network extends React.Component {
                 </div>
             </div>
         )
+    }
+
+    render() {
+        return this.props.current_user && this.renderNetworkPage();
     }
 }
 

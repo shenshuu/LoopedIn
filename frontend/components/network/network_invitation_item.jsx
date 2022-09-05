@@ -3,6 +3,7 @@ import React from 'react';
 class NetworkInvitationItem extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {rerender: true};
         this.renderInvitation = this.renderInvitation.bind(this);
         this.acceptConnect = this.acceptConnect.bind(this);
         this.deleteConnect = this.deleteConnect.bind(this);
@@ -18,7 +19,6 @@ class NetworkInvitationItem extends React.Component {
 
     deleteConnect() {
         const filteredConnects = Object.values(this.props.connects).filter(connect => connect.accepted && connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id);
-        debugger;
         if (filteredConnects.length > 0) {
             this.props.deleteConnect(filteredConnects[0])
         }
