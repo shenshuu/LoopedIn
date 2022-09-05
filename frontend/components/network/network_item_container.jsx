@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import NetworkItem from './network_item';
-import { createConnect, deleteConnect } from '../../actions/connect_actions';
+import { createConnect, deleteConnect, updateConnect } from '../../actions/connect_actions';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = state => ({
@@ -12,6 +12,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     createConnect: connect => dispatch(createConnect(connect)),
     deleteConnect: connect => dispatch(deleteConnect(connect)),
+    updateConnect: connect => dispatch(updateConnect(connect)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NetworkItem));
