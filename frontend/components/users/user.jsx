@@ -18,7 +18,7 @@ class User extends React.Component {
         super(props);
 
         this.state = {
-            pending_modal_hidden: false,
+            pending_modal_hidden: true,
             action_modal_hidden: true,
             adding_experience: false,
             adding_education: false,
@@ -194,7 +194,7 @@ class User extends React.Component {
                                             : Object.values(this.props.connects).filter(connect => connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id).length === 0 ?
                                             <button id="add-profile-section" onClick={() => this.sendConnect()}>Connect</button>
                                             : Object.values(this.props.connects).filter(connect => connect.pending && connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id).length > 0 && Object.values(this.props.connects).filter(connect => connect.pending && connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id)[0].sender_id === this.props.current_user.id ? 
-                                            <button id="pending-user" onClick={() => this.acceptConnect()}>Pending</button> 
+                                            <button id="pending-user" onClick={() => this.togglePendingModal()}>Pending</button> 
                                             : Object.values(this.props.connects).filter(connect => connect.pending && (connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id)).length > 0 && Object.values(this.props.connects).filter(connect => connect.pending && (connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id))[0].receiver_id === this.props.current_user.id ?
                                             <button id="add-profile-section" onClick={() => this.acceptConnect()}>Accept</button>
                                             : Object.values(this.props.connects).filter(connect => connect.accepted && connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id).length === 1 ? 
@@ -228,7 +228,7 @@ class User extends React.Component {
                         </div>
                     </div>
                 </div>
-                {this.state.pending_modal_hidden ? "" : <PendingModalContainer togglePendingModal={() => this.togglePendingModal()}/>}
+                {this.state.pending_modal_hidden ? "" : <PendingModalContainer current_user={this.props.current_user} user={this.props.user} togglePendingModal={() => this.togglePendingModal()}/>}
             </div>
         )
     }
