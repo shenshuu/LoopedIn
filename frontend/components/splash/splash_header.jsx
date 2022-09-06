@@ -83,11 +83,12 @@ class SplashHeader extends React.Component {
     searchContainer() {
         return (
             <div>
+                {this.state.searching ? <div id="search-overlay" onClick={() => this.toggleSearch()}></div> : ""}
                 <div className="search-container" onClick={() => this.toggleSearch()}>
                     <FontAwesomeIcon icon={faMagnifyingGlass} className="fa-header-link"></FontAwesomeIcon>
                     <input type="text" placeholder="Search" onChange={this.update}/>
                 </div>
-                {this.state.searching ? <SearchResultsIndexContainer searchInput={this.state.search_input} /> : ""}
+                {this.state.searching ? <SearchResultsIndexContainer searchInput={this.state.search_input} toggleSearch={() => this.props.toggleSearch()} /> : ""}
             </div>
         )
     }

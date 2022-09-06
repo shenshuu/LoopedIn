@@ -1,3 +1,4 @@
+import SearchResultsIndexItemContainer from './search_results_index_item_container';
 import React from 'react';
 
 class SearchResultsIndex extends React.Component {
@@ -9,12 +10,11 @@ class SearchResultsIndex extends React.Component {
         let that = this;
         return (
             <div id="search-results-index-container">
-                results
+                <p id="search-results">Search results</p>
                 {Object.values(this.props.users).map((user, i) => {
-                    debugger;
                     const name = `${user.first_name} ${user.last_name}`.toLowerCase();
                     if (that.props.searchInput.length !== 0 && that.props.searchInput === name.slice(0, that.props.searchInput.length)) {
-                        return <div>${name}</div>
+                        return <SearchResultsIndexItemContainer user={user} key={user+i+(Math.random()*100000)} toggleSearch={this.props.toggleSearch}/>
                     }
                 })}
             </div>

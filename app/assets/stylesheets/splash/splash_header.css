@@ -110,14 +110,24 @@
     background-color: rgba(217, 217, 214, 0.6);
     display: flex;
     align-items: center;
-    width: 200px;
+    width: 280px;
     border-radius: 6px;
 }
 
 .searching {
-    width: 300px;
-    transition: 100ms;
-    border: 2px solid black;
+    width: 380px;
+    transition: 300ms;
+    border: 2px solid #0b65c2;
+}
+
+#search-overlay {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100.7vw;
+    height: 100vh;
+    z-index: -10;
 }
 
 .search-container input {
@@ -125,6 +135,7 @@
     border: none;
     padding: 5px;
     height: 25px;
+    width: 100%;
 }
 
 .search-container input:focus {
