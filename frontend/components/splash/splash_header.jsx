@@ -13,6 +13,7 @@ class SplashHeader extends React.Component {
             searching: false,
         };
         this.searchContainer = this.searchContainer.bind(this);
+        this.activateSearch = this.activateSearch.bind(this);
         this.toggleSearch = this.toggleSearch.bind(this);
         this.handleSignout = this.handleSignout.bind(this);
         this.signoutLinks = this.signoutLinks.bind(this);
@@ -22,7 +23,7 @@ class SplashHeader extends React.Component {
 
     toggleSearch() {
         this.setState({searching: !this.state.searching});
-        const searchContainer = document.querySelector('.search-container')
+        const searchContainer = document.querySelector('.search-container');
         if (this.state.searching) {
             searchContainer.classList.remove('searching');
         } else {
@@ -30,8 +31,13 @@ class SplashHeader extends React.Component {
         }
     }
 
+    activateSearch() {
+        this.setState({searching: true});
+        const searchContainer = document.querySelector('.search-container');
+        searchContainer.classList.add('searching');
+    }
+
     update(e) {
-        console.log(this.state.search_input);
         this.setState({search_input: e.target.value});
     }
 
@@ -84,7 +90,7 @@ class SplashHeader extends React.Component {
         return (
             <div>
                 {this.state.searching ? <div id="search-overlay" onClick={() => this.toggleSearch()}></div> : ""}
-                <div className="search-container" onClick={() => this.toggleSearch()}>
+                <div className="search-container" onClick={() => this.activateSearch()}>
                     <FontAwesomeIcon icon={faMagnifyingGlass} className="fa-header-link"></FontAwesomeIcon>
                     <input type="text" placeholder="Search" onChange={this.update}/>
                 </div>
