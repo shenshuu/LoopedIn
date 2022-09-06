@@ -11,6 +11,7 @@ class SearchResultsIndex extends React.Component {
         return (
             <div id="search-results-index-container">
                 <p id="search-results">Search results</p>
+                <p id="search-item-separator"></p>
                 {Object.values(this.props.users).map((user, i) => {
                     const name = `${user.first_name} ${user.last_name}`.toLowerCase();
                     if (that.props.searchInput.length !== 0 && that.props.searchInput === name.slice(0, that.props.searchInput.length)) {
