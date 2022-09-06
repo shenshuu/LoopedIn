@@ -71,7 +71,7 @@ class About extends React.Component {
                             </div>
                         </div>: ""}
                     </div>
-                    <p>{this.props.user.about}</p>
+                    <p id="user-about">{this.props.user.about}</p>
                 </div>
             </div>
         )

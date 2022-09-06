@@ -63,7 +63,7 @@ class NetworkItem extends React.Component {
                     </div>
                 </div>
                 <div className="connect-btn-container">
-                    <p className="network-item-about">{this.props.user.about}</p>
+                    <p className="network-item-about">{ this.props.user.about ? this.props.user.about.length > 100 ? `${this.props.user.about.slice(0, 70)}...` : this.props.user.about : ""}</p>
                     <div id="network-connect-btn" onClick={e => e.stopPropagation()}>
                         {Object.values(this.props.connects).filter(connect => connect.sender_id === this.props.current_user.id && connect.receiver_id === this.props.user.id || connect.sender_id === this.props.user.id && connect.receiver_id === this.props.current_user.id).length === 0 ?
                         <button className="connect-btn" onClick={() => this.sendConnect()}>Connect</button>
