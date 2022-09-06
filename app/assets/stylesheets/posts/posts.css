@@ -69,7 +69,7 @@
     border: 1px solid lightgray;
     background-color: white;
     border-radius: 10px;
-    margin-top: 11px;
+    margin-top: 8px;
     padding: 10px;
 }
 
@@ -374,7 +374,7 @@
 #post-form-separator {
     width: 78%;
     border-top: 1.5px solid rgba(0, 0, 0, 0.2);
-    margin-top: 15px;
+    margin-top: 12px;
     padding-bottom: 4px;
 }
 

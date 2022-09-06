@@ -30,7 +30,7 @@
 
 .widgets {
     position: sticky;
-    top: 85px;
+    top: 65px;
     flex: 0.2;
     height: fit-content;
     bottom: 500px;

@@ -30,7 +30,7 @@ class NetworkInvitationItem extends React.Component {
                 <div className="network-invitation-container">
                     <div className="network-invitation-item-left">
                         <div className="network-invitation-user-img">
-                            {Object.keys(this.props.user.image).length < 5 ? <img src="" alt="default-image"/> 
+                            {Object.keys(this.props.user.image).length < 5 ? <img src="https://i.postimg.cc/bYDLSPVZ/image-removebg-preview.png" alt="default-image"/> 
                             : <img src={this.props.user.image} alt="user-image"/>}
                         </div>
                         <div className="network-invitation-user-info">

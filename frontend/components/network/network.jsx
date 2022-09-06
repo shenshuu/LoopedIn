@@ -70,7 +70,7 @@ class Network extends React.Component {
                         </div>
                         <div className="network-container-right-parent">
                             <div className="network-right-header-container">
-                                <p className="network-container-right-header">People who follow you also follow</p>
+                                <p className="network-container-right-header">People you may know</p>
                             </div>
                             <div className="network-container-right">
                                 {Object.values(this.props.users).map((user, i) => {
