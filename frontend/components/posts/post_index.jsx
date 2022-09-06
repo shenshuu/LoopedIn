@@ -7,9 +7,7 @@ import React from 'react';
 class PostIndex extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            posts: this.props.posts,
-        };
+        this.state = {sort_by: "Recent"};
     }
 
     componentDidUpdate(prevProps) {
@@ -23,13 +21,21 @@ class PostIndex extends React.Component {
         this.props.fetchLikes();
     }
 
+    sortByModal() {
+        return (
+            <div>
+                
+            </div>
+        )
+    }
+
     render() {
         return (
             <div>
                 <PostFormContainer />
                 <div id="post-form-separator-container">
                     <div id="post-form-separator"></div>
-                    <span id="sort-by">Sort by: <span id="selected-sort">Recent <IoMdArrowDropdown /></span></span>
+                    <span id="sort-by">Sort by: <span id="selected-sort">{this.state.sort_by} <IoMdArrowDropdown /></span></span>
                 </div>
                 <ul>
                     {Object.values(this.props.posts).reverse().map((post, i) => {
