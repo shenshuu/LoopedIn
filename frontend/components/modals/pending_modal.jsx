@@ -18,7 +18,10 @@ class PendingModal extends React.Component {
 
     render() {
         return (
-            <div id="pending-modal-overlay" onClick={this.props.togglePendingModal}>
+            <div id="pending-modal-overlay" onClick={(e) => {
+                this.props.togglePendingModal();
+                e.stopPropagation();
+            }}>
                 <div id="pending-modal" onClick={e => e.stopPropagation()}>
                     <div id="pending-modal-header">
                         <p id="pending-modal-title">Withdraw invitation</p>

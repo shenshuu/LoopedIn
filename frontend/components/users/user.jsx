@@ -220,7 +220,7 @@ class User extends React.Component {
                             <div id="other-users-logo-container">
                                 <p id="other-users-logo">People you may know</p>
                             </div>
-                            {this.shuffleArray(Object.values(this.props.users)).map((user, i) => {
+                            {Object.values(this.props.users).map((user, i) => {
                                 if (i < 5 && user.id !== this.props.current_user.id) {
                                     return <UserIndexItemContainer user={user} key={user+i} />
                                 }
