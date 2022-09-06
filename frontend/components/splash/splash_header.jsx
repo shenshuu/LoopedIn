@@ -88,7 +88,7 @@ class SplashHeader extends React.Component {
                     <FontAwesomeIcon icon={faMagnifyingGlass} className="fa-header-link"></FontAwesomeIcon>
                     <input type="text" placeholder="Search" onChange={this.update}/>
                 </div>
-                {this.state.searching ? <SearchResultsIndexContainer searchInput={this.state.search_input} toggleSearch={() => this.props.toggleSearch()} /> : ""}
+                {this.state.searching ? <SearchResultsIndexContainer searchInput={this.state.search_input} toggleSearch={() => this.toggleSearch()} /> : ""}
             </div>
         )
     }

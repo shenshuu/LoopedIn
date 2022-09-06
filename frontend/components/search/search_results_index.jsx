@@ -7,6 +7,7 @@ class SearchResultsIndex extends React.Component {
     }
 
     render() {
+        // debugger;
         let that = this;
         return (
             <div id="search-results-index-container">
