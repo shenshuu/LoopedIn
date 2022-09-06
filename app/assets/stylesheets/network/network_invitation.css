@@ -25,6 +25,10 @@
     border: 1px solid lightgray;
 }
 
+.network-invitation-user-img:hover {
+    cursor: pointer;
+}
+
 .network-invitation-user-img > img {
     width: 75px;
     height: 75px;
@@ -35,6 +39,11 @@
 .network-invitation-user-name {
     font-weight: 600;
     font-size: 16px;
+}
+
+.network-invitation-user-name:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .network-invitation-user-headline, .network-invitation-user-location {

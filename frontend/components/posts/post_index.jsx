@@ -7,7 +7,11 @@ import React from 'react';
 class PostIndex extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {sort_by: "Recent"};
+        this.state = {
+            display_sort_by: false,
+            sort_by: "Recent"
+        };
+        this.sortByModal = this.sortByModal.bind(this);
     }
 
     componentDidUpdate(prevProps) {
@@ -23,8 +27,9 @@ class PostIndex extends React.Component {
 
     sortByModal() {
         return (
-            <div>
-                
+            <div id="sort-modal">
+                <div id="recent">Recent</div>
+                <div id="sort">Sort</div>
             </div>
         )
     }
@@ -36,6 +41,7 @@ class PostIndex extends React.Component {
                 <div id="post-form-separator-container">
                     <div id="post-form-separator"></div>
                     <span id="sort-by">Sort by: <span id="selected-sort">{this.state.sort_by} <IoMdArrowDropdown /></span></span>
+                    {this.state.display_sort_by ? this.sortByModal() : ""}
                 </div>
                 <ul>
                     {Object.values(this.props.posts).reverse().map((post, i) => {

@@ -1,5 +1,6 @@
 import NetworkInvitationItem from "./network_invitation_item";
 import { deleteConnect, updateConnect } from "../../actions/connect_actions";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => ({
@@ -12,4 +13,4 @@ const mapDispatchToProps = dispatch => ({
     deleteConnect: connect => dispatch(deleteConnect(connect)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NetworkInvitationItem);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NetworkInvitationItem));
