@@ -41,21 +41,21 @@ class Network extends React.Component {
                             <div className="network-content-left-footer">
                                 <div className="network-footer-divider"></div>
                                 <div className="network-left-footer-links">
-                                    <p className="network-left-footer-link">About</p>
-                                    <p className="network-left-footer-link">Accessibility</p>
-                                    <p className="network-left-footer-link">Help Center</p>
+                                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" className="footer-link"><p className="network-left-footer-link">About</p></a>
+                                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" className="footer-link"><p className="network-left-footer-link">Accessibility</p></a>
+                                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" className="footer-link"><p className="network-left-footer-link">Help Center</p></a>
                                 </div>
                                 <div className="network-left-footer-links">
-                                    <p className="network-left-footer-link">Privacy & Terms</p>
-                                    <p className="network-left-footer-link">Ad Choices</p>
+                                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" className="footer-link"><p className="network-left-footer-link">Privacy & Terms</p></a>
+                                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" className="footer-link"><p className="network-left-footer-link">Ad Choices</p></a>
                                 </div>
                                 <div className="network-left-footer-links">
-                                    <p className="network-left-footer-link">Advertising</p>
-                                    <p className="network-left-footer-link">Business Services</p>
+                                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" className="footer-link"><p className="network-left-footer-link">Advertising</p></a>
+                                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" className="footer-link"><p className="network-left-footer-link">Business Services</p></a>
                                 </div>
                                 <div className="network-left-footer-links">
-                                    <p className="network-left-footer-link">Get the LoopedIn app</p>
-                                    <p className="network-left-footer-link">More</p>
+                                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" className="footer-link"><p className="network-left-footer-link">Get the LoopedIn app</p></a>
+                                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" className="footer-link"><p className="network-left-footer-link">More</p></a>
                                 </div>
                                 <div id="copyright-container">
                                     <p id="loopedin-copyright-info">{'<LoopedIn logo>'} LoopedIn Corporation &copy; 2022</p>
@@ -76,7 +76,7 @@ class Network extends React.Component {
                             </div>
                             <div className="network-container-right">
                                 {Object.values(this.props.users).map((user, i) => {
-                                    if (i < 6 && this.props.current_user.id !== user.id) {
+                                    if (this.props.current_user.id !== user.id) {
                                         return <NetworkItemContainer user={user} key={user+i} />
                                     }
                                 })}

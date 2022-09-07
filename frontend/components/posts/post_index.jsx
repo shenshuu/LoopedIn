@@ -11,6 +11,7 @@ class PostIndex extends React.Component {
             display_sort_by: false,
             sort_by: "Recent"
         };
+        this.toggleSortModal = this.toggleSortModal.bind(this);
         this.sortByModal = this.sortByModal.bind(this);
     }
 
@@ -25,11 +26,15 @@ class PostIndex extends React.Component {
         this.props.fetchLikes();
     }
 
+    toggleSortModal() {
+        this.setState({display_sort_by: !this.state.display_sort_by});
+    }
+
     sortByModal() {
         return (
             <div id="sort-modal">
                 <div id="recent">Recent</div>
-                <div id="sort">Sort</div>
+                <div id="top">Top</div>
             </div>
         )
     }
@@ -40,7 +45,7 @@ class PostIndex extends React.Component {
                 <PostFormContainer />
                 <div id="post-form-separator-container">
                     <div id="post-form-separator"></div>
-                    <span id="sort-by">Sort by: <span id="selected-sort">{this.state.sort_by} <IoMdArrowDropdown /></span></span>
+                    <span id="sort-by" onClick={() => this.toggleSortModal()}>Sort by: <span id="selected-sort">{this.state.sort_by} <IoMdArrowDropdown /></span></span>
                     {this.state.display_sort_by ? this.sortByModal() : ""}
                 </div>
                 <ul>
