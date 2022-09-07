@@ -40,3 +40,6 @@ Users can send invitations to connect with other users, as well as disconnect wi
 ### Search 
 Users can search up existing users. 
 ![Alt Text](https://github.com/shenshuu/LoopedIn/blob/main/app/assets/images/gifs/search.gif)
+
+## Code Snippets 
+
