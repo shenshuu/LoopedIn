@@ -19,18 +19,24 @@ LoopedIn is a full stack clone of LinkedIn, the world's largest networking site 
 ## Features 
 ### User Authentication 
 Users can create an account by providing a name, email address, and password. Upon logging in, users will gain additional features such as posts, comments, likes, and profiles from other users. 
+![Alt Text](https://github.com/shenshuu/LoopedIn/blob/main/app/assets/images/gifs/user_authentication.gif)
 
 ### User Profile 
 Users can create or edit their education, experience, and personal information.
+![Alt Text](https://github.com/shenshuu/LoopedIn/blob/main/app/assets/images/gifs/user_profile.gif)
 
 ### Posts 
 Users can create, update, and delete posts that are theirs on the feed page. 
+![Alt Text](https://github.com/shenshuu/LoopedIn/blob/main/app/assets/images/gifs/posts.gif)
 
 ### Comments and likes 
 Users can create, update, and delete comments and likes that are theirs. 
+![Alt Text](https://github.com/shenshuu/LoopedIn/blob/main/app/assets/images/gifs/comment_likes.gif)
 
 ### Network and Connections 
 Users can send invitations to connect with other users, as well as disconnect with them. 
+![Alt Text](https://github.com/shenshuu/LoopedIn/blob/main/app/assets/images/gifs/network.gif)
 
 ### Search 
 Users can search up existing users. 
+![Alt Text](https://github.com/shenshuu/LoopedIn/blob/main/app/assets/images/gifs/search.gif)
