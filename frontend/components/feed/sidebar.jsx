@@ -26,7 +26,7 @@ class Sidebar extends React.Component {
                     </div>
                     <div className="user-details">
                         <p className="demo-name">Welcome, {`${this.props.user.first_name}`}!</p>
-                        <p>{"Career"}</p>
+                        <p>{this.props.user.headline ? this.props.user.headline : ""}</p>
                     </div>
                 </div>
 
