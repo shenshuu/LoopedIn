@@ -34,19 +34,19 @@ class Widgets extends React.Component {
                         <p className="widgets-headline">Connect with the developer</p>
                         <div className="widget-links">
                             <div className="fa-container">
-                                <a href="https://github.com/shenshuu" className="fa">
+                                <a href="https://github.com/shenshuu" target="_blank" className="fa">
                                     <FontAwesomeIcon icon={faSquareGithub} className="font-awesome-icon" id="fa-github"></FontAwesomeIcon>
                                 </a>
                                 <p>Github</p>
                             </div>
                             <div className="fa-container">
-                                <a href="https://www.linkedin.com/in/michael-s-b7698b239/" className="fa">
+                                <a href="https://www.linkedin.com/in/michael-s-b7698b239/" target="_blank" className="fa">
                                     <FontAwesomeIcon icon={faLinkedin} className="font-awesome-icon" id="fa-linkedin"></FontAwesomeIcon>
                                 </a>
                                 <p>LinkedIn</p>
                             </div>
                             <div className="fa-container">
-                                <a href="https://shenshuu.github.io/" className="fa">
+                                <a href="https://shenshuu.github.io/" target="_blank" className="fa">
                                     <FontAwesomeIcon icon={faBriefcase} className="font-awesome-icon" id="fa-briefcase"></FontAwesomeIcon>
                                 </a>
                                 <p>Portfolio</p>
